@@ -1,0 +1,194 @@
+{
+  "generatedAt": "2026-04-20T12:22:00.158Z",
+  "categories": [
+    {
+      "id": "63ebd4de56f3",
+      "slug": "basic-html",
+      "name": "Basic Html",
+      "order": 1
+    },
+    {
+      "id": "d4aa8ea87841",
+      "slug": "basic-css",
+      "name": "Basic Css",
+      "order": 2
+    }
+  ],
+  "questions": [
+    {
+      "id": "ea8d32ae5490",
+      "slug": "first-heading",
+      "title": "First Heading",
+      "categoryId": "63ebd4de56f3",
+      "categorySlug": "basic-html",
+      "order": 1,
+      "sourcePath": "questions/001-basic-html/001-first-heading.md",
+      "question": "Create a web page that displays the text **\"Hello, World!\"** as the main heading of the page.\n\nUse the appropriate HTML element for a top-level heading.",
+      "answer": "Edit `index.html` so that the page contains a single top-level heading with the text `Hello, World!`.",
+      "testCases": [
+        "describe('Main heading', () => {\n  it('should contain exactly one <h1> element', () => {\n    expect(document.querySelectorAll('h1').length).to.equal(1);\n  });\n});",
+        "describe('Heading text', () => {\n  it('the <h1> should say \"Hello, World!\"', () => {\n    const h1 = document.querySelector('h1');\n    expect(h1).to.exist;\n    expect(h1.textContent.trim()).to.equal('Hello, World!');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>My First Page</title>\n  </head>\n  <body>\n    <!-- Write your heading here -->\n  </body>\n</html>",
+        "css": "/* No CSS needed for this question */"
+      },
+      "hints": "- The `<h1>` element is used for the most important heading on a page.\n- The text goes between the opening `<h1>` and closing `</h1>` tags.\n- Make sure the text matches exactly, including the comma and exclamation mark.",
+      "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>My First Page</title>\n  </head>\n  <body>\n    <h1>Hello, World!</h1>\n  </body>\n</html>\n```",
+      "walkthrough": "1. Open `index.html`.\n2. Find the `<body>` section — this is where visible content goes.\n3. Inside `<body>`, add an `<h1>` element:\n   - Pseudocode: `<h1>` + your text + `</h1>`\n4. Put the exact text `Hello, World!` between the tags.\n5. Save and refresh the preview. You should see large bold text.\n6. Run the tests to confirm the `<h1>` exists and has the correct text."
+    },
+    {
+      "id": "c9355d013ad1",
+      "slug": "paragraphs",
+      "title": "Paragraphs",
+      "categoryId": "63ebd4de56f3",
+      "categorySlug": "basic-html",
+      "order": 2,
+      "sourcePath": "questions/001-basic-html/002-paragraphs.md",
+      "question": "Add two paragraphs of text to the page below the existing heading.\n\nThe first paragraph should say: `I am learning HTML.`\nThe second paragraph should say: `It is fun!`",
+      "answer": "Add two `<p>` elements inside the `<body>` of `index.html`, each containing the required text.",
+      "testCases": [
+        "describe('Paragraph count', () => {\n  it('should contain exactly two <p> elements', () => {\n    expect(document.querySelectorAll('p').length).to.equal(2);\n  });\n});",
+        "describe('First paragraph', () => {\n  it('should say \"I am learning HTML.\"', () => {\n    const p = document.querySelectorAll('p')[0];\n    expect(p).to.exist;\n    expect(p.textContent.trim()).to.equal('I am learning HTML.');\n  });\n});",
+        "describe('Second paragraph', () => {\n  it('should say \"It is fun!\"', () => {\n    const p = document.querySelectorAll('p')[1];\n    expect(p).to.exist;\n    expect(p.textContent.trim()).to.equal('It is fun!');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>About Me</title>\n  </head>\n  <body>\n    <h1>About Me</h1>\n    <!-- Add your paragraphs here -->\n  </body>\n</html>",
+        "css": ""
+      },
+      "hints": "- Paragraphs use the `<p>` tag.\n- Each paragraph should be its own `<p>...</p>` element.\n- Place them **after** the `<h1>` but still **inside** `<body>`.",
+      "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>About Me</title>\n  </head>\n  <body>\n    <h1>About Me</h1>\n    <p>I am learning HTML.</p>\n    <p>It is fun!</p>\n  </body>\n</html>\n```",
+      "walkthrough": "1. Locate the comment in `<body>` that says where to add your paragraphs.\n2. Replace the comment with your first paragraph element:\n   - Pseudocode: `<p>` + text + `</p>`\n3. On the next line, add the second paragraph the same way.\n4. Double-check the text is exact — the tests compare character by character.\n5. Save, refresh the preview, and run the tests."
+    },
+    {
+      "id": "462b09c05150",
+      "slug": "links-and-images",
+      "title": "Links And Images",
+      "categoryId": "63ebd4de56f3",
+      "categorySlug": "basic-html",
+      "order": 3,
+      "sourcePath": "questions/001-basic-html/003-links-and-images.md",
+      "question": "Add the following to the page:\n\n1. A link that says `Visit Example` and goes to `https://example.com`.\n2. An image with the source `https://via.placeholder.com/150` and the alt text `Placeholder image`.",
+      "answer": "Use the `<a>` element for the link (with an `href` attribute) and the `<img>` element for the image (with `src` and `alt` attributes).",
+      "testCases": [
+        "describe('Link', () => {\n  it('should have an <a> pointing to https://example.com with text \"Visit Example\"', () => {\n    const a = document.querySelector('a');\n    expect(a).to.exist;\n    expect(a.getAttribute('href')).to.equal('https://example.com');\n    expect(a.textContent.trim()).to.equal('Visit Example');\n  });\n});",
+        "describe('Image', () => {\n  it('should have an <img> with the correct src', () => {\n    const img = document.querySelector('img');\n    expect(img).to.exist;\n    expect(img.getAttribute('src')).to.equal('https://via.placeholder.com/150');\n  });\n\n  it('should have the correct alt text', () => {\n    const img = document.querySelector('img');\n    expect(img).to.exist;\n    expect(img.getAttribute('alt')).to.equal('Placeholder image');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Links and Images</title>\n  </head>\n  <body>\n    <h1>Links and Images</h1>\n    <!-- Add your link and image here -->\n  </body>\n</html>",
+        "css": ""
+      },
+      "hints": "- `<a href=\"URL\">link text</a>` creates a clickable link.\n- `<img src=\"URL\" alt=\"description\">` is a self-closing element — it has no closing tag.\n- The `alt` attribute is required for accessibility.",
+      "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Links and Images</title>\n  </head>\n  <body>\n    <h1>Links and Images</h1>\n    <a href=\"https://example.com\">Visit Example</a>\n    <img src=\"https://via.placeholder.com/150\" alt=\"Placeholder image\">\n  </body>\n</html>\n```",
+      "walkthrough": "1. Inside `<body>`, after the heading, add an anchor element:\n   - Pseudocode: `<a href=\"...\">...</a>`\n   - Set `href` to `https://example.com` and the inner text to `Visit Example`.\n2. Below the link, add the image:\n   - Pseudocode: `<img src=\"...\" alt=\"...\">`\n   - Set `src` to the placeholder URL and `alt` to `Placeholder image`.\n3. Refresh the preview — you should see the text link and the image.\n4. Run the tests to confirm the attributes match."
+    },
+    {
+      "id": "9850c50bf904",
+      "slug": "unordered-list",
+      "title": "Unordered List",
+      "categoryId": "63ebd4de56f3",
+      "categorySlug": "basic-html",
+      "order": 4,
+      "sourcePath": "questions/001-basic-html/004-unordered-list.md",
+      "question": "Create an unordered list of your three favorite fruits. The list items, in order, must be:\n\n1. Apple\n2. Banana\n3. Cherry",
+      "answer": "Use a `<ul>` element with three `<li>` children inside `<body>`.",
+      "testCases": [
+        "describe('Unordered list', () => {\n  it('should contain exactly one <ul> element', () => {\n    expect(document.querySelectorAll('ul').length).to.equal(1);\n  });\n\n  it('should contain exactly three <li> elements inside the <ul>', () => {\n    const items = document.querySelectorAll('ul > li');\n    expect(items.length).to.equal(3);\n  });\n});",
+        "describe('List items in order', () => {\n  it('should list Apple, Banana, Cherry in that order', () => {\n    const items = Array.from(document.querySelectorAll('ul > li'))\n      .map(li => li.textContent.trim());\n    expect(items).to.deep.equal(['Apple', 'Banana', 'Cherry']);\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Favorite Fruits</title>\n  </head>\n  <body>\n    <h1>My Favorite Fruits</h1>\n    <!-- Add your unordered list here -->\n  </body>\n</html>",
+        "css": ""
+      },
+      "hints": "- `<ul>` creates an unordered (bulleted) list.\n- Each item inside the list uses `<li>`.\n- Keep the order the same as the question.",
+      "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Favorite Fruits</title>\n  </head>\n  <body>\n    <h1>My Favorite Fruits</h1>\n    <ul>\n      <li>Apple</li>\n      <li>Banana</li>\n      <li>Cherry</li>\n    </ul>\n  </body>\n</html>\n```",
+      "walkthrough": "1. After the `<h1>`, open a `<ul>` tag.\n2. Inside the `<ul>`, add three `<li>` elements — one per fruit.\n   - Pseudocode:\n     ```\n     <ul>\n       <li>fruit 1</li>\n       <li>fruit 2</li>\n       <li>fruit 3</li>\n     </ul>\n     ```\n3. Close the `</ul>`.\n4. Verify in the preview that you see three bulleted items in the correct order."
+    },
+    {
+      "id": "9bebde0cdb37",
+      "slug": "text-color",
+      "title": "Text Color",
+      "categoryId": "d4aa8ea87841",
+      "categorySlug": "basic-css",
+      "order": 1,
+      "sourcePath": "questions/002-basic-css/001-text-color.md",
+      "question": "Make the `<h1>` heading on the page display in **red**.\n\nUse CSS to style the heading — do not use inline `style` attributes in the HTML.",
+      "answer": "In `style.css`, add a rule that targets `h1` and sets `color` to `red`.",
+      "testCases": [
+        "describe('Heading color', () => {\n  it('the <h1> should be rendered in red', () => {\n    const h1 = document.querySelector('h1');\n    expect(h1).to.exist;\n    const color = getComputedStyle(h1).color;\n    expect(color).to.equal('rgb(255, 0, 0)');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Red Heading</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <h1>I should be red</h1>\n  </body>\n</html>",
+        "css": "/* Add your styles here */"
+      },
+      "hints": "- CSS rules look like: `selector { property: value; }`\n- The selector for an `<h1>` element is simply `h1`.\n- The property for text color is `color`.",
+      "solution": "```css\nh1 {\n  color: red;\n}\n```",
+      "walkthrough": "1. Open `style.css`.\n2. Write a selector that targets the heading element:\n   - Pseudocode: `h1 { ... }`\n3. Inside the braces, set the `color` property to `red`.\n   - Pseudocode: `color: red;`\n4. Save and refresh the preview — the heading should now appear red.\n5. Run the tests. The computed color `rgb(255, 0, 0)` is the same as `red`."
+    },
+    {
+      "id": "a94ae3136f0f",
+      "slug": "background-and-font-size",
+      "title": "Background And Font Size",
+      "categoryId": "d4aa8ea87841",
+      "categorySlug": "basic-css",
+      "order": 2,
+      "sourcePath": "questions/002-basic-css/002-background-and-font-size.md",
+      "question": "Style the page so that:\n\n1. The page background is light yellow (`#ffffcc`).\n2. All paragraphs have a font size of exactly `20px`.",
+      "answer": "In `style.css`, target the `body` element for the background color and the `p` element for the font size.",
+      "testCases": [
+        "describe('Body background', () => {\n  it('the body should have background color #ffffcc', () => {\n    const bg = getComputedStyle(document.body).backgroundColor;\n    expect(bg).to.equal('rgb(255, 255, 204)');\n  });\n});",
+        "describe('Paragraph font size', () => {\n  it('paragraphs should have a font size of 20px', () => {\n    const p = document.querySelector('p');\n    expect(p).to.exist;\n    expect(getComputedStyle(p).fontSize).to.equal('20px');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Styling Basics</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <h1>Styling Basics</h1>\n    <p>This paragraph should be 20 pixels tall.</p>\n    <p>So should this one.</p>\n  </body>\n</html>",
+        "css": "/* Add your styles here */"
+      },
+      "hints": "- `background-color` sets the background of an element.\n- Hex color `#ffffcc` equals `rgb(255, 255, 204)`.\n- `font-size` takes a length value like `20px`.",
+      "solution": "```css\nbody {\n  background-color: #ffffcc;\n}\n\np {\n  font-size: 20px;\n}\n```",
+      "walkthrough": "1. Open `style.css`.\n2. Add a rule for the `body` selector and set `background-color` to `#ffffcc`.\n3. Add a second rule for the `p` selector and set `font-size` to `20px`.\n   - Pseudocode:\n     ```\n     body { background-color: <color>; }\n     p    { font-size: <size>; }\n     ```\n4. Save and refresh — you should see a pale yellow background and slightly larger paragraph text.\n5. Run the tests to verify both the color and font size."
+    },
+    {
+      "id": "a9ec4701f71d",
+      "slug": "class-selector",
+      "title": "Class Selector",
+      "categoryId": "d4aa8ea87841",
+      "categorySlug": "basic-css",
+      "order": 3,
+      "sourcePath": "questions/002-basic-css/003-class-selector.md",
+      "question": "The HTML contains two paragraphs. Only the one with the class `highlight` should:\n\n1. Have a yellow background (`yellow`).\n2. Be displayed in bold.\n\nThe other paragraph must remain unstyled.",
+      "answer": "In `style.css`, use a class selector (`.highlight`) to apply `background-color: yellow` and `font-weight: bold`.",
+      "testCases": [
+        "describe('Highlighted paragraph', () => {\n  it('should have a yellow background', () => {\n    const el = document.querySelector('p.highlight');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).backgroundColor).to.equal('rgb(255, 255, 0)');\n  });\n\n  it('should be bold', () => {\n    const el = document.querySelector('p.highlight');\n    expect(el).to.exist;\n    const weight = getComputedStyle(el).fontWeight;\n    // \"bold\" computes to 700 in most browsers\n    expect(['bold', '700']).to.include(weight);\n  });\n});",
+        "describe('Non-highlighted paragraph', () => {\n  it('should NOT have a yellow background', () => {\n    const paragraphs = Array.from(document.querySelectorAll('p'));\n    const plain = paragraphs.find(p => !p.classList.contains('highlight'));\n    expect(plain, 'expected a paragraph without the highlight class').to.exist;\n    expect(getComputedStyle(plain).backgroundColor).to.not.equal('rgb(255, 255, 0)');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Class Selector</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <p>This paragraph should look normal.</p>\n    <p class=\"highlight\">This paragraph should be highlighted.</p>\n  </body>\n</html>",
+        "css": "/* Add your styles here */"
+      },
+      "hints": "- A class selector in CSS starts with a dot, e.g. `.myClass`.\n- Only elements with `class=\"myClass\"` will match.\n- Use `font-weight: bold;` to make text bold.",
+      "solution": "```css\n.highlight {\n  background-color: yellow;\n  font-weight: bold;\n}\n```",
+      "walkthrough": "1. Look at the HTML — only the second `<p>` has `class=\"highlight\"`.\n2. In `style.css`, write a class selector:\n   - Pseudocode: `.highlight { ... }`\n3. Inside the block, set `background-color: yellow;` and `font-weight: bold;`.\n4. Because the first paragraph has no class, it will not match this selector and stays unstyled.\n5. Refresh the preview and run the tests."
+    },
+    {
+      "id": "4fdfe2070d73",
+      "slug": "center-text",
+      "title": "Center Text",
+      "categoryId": "d4aa8ea87841",
+      "categorySlug": "basic-css",
+      "order": 4,
+      "sourcePath": "questions/002-basic-css/004-center-text.md",
+      "question": "Center-align the text of the `<h1>` heading horizontally using CSS.",
+      "answer": "In `style.css`, target `h1` and set `text-align` to `center`.",
+      "testCases": [
+        "describe('Centered heading', () => {\n  it('the <h1> should have text-align center', () => {\n    const h1 = document.querySelector('h1');\n    expect(h1).to.exist;\n    expect(getComputedStyle(h1).textAlign).to.equal('center');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Centered Heading</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <h1>Center me</h1>\n    <p>This paragraph can stay on the left.</p>\n  </body>\n</html>",
+        "css": "/* Add your styles here */"
+      },
+      "hints": "- The `text-align` property controls horizontal alignment of text inside a block element.\n- Valid values include `left`, `right`, `center`, and `justify`.\n- Only style the `h1`, not the `body` — otherwise the paragraph will also move.",
+      "solution": "```css\nh1 {\n  text-align: center;\n}\n```",
+      "walkthrough": "1. Open `style.css`.\n2. Add a rule for the `h1` selector:\n   - Pseudocode: `h1 { text-align: center; }`\n3. Save and refresh the preview. The heading should now appear horizontally centered, while the paragraph stays left-aligned.\n4. Run the tests to confirm the computed `text-align` is `center`."
+    }
+  ]
+}

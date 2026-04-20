@@ -1,0 +1,524 @@
+{
+  "generatedAt": "2026-04-20T14:04:17.841Z",
+  "categories": [
+    {
+      "id": "63ebd4de56f3",
+      "slug": "basic-html",
+      "name": "Basic Html",
+      "order": 1
+    },
+    {
+      "id": "4e714a0b0153",
+      "slug": "html-revision",
+      "name": "Html Revision",
+      "order": 2
+    },
+    {
+      "id": "d4aa8ea87841",
+      "slug": "basic-css",
+      "name": "Basic Css",
+      "order": 3
+    }
+  ],
+  "questions": [
+    {
+      "id": "ea8d32ae5490",
+      "slug": "first-heading",
+      "title": "First Heading",
+      "categoryId": "63ebd4de56f3",
+      "categorySlug": "basic-html",
+      "order": 1,
+      "sourcePath": "questions/001-basic-html/001-first-heading.md",
+      "question": "Create a web page that displays the text **\"Hello, World!\"** as the main heading of the page.\n\nUse the appropriate HTML element for a top-level heading.",
+      "answer": "Edit `index.html` so that the page contains a single top-level heading with the text `Hello, World!`.",
+      "testCases": [
+        "describe('Main heading', () => {\n  it('should contain exactly one <h1> element', () => {\n    expect(document.querySelectorAll('h1').length).to.equal(1);\n  });\n});",
+        "describe('Heading text', () => {\n  it('the <h1> should say \"Hello, World!\"', () => {\n    const h1 = document.querySelector('h1');\n    expect(h1).to.exist;\n    expect(h1.textContent.trim()).to.equal('Hello, World!');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>My First Page</title>\n  </head>\n  <body>\n    <!-- Write your heading here -->\n  </body>\n</html>",
+        "css": "/* No CSS needed for this question */"
+      },
+      "hints": "- The `<h1>` element is used for the most important heading on a page.\n- The text goes between the opening `<h1>` and closing `</h1>` tags.\n- Make sure the text matches exactly, including the comma and exclamation mark.",
+      "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>My First Page</title>\n  </head>\n  <body>\n    <h1>Hello, World!</h1>\n  </body>\n</html>\n```",
+      "walkthrough": "1. Open `index.html`.\n2. Find the `<body>` section — this is where visible content goes.\n3. Inside `<body>`, add an `<h1>` element:\n   - Pseudocode: `<h1>` + your text + `</h1>`\n4. Put the exact text `Hello, World!` between the tags.\n5. Save and refresh the preview. You should see large bold text.\n6. Run the tests to confirm the `<h1>` exists and has the correct text."
+    },
+    {
+      "id": "3151752a7847",
+      "slug": "headings",
+      "title": "Headings",
+      "categoryId": "63ebd4de56f3",
+      "categorySlug": "basic-html",
+      "order": 2,
+      "sourcePath": "questions/001-basic-html/002-headings.md",
+      "question": "Build a small page with two headings of different levels:\n\n1. A top-level heading (`<h1>`) with the text `My Blog`.\n2. A sub-heading (`<h2>`) with the text `My first post`.\n\nThe `<h2>` must appear **after** the `<h1>` in the document.",
+      "answer": "Inside `<body>`, add an `<h1>` followed by an `<h2>` with the exact text above.",
+      "testCases": [
+        "describe('Top-level heading', () => {\n  it('should contain exactly one <h1> that says \"My Blog\"', () => {\n    const h1s = document.querySelectorAll('h1');\n    expect(h1s.length).to.equal(1);\n    expect(h1s[0].textContent.trim()).to.equal('My Blog');\n  });\n});",
+        "describe('Sub-heading', () => {\n  it('should contain exactly one <h2> that says \"My first post\"', () => {\n    const h2s = document.querySelectorAll('h2');\n    expect(h2s.length).to.equal(1);\n    expect(h2s[0].textContent.trim()).to.equal('My first post');\n  });\n});",
+        "describe('Heading order', () => {\n  it('the <h2> should appear after the <h1> in the document', () => {\n    const h1 = document.querySelector('h1');\n    const h2 = document.querySelector('h2');\n    expect(h1).to.exist;\n    expect(h2).to.exist;\n    const order = h1.compareDocumentPosition(h2);\n    // Node.DOCUMENT_POSITION_FOLLOWING === 4\n    expect(order & 4).to.equal(4);\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>My Blog</title>\n  </head>\n  <body>\n    <!-- Add your headings here -->\n  </body>\n</html>",
+        "css": ""
+      },
+      "hints": "- `<h1>` is the most important heading; `<h2>` is the next level down.\n- Both take their visible text between their opening and closing tags.\n- Order matters in HTML — elements render in the order they appear in the source.",
+      "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>My Blog</title>\n  </head>\n  <body>\n    <h1>My Blog</h1>\n    <h2>My first post</h2>\n  </body>\n</html>\n```",
+      "walkthrough": "1. Open `index.html` and find the `<body>` section.\n2. Add the page title as an `<h1>`:\n   - Pseudocode: `<h1>` + `My Blog` + `</h1>`\n3. Below it, add the sub-heading as an `<h2>`:\n   - Pseudocode: `<h2>` + `My first post` + `</h2>`\n4. Make sure the `<h2>` is *after* the `<h1>` — the tests check document order.\n5. Save, refresh the preview, and run the tests."
+    },
+    {
+      "id": "c9355d013ad1",
+      "slug": "paragraphs",
+      "title": "Paragraphs",
+      "categoryId": "63ebd4de56f3",
+      "categorySlug": "basic-html",
+      "order": 3,
+      "sourcePath": "questions/001-basic-html/003-paragraphs.md",
+      "question": "Add two paragraphs of text to the page below the existing heading.\n\nThe first paragraph should say: `I am learning HTML.`\nThe second paragraph should say: `It is fun!`",
+      "answer": "Add two `<p>` elements inside the `<body>` of `index.html`, each containing the required text.",
+      "testCases": [
+        "describe('Paragraph count', () => {\n  it('should contain exactly two <p> elements', () => {\n    expect(document.querySelectorAll('p').length).to.equal(2);\n  });\n});",
+        "describe('First paragraph', () => {\n  it('should say \"I am learning HTML.\"', () => {\n    const p = document.querySelectorAll('p')[0];\n    expect(p).to.exist;\n    expect(p.textContent.trim()).to.equal('I am learning HTML.');\n  });\n});",
+        "describe('Second paragraph', () => {\n  it('should say \"It is fun!\"', () => {\n    const p = document.querySelectorAll('p')[1];\n    expect(p).to.exist;\n    expect(p.textContent.trim()).to.equal('It is fun!');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>About Me</title>\n  </head>\n  <body>\n    <h1>About Me</h1>\n    <!-- Add your paragraphs here -->\n  </body>\n</html>",
+        "css": ""
+      },
+      "hints": "- Paragraphs use the `<p>` tag.\n- Each paragraph should be its own `<p>...</p>` element.\n- Place them **after** the `<h1>` but still **inside** `<body>`.",
+      "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>About Me</title>\n  </head>\n  <body>\n    <h1>About Me</h1>\n    <p>I am learning HTML.</p>\n    <p>It is fun!</p>\n  </body>\n</html>\n```",
+      "walkthrough": "1. Locate the comment in `<body>` that says where to add your paragraphs.\n2. Replace the comment with your first paragraph element:\n   - Pseudocode: `<p>` + text + `</p>`\n3. On the next line, add the second paragraph the same way.\n4. Double-check the text is exact — the tests compare character by character.\n5. Save, refresh the preview, and run the tests."
+    },
+    {
+      "id": "462b09c05150",
+      "slug": "links-and-images",
+      "title": "Links And Images",
+      "categoryId": "63ebd4de56f3",
+      "categorySlug": "basic-html",
+      "order": 4,
+      "sourcePath": "questions/001-basic-html/004-links-and-images.md",
+      "question": "Add the following to the page:\n\n1. A link that says `Visit Example` and goes to `https://example.com`.\n2. An image with the source `https://picsum.photos/200/300` and the alt text `Placeholder image`.",
+      "answer": "Use the `<a>` element for the link (with an `href` attribute) and the `<img>` element for the image (with `src` and `alt` attributes).",
+      "testCases": [
+        "describe('Link', () => {\n  it('should have an <a> pointing to https://example.com with text \"Visit Example\"', () => {\n    const a = document.querySelector('a');\n    expect(a).to.exist;\n    expect(a.getAttribute('href')).to.equal('https://example.com');\n    expect(a.textContent.trim()).to.equal('Visit Example');\n  });\n});",
+        "describe('Image', () => {\n  it('should have an <img> with the correct src', () => {\n    const img = document.querySelector('img');\n    expect(img).to.exist;\n    expect(img.getAttribute('src')).to.equal('https://picsum.photos/200/300');\n  });\n\n  it('should have the correct alt text', () => {\n    const img = document.querySelector('img');\n    expect(img).to.exist;\n    expect(img.getAttribute('alt')).to.equal('Placeholder image');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Links and Images</title>\n  </head>\n  <body>\n    <h1>Links and Images</h1>\n    <!-- Add your link and image here -->\n  </body>\n</html>",
+        "css": ""
+      },
+      "hints": "- `<a href=\"URL\">link text</a>` creates a clickable link.\n- `<img src=\"URL\" alt=\"description\">` is a self-closing element — it has no closing tag.\n- The `alt` attribute is required for accessibility.",
+      "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Links and Images</title>\n  </head>\n  <body>\n    <h1>Links and Images</h1>\n    <a href=\"https://example.com\">Visit Example</a>\n    <img src=\"https://picsum.photos/200/300\" alt=\"Placeholder image\">\n  </body>\n</html>\n```",
+      "walkthrough": "1. Inside `<body>`, after the heading, add an anchor element:\n   - Pseudocode: `<a href=\"...\">...</a>`\n   - Set `href` to `https://example.com` and the inner text to `Visit Example`.\n2. Below the link, add the image:\n   - Pseudocode: `<img src=\"...\" alt=\"...\">`\n   - Set `src` to the placeholder URL and `alt` to `Placeholder image`.\n3. Refresh the preview — you should see the text link and the image.\n4. Run the tests to confirm the attributes match."
+    },
+    {
+      "id": "9850c50bf904",
+      "slug": "unordered-list",
+      "title": "Unordered List",
+      "categoryId": "63ebd4de56f3",
+      "categorySlug": "basic-html",
+      "order": 5,
+      "sourcePath": "questions/001-basic-html/005-unordered-list.md",
+      "question": "Create an unordered list of your three favorite fruits. The list items, in order, must be:\n\n1. Apple\n2. Banana\n3. Cherry",
+      "answer": "Use a `<ul>` element with three `<li>` children inside `<body>`.",
+      "testCases": [
+        "describe('Unordered list', () => {\n  it('should contain exactly one <ul> element', () => {\n    expect(document.querySelectorAll('ul').length).to.equal(1);\n  });\n\n  it('should contain exactly three <li> elements inside the <ul>', () => {\n    const items = document.querySelectorAll('ul > li');\n    expect(items.length).to.equal(3);\n  });\n});",
+        "describe('List items in order', () => {\n  it('should list Apple, Banana, Cherry in that order', () => {\n    const items = Array.from(document.querySelectorAll('ul > li'))\n      .map(li => li.textContent.trim());\n    expect(items).to.deep.equal(['Apple', 'Banana', 'Cherry']);\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Favorite Fruits</title>\n  </head>\n  <body>\n    <h1>My Favorite Fruits</h1>\n    <!-- Add your unordered list here -->\n  </body>\n</html>",
+        "css": ""
+      },
+      "hints": "- `<ul>` creates an unordered (bulleted) list.\n- Each item inside the list uses `<li>`.\n- Keep the order the same as the question.",
+      "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Favorite Fruits</title>\n  </head>\n  <body>\n    <h1>My Favorite Fruits</h1>\n    <ul>\n      <li>Apple</li>\n      <li>Banana</li>\n      <li>Cherry</li>\n    </ul>\n  </body>\n</html>\n```",
+      "walkthrough": "1. After the `<h1>`, open a `<ul>` tag.\n2. Inside the `<ul>`, add three `<li>` elements — one per fruit.\n   - Pseudocode:\n     ```\n     <ul>\n       <li>fruit 1</li>\n       <li>fruit 2</li>\n       <li>fruit 3</li>\n     </ul>\n     ```\n3. Close the `</ul>`.\n4. Verify in the preview that you see three bulleted items in the correct order."
+    },
+    {
+      "id": "89cd46501b6e",
+      "slug": "ordered-list",
+      "title": "Ordered List",
+      "categoryId": "63ebd4de56f3",
+      "categorySlug": "basic-html",
+      "order": 6,
+      "sourcePath": "questions/001-basic-html/006-ordered-list.md",
+      "question": "Create an **ordered** (numbered) list showing the top 3 finishers of a race. The items, in order, must be:\n\n1. Alice\n2. Bob\n3. Carol\n\nThe page must use an `<ol>` element — not `<ul>`.",
+      "answer": "Use an `<ol>` element with three `<li>` children inside `<body>`.",
+      "testCases": [
+        "describe('Ordered list', () => {\n  it('should contain exactly one <ol> element', () => {\n    expect(document.querySelectorAll('ol').length).to.equal(1);\n  });\n\n  it('should not use a <ul> element', () => {\n    expect(document.querySelectorAll('ul').length).to.equal(0);\n  });\n\n  it('should contain exactly three <li> elements inside the <ol>', () => {\n    const items = document.querySelectorAll('ol > li');\n    expect(items.length).to.equal(3);\n  });\n});",
+        "describe('Finisher order', () => {\n  it('should list Alice, Bob, Carol in that order', () => {\n    const items = Array.from(document.querySelectorAll('ol > li'))\n      .map(li => li.textContent.trim());\n    expect(items).to.deep.equal(['Alice', 'Bob', 'Carol']);\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Race Results</title>\n  </head>\n  <body>\n    <h1>Race Results</h1>\n    <!-- Add your ordered list here -->\n  </body>\n</html>",
+        "css": ""
+      },
+      "hints": "- `<ol>` creates an **o**rdered (numbered) list; `<ul>` is for **u**nordered bullet lists.\n- Each item inside the list still uses `<li>`.\n- The numbers are rendered automatically by the browser — you do not write \"1.\", \"2.\", etc. in the text.",
+      "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Race Results</title>\n  </head>\n  <body>\n    <h1>Race Results</h1>\n    <ol>\n      <li>Alice</li>\n      <li>Bob</li>\n      <li>Carol</li>\n    </ol>\n  </body>\n</html>\n```",
+      "walkthrough": "1. After the `<h1>`, open an `<ol>` tag (not `<ul>`).\n2. Inside the `<ol>`, add three `<li>` elements — one per finisher, in finishing order.\n   - Pseudocode:\n     ```\n     <ol>\n       <li>first place</li>\n       <li>second place</li>\n       <li>third place</li>\n     </ol>\n     ```\n3. Close the `</ol>`.\n4. Refresh the preview — the browser will automatically render \"1.\", \"2.\", \"3.\" beside the names."
+    },
+    {
+      "id": "06d82765be7f",
+      "slug": "rows-and-columns",
+      "title": "Rows And Columns",
+      "categoryId": "63ebd4de56f3",
+      "categorySlug": "basic-html",
+      "order": 7,
+      "sourcePath": "questions/001-basic-html/007-rows-and-columns.md",
+      "question": "The page already contains an empty `<table>` element. Your job is to fill it with **two rows**, each containing **three columns** of data.\n\nThe cell contents (row by row, left to right) must be:\n\n- Row 1: `A`, `B`, `C`\n- Row 2: `D`, `E`, `F`\n\nNo header cells are required for this question — use ordinary data cells only.",
+      "answer": "Add two `<tr>` elements inside the existing `<table>`, each containing three `<td>` cells with the values shown above.",
+      "testCases": [
+        "describe('Rows', () => {\n  it('the table should contain exactly two <tr> rows', () => {\n    expect(document.querySelectorAll('table tr').length).to.equal(2);\n  });\n});",
+        "describe('Columns', () => {\n  it('each row should contain exactly three <td> cells', () => {\n    const rows = document.querySelectorAll('table tr');\n    rows.forEach(row => {\n      expect(row.querySelectorAll('td').length).to.equal(3);\n    });\n  });\n\n  it('no <th> cells should be used', () => {\n    expect(document.querySelectorAll('table th').length).to.equal(0);\n  });\n});",
+        "describe('Cell contents', () => {\n  it('row 1 should contain A, B, C', () => {\n    const cells = document.querySelectorAll('table tr')[0].querySelectorAll('td');\n    const values = Array.from(cells).map(c => c.textContent.trim());\n    expect(values).to.deep.equal(['A', 'B', 'C']);\n  });\n\n  it('row 2 should contain D, E, F', () => {\n    const cells = document.querySelectorAll('table tr')[1].querySelectorAll('td');\n    const values = Array.from(cells).map(c => c.textContent.trim());\n    expect(values).to.deep.equal(['D', 'E', 'F']);\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Rows and Columns</title>\n  </head>\n  <body>\n    <h1>Rows and Columns</h1>\n    <table border=\"1\">\n      <!-- Add two rows of three columns here -->\n    </table>\n  </body>\n</html>",
+        "css": ""
+      },
+      "hints": "- `<tr>` = **t**able **r**ow. One `<tr>` per horizontal row of the table.\n- `<td>` = **t**able **d**ata cell. One `<td>` per column.\n- A 2×3 table therefore has two `<tr>` elements, each holding three `<td>` elements.\n- You do **not** need a `<thead>`, `<tbody>`, or any `<th>` for this question.",
+      "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Rows and Columns</title>\n  </head>\n  <body>\n    <h1>Rows and Columns</h1>\n    <table border=\"1\">\n      <tr>\n        <td>A</td>\n        <td>B</td>\n        <td>C</td>\n      </tr>\n      <tr>\n        <td>D</td>\n        <td>E</td>\n        <td>F</td>\n      </tr>\n    </table>\n  </body>\n</html>\n```",
+      "walkthrough": "1. Find the empty `<table>` element and the `<!-- Add two rows of three columns here -->` comment.\n2. Remove the comment and, in its place, add the first row:\n   - Pseudocode: `<tr><td>A</td><td>B</td><td>C</td></tr>`\n3. Below that, add the second row the same way, but with `D`, `E`, `F`.\n4. Save and refresh the preview. You should see a 2×3 grid with borders.\n5. Run the tests to confirm you have 2 rows × 3 columns with the correct values."
+    },
+    {
+      "id": "c3ee137d4f22",
+      "slug": "table",
+      "title": "Table",
+      "categoryId": "63ebd4de56f3",
+      "categorySlug": "basic-html",
+      "order": 8,
+      "sourcePath": "questions/001-basic-html/008-table.md",
+      "question": "Build a small HTML table that lists two people and their ages.\n\nRequirements:\n\n1. Use a `<table>` element.\n2. Inside it, include a `<thead>` with one row containing two header cells (`<th>`): `Name` and `Age`.\n3. Include a `<tbody>` with exactly two data rows (`<tr>`), each containing two `<td>` cells:\n   - Row 1: `Alice` / `30`\n   - Row 2: `Bob` / `25`",
+      "answer": "Use `<table>` with a `<thead>` for the header row and a `<tbody>` containing the two data rows.",
+      "testCases": [
+        "describe('Table structure', () => {\n  it('should contain exactly one <table>', () => {\n    expect(document.querySelectorAll('table').length).to.equal(1);\n  });\n\n  it('the table should have a <thead> and a <tbody>', () => {\n    expect(document.querySelectorAll('table > thead').length).to.equal(1);\n    expect(document.querySelectorAll('table > tbody').length).to.equal(1);\n  });\n});",
+        "describe('Header row', () => {\n  it('the <thead> should contain one row with two <th> cells \"Name\" and \"Age\"', () => {\n    const headerRows = document.querySelectorAll('thead > tr');\n    expect(headerRows.length).to.equal(1);\n    const ths = headerRows[0].querySelectorAll('th');\n    expect(ths.length).to.equal(2);\n    expect(ths[0].textContent.trim()).to.equal('Name');\n    expect(ths[1].textContent.trim()).to.equal('Age');\n  });\n});",
+        "describe('Body rows', () => {\n  it('the <tbody> should contain exactly two data rows', () => {\n    const bodyRows = document.querySelectorAll('tbody > tr');\n    expect(bodyRows.length).to.equal(2);\n  });\n\n  it('the first data row should be Alice / 30', () => {\n    const cells = document.querySelectorAll('tbody > tr')[0].querySelectorAll('td');\n    expect(cells.length).to.equal(2);\n    expect(cells[0].textContent.trim()).to.equal('Alice');\n    expect(cells[1].textContent.trim()).to.equal('30');\n  });\n\n  it('the second data row should be Bob / 25', () => {\n    const cells = document.querySelectorAll('tbody > tr')[1].querySelectorAll('td');\n    expect(cells.length).to.equal(2);\n    expect(cells[0].textContent.trim()).to.equal('Bob');\n    expect(cells[1].textContent.trim()).to.equal('25');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>People</title>\n  </head>\n  <body>\n    <h1>People</h1>\n    <!-- Build your table here -->\n  </body>\n</html>",
+        "css": ""
+      },
+      "hints": "- A table is a grid: rows (`<tr>`) contain cells.\n- Header cells use `<th>` (bold + centered by default). Data cells use `<td>`.\n- `<thead>` groups the header row(s); `<tbody>` groups the data rows. Browsers tolerate missing `<thead>`/`<tbody>`, but the tests for this question require them explicitly.\n- Structure:\n  ```\n  <table>\n    <thead>\n      <tr>\n        <th>...</th>\n        <th>...</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr> ... </tr>\n      <tr> ... </tr>\n    </tbody>\n  </table>\n  ```",
+      "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>People</title>\n  </head>\n  <body>\n    <h1>People</h1>\n    <table>\n      <thead>\n        <tr>\n          <th>Name</th>\n          <th>Age</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td>Alice</td>\n          <td>30</td>\n        </tr>\n        <tr>\n          <td>Bob</td>\n          <td>25</td>\n        </tr>\n      </tbody>\n    </table>\n  </body>\n</html>\n```",
+      "walkthrough": "1. Inside `<body>`, open a `<table>` element.\n2. Add a `<thead>` with a single `<tr>` row. Inside that row, add two `<th>` cells with the text `Name` and `Age`.\n3. After the `<thead>`, add a `<tbody>` element.\n4. Inside the `<tbody>`, add two `<tr>` rows:\n   - Pseudocode for each row: `<tr><td>name</td><td>age</td></tr>`\n   - First row → `Alice` / `30`. Second row → `Bob` / `25`.\n5. Close `</tbody>` and `</table>`.\n6. Refresh the preview. You should see a small two-column table with a header row and two data rows."
+    },
+    {
+      "id": "6547b6642a82",
+      "slug": "about-me-page",
+      "title": "About Me Page",
+      "categoryId": "63ebd4de56f3",
+      "categorySlug": "basic-html",
+      "order": 9,
+      "sourcePath": "questions/001-basic-html/009-about-me-page.md",
+      "question": "Put everything from this category together and build a small **\"About Me\"** page. The page must contain all of the following, in this order:\n\n1. A top-level heading `<h1>` with the text `About Me`.\n2. An `<h2>` saying `Bio`, followed by a `<p>` with the text: `I am a web developer learning HTML.`\n3. An `<h2>` saying `Hobbies`, followed by an **unordered** list (`<ul>`) with exactly these items in order: `Reading`, `Cycling`, `Cooking`.\n4. An `<h2>` saying `Top 3 Favorite Foods`, followed by an **ordered** list (`<ol>`) with exactly these items in order: `Pizza`, `Sushi`, `Tacos`.\n5. An `<h2>` saying `Profile`, followed by:\n   - an `<img>` with `src=\"https://picsum.photos/200/200\"` and `alt=\"My profile picture\"`\n   - a link `<a href=\"https://example.com\">Visit my website</a>`\n6. An `<h2>` saying `Schedule`, followed by a `<table>` with:\n   - a `<thead>` containing one row with two `<th>` cells: `Day`, `Activity`\n   - a `<tbody>` with two rows:\n     - `Monday` / `Gym`\n     - `Tuesday` / `Reading`",
+      "answer": "Combine the elements from every question in this category — headings, paragraphs, links, images, lists, and a table — into one document.",
+      "testCases": [
+        "describe('Main heading', () => {\n  it('has exactly one <h1> with text \"About Me\"', () => {\n    const h1s = document.querySelectorAll('h1');\n    expect(h1s.length).to.equal(1);\n    expect(h1s[0].textContent.trim()).to.equal('About Me');\n  });\n});",
+        "describe('Section headings', () => {\n  it('has five <h2> sub-headings in the expected order', () => {\n    const titles = Array.from(document.querySelectorAll('h2'))\n      .map(h => h.textContent.trim());\n    expect(titles).to.deep.equal([\n      'Bio',\n      'Hobbies',\n      'Top 3 Favorite Foods',\n      'Profile',\n      'Schedule',\n    ]);\n  });\n});",
+        "describe('Bio paragraph', () => {\n  it('contains a <p> with the expected bio text', () => {\n    const paragraphs = Array.from(document.querySelectorAll('p'))\n      .map(p => p.textContent.trim());\n    expect(paragraphs).to.include('I am a web developer learning HTML.');\n  });\n});",
+        "describe('Hobbies list', () => {\n  it('has an unordered list with Reading, Cycling, Cooking in order', () => {\n    const uls = document.querySelectorAll('ul');\n    expect(uls.length).to.be.at.least(1);\n    const items = Array.from(uls[0].querySelectorAll('li'))\n      .map(li => li.textContent.trim());\n    expect(items).to.deep.equal(['Reading', 'Cycling', 'Cooking']);\n  });\n});",
+        "describe('Favorite foods list', () => {\n  it('has an ordered list with Pizza, Sushi, Tacos in order', () => {\n    const ols = document.querySelectorAll('ol');\n    expect(ols.length).to.be.at.least(1);\n    const items = Array.from(ols[0].querySelectorAll('li'))\n      .map(li => li.textContent.trim());\n    expect(items).to.deep.equal(['Pizza', 'Sushi', 'Tacos']);\n  });\n});",
+        "describe('Profile image', () => {\n  it('has an <img> with the expected src and alt', () => {\n    const img = document.querySelector('img');\n    expect(img).to.exist;\n    expect(img.getAttribute('src')).to.equal('https://picsum.photos/200/200');\n    expect(img.getAttribute('alt')).to.equal('My profile picture');\n  });\n});",
+        "describe('Profile link', () => {\n  it('has an <a> linking to https://example.com with text \"Visit my website\"', () => {\n    const links = Array.from(document.querySelectorAll('a'));\n    const match = links.find(a => a.getAttribute('href') === 'https://example.com');\n    expect(match, 'expected a link to https://example.com').to.exist;\n    expect(match.textContent.trim()).to.equal('Visit my website');\n  });\n});",
+        "describe('Schedule table', () => {\n  it('has a <table> with one <thead> and one <tbody>', () => {\n    expect(document.querySelectorAll('table').length).to.equal(1);\n    expect(document.querySelectorAll('table > thead').length).to.equal(1);\n    expect(document.querySelectorAll('table > tbody').length).to.equal(1);\n  });\n\n  it('has a header row with Day and Activity', () => {\n    const ths = document.querySelectorAll('thead > tr > th');\n    expect(ths.length).to.equal(2);\n    expect(ths[0].textContent.trim()).to.equal('Day');\n    expect(ths[1].textContent.trim()).to.equal('Activity');\n  });\n\n  it('has two body rows with the correct values', () => {\n    const bodyRows = document.querySelectorAll('tbody > tr');\n    expect(bodyRows.length).to.equal(2);\n\n    const row1 = bodyRows[0].querySelectorAll('td');\n    expect(row1[0].textContent.trim()).to.equal('Monday');\n    expect(row1[1].textContent.trim()).to.equal('Gym');\n\n    const row2 = bodyRows[1].querySelectorAll('td');\n    expect(row2[0].textContent.trim()).to.equal('Tuesday');\n    expect(row2[1].textContent.trim()).to.equal('Reading');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>About Me</title>\n  </head>\n  <body>\n    <!-- Build your About Me page here -->\n  </body>\n</html>",
+        "css": ""
+      },
+      "hints": "- Work top-to-bottom — add one section at a time and run the tests as you go.\n- Review each earlier question in this category if you forget a tag: headings (`<h1>`/`<h2>`), paragraphs (`<p>`), links (`<a>`), images (`<img>`), unordered lists (`<ul>`), ordered lists (`<ol>`), and tables (`<table>` / `<thead>` / `<tbody>` / `<tr>` / `<th>` / `<td>`).\n- Exact text matters — the tests compare strings including capitalisation and punctuation.\n- The image source uses Lorem Picsum: `https://picsum.photos/200/200`.",
+      "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>About Me</title>\n  </head>\n  <body>\n    <h1>About Me</h1>\n\n    <h2>Bio</h2>\n    <p>I am a web developer learning HTML.</p>\n\n    <h2>Hobbies</h2>\n    <ul>\n      <li>Reading</li>\n      <li>Cycling</li>\n      <li>Cooking</li>\n    </ul>\n\n    <h2>Top 3 Favorite Foods</h2>\n    <ol>\n      <li>Pizza</li>\n      <li>Sushi</li>\n      <li>Tacos</li>\n    </ol>\n\n    <h2>Profile</h2>\n    <img src=\"https://picsum.photos/200/200\" alt=\"My profile picture\">\n    <p><a href=\"https://example.com\">Visit my website</a></p>\n\n    <h2>Schedule</h2>\n    <table>\n      <thead>\n        <tr>\n          <th>Day</th>\n          <th>Activity</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td>Monday</td>\n          <td>Gym</td>\n        </tr>\n        <tr>\n          <td>Tuesday</td>\n          <td>Reading</td>\n        </tr>\n      </tbody>\n    </table>\n  </body>\n</html>\n```",
+      "walkthrough": "1. **Start with the main heading.** Add `<h1>About Me</h1>` inside `<body>`.\n2. **Bio section.** Add `<h2>Bio</h2>`, then a `<p>` with the exact sentence from the brief.\n3. **Hobbies section.** Add `<h2>Hobbies</h2>`, then a `<ul>` with three `<li>` items in the order `Reading`, `Cycling`, `Cooking`.\n4. **Favorite foods section.** Add `<h2>Top 3 Favorite Foods</h2>`, then an `<ol>` (not `<ul>`) with three `<li>` items in the order `Pizza`, `Sushi`, `Tacos`.\n5. **Profile section.** Add `<h2>Profile</h2>`, then the `<img>` with the Lorem Picsum src and correct alt, and a link wrapped in a `<p>` (so the link tests can pass either way).\n6. **Schedule section.** Add `<h2>Schedule</h2>`, then a `<table>`:\n   - Inside, add `<thead>` with one `<tr>` containing two `<th>` cells: `Day`, `Activity`.\n   - After the thead, add `<tbody>` with two `<tr>` rows, each with two `<td>` cells for the day and activity.\n7. Save, refresh the preview, and run the tests. Fix any failing sections one at a time."
+    },
+    {
+      "id": "50664c89c715",
+      "slug": "shop-heading",
+      "title": "Shop Heading",
+      "categoryId": "4e714a0b0153",
+      "categorySlug": "html-revision",
+      "order": 1,
+      "sourcePath": "questions/002-html-revision/001-shop-heading.md",
+      "question": "Create a page whose main heading welcomes visitors to a small online shop. The page must contain a single top-level heading with the exact text:\n\n`Welcome to the Bookshop`",
+      "answer": "Use one `<h1>` element inside `<body>` with the required text.",
+      "testCases": [
+        "describe('Main heading', () => {\n  it('should contain exactly one <h1>', () => {\n    expect(document.querySelectorAll('h1').length).to.equal(1);\n  });\n});",
+        "describe('Heading text', () => {\n  it('the <h1> should say \"Welcome to the Bookshop\"', () => {\n    const h1 = document.querySelector('h1');\n    expect(h1).to.exist;\n    expect(h1.textContent.trim()).to.equal('Welcome to the Bookshop');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Bookshop</title>\n  </head>\n  <body>\n    <!-- Write your heading here -->\n  </body>\n</html>",
+        "css": "/* No CSS needed for this question */"
+      },
+      "hints": "- The `<h1>` element is for the single most important heading on a page.\n- Text goes between the opening `<h1>` and closing `</h1>` tags.\n- The tests compare text exactly — capitalisation and spacing matter.",
+      "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Bookshop</title>\n  </head>\n  <body>\n    <h1>Welcome to the Bookshop</h1>\n  </body>\n</html>\n```",
+      "walkthrough": "1. Open `index.html` and find the `<body>` section.\n2. Inside `<body>`, add an `<h1>` element.\n3. Place the exact text `Welcome to the Bookshop` between the tags.\n4. Save, refresh the preview, and run the tests."
+    },
+    {
+      "id": "0bb9c8ea68e5",
+      "slug": "news-headings",
+      "title": "News Headings",
+      "categoryId": "4e714a0b0153",
+      "categorySlug": "html-revision",
+      "order": 2,
+      "sourcePath": "questions/002-html-revision/002-news-headings.md",
+      "question": "Build a small news page that mixes paragraphs in between the headings. Inside `<body>`, add — in this exact order:\n\n1. An `<h1>` with the text `Tech News`.\n2. A `<p>` with the text `Latest updates from the web.`\n3. An `<h2>` with the text `JavaScript turns 30`.\n4. A `<p>` with the text `A milestone for the language.`",
+      "answer": "Add four elements in the order `<h1>` → `<p>` → `<h2>` → `<p>` with the required text.",
+      "testCases": [
+        "describe('Element order', () => {\n  it('the first four elements inside <body> are h1, p, h2, p', () => {\n    const tags = Array.from(document.body.children)\n      .slice(0, 4)\n      .map(el => el.tagName.toLowerCase());\n    expect(tags).to.deep.equal(['h1', 'p', 'h2', 'p']);\n  });\n});",
+        "describe('Headings', () => {\n  it('the <h1> says \"Tech News\"', () => {\n    const h1 = document.querySelector('h1');\n    expect(h1).to.exist;\n    expect(h1.textContent.trim()).to.equal('Tech News');\n  });\n\n  it('the <h2> says \"JavaScript turns 30\"', () => {\n    const h2 = document.querySelector('h2');\n    expect(h2).to.exist;\n    expect(h2.textContent.trim()).to.equal('JavaScript turns 30');\n  });\n});",
+        "describe('Paragraphs', () => {\n  it('the first paragraph follows the h1 with the correct text', () => {\n    const p = document.querySelectorAll('p')[0];\n    expect(p).to.exist;\n    expect(p.textContent.trim()).to.equal('Latest updates from the web.');\n  });\n\n  it('the second paragraph follows the h2 with the correct text', () => {\n    const p = document.querySelectorAll('p')[1];\n    expect(p).to.exist;\n    expect(p.textContent.trim()).to.equal('A milestone for the language.');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Tech News</title>\n  </head>\n  <body>\n    <!-- Add your headings and paragraphs here, in order -->\n  </body>\n</html>",
+        "css": ""
+      },
+      "hints": "- HTML renders elements in the order they appear in the source — watch the order carefully.\n- `<h1>` is for the page title, `<h2>` for a section heading. A paragraph `<p>` can sit directly between them.\n- The tests check the tag order of the first four children of `<body>`.",
+      "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Tech News</title>\n  </head>\n  <body>\n    <h1>Tech News</h1>\n    <p>Latest updates from the web.</p>\n    <h2>JavaScript turns 30</h2>\n    <p>A milestone for the language.</p>\n  </body>\n</html>\n```",
+      "walkthrough": "1. Inside `<body>`, add `<h1>Tech News</h1>`.\n2. Below it, add `<p>Latest updates from the web.</p>`.\n3. Then `<h2>JavaScript turns 30</h2>`.\n4. Finally, `<p>A milestone for the language.</p>`.\n5. Save, refresh, and run the tests."
+    },
+    {
+      "id": "66995332f268",
+      "slug": "moon-paragraphs",
+      "title": "Moon Paragraphs",
+      "categoryId": "4e714a0b0153",
+      "categorySlug": "html-revision",
+      "order": 3,
+      "sourcePath": "questions/002-html-revision/003-moon-paragraphs.md",
+      "question": "Below the existing heading, add **three** paragraphs of text, in this order:\n\n1. `The Moon is Earth's only natural satellite.`\n2. `It is about 384,400 km away on average.`\n3. `A full orbit takes roughly 27 days.`",
+      "answer": "Add three `<p>` elements inside the `<body>`, each containing the required text.",
+      "testCases": [
+        "describe('Paragraph count', () => {\n  it('should contain exactly three <p> elements', () => {\n    expect(document.querySelectorAll('p').length).to.equal(3);\n  });\n});",
+        "describe('Paragraph contents in order', () => {\n  const expected = [\n    \"The Moon is Earth's only natural satellite.\",\n    'It is about 384,400 km away on average.',\n    'A full orbit takes roughly 27 days.',\n  ];\n  expected.forEach((text, i) => {\n    it('paragraph ' + (i + 1) + ' should say \"' + text + '\"', () => {\n      const p = document.querySelectorAll('p')[i];\n      expect(p).to.exist;\n      expect(p.textContent.trim()).to.equal(text);\n    });\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>The Moon</title>\n  </head>\n  <body>\n    <h1>The Moon</h1>\n    <!-- Add three paragraphs here -->\n  </body>\n</html>",
+        "css": ""
+      },
+      "hints": "- Each paragraph is its own `<p>...</p>` element.\n- Order matters: the tests check `querySelectorAll('p')[i]`.\n- Text is compared character-by-character.",
+      "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>The Moon</title>\n  </head>\n  <body>\n    <h1>The Moon</h1>\n    <p>The Moon is Earth's only natural satellite.</p>\n    <p>It is about 384,400 km away on average.</p>\n    <p>A full orbit takes roughly 27 days.</p>\n  </body>\n</html>\n```",
+      "walkthrough": "1. Replace the comment with three `<p>` elements, one per line.\n2. Put the sentences in the exact order from the brief.\n3. Save, refresh, and run the tests."
+    },
+    {
+      "id": "de0b3503b7db",
+      "slug": "mdn-link-and-image",
+      "title": "Mdn Link And Image",
+      "categoryId": "4e714a0b0153",
+      "categorySlug": "html-revision",
+      "order": 4,
+      "sourcePath": "questions/002-html-revision/004-mdn-link-and-image.md",
+      "question": "Add the following to the page, below the existing heading:\n\n1. A link that says `Read the MDN docs` and goes to `https://developer.mozilla.org`.\n2. A second link that says `Learn web.dev` and goes to `https://web.dev`.\n3. An image with `src=\"https://picsum.photos/250/150\"` and `alt=\"Code on a screen\"`.",
+      "answer": "Use two `<a>` elements for the links and one `<img>` for the image.",
+      "testCases": [
+        "describe('Links', () => {\n  it('has exactly two <a> elements', () => {\n    expect(document.querySelectorAll('a').length).to.equal(2);\n  });\n\n  it('has an MDN link with the correct href and text', () => {\n    const links = Array.from(document.querySelectorAll('a'));\n    const mdn = links.find(a => a.getAttribute('href') === 'https://developer.mozilla.org');\n    expect(mdn, 'expected a link to https://developer.mozilla.org').to.exist;\n    expect(mdn.textContent.trim()).to.equal('Read the MDN docs');\n  });\n\n  it('has a web.dev link with the correct href and text', () => {\n    const links = Array.from(document.querySelectorAll('a'));\n    const webdev = links.find(a => a.getAttribute('href') === 'https://web.dev');\n    expect(webdev, 'expected a link to https://web.dev').to.exist;\n    expect(webdev.textContent.trim()).to.equal('Learn web.dev');\n  });\n});",
+        "describe('Image', () => {\n  it('has exactly one <img>', () => {\n    expect(document.querySelectorAll('img').length).to.equal(1);\n  });\n\n  it('the <img> has the correct src and alt', () => {\n    const img = document.querySelector('img');\n    expect(img).to.exist;\n    expect(img.getAttribute('src')).to.equal('https://picsum.photos/250/150');\n    expect(img.getAttribute('alt')).to.equal('Code on a screen');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Learn Web Dev</title>\n  </head>\n  <body>\n    <h1>Learn Web Dev</h1>\n    <!-- Add two links and one image here -->\n  </body>\n</html>",
+        "css": ""
+      },
+      "hints": "- Each link is its own `<a href=\"URL\">text</a>` element — you'll need two of them.\n- `<img>` is self-closing — no closing tag.\n- The `alt` attribute is required for every image.",
+      "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Learn Web Dev</title>\n  </head>\n  <body>\n    <h1>Learn Web Dev</h1>\n    <a href=\"https://developer.mozilla.org\">Read the MDN docs</a>\n    <a href=\"https://web.dev\">Learn web.dev</a>\n    <img src=\"https://picsum.photos/250/150\" alt=\"Code on a screen\">\n  </body>\n</html>\n```",
+      "walkthrough": "1. After the `<h1>`, add the first link: `<a href=\"https://developer.mozilla.org\">Read the MDN docs</a>`.\n2. Add the second link: `<a href=\"https://web.dev\">Learn web.dev</a>`.\n3. Add the image: `<img src=\"https://picsum.photos/250/150\" alt=\"Code on a screen\">`."
+    },
+    {
+      "id": "e2ee046ca966",
+      "slug": "grocery-list",
+      "title": "Grocery List",
+      "categoryId": "4e714a0b0153",
+      "categorySlug": "html-revision",
+      "order": 5,
+      "sourcePath": "questions/002-html-revision/005-grocery-list.md",
+      "question": "Create an unordered list of items for a weekly grocery run. The list items, in order, must be:\n\n1. Bread\n2. Milk\n3. Eggs\n4. Butter\n5. Cheese",
+      "answer": "Use a `<ul>` with five `<li>` children inside `<body>`.",
+      "testCases": [
+        "describe('Unordered list', () => {\n  it('should contain exactly one <ul> element', () => {\n    expect(document.querySelectorAll('ul').length).to.equal(1);\n  });\n\n  it('should contain exactly five <li> elements inside the <ul>', () => {\n    expect(document.querySelectorAll('ul > li').length).to.equal(5);\n  });\n});",
+        "describe('List items in order', () => {\n  it('should list Bread, Milk, Eggs, Butter, Cheese in that order', () => {\n    const items = Array.from(document.querySelectorAll('ul > li'))\n      .map(li => li.textContent.trim());\n    expect(items).to.deep.equal(['Bread', 'Milk', 'Eggs', 'Butter', 'Cheese']);\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Grocery List</title>\n  </head>\n  <body>\n    <h1>Weekly Groceries</h1>\n    <!-- Add your unordered list here -->\n  </body>\n</html>",
+        "css": ""
+      },
+      "hints": "- `<ul>` creates an unordered (bulleted) list.\n- Each item is its own `<li>`.\n- Bullets are drawn automatically — don't type them into the text.",
+      "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Grocery List</title>\n  </head>\n  <body>\n    <h1>Weekly Groceries</h1>\n    <ul>\n      <li>Bread</li>\n      <li>Milk</li>\n      <li>Eggs</li>\n      <li>Butter</li>\n      <li>Cheese</li>\n    </ul>\n  </body>\n</html>\n```",
+      "walkthrough": "1. Open a `<ul>` after the `<h1>`.\n2. Add five `<li>` elements with the items in the exact order listed.\n3. Close `</ul>`."
+    },
+    {
+      "id": "7cecb3aebc4e",
+      "slug": "recipe-steps",
+      "title": "Recipe Steps",
+      "categoryId": "4e714a0b0153",
+      "categorySlug": "html-revision",
+      "order": 6,
+      "sourcePath": "questions/002-html-revision/006-recipe-steps.md",
+      "question": "Write out the cooking instructions for boiling pasta as an **ordered** (numbered) list with five steps, in this order:\n\n1. Boil water\n2. Add salt\n3. Add pasta\n4. Cook for 10 minutes\n5. Drain and serve\n\nUse an `<ol>` element — not `<ul>`.",
+      "answer": "Use an `<ol>` with five `<li>` children inside `<body>`.",
+      "testCases": [
+        "describe('Ordered list', () => {\n  it('should contain exactly one <ol> element', () => {\n    expect(document.querySelectorAll('ol').length).to.equal(1);\n  });\n\n  it('should not use a <ul>', () => {\n    expect(document.querySelectorAll('ul').length).to.equal(0);\n  });\n\n  it('should contain exactly five <li> elements inside the <ol>', () => {\n    expect(document.querySelectorAll('ol > li').length).to.equal(5);\n  });\n});",
+        "describe('Step order', () => {\n  it('should list the five steps in the correct order', () => {\n    const items = Array.from(document.querySelectorAll('ol > li'))\n      .map(li => li.textContent.trim());\n    expect(items).to.deep.equal([\n      'Boil water',\n      'Add salt',\n      'Add pasta',\n      'Cook for 10 minutes',\n      'Drain and serve',\n    ]);\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>How to boil pasta</title>\n  </head>\n  <body>\n    <h1>How to boil pasta</h1>\n    <!-- Add your ordered list here -->\n  </body>\n</html>",
+        "css": ""
+      },
+      "hints": "- `<ol>` renders a numbered list; `<ul>` renders a bulleted list — be sure to use the right one.\n- Both still use `<li>` for their items.\n- The browser numbers the steps automatically.",
+      "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>How to boil pasta</title>\n  </head>\n  <body>\n    <h1>How to boil pasta</h1>\n    <ol>\n      <li>Boil water</li>\n      <li>Add salt</li>\n      <li>Add pasta</li>\n      <li>Cook for 10 minutes</li>\n      <li>Drain and serve</li>\n    </ol>\n  </body>\n</html>\n```",
+      "walkthrough": "1. Open an `<ol>` (not `<ul>`) after the `<h1>`.\n2. Add five `<li>` elements with the steps in order.\n3. Close `</ol>`."
+    },
+    {
+      "id": "5e44e9107298",
+      "slug": "times-table-grid",
+      "title": "Times Table Grid",
+      "categoryId": "4e714a0b0153",
+      "categorySlug": "html-revision",
+      "order": 7,
+      "sourcePath": "questions/002-html-revision/007-times-table-grid.md",
+      "question": "The page already contains an empty `<table>` element. Fill it with **four rows** of **two columns** each.\n\nThe cell contents (row by row, left to right) must be:\n\n- Row 1: `Monday`, `09:00`\n- Row 2: `Tuesday`, `10:00`\n- Row 3: `Wednesday`, `11:00`\n- Row 4: `Thursday`, `12:00`\n\nNo header cells are required — use ordinary data cells only.",
+      "answer": "Add four `<tr>` elements inside the existing `<table>`, each with two `<td>` cells.",
+      "testCases": [
+        "describe('Rows', () => {\n  it('the table should contain exactly four <tr> rows', () => {\n    expect(document.querySelectorAll('table tr').length).to.equal(4);\n  });\n});",
+        "describe('Columns', () => {\n  it('each row should contain exactly two <td> cells', () => {\n    document.querySelectorAll('table tr').forEach(row => {\n      expect(row.querySelectorAll('td').length).to.equal(2);\n    });\n  });\n\n  it('no <th> cells should be used', () => {\n    expect(document.querySelectorAll('table th').length).to.equal(0);\n  });\n});",
+        "describe('Cell contents', () => {\n  const expected = [\n    ['Monday', '09:00'],\n    ['Tuesday', '10:00'],\n    ['Wednesday', '11:00'],\n    ['Thursday', '12:00'],\n  ];\n  expected.forEach((row, i) => {\n    it('row ' + (i + 1) + ' should contain ' + row.join(', '), () => {\n      const cells = document.querySelectorAll('table tr')[i].querySelectorAll('td');\n      const values = Array.from(cells).map(c => c.textContent.trim());\n      expect(values).to.deep.equal(row);\n    });\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Weekly Plan</title>\n  </head>\n  <body>\n    <h1>Weekly Plan</h1>\n    <table border=\"1\">\n      <!-- Add four rows of two columns here -->\n    </table>\n  </body>\n</html>",
+        "css": ""
+      },
+      "hints": "- One `<tr>` per horizontal row; one `<td>` per column inside a row.\n- A 4×2 table has four `<tr>` elements, each holding two `<td>` elements.\n- Times like `09:00` are plain text — no special tag needed.",
+      "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Weekly Plan</title>\n  </head>\n  <body>\n    <h1>Weekly Plan</h1>\n    <table border=\"1\">\n      <tr>\n        <td>Monday</td>\n        <td>09:00</td>\n      </tr>\n      <tr>\n        <td>Tuesday</td>\n        <td>10:00</td>\n      </tr>\n      <tr>\n        <td>Wednesday</td>\n        <td>11:00</td>\n      </tr>\n      <tr>\n        <td>Thursday</td>\n        <td>12:00</td>\n      </tr>\n    </table>\n  </body>\n</html>\n```",
+      "walkthrough": "1. Replace the comment inside `<table>` with the first row:\n   - Pseudocode: `<tr><td>Monday</td><td>09:00</td></tr>`\n2. Repeat for Tuesday, Wednesday, and Thursday with their matching times.\n3. Save and refresh — you should see a 4×2 grid with borders."
+    },
+    {
+      "id": "5b7fd6e2342d",
+      "slug": "cities-table",
+      "title": "Cities Table",
+      "categoryId": "4e714a0b0153",
+      "categorySlug": "html-revision",
+      "order": 8,
+      "sourcePath": "questions/002-html-revision/008-cities-table.md",
+      "question": "Build a table listing three cities with their country and population.\n\nRequirements:\n\n1. Use a `<table>`.\n2. Include a `<thead>` with one row containing three `<th>` cells: `City`, `Country`, `Population`.\n3. Include a `<tbody>` with exactly three data rows (`<tr>`), each with three `<td>` cells:\n   - Row 1: `Tokyo` / `Japan` / `37400068`\n   - Row 2: `Delhi` / `India` / `28514000`\n   - Row 3: `Shanghai` / `China` / `25582000`",
+      "answer": "Use a `<table>` with a `<thead>` for the three-column header and a `<tbody>` with three data rows.",
+      "testCases": [
+        "describe('Table structure', () => {\n  it('should contain exactly one <table>', () => {\n    expect(document.querySelectorAll('table').length).to.equal(1);\n  });\n\n  it('the table should have a <thead> and a <tbody>', () => {\n    expect(document.querySelectorAll('table > thead').length).to.equal(1);\n    expect(document.querySelectorAll('table > tbody').length).to.equal(1);\n  });\n});",
+        "describe('Header row', () => {\n  it('the <thead> should contain one row with three <th> cells', () => {\n    const headerRows = document.querySelectorAll('thead > tr');\n    expect(headerRows.length).to.equal(1);\n    const ths = headerRows[0].querySelectorAll('th');\n    expect(ths.length).to.equal(3);\n    const labels = Array.from(ths).map(th => th.textContent.trim());\n    expect(labels).to.deep.equal(['City', 'Country', 'Population']);\n  });\n});",
+        "describe('Body rows', () => {\n  const expected = [\n    ['Tokyo', 'Japan', '37400068'],\n    ['Delhi', 'India', '28514000'],\n    ['Shanghai', 'China', '25582000'],\n  ];\n\n  it('the <tbody> should contain exactly three rows', () => {\n    expect(document.querySelectorAll('tbody > tr').length).to.equal(3);\n  });\n\n  expected.forEach((row, i) => {\n    it('row ' + (i + 1) + ' should be ' + row.join(' / '), () => {\n      const cells = document.querySelectorAll('tbody > tr')[i].querySelectorAll('td');\n      expect(cells.length).to.equal(3);\n      const values = Array.from(cells).map(c => c.textContent.trim());\n      expect(values).to.deep.equal(row);\n    });\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>World Cities</title>\n  </head>\n  <body>\n    <h1>Largest Cities</h1>\n    <!-- Build your table here -->\n  </body>\n</html>",
+        "css": ""
+      },
+      "hints": "- Header cells use `<th>`; data cells use `<td>`.\n- Group the header row inside `<thead>` and the data rows inside `<tbody>` — the tests check for both explicitly.\n- This table has **three** columns, so each row needs three cells.",
+      "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>World Cities</title>\n  </head>\n  <body>\n    <h1>Largest Cities</h1>\n    <table>\n      <thead>\n        <tr>\n          <th>City</th>\n          <th>Country</th>\n          <th>Population</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td>Tokyo</td>\n          <td>Japan</td>\n          <td>37400068</td>\n        </tr>\n        <tr>\n          <td>Delhi</td>\n          <td>India</td>\n          <td>28514000</td>\n        </tr>\n        <tr>\n          <td>Shanghai</td>\n          <td>China</td>\n          <td>25582000</td>\n        </tr>\n      </tbody>\n    </table>\n  </body>\n</html>\n```",
+      "walkthrough": "1. Open a `<table>` after the `<h1>`.\n2. Add a `<thead>` with one `<tr>` containing three `<th>` cells: `City`, `Country`, `Population`.\n3. After the `<thead>`, open a `<tbody>`.\n4. Add three `<tr>` rows, each with three `<td>` cells for city, country, and population.\n5. Close `</tbody>` and `</table>`."
+    },
+    {
+      "id": "1de0431ca209",
+      "slug": "recipe-page",
+      "title": "Recipe Page",
+      "categoryId": "4e714a0b0153",
+      "categorySlug": "html-revision",
+      "order": 9,
+      "sourcePath": "questions/002-html-revision/009-recipe-page.md",
+      "question": "Put everything from this category together and build a small **recipe page** for pancakes. The page must contain all of the following, in this order:\n\n1. A top-level heading `<h1>` with the text `Fluffy Pancakes`.\n2. A tagline `<p>` directly under the `<h1>` with the text `A classic weekend breakfast recipe.`\n3. An `<h2>` saying `Links & Photo`, followed by:\n   - a link `<a href=\"https://en.wikipedia.org/wiki/Pancake\">Wikipedia: Pancake</a>`\n   - a link `<a href=\"https://example.com/pancakes\">Full recipe on example.com</a>`\n   - an `<img>` with `src=\"https://picsum.photos/320/200\"` and `alt=\"A stack of pancakes\"`\n4. An `<h2>` saying `Ingredients`, followed by an **unordered** list (`<ul>`) with exactly these five items in order: `Flour`, `Milk`, `Eggs`, `Sugar`, `Butter`.\n5. An `<h2>` saying `Steps`, followed by an **ordered** list (`<ol>`) with exactly these five items in order: `Mix dry ingredients`, `Add milk and eggs`, `Melt butter`, `Cook on the pan`, `Serve hot`.\n6. An `<h2>` saying `Nutrition`, followed by a `<table>` with:\n   - a `<thead>` containing one row with three `<th>` cells: `Nutrient`, `Amount`, `Daily Value`\n   - a `<tbody>` with three rows:\n     - `Calories` / `220` / `11%`\n     - `Protein` / `6g` / `12%`\n     - `Fat` / `8g` / `10%`",
+      "answer": "Combine every element from this category — headings, paragraphs, links, images, lists, and a table — into one document.",
+      "testCases": [
+        "describe('Main heading and tagline', () => {\n  it('has exactly one <h1> with text \"Fluffy Pancakes\"', () => {\n    const h1s = document.querySelectorAll('h1');\n    expect(h1s.length).to.equal(1);\n    expect(h1s[0].textContent.trim()).to.equal('Fluffy Pancakes');\n  });\n\n  it('the first <p> is the tagline directly after the <h1>', () => {\n    const firstP = document.querySelector('p');\n    expect(firstP).to.exist;\n    expect(firstP.textContent.trim()).to.equal('A classic weekend breakfast recipe.');\n  });\n});",
+        "describe('Section headings', () => {\n  it('has four <h2> sub-headings in the expected order', () => {\n    const titles = Array.from(document.querySelectorAll('h2'))\n      .map(h => h.textContent.trim());\n    expect(titles).to.deep.equal([\n      'Links & Photo',\n      'Ingredients',\n      'Steps',\n      'Nutrition',\n    ]);\n  });\n});",
+        "describe('Links & Photo section', () => {\n  it('has a Wikipedia link with the correct href and text', () => {\n    const links = Array.from(document.querySelectorAll('a'));\n    const wiki = links.find(a => a.getAttribute('href') === 'https://en.wikipedia.org/wiki/Pancake');\n    expect(wiki, 'expected a link to Wikipedia').to.exist;\n    expect(wiki.textContent.trim()).to.equal('Wikipedia: Pancake');\n  });\n\n  it('has a full-recipe link with the correct href and text', () => {\n    const links = Array.from(document.querySelectorAll('a'));\n    const match = links.find(a => a.getAttribute('href') === 'https://example.com/pancakes');\n    expect(match, 'expected a link to example.com').to.exist;\n    expect(match.textContent.trim()).to.equal('Full recipe on example.com');\n  });\n\n  it('has an <img> with the expected src and alt', () => {\n    const img = document.querySelector('img');\n    expect(img).to.exist;\n    expect(img.getAttribute('src')).to.equal('https://picsum.photos/320/200');\n    expect(img.getAttribute('alt')).to.equal('A stack of pancakes');\n  });\n});",
+        "describe('Ingredients list', () => {\n  it('has an unordered list with five items in order', () => {\n    const uls = document.querySelectorAll('ul');\n    expect(uls.length).to.be.at.least(1);\n    const items = Array.from(uls[0].querySelectorAll('li'))\n      .map(li => li.textContent.trim());\n    expect(items).to.deep.equal(['Flour', 'Milk', 'Eggs', 'Sugar', 'Butter']);\n  });\n});",
+        "describe('Steps list', () => {\n  it('has an ordered list with the five steps in order', () => {\n    const ols = document.querySelectorAll('ol');\n    expect(ols.length).to.be.at.least(1);\n    const items = Array.from(ols[0].querySelectorAll('li'))\n      .map(li => li.textContent.trim());\n    expect(items).to.deep.equal([\n      'Mix dry ingredients',\n      'Add milk and eggs',\n      'Melt butter',\n      'Cook on the pan',\n      'Serve hot',\n    ]);\n  });\n});",
+        "describe('Nutrition table', () => {\n  it('has one <table> with one <thead> and one <tbody>', () => {\n    expect(document.querySelectorAll('table').length).to.equal(1);\n    expect(document.querySelectorAll('table > thead').length).to.equal(1);\n    expect(document.querySelectorAll('table > tbody').length).to.equal(1);\n  });\n\n  it('has a header row with Nutrient, Amount, Daily Value', () => {\n    const ths = document.querySelectorAll('thead > tr > th');\n    expect(ths.length).to.equal(3);\n    const labels = Array.from(ths).map(th => th.textContent.trim());\n    expect(labels).to.deep.equal(['Nutrient', 'Amount', 'Daily Value']);\n  });\n\n  it('has three body rows with the correct values', () => {\n    const expected = [\n      ['Calories', '220', '11%'],\n      ['Protein', '6g', '12%'],\n      ['Fat', '8g', '10%'],\n    ];\n    const rows = document.querySelectorAll('tbody > tr');\n    expect(rows.length).to.equal(3);\n    expected.forEach((row, i) => {\n      const cells = rows[i].querySelectorAll('td');\n      expect(cells.length).to.equal(3);\n      const values = Array.from(cells).map(c => c.textContent.trim());\n      expect(values).to.deep.equal(row);\n    });\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Fluffy Pancakes</title>\n  </head>\n  <body>\n    <!-- Build your recipe page here -->\n  </body>\n</html>",
+        "css": ""
+      },
+      "hints": "- Work top-to-bottom and run the tests as you go.\n- The tagline is a plain `<p>` directly under the `<h1>` — the tests check it's the first `<p>` on the page.\n- The Nutrition table has **three** columns (Nutrient, Amount, Daily Value) — don't forget the third one.\n- The image uses Lorem Picsum: `https://picsum.photos/320/200`.",
+      "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Fluffy Pancakes</title>\n  </head>\n  <body>\n    <h1>Fluffy Pancakes</h1>\n    <p>A classic weekend breakfast recipe.</p>\n\n    <h2>Links & Photo</h2>\n    <a href=\"https://en.wikipedia.org/wiki/Pancake\">Wikipedia: Pancake</a>\n    <a href=\"https://example.com/pancakes\">Full recipe on example.com</a>\n    <img src=\"https://picsum.photos/320/200\" alt=\"A stack of pancakes\">\n\n    <h2>Ingredients</h2>\n    <ul>\n      <li>Flour</li>\n      <li>Milk</li>\n      <li>Eggs</li>\n      <li>Sugar</li>\n      <li>Butter</li>\n    </ul>\n\n    <h2>Steps</h2>\n    <ol>\n      <li>Mix dry ingredients</li>\n      <li>Add milk and eggs</li>\n      <li>Melt butter</li>\n      <li>Cook on the pan</li>\n      <li>Serve hot</li>\n    </ol>\n\n    <h2>Nutrition</h2>\n    <table>\n      <thead>\n        <tr>\n          <th>Nutrient</th>\n          <th>Amount</th>\n          <th>Daily Value</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td>Calories</td>\n          <td>220</td>\n          <td>11%</td>\n        </tr>\n        <tr>\n          <td>Protein</td>\n          <td>6g</td>\n          <td>12%</td>\n        </tr>\n        <tr>\n          <td>Fat</td>\n          <td>8g</td>\n          <td>10%</td>\n        </tr>\n      </tbody>\n    </table>\n  </body>\n</html>\n```",
+      "walkthrough": "1. **Heading + tagline.** Add `<h1>Fluffy Pancakes</h1>` followed immediately by `<p>A classic weekend breakfast recipe.</p>`.\n2. **Links & Photo section.** `<h2>Links & Photo</h2>`, then two `<a>` links (Wikipedia + example.com), then the `<img>` with Lorem Picsum src and correct alt.\n3. **Ingredients section.** `<h2>Ingredients</h2>`, then a `<ul>` with five `<li>` items in the required order.\n4. **Steps section.** `<h2>Steps</h2>`, then an `<ol>` (not `<ul>`) with five `<li>` items in the required order.\n5. **Nutrition section.** `<h2>Nutrition</h2>`, then a `<table>` with a `<thead>` (three `<th>` cells) and a `<tbody>` (three `<tr>` rows, each with three `<td>` cells).\n6. Save, refresh, and run the tests. Fix sections one at a time until everything is green."
+    },
+    {
+      "id": "9bebde0cdb37",
+      "slug": "text-color",
+      "title": "Text Color",
+      "categoryId": "d4aa8ea87841",
+      "categorySlug": "basic-css",
+      "order": 1,
+      "sourcePath": "questions/003-basic-css/001-text-color.md",
+      "question": "Make the `<h1>` heading on the page display in **red**.\n\nUse CSS to style the heading — do not use inline `style` attributes in the HTML.",
+      "answer": "In `style.css`, add a rule that targets `h1` and sets `color` to `red`.",
+      "testCases": [
+        "describe('Heading color', () => {\n  it('the <h1> should be rendered in red', () => {\n    const h1 = document.querySelector('h1');\n    expect(h1).to.exist;\n    const color = getComputedStyle(h1).color;\n    expect(color).to.equal('rgb(255, 0, 0)');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Red Heading</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <h1>I should be red</h1>\n  </body>\n</html>",
+        "css": "/* Add your styles here */"
+      },
+      "hints": "- CSS rules look like: `selector { property: value; }`\n- The selector for an `<h1>` element is simply `h1`.\n- The property for text color is `color`.",
+      "solution": "```css\nh1 {\n  color: red;\n}\n```",
+      "walkthrough": "1. Open `style.css`.\n2. Write a selector that targets the heading element:\n   - Pseudocode: `h1 { ... }`\n3. Inside the braces, set the `color` property to `red`.\n   - Pseudocode: `color: red;`\n4. Save and refresh the preview — the heading should now appear red.\n5. Run the tests. The computed color `rgb(255, 0, 0)` is the same as `red`."
+    },
+    {
+      "id": "a94ae3136f0f",
+      "slug": "background-and-font-size",
+      "title": "Background And Font Size",
+      "categoryId": "d4aa8ea87841",
+      "categorySlug": "basic-css",
+      "order": 2,
+      "sourcePath": "questions/003-basic-css/002-background-and-font-size.md",
+      "question": "Style the page so that:\n\n1. The page background is light yellow (`#ffffcc`).\n2. All paragraphs have a font size of exactly `20px`.",
+      "answer": "In `style.css`, target the `body` element for the background color and the `p` element for the font size.",
+      "testCases": [
+        "describe('Body background', () => {\n  it('the body should have background color #ffffcc', () => {\n    const bg = getComputedStyle(document.body).backgroundColor;\n    expect(bg).to.equal('rgb(255, 255, 204)');\n  });\n});",
+        "describe('Paragraph font size', () => {\n  it('paragraphs should have a font size of 20px', () => {\n    const p = document.querySelector('p');\n    expect(p).to.exist;\n    expect(getComputedStyle(p).fontSize).to.equal('20px');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Styling Basics</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <h1>Styling Basics</h1>\n    <p>This paragraph should be 20 pixels tall.</p>\n    <p>So should this one.</p>\n  </body>\n</html>",
+        "css": "/* Add your styles here */"
+      },
+      "hints": "- `background-color` sets the background of an element.\n- Hex color `#ffffcc` equals `rgb(255, 255, 204)`.\n- `font-size` takes a length value like `20px`.",
+      "solution": "```css\nbody {\n  background-color: #ffffcc;\n}\n\np {\n  font-size: 20px;\n}\n```",
+      "walkthrough": "1. Open `style.css`.\n2. Add a rule for the `body` selector and set `background-color` to `#ffffcc`.\n3. Add a second rule for the `p` selector and set `font-size` to `20px`.\n   - Pseudocode:\n     ```\n     body { background-color: <color>; }\n     p    { font-size: <size>; }\n     ```\n4. Save and refresh — you should see a pale yellow background and slightly larger paragraph text.\n5. Run the tests to verify both the color and font size."
+    },
+    {
+      "id": "a9ec4701f71d",
+      "slug": "class-selector",
+      "title": "Class Selector",
+      "categoryId": "d4aa8ea87841",
+      "categorySlug": "basic-css",
+      "order": 3,
+      "sourcePath": "questions/003-basic-css/003-class-selector.md",
+      "question": "The HTML contains two paragraphs. Only the one with the class `highlight` should:\n\n1. Have a yellow background (`yellow`).\n2. Be displayed in bold.\n\nThe other paragraph must remain unstyled.",
+      "answer": "In `style.css`, use a class selector (`.highlight`) to apply `background-color: yellow` and `font-weight: bold`.",
+      "testCases": [
+        "describe('Highlighted paragraph', () => {\n  it('should have a yellow background', () => {\n    const el = document.querySelector('p.highlight');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).backgroundColor).to.equal('rgb(255, 255, 0)');\n  });\n\n  it('should be bold', () => {\n    const el = document.querySelector('p.highlight');\n    expect(el).to.exist;\n    const weight = getComputedStyle(el).fontWeight;\n    // \"bold\" computes to 700 in most browsers\n    expect(['bold', '700']).to.include(weight);\n  });\n});",
+        "describe('Non-highlighted paragraph', () => {\n  it('should NOT have a yellow background', () => {\n    const paragraphs = Array.from(document.querySelectorAll('p'));\n    const plain = paragraphs.find(p => !p.classList.contains('highlight'));\n    expect(plain, 'expected a paragraph without the highlight class').to.exist;\n    expect(getComputedStyle(plain).backgroundColor).to.not.equal('rgb(255, 255, 0)');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Class Selector</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <p>This paragraph should look normal.</p>\n    <p class=\"highlight\">This paragraph should be highlighted.</p>\n  </body>\n</html>",
+        "css": "/* Add your styles here */"
+      },
+      "hints": "- A class selector in CSS starts with a dot, e.g. `.myClass`.\n- Only elements with `class=\"myClass\"` will match.\n- Use `font-weight: bold;` to make text bold.",
+      "solution": "```css\n.highlight {\n  background-color: yellow;\n  font-weight: bold;\n}\n```",
+      "walkthrough": "1. Look at the HTML — only the second `<p>` has `class=\"highlight\"`.\n2. In `style.css`, write a class selector:\n   - Pseudocode: `.highlight { ... }`\n3. Inside the block, set `background-color: yellow;` and `font-weight: bold;`.\n4. Because the first paragraph has no class, it will not match this selector and stays unstyled.\n5. Refresh the preview and run the tests."
+    },
+    {
+      "id": "4fdfe2070d73",
+      "slug": "center-text",
+      "title": "Center Text",
+      "categoryId": "d4aa8ea87841",
+      "categorySlug": "basic-css",
+      "order": 4,
+      "sourcePath": "questions/003-basic-css/004-center-text.md",
+      "question": "Center-align the text of the `<h1>` heading horizontally using CSS.",
+      "answer": "In `style.css`, target `h1` and set `text-align` to `center`.",
+      "testCases": [
+        "describe('Centered heading', () => {\n  it('the <h1> should have text-align center', () => {\n    const h1 = document.querySelector('h1');\n    expect(h1).to.exist;\n    expect(getComputedStyle(h1).textAlign).to.equal('center');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Centered Heading</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <h1>Center me</h1>\n    <p>This paragraph can stay on the left.</p>\n  </body>\n</html>",
+        "css": "/* Add your styles here */"
+      },
+      "hints": "- The `text-align` property controls horizontal alignment of text inside a block element.\n- Valid values include `left`, `right`, `center`, and `justify`.\n- Only style the `h1`, not the `body` — otherwise the paragraph will also move.",
+      "solution": "```css\nh1 {\n  text-align: center;\n}\n```",
+      "walkthrough": "1. Open `style.css`.\n2. Add a rule for the `h1` selector:\n   - Pseudocode: `h1 { text-align: center; }`\n3. Save and refresh the preview. The heading should now appear horizontally centered, while the paragraph stays left-aligned.\n4. Run the tests to confirm the computed `text-align` is `center`."
+    }
+  ]
+}
