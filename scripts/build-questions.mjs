@@ -143,6 +143,23 @@ function parseQuestionMarkdown(raw) {
 
   const getBody = (key) =>
     topLevel[key] ? topLevel[key].body.join('\n').trim() : '';
+  
+  // For the Question section, we want to preserve the full markdown including H2 subsections
+  const getFullBody = (key) => {
+    const section = topLevel[key];
+    if (!section) return '';
+    
+    const parts = [section.body.join('\n').trim()];
+    
+    // Append all H2 subsections with their headings
+    for (const [subTitle, subBody] of Object.entries(section.subs)) {
+      const subHeading = subTitle.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+      parts.push(`\n\n## ${subHeading}\n\n${subBody.join('\n').trim()}`);
+    }
+    
+    return parts.join('').trim();
+  };
+  
   const getSub = (parentKey, subKey) => {
     const parent = topLevel[parentKey];
     if (!parent) return '';
@@ -188,7 +205,7 @@ function parseQuestionMarkdown(raw) {
   const testCaseBodyLines = topLevel['test cases']?.body ?? [];
 
   return {
-    question: getBody('question'),
+    question: getFullBody('question'),
     answer: getBody('answer'),
     testCases: extractCodeBlocks(testCaseBodyLines),
     startingFiles: {

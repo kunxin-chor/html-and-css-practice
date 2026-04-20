@@ -2,21 +2,13 @@
  * Builds the srcdoc string for the preview iframe.
  *
  * The student authors a full HTML document in `html` and CSS in `css`.
- * We:
- *   1. If the HTML has a <head>, inject <style>{css}</style> into it.
- *   2. Otherwise, wrap the HTML in a minimal document scaffold and
- *      inline the CSS in the head.
- *   3. Remove any <link rel="stylesheet" href="style.css"> reference
- *      because style.css is virtual — replaced by inline <style>.
+ * We always inject <style>{css}</style> into <head> so their CSS applies.
+ * Any <link rel="stylesheet" href="style.css"> the student writes is
+ * kept in the DOM (so tests can detect it) but will 404 harmlessly —
+ * the inlined <style> is the real source of truth for styling.
  */
 export function buildPreviewSrcDoc(html: string, css: string): string {
-  let out = html;
-
-  // Drop references to the virtual style.css; we inline instead.
-  out = out.replace(
-    /<link\s+[^>]*href\s*=\s*["']?style\.css["']?[^>]*>/gi,
-    ''
-  );
+  const out = html;
 
   const styleTag = `<style>\n${css}\n</style>`;
 

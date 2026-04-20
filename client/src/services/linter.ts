@@ -40,14 +40,16 @@ export function lintCss(source: string): LintMessage[] {
   if (!source.trim()) return [];
   try {
     const result = (CSSLint as { verify: (s: string) => { messages: CssLintRawMessage[] } }).verify(source);
-    return (result.messages ?? []).map((m) => ({
-      source: 'css',
-      line: m.line,
-      col: m.col,
-      message: m.message,
-      severity: m.type === 'error' ? 'error' : 'warning',
-      rule: m.rule?.id,
-    }));
+    return (result.messages ?? [])
+      .filter((m) => m.type === 'error')
+      .map((m) => ({
+        source: 'css',
+        line: m.line,
+        col: m.col,
+        message: m.message,
+        severity: 'error',
+        rule: m.rule?.id,
+      }));
   } catch (err) {
     return [
       {

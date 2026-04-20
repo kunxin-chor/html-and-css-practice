@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-20T14:04:17.841Z",
+  "generatedAt": "2026-04-20T15:56:06.442Z",
   "categories": [
     {
       "id": "63ebd4de56f3",
@@ -18,6 +18,12 @@
       "slug": "basic-css",
       "name": "Basic Css",
       "order": 3
+    },
+    {
+      "id": "fba9e9e68f2a",
+      "slug": "css-basics-revision",
+      "name": "Css Basics Revision",
+      "order": 4
     }
   ],
   "questions": [
@@ -519,6 +525,508 @@
       "hints": "- The `text-align` property controls horizontal alignment of text inside a block element.\n- Valid values include `left`, `right`, `center`, and `justify`.\n- Only style the `h1`, not the `body` — otherwise the paragraph will also move.",
       "solution": "```css\nh1 {\n  text-align: center;\n}\n```",
       "walkthrough": "1. Open `style.css`.\n2. Add a rule for the `h1` selector:\n   - Pseudocode: `h1 { text-align: center; }`\n3. Save and refresh the preview. The heading should now appear horizontally centered, while the paragraph stays left-aligned.\n4. Run the tests to confirm the computed `text-align` is `center`."
+    },
+    {
+      "id": "df15af41d5d7",
+      "slug": "id-selector",
+      "title": "Id Selector",
+      "categoryId": "d4aa8ea87841",
+      "categorySlug": "basic-css",
+      "order": 5,
+      "sourcePath": "questions/003-basic-css/005-id-selector.md",
+      "question": "The HTML contains an `<h1>` with `id=\"page-title\"`. In `style.css`, use an **id selector** to style only that element:\n\n1. Text colour must be `red`.\n2. Text must be centered horizontally (`text-align: center`).\n\nAny other text on the page should remain unchanged.",
+      "answer": "Use `#page-title { … }` in `style.css` to target the element by its `id`.",
+      "testCases": [
+        "describe('Styled heading', () => {\n  it('the #page-title should be red', () => {\n    const el = document.querySelector('#page-title');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).color).to.equal('rgb(255, 0, 0)');\n  });\n\n  it('the #page-title should be center-aligned', () => {\n    const el = document.querySelector('#page-title');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).textAlign).to.equal('center');\n  });\n});",
+        "describe('Other text untouched', () => {\n  it('a paragraph without the id should not be red', () => {\n    const p = document.querySelector('p');\n    expect(p).to.exist;\n    expect(getComputedStyle(p).color).to.not.equal('rgb(255, 0, 0)');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>ID Selector</title>\n  </head>\n  <body>\n    <h1 id=\"page-title\">Welcome</h1>\n    <p>This paragraph should not be affected.</p>\n  </body>\n</html>",
+        "css": "/* Target the heading by its id */"
+      },
+      "hints": "- An id selector starts with `#` followed by the id value — e.g. `#page-title`.\n- There should only ever be **one** element with a given id in a document.\n- Id selectors have higher specificity than class or element selectors.",
+      "solution": "```css\n#page-title {\n  color: red;\n  text-align: center;\n}\n```",
+      "walkthrough": "1. Open `style.css`.\n2. Write a new rule beginning with `#page-title { … }`.\n3. Inside the braces, set `color: red;` and `text-align: center;`.\n4. Save and refresh — the heading should turn red and be centered; the paragraph stays unchanged."
+    },
+    {
+      "id": "8796ec4bd67b",
+      "slug": "element-and-class-selector",
+      "title": "Element And Class Selector",
+      "categoryId": "d4aa8ea87841",
+      "categorySlug": "basic-css",
+      "order": 6,
+      "sourcePath": "questions/003-basic-css/006-element-and-class-selector.md",
+      "question": "The HTML has two elements with `class=\"warning\"` — one is a `<p>` and one is a `<div>`. Style **only the paragraph** that has the `warning` class so its text colour is `red`.\n\nThe `<div class=\"warning\">` and any other elements must remain unchanged.\n\nYou must use a **combined selector** — an element tag plus a class — to do this (e.g. `tag.class`).",
+      "answer": "Use `p.warning { color: red; }` — this matches only `<p>` elements that also have the `warning` class.",
+      "testCases": [
+        "describe('Warning paragraph', () => {\n  it('the <p class=\"warning\"> should be red', () => {\n    const el = document.querySelector('p.warning');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).color).to.equal('rgb(255, 0, 0)');\n  });\n});",
+        "describe('Warning div untouched', () => {\n  it('the <div class=\"warning\"> should NOT be red', () => {\n    const el = document.querySelector('div.warning');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).color).to.not.equal('rgb(255, 0, 0)');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Element + Class</title>\n  </head>\n  <body>\n    <p class=\"warning\">This paragraph warning should be red.</p>\n    <div class=\"warning\">This div warning must stay the default colour.</div>\n    <p>A regular paragraph.</p>\n  </body>\n</html>",
+        "css": "/* Style only <p> elements that have the warning class */"
+      },
+      "hints": "- `.warning` alone would match both the `<p>` and the `<div>` — too broad.\n- `p.warning` (no space) means \"an element that is a `<p>` **and** has the class `warning`\".\n- Combined selectors are one of the most common patterns in day-to-day CSS.",
+      "solution": "```css\np.warning {\n  color: red;\n}\n```",
+      "walkthrough": "1. In `style.css`, start a new rule with `p.warning` as the selector.\n2. Set `color: red;` inside the braces.\n3. Save and refresh — only the paragraph with the warning class turns red; the div stays untouched."
+    },
+    {
+      "id": "29c51fcfb0d5",
+      "slug": "descendant-selector",
+      "title": "Descendant Selector",
+      "categoryId": "d4aa8ea87841",
+      "categorySlug": "basic-css",
+      "order": 7,
+      "sourcePath": "questions/003-basic-css/007-descendant-selector.md",
+      "question": "The HTML has two links — one inside a `<nav>` and one outside it.\n\nUsing a **descendant selector**, style **only the link inside `<nav>`** so that:\n\n1. Its colour is `green`.\n2. Its underline is removed (`text-decoration: none`).\n\nThe link outside `<nav>` must remain unchanged.",
+      "answer": "Use `nav a { … }` — two selectors separated by a space means \"an `<a>` that is a descendant of a `<nav>`\".",
+      "testCases": [
+        "describe('Nav link', () => {\n  it('the <a> inside <nav> should be green', () => {\n    const el = document.querySelector('nav a');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).color).to.equal('rgb(0, 128, 0)');\n  });\n\n  it('the <a> inside <nav> should have no underline', () => {\n    const el = document.querySelector('nav a');\n    expect(el).to.exist;\n    // text-decoration-line is the part we care about across browsers.\n    const deco = getComputedStyle(el).textDecorationLine || getComputedStyle(el).textDecoration;\n    expect(deco).to.match(/none/);\n  });\n});",
+        "describe('Outside link', () => {\n  it('the link outside <nav> should NOT be green', () => {\n    const outside = Array.from(document.querySelectorAll('a'))\n      .find(a => !a.closest('nav'));\n    expect(outside, 'expected a link outside <nav>').to.exist;\n    expect(getComputedStyle(outside).color).to.not.equal('rgb(0, 128, 0)');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Descendant Selector</title>\n  </head>\n  <body>\n    <nav>\n      <a href=\"/\">Home</a>\n    </nav>\n    <p>\n      Read the <a href=\"https://developer.mozilla.org\">MDN docs</a>.\n    </p>\n  </body>\n</html>",
+        "css": "/* Style only the link inside <nav> */"
+      },
+      "hints": "- A descendant selector is written as `ancestor descendant` — two selectors separated by **whitespace**.\n- `nav a` matches every `<a>` that is somewhere inside a `<nav>`, no matter how deeply nested.\n- `a` alone would style **every** link on the page — too broad.",
+      "solution": "```css\nnav a {\n  color: green;\n  text-decoration: none;\n}\n```",
+      "walkthrough": "1. In `style.css`, write a new rule whose selector is `nav a`.\n2. Set `color: green;` and `text-decoration: none;`.\n3. Save and refresh — only the navigation link turns green and loses its underline; the MDN link stays blue and underlined."
+    },
+    {
+      "id": "dae704321eb5",
+      "slug": "multiple-classes",
+      "title": "Multiple Classes",
+      "categoryId": "d4aa8ea87841",
+      "categorySlug": "basic-css",
+      "order": 8,
+      "sourcePath": "questions/003-basic-css/008-multiple-classes.md",
+      "question": "An element can have **multiple classes** at the same time — separate them with a space inside the single `class` attribute. Each class contributes its own styles.\n\nThe HTML contains a `<button>` with the class `btn`. Your job:\n\n1. **In the HTML**, add a second class `primary` to the button (so it ends up with `class=\"btn primary\"`).\n2. **In `style.css`**, write two rules:\n   - `.btn` — `padding: 10px 20px` and `border: none`\n   - `.primary` — `background-color: blue` and `color: white`\n\nWhen combined, the button should appear blue with white text, padded, and borderless.",
+      "answer": "Add `primary` to the button's class list in the HTML, then define the two class rules in CSS.",
+      "testCases": [
+        "describe('Button classes', () => {\n  it('the button has both classes \"btn\" and \"primary\"', () => {\n    const btn = document.querySelector('button');\n    expect(btn).to.exist;\n    expect(btn.classList.contains('btn'), 'missing btn class').to.equal(true);\n    expect(btn.classList.contains('primary'), 'missing primary class').to.equal(true);\n  });\n});",
+        "describe('.btn styles', () => {\n  it('the button has 10px top/bottom and 20px left/right padding', () => {\n    const btn = document.querySelector('button');\n    const cs = getComputedStyle(btn);\n    expect(cs.paddingTop).to.equal('10px');\n    expect(cs.paddingBottom).to.equal('10px');\n    expect(cs.paddingLeft).to.equal('20px');\n    expect(cs.paddingRight).to.equal('20px');\n  });\n\n  it('the button has no border', () => {\n    const btn = document.querySelector('button');\n    expect(getComputedStyle(btn).borderStyle).to.equal('none');\n  });\n});",
+        "describe('.primary styles', () => {\n  it('the button has a blue background', () => {\n    const btn = document.querySelector('button');\n    expect(getComputedStyle(btn).backgroundColor).to.equal('rgb(0, 0, 255)');\n  });\n\n  it('the button text is white', () => {\n    const btn = document.querySelector('button');\n    expect(getComputedStyle(btn).color).to.equal('rgb(255, 255, 255)');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Multiple Classes</title>\n  </head>\n  <body>\n    <button class=\"btn\">Click me</button>\n  </body>\n</html>",
+        "css": "/* Write one rule per class */"
+      },
+      "hints": "- Multiple classes go into the **same** `class` attribute, separated by spaces: `class=\"btn primary\"`.\n- Don't invent a single class like `btn-primary` — the exercise is about *combining* class-based styles.\n- Each class is its own selector in CSS: `.btn { … }` and `.primary { … }`.\n- The order of classes in the HTML doesn't matter; what matters is whether both selectors match.",
+      "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Multiple Classes</title>\n  </head>\n  <body>\n    <button class=\"btn primary\">Click me</button>\n  </body>\n</html>\n```\n\n```css\n.btn {\n  padding: 10px 20px;\n  border: none;\n}\n\n.primary {\n  background-color: blue;\n  color: white;\n}\n```",
+      "walkthrough": "1. **HTML.** Edit the button's class attribute to `class=\"btn primary\"` (space between the two class names).\n2. **CSS.** Write a `.btn` rule with `padding: 10px 20px;` and `border: none;`.\n3. Write a `.primary` rule with `background-color: blue;` and `color: white;`.\n4. Save and refresh — the button should appear blue with white text, padded, and borderless."
+    },
+    {
+      "id": "9374b34670d3",
+      "slug": "important-override",
+      "title": "Important Override",
+      "categoryId": "d4aa8ea87841",
+      "categorySlug": "basic-css",
+      "order": 9,
+      "sourcePath": "questions/003-basic-css/009-important-override.md",
+      "question": "The CSS already contains a very specific rule:\n\n```css\n#special {\n  color: red;\n}\n```\n\nThe element in the HTML is `<p id=\"special\" class=\"danger\">…</p>`. You need the paragraph to appear **green**, not red.\n\nBecause the id selector `#special` has higher specificity than a class selector, a plain `.danger { color: green; }` rule would lose. Use the `!important` keyword to force your class rule to win.\n\n**Rules:**\n\n1. Do **not** modify the existing `#special` rule.\n2. Add a `.danger` rule that sets `color: green !important;`.",
+      "answer": "Add `.danger { color: green !important; }` to the CSS. `!important` overrides normal cascade ordering, even against higher-specificity selectors.",
+      "testCases": [
+        "describe('Override with !important', () => {\n  it('the paragraph should end up green, not red', () => {\n    const p = document.querySelector('#special');\n    expect(p).to.exist;\n    expect(getComputedStyle(p).color).to.equal('rgb(0, 128, 0)');\n  });\n});",
+        "describe('!important is present', () => {\n  it('a rule uses !important on color', () => {\n    const sheets = Array.from(document.styleSheets);\n    const allText = sheets\n      .flatMap(s => {\n        try {\n          return Array.from(s.cssRules).map(r => r.cssText);\n        } catch {\n          return [];\n        }\n      })\n      .join('\\n');\n    expect(allText).to.match(/color\\s*:\\s*green\\s*!important/i);\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>!important</title>\n  </head>\n  <body>\n    <p id=\"special\" class=\"danger\">This text must end up green.</p>\n  </body>\n</html>",
+        "css": "#special {\n  color: red;\n}\n\n/* Add a .danger rule that wins using !important */"
+      },
+      "hints": "- The cascade order (highest wins): **`!important` declaration → specificity → source order**.\n- Without `!important`, `#special` (id, specificity 100) beats `.danger` (class, specificity 10).\n- Write `color: green !important;` — the `!important` flag goes **after** the value, before the semicolon.\n- `!important` should be used sparingly in real projects — prefer raising specificity first (see the next question).",
+      "solution": "```css\n#special {\n  color: red;\n}\n\n.danger {\n  color: green !important;\n}\n```",
+      "walkthrough": "1. Leave the existing `#special` rule as-is.\n2. Below it, add a new rule with selector `.danger`.\n3. Inside the rule, write `color: green !important;`.\n4. Save and refresh — the text turns green even though the id rule is more specific."
+    },
+    {
+      "id": "c062ff84da40",
+      "slug": "higher-specificity",
+      "title": "Higher Specificity",
+      "categoryId": "d4aa8ea87841",
+      "categorySlug": "basic-css",
+      "order": 10,
+      "sourcePath": "questions/003-basic-css/010-higher-specificity.md",
+      "question": "`!important` is a blunt instrument. A cleaner way to override a rule is to write a **more specific selector**. This question demonstrates the technique — without using `!important` at all.\n\nThe starting CSS already contains two broad rules that paint everything inside `#main` black / gray:\n\n```css\n#main p {\n  color: black;\n}\n\n#main button {\n  background-color: gray;\n}\n```\n\nThe HTML inside `#main` contains two paragraphs *and* a submit button:\n\n```html\n<div id=\"main\">\n  <p class=\"first\">…</p>\n  <p class=\"second\">…</p>\n  <button type=\"submit\" class=\"cta\">Send</button>\n</div>\n```\n\n**Your task** — add **three** new rules (keep the existing two unchanged) so that:\n\n1. The paragraph with class `first` becomes **red**.\n2. The paragraph with class `second` becomes **green**.\n3. The `<button type=\"submit\">` gets a **purple** background (`rgb(128, 0, 128)`).\n\nEach new rule must be **more specific** than the matching base rule. For the paragraphs, combine id + element + class. For the button, use an **attribute selector** so the selector matches *only* submit buttons. **Do not use `!important`.**",
+      "answer": "- `#main p.first { color: red; }` — id + element + class beats `#main p`.\n- `#main p.second { color: green; }` — same pattern.\n- `#main button[type=\"submit\"] { background-color: purple; }` — the attribute selector `[type=\"submit\"]` raises specificity above `#main button`.",
+      "testCases": [
+        "describe('Paragraph overrides', () => {\n  it('the first paragraph is red', () => {\n    const el = document.querySelector('#main p.first');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).color).to.equal('rgb(255, 0, 0)');\n  });\n\n  it('the second paragraph is green', () => {\n    const el = document.querySelector('#main p.second');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).color).to.equal('rgb(0, 128, 0)');\n  });\n});",
+        "describe('Button override with attribute selector', () => {\n  it('the submit button has a purple background', () => {\n    const btn = document.querySelector('#main button[type=\"submit\"]');\n    expect(btn).to.exist;\n    expect(getComputedStyle(btn).backgroundColor).to.equal('rgb(128, 0, 128)');\n  });\n\n  it('an attribute selector [type=\"submit\"] is used in the CSS', () => {\n    const sheets = Array.from(document.styleSheets);\n    const allText = sheets\n      .flatMap(s => {\n        try {\n          return Array.from(s.cssRules).map(r => r.cssText);\n        } catch {\n          return [];\n        }\n      })\n      .join('\\n');\n    expect(allText).to.match(/\\[type\\s*=\\s*[\"']?submit[\"']?\\]/i);\n  });\n});",
+        "describe('No !important used', () => {\n  it('no rule uses !important', () => {\n    const sheets = Array.from(document.styleSheets);\n    const allText = sheets\n      .flatMap(s => {\n        try {\n          return Array.from(s.cssRules).map(r => r.cssText);\n        } catch {\n          return [];\n        }\n      })\n      .join('\\n');\n    expect(allText).to.not.match(/!important/i);\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Specificity</title>\n  </head>\n  <body>\n    <div id=\"main\">\n      <p class=\"first\">Should become red.</p>\n      <p class=\"second\">Should become green.</p>\n      <button type=\"submit\" class=\"cta\">Send</button>\n    </div>\n  </body>\n</html>",
+        "css": "#main p {\n  color: black;\n}\n\n#main button {\n  background-color: gray;\n}\n\n/* Add three rules below — each MORE SPECIFIC than the matching base rule above.\n   Don't use !important. */"
+      },
+      "hints": "- Specificity is counted roughly as (inline, ids, classes + attributes + pseudo-classes, elements).\n  - `#main p` → (0, 1, 0, 1). `#main p.first` → (0, 1, 1, 1) — adding a class wins.\n  - `#main button` → (0, 1, 0, 1). `#main button[type=\"submit\"]` → (0, 1, 1, 1) — the attribute selector also counts as a \"class-level\" bump.\n- You can always beat a rule without `!important` by writing a more specific selector.\n- **Attribute selectors** are written in square brackets: `[attr=\"value\"]`. They're great for styling form controls without adding extra classes.",
+      "solution": "```css\n#main p {\n  color: black;\n}\n\n#main button {\n  background-color: gray;\n}\n\n#main p.first {\n  color: red;\n}\n\n#main p.second {\n  color: green;\n}\n\n#main button[type=\"submit\"] {\n  background-color: purple;\n}\n```",
+      "walkthrough": "1. Leave the two existing rules (`#main p` and `#main button`) unchanged.\n2. Add `#main p.first { color: red; }` — id + element + class beats id + element.\n3. Add `#main p.second { color: green; }` — same idea for the other paragraph.\n4. Add `#main button[type=\"submit\"] { background-color: purple; }` — the `[type=\"submit\"]` attribute selector bumps specificity above `#main button`.\n5. Save and refresh — each element now gets the correct colour, and no `!important` is needed."
+    },
+    {
+      "id": "5b886d076f89",
+      "slug": "external-stylesheet",
+      "title": "External Stylesheet",
+      "categoryId": "d4aa8ea87841",
+      "categorySlug": "basic-css",
+      "order": 11,
+      "sourcePath": "questions/003-basic-css/011-external-stylesheet.md",
+      "question": "Every question in this course uses a separate CSS file called `style.css`. In real projects, you connect an external stylesheet to an HTML document using a `<link>` element in `<head>`.\n\n**Task:** inside the existing `<head>` of the HTML, add a `<link>` tag that loads `style.css`:\n\n```html\n<link rel=\"stylesheet\" href=\"style.css\">\n```\n\nYou don't need to write any new CSS for this question — the starting `style.css` already sets `h1` to `blue`. The test simply verifies that the `<link>` tag is present and correctly formed.",
+      "answer": "Add `<link rel=\"stylesheet\" href=\"style.css\">` inside `<head>`.",
+      "testCases": [
+        "describe('External stylesheet link', () => {\n  it('has a <link rel=\"stylesheet\" href=\"style.css\"> inside <head>', () => {\n    const link = document.querySelector('head link[rel=\"stylesheet\"][href=\"style.css\"]');\n    expect(link, 'expected <link rel=\"stylesheet\" href=\"style.css\"> in <head>').to.exist;\n  });\n});",
+        "describe('Styling still works', () => {\n  it('the <h1> is blue (from style.css)', () => {\n    const h1 = document.querySelector('h1');\n    expect(h1).to.exist;\n    expect(getComputedStyle(h1).color).to.equal('rgb(0, 0, 255)');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>External Stylesheet</title>\n    <!-- Add the <link> to style.css here -->\n  </head>\n  <body>\n    <h1>Hello, stylesheet!</h1>\n  </body>\n</html>",
+        "css": "h1 {\n  color: blue;\n}"
+      },
+      "hints": "- The `<link>` element is self-closing — no closing tag.\n- Three attributes to get right: `rel=\"stylesheet\"`, `href=\"style.css\"`, and it must live inside `<head>`.\n- Unlike `<script>`, `<link>` does not take inner content — everything is in attributes.\n- In this course the CSS is auto-applied even without the link for convenience, but you still need to add the link to pass this question's test.",
+      "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>External Stylesheet</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <h1>Hello, stylesheet!</h1>\n  </body>\n</html>\n```",
+      "walkthrough": "1. Inside `<head>`, after the `<title>`, add a new line.\n2. On that line, write `<link rel=\"stylesheet\" href=\"style.css\">`.\n3. Save and refresh — the heading should be blue (it was already, via the injected styles), and the `<link>` test will now pass."
+    },
+    {
+      "id": "961955ccd725",
+      "slug": "text-variants",
+      "title": "Text Variants",
+      "categoryId": "d4aa8ea87841",
+      "categorySlug": "basic-css",
+      "order": 12,
+      "sourcePath": "questions/003-basic-css/012-text-variants.md",
+      "question": "CSS offers several properties for changing how text looks. This exercise practises four of the most common ones.\n\nFurther reading (optional but recommended):\n\n- [MDN: `font-family`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family) · [W3Schools](https://www.w3schools.com/cssref/pr_font_font-family.php)\n- [MDN: `font-style`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-style) · [W3Schools](https://www.w3schools.com/cssref/pr_font_font-style.php)\n- [MDN: `text-decoration`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration) · [W3Schools](https://www.w3schools.com/cssref/pr_text_text-decoration.php)\n- [MDN: `text-transform`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform) · [W3Schools](https://www.w3schools.com/cssref/pr_text_text-transform.php)\n\nThe HTML contains four paragraphs, each with a different class. In `style.css`, write four class rules so that:\n\n1. `.serif` — uses a **serif** font family (`font-family: serif`).\n2. `.italic` — is shown in italics (`font-style: italic`).\n3. `.underline` — has an underline (`text-decoration: underline`).\n4. `.uppercase` — is transformed to all uppercase letters (`text-transform: uppercase`).",
+      "answer": "Write one class rule per variant, each setting the matching property to the listed value.",
+      "testCases": [
+        "describe('Serif font', () => {\n  it('.serif uses a serif font family', () => {\n    const el = document.querySelector('.serif');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).fontFamily.toLowerCase()).to.match(/serif/);\n  });\n});",
+        "describe('Italic text', () => {\n  it('.italic has font-style italic', () => {\n    const el = document.querySelector('.italic');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).fontStyle).to.equal('italic');\n  });\n});",
+        "describe('Underlined text', () => {\n  it('.underline has an underline decoration', () => {\n    const el = document.querySelector('.underline');\n    expect(el).to.exist;\n    const deco = getComputedStyle(el).textDecorationLine || getComputedStyle(el).textDecoration;\n    expect(deco).to.match(/underline/);\n  });\n});",
+        "describe('Uppercase text', () => {\n  it('.uppercase has text-transform uppercase', () => {\n    const el = document.querySelector('.uppercase');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).textTransform).to.equal('uppercase');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Text Variants</title>\n  </head>\n  <body>\n    <p class=\"serif\">This paragraph should render in a serif font.</p>\n    <p class=\"italic\">This paragraph should render in italics.</p>\n    <p class=\"underline\">This paragraph should be underlined.</p>\n    <p class=\"uppercase\">this paragraph should appear all uppercase.</p>\n  </body>\n</html>",
+        "css": "/* Add one rule per class: .serif, .italic, .underline, .uppercase */"
+      },
+      "hints": "- `font-family` accepts a list of font names — the browser uses the first one it has available. Generic families like `serif`, `sans-serif`, and `monospace` always work.\n- `font-style` is for italics. Bold goes through `font-weight`, not `font-style`.\n- `text-decoration` is the shorthand for the line (underline / overline / line-through), its colour, and its style. For this question, just `text-decoration: underline;` is enough.\n- `text-transform` changes capitalisation visually — the underlying text in the HTML stays the same.",
+      "solution": "```css\n.serif {\n  font-family: serif;\n}\n\n.italic {\n  font-style: italic;\n}\n\n.underline {\n  text-decoration: underline;\n}\n\n.uppercase {\n  text-transform: uppercase;\n}\n```",
+      "walkthrough": "1. Open `style.css`.\n2. Write `.serif { font-family: serif; }`.\n3. Below it, add `.italic { font-style: italic; }`.\n4. Add `.underline { text-decoration: underline; }`.\n5. Add `.uppercase { text-transform: uppercase; }`.\n6. Save and refresh — each paragraph should pick up its corresponding visual change."
+    },
+    {
+      "id": "014ab1022c99",
+      "slug": "capstone-book-card",
+      "title": "Capstone Book Card",
+      "categoryId": "d4aa8ea87841",
+      "categorySlug": "basic-css",
+      "order": 13,
+      "sourcePath": "questions/003-basic-css/013-capstone-book-card.md",
+      "question": "Put everything from this category together to style a **book product card**. The HTML markup is already provided — your job is to decide which selectors best match each visual goal described below, then write the CSS.\n\nYour goal is to recreate this design:\n\n![Book card target design](/images/proposed-solution-1.png)\n\n## Visual Goals\n\n1. **Connect your stylesheet.** The HTML isn't loading `style.css` yet — fix that first.\n2. **Page.** The page should sit on a soft off-white background.\n3. **Card container.** The card should feel like a boxed product tile — give it comfortable internal spacing and a thin light-gray border so it separates from the page.\n4. **Book title.** The main heading should be centred and use a darker, nearly-black colour (plain `black` is too harsh).\n5. **Tagline.** The short line labelled as the tagline should read like a small-caps label: all-uppercase letters, a little extra space between characters, and a muted gray colour.\n6. **Tag list.** Every item in the tag list should appear in green.\n7. **Buy button.** The call-to-action button has two responsibilities split across two classes:\n   - Its **base** styling should remove the default border and give it generous horizontal padding.\n   - Its **primary** variant should fill it with a purple background and white text.\n   - Your CSS must respect this split — one rule for the base styling, a separate rule for the primary colours, so the pattern works for future non-primary buttons too.\n\n## Design Tokens\n\nUse these exact values so the tests can match your colours and sizes:\n\n- Page background: `#fafafa`\n- Card border: `1px solid #ccc`\n- Card padding: `24px`\n- Title colour: `#222`\n- Tagline letter-spacing: `2px`\n- Tag list colour: `green`\n- Base button padding: `10px 20px`\n- Primary button background: `purple`\n- Primary button text: `white`\n\nYou decide which selectors to reach for. The tests check computed styles on the relevant elements, so **any** selector that correctly targets the element will pass — but the concepts you practised earlier in this category (id selectors, descendant selectors, element + class combinations, multi-class styling, text variants) are all usable here. Pick the one that best fits each goal.",
+      "answer": "Read each visual goal and pick the selector that matches — ids for unique elements, classes for reusable labels, descendant selectors for \"X inside Y\", etc. Link the stylesheet first, then translate each goal into a rule.",
+      "testCases": [
+        "describe('External stylesheet', () => {\n  it('<head> links style.css', () => {\n    const link = document.querySelector('head link[rel=\"stylesheet\"][href=\"style.css\"]');\n    expect(link, 'missing <link rel=\"stylesheet\" href=\"style.css\">').to.exist;\n  });\n});",
+        "describe('Page background', () => {\n  it('body background is #fafafa', () => {\n    expect(getComputedStyle(document.body).backgroundColor).to.equal('rgb(250, 250, 250)');\n  });\n});",
+        "describe('Card container (id selector)', () => {\n  it('#book-card has 24px padding on all sides', () => {\n    const el = document.querySelector('#book-card');\n    expect(el).to.exist;\n    const cs = getComputedStyle(el);\n    expect(cs.paddingTop).to.equal('24px');\n    expect(cs.paddingBottom).to.equal('24px');\n    expect(cs.paddingLeft).to.equal('24px');\n    expect(cs.paddingRight).to.equal('24px');\n  });\n\n  it('#book-card has a 1px solid #ccc border', () => {\n    const el = document.querySelector('#book-card');\n    const cs = getComputedStyle(el);\n    expect(cs.borderTopWidth).to.equal('1px');\n    expect(cs.borderTopStyle).to.equal('solid');\n    expect(cs.borderTopColor).to.equal('rgb(204, 204, 204)');\n  });\n});",
+        "describe('Title (descendant of id)', () => {\n  it('#book-card h1 is centered', () => {\n    const el = document.querySelector('#book-card h1');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).textAlign).to.equal('center');\n  });\n\n  it('#book-card h1 uses #222 text colour', () => {\n    const el = document.querySelector('#book-card h1');\n    expect(getComputedStyle(el).color).to.equal('rgb(34, 34, 34)');\n  });\n});",
+        "describe('Tagline (class selector)', () => {\n  it('.tagline is uppercase', () => {\n    const el = document.querySelector('.tagline');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).textTransform).to.equal('uppercase');\n  });\n\n  it('.tagline has letter-spacing 2px', () => {\n    const el = document.querySelector('.tagline');\n    expect(getComputedStyle(el).letterSpacing).to.equal('2px');\n  });\n\n  it('.tagline is gray', () => {\n    const el = document.querySelector('.tagline');\n    expect(getComputedStyle(el).color).to.equal('rgb(128, 128, 128)');\n  });\n});",
+        "describe('Tag list items (descendant selector)', () => {\n  it('every .tags li is green', () => {\n    const items = document.querySelectorAll('.tags li');\n    expect(items.length).to.be.at.least(1);\n    items.forEach(li => {\n      expect(getComputedStyle(li).color).to.equal('rgb(0, 128, 0)');\n    });\n  });\n});",
+        "describe('Primary button (multiple classes)', () => {\n  it('the button has both btn and primary classes', () => {\n    const btn = document.querySelector('button');\n    expect(btn).to.exist;\n    expect(btn.classList.contains('btn')).to.equal(true);\n    expect(btn.classList.contains('primary')).to.equal(true);\n  });\n\n  it('.btn padding is 10px 20px', () => {\n    const btn = document.querySelector('button');\n    const cs = getComputedStyle(btn);\n    expect(cs.paddingTop).to.equal('10px');\n    expect(cs.paddingBottom).to.equal('10px');\n    expect(cs.paddingLeft).to.equal('20px');\n    expect(cs.paddingRight).to.equal('20px');\n  });\n\n  it('.btn has no border', () => {\n    const btn = document.querySelector('button');\n    expect(getComputedStyle(btn).borderStyle).to.equal('none');\n  });\n\n  it('.primary has a purple background and white text', () => {\n    const btn = document.querySelector('button');\n    const cs = getComputedStyle(btn);\n    expect(cs.backgroundColor).to.equal('rgb(128, 0, 128)');\n    expect(cs.color).to.equal('rgb(255, 255, 255)');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Book card</title>\n    <!-- Link style.css here -->\n  </head>\n  <body>\n    <article id=\"book-card\">\n      <h1>The Pragmatic Programmer</h1>\n      <p class=\"tagline\">A modern classic</p>\n      <p>A timeless guide for working programmers.</p>\n      <ul class=\"tags\">\n        <li>software</li>\n        <li>career</li>\n        <li>craft</li>\n      </ul>\n      <button class=\"btn primary\">Buy now</button>\n    </article>\n  </body>\n</html>",
+        "css": "/* Translate each visual goal from the question into a CSS rule. */"
+      },
+      "hints": "- Work one visual goal at a time and run the tests after each — the test groups mirror the bulleted goals above.\n- The tests check **computed styles**, so whichever selector you pick, as long as it lands on the right element with the right value, it passes.\n- For each goal, ask: *is this element unique on the page (id), a reusable role (class), something nested inside another element (descendant selector), or a combination of behaviours (multiple classes)?*\n- Look at the HTML — the class and id names already hint at what each part is responsible for.\n- `border: 1px solid #ccc;` is shorthand — it sets width, style, and colour in one go.",
+      "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Book card</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <article id=\"book-card\">\n      <h1>The Pragmatic Programmer</h1>\n      <p class=\"tagline\">A modern classic</p>\n      <p>A timeless guide for working programmers.</p>\n      <ul class=\"tags\">\n        <li>software</li>\n        <li>career</li>\n        <li>craft</li>\n      </ul>\n      <button class=\"btn primary\">Buy now</button>\n    </article>\n  </body>\n</html>\n```\n\n```css\nbody {\n  background-color: #fafafa;\n}\n\n#book-card {\n  padding: 24px;\n  border: 1px solid #ccc;\n}\n\n#book-card h1 {\n  text-align: center;\n  color: #222;\n}\n\n.tagline {\n  text-transform: uppercase;\n  letter-spacing: 2px;\n  color: gray;\n}\n\n.tags li {\n  color: green;\n}\n\n.btn {\n  padding: 10px 20px;\n  border: none;\n}\n\n.primary {\n  background-color: purple;\n  color: white;\n}\n```",
+      "walkthrough": "1. **Link the stylesheet.** Inside `<head>`, add `<link rel=\"stylesheet\" href=\"style.css\">`.\n2. **Page background.** Add a `body` rule with `background-color: #fafafa;`.\n3. **Card container.** Add `#book-card { padding: 24px; border: 1px solid #ccc; }`.\n4. **Title inside the card.** Use the descendant selector `#book-card h1` and set `text-align: center;` and `color: #222;`.\n5. **Tagline.** Use `.tagline` and set `text-transform: uppercase; letter-spacing: 2px; color: gray;`.\n6. **Tag list.** Use the descendant selector `.tags li` and set `color: green;`.\n7. **Base button.** `.btn { padding: 10px 20px; border: none; }`.\n8. **Primary variant.** `.primary { background-color: purple; color: white; }`.\n9. Save, refresh, and run the tests — each group should pass in order."
+    },
+    {
+      "id": "7d007ca380a1",
+      "slug": "link-color",
+      "title": "Link Color",
+      "categoryId": "fba9e9e68f2a",
+      "categorySlug": "css-basics-revision",
+      "order": 1,
+      "sourcePath": "questions/004-css-basics-revision/001-link-color.md",
+      "question": "Style the page so that **every `<a>` element** on the page has the text colour `purple`.",
+      "answer": "Add a rule in `style.css` using the element selector `a` and set `color: purple;`.",
+      "testCases": [
+        "describe('Link colour', () => {\n  it('all <a> elements should be purple', () => {\n    const links = document.querySelectorAll('a');\n    expect(links.length).to.be.at.least(1);\n    links.forEach(a => {\n      expect(getComputedStyle(a).color).to.equal('rgb(128, 0, 128)');\n    });\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Purple Links</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <p>Read the <a href=\"https://developer.mozilla.org\">MDN docs</a>.</p>\n    <p>Or visit <a href=\"https://web.dev\">web.dev</a>.</p>\n  </body>\n</html>",
+        "css": "/* Add your styles here */"
+      },
+      "hints": "- Selector for any `<a>` element is just `a`.\n- Colour names work out of the box — `purple` computes to `rgb(128, 0, 128)`.",
+      "solution": "```css\na {\n  color: purple;\n}\n```",
+      "walkthrough": "1. In `style.css`, add a new rule with the selector `a`.\n2. Inside the braces, set `color: purple;`.\n3. Save and refresh — every link on the page should now appear purple."
+    },
+    {
+      "id": "dbceef5535ba",
+      "slug": "page-background-and-heading-size",
+      "title": "Page Background And Heading Size",
+      "categoryId": "fba9e9e68f2a",
+      "categorySlug": "css-basics-revision",
+      "order": 2,
+      "sourcePath": "questions/004-css-basics-revision/002-page-background-and-heading-size.md",
+      "question": "Style the page so that:\n\n1. The page background colour is light gray (`#f0f0f0`).\n2. All `<h2>` elements have a font size of exactly `32px`.",
+      "answer": "Target `body` for the background colour and `h2` for the font size.",
+      "testCases": [
+        "describe('Body background', () => {\n  it('the body background should be #f0f0f0', () => {\n    expect(getComputedStyle(document.body).backgroundColor).to.equal('rgb(240, 240, 240)');\n  });\n});",
+        "describe('Heading font size', () => {\n  it('every <h2> should have font-size: 32px', () => {\n    const h2s = document.querySelectorAll('h2');\n    expect(h2s.length).to.be.at.least(1);\n    h2s.forEach(h2 => {\n      expect(getComputedStyle(h2).fontSize).to.equal('32px');\n    });\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Background + Heading</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <h1>Main title</h1>\n    <h2>First section</h2>\n    <p>Some content.</p>\n    <h2>Second section</h2>\n    <p>More content.</p>\n  </body>\n</html>",
+        "css": "/* Add your styles here */"
+      },
+      "hints": "- Hex value `#f0f0f0` equals `rgb(240, 240, 240)`.\n- Font sizes take length units — here, `px` (pixels).\n- Use `body` as the selector for the page background, not `html`.",
+      "solution": "```css\nbody {\n  background-color: #f0f0f0;\n}\n\nh2 {\n  font-size: 32px;\n}\n```",
+      "walkthrough": "1. In `style.css`, add a `body` rule with `background-color: #f0f0f0;`.\n2. Add an `h2` rule with `font-size: 32px;`.\n3. Save and refresh — the page turns light gray and both section headings grow to 32px."
+    },
+    {
+      "id": "1fd5d89f25c2",
+      "slug": "muted-class",
+      "title": "Muted Class",
+      "categoryId": "fba9e9e68f2a",
+      "categorySlug": "css-basics-revision",
+      "order": 3,
+      "sourcePath": "questions/004-css-basics-revision/003-muted-class.md",
+      "question": "The HTML contains several paragraphs. Only the ones with the class `muted` should:\n\n1. Have a gray text colour (`gray`).\n2. Be displayed in italics.\n\nParagraphs without the `muted` class must remain unstyled.",
+      "answer": "Use a class selector `.muted` in `style.css` with `color: gray;` and `font-style: italic;`.",
+      "testCases": [
+        "describe('Muted paragraphs', () => {\n  it('elements with class \"muted\" should be gray', () => {\n    const els = document.querySelectorAll('.muted');\n    expect(els.length).to.be.at.least(1);\n    els.forEach(el => {\n      expect(getComputedStyle(el).color).to.equal('rgb(128, 128, 128)');\n    });\n  });\n\n  it('elements with class \"muted\" should be italic', () => {\n    const els = document.querySelectorAll('.muted');\n    els.forEach(el => {\n      expect(getComputedStyle(el).fontStyle).to.equal('italic');\n    });\n  });\n});",
+        "describe('Other paragraphs', () => {\n  it('paragraphs without the \"muted\" class should NOT be gray', () => {\n    const plain = Array.from(document.querySelectorAll('p'))\n      .find(p => !p.classList.contains('muted'));\n    expect(plain, 'expected a paragraph without the muted class').to.exist;\n    expect(getComputedStyle(plain).color).to.not.equal('rgb(128, 128, 128)');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Muted class</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <p>This paragraph should look normal.</p>\n    <p class=\"muted\">This paragraph is a side comment.</p>\n    <p>Another normal paragraph.</p>\n    <p class=\"muted\">Another side comment.</p>\n  </body>\n</html>",
+        "css": "/* Add your styles here */"
+      },
+      "hints": "- Class selectors start with a dot: `.muted`.\n- `color: gray;` computes to `rgb(128, 128, 128)`.\n- `font-style: italic;` slants text — don't confuse it with `font-weight`, which is for bold.",
+      "solution": "```css\n.muted {\n  color: gray;\n  font-style: italic;\n}\n```",
+      "walkthrough": "1. In `style.css`, add a rule with the selector `.muted`.\n2. Inside the braces, set `color: gray;` and `font-style: italic;`.\n3. Save and refresh — the two side-comment paragraphs turn gray and italic; the others stay untouched."
+    },
+    {
+      "id": "bc672467bd6e",
+      "slug": "right-aligned-heading",
+      "title": "Right Aligned Heading",
+      "categoryId": "fba9e9e68f2a",
+      "categorySlug": "css-basics-revision",
+      "order": 4,
+      "sourcePath": "questions/004-css-basics-revision/004-right-aligned-heading.md",
+      "question": "The page has an `<h2>` with the class `title-right`. Align **only** that heading to the right using CSS. All other text on the page must keep its default left alignment.",
+      "answer": "Use a class selector `.title-right` with `text-align: right;`.",
+      "testCases": [
+        "describe('Right-aligned heading', () => {\n  it('the .title-right element has text-align: right', () => {\n    const el = document.querySelector('.title-right');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).textAlign).to.equal('right');\n  });\n});",
+        "describe('Other elements untouched', () => {\n  it('paragraphs are NOT right-aligned', () => {\n    const p = document.querySelector('p');\n    expect(p).to.exist;\n    expect(getComputedStyle(p).textAlign).to.not.equal('right');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Right Aligned</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <h2 class=\"title-right\">Announcements</h2>\n    <p>We will be closed on Monday.</p>\n    <p>New items arrive on Wednesday.</p>\n  </body>\n</html>",
+        "css": "/* Add your styles here */"
+      },
+      "hints": "- `text-align` controls horizontal alignment inside a block element.\n- Valid values include `left`, `right`, `center`, and `justify`.\n- Target the class, not the element, so the paragraphs aren't affected.",
+      "solution": "```css\n.title-right {\n  text-align: right;\n}\n```",
+      "walkthrough": "1. In `style.css`, add a rule for `.title-right`.\n2. Set `text-align: right;`.\n3. Save and refresh — the heading snaps to the right edge, paragraphs stay on the left."
+    },
+    {
+      "id": "2bc21ab53519",
+      "slug": "sidebar-id",
+      "title": "Sidebar Id",
+      "categoryId": "fba9e9e68f2a",
+      "categorySlug": "css-basics-revision",
+      "order": 5,
+      "sourcePath": "questions/004-css-basics-revision/005-sidebar-id.md",
+      "question": "The HTML contains an `<aside>` with `id=\"sidebar\"`. Using an **id selector** in `style.css`, style only that element so that:\n\n1. Its text colour is `white`.\n2. Its background colour is `#333` (which computes to `rgb(51, 51, 51)`).\n\nThe `<main>` content must remain unchanged.",
+      "answer": "Use `#sidebar { … }` — an id selector targets the element whose `id` attribute matches.",
+      "testCases": [
+        "describe('Sidebar styling', () => {\n  it('#sidebar has white text', () => {\n    const el = document.querySelector('#sidebar');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).color).to.equal('rgb(255, 255, 255)');\n  });\n\n  it('#sidebar has a #333 background', () => {\n    const el = document.querySelector('#sidebar');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).backgroundColor).to.equal('rgb(51, 51, 51)');\n  });\n});",
+        "describe('Main untouched', () => {\n  it('<main> should not have the sidebar background', () => {\n    const el = document.querySelector('main');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).backgroundColor).to.not.equal('rgb(51, 51, 51)');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Sidebar</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <aside id=\"sidebar\">\n      <p>Links and filters go here.</p>\n    </aside>\n    <main>\n      <h1>Main content</h1>\n      <p>Lorem ipsum dolor sit amet.</p>\n    </main>\n  </body>\n</html>",
+        "css": "/* Style the sidebar by its id */"
+      },
+      "hints": "- Id selectors start with `#`. The id value is the exact string in the `id` attribute.\n- `#333` is shorthand for `#333333` and computes to `rgb(51, 51, 51)`.",
+      "solution": "```css\n#sidebar {\n  color: white;\n  background-color: #333;\n}\n```",
+      "walkthrough": "1. In `style.css`, add a new rule starting with `#sidebar`.\n2. Set `color: white;` and `background-color: #333;`.\n3. Save and refresh — the sidebar turns dark gray with white text; `<main>` stays untouched."
+    },
+    {
+      "id": "26558980927d",
+      "slug": "button-danger-element-class",
+      "title": "Button Danger Element Class",
+      "categoryId": "fba9e9e68f2a",
+      "categorySlug": "css-basics-revision",
+      "order": 6,
+      "sourcePath": "questions/004-css-basics-revision/006-button-danger-element-class.md",
+      "question": "The HTML contains two elements with `class=\"danger\"` — one is a `<button>` and one is a `<span>`. Style **only** the button so that:\n\n1. Its background colour is `red`.\n2. Its text colour is `white`.\n\nThe `<span class=\"danger\">` must remain unstyled.\n\nYou must use a **combined element + class selector** (e.g. `tag.class`).",
+      "answer": "Use `button.danger { … }` — matches only `<button>` elements that also have the `danger` class.",
+      "testCases": [
+        "describe('Dangerous button', () => {\n  it('button.danger has a red background', () => {\n    const el = document.querySelector('button.danger');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).backgroundColor).to.equal('rgb(255, 0, 0)');\n  });\n\n  it('button.danger has white text', () => {\n    const el = document.querySelector('button.danger');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).color).to.equal('rgb(255, 255, 255)');\n  });\n});",
+        "describe('Span untouched', () => {\n  it('span.danger should NOT have a red background', () => {\n    const el = document.querySelector('span.danger');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).backgroundColor).to.not.equal('rgb(255, 0, 0)');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Danger</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <p>Status: <span class=\"danger\">critical</span></p>\n    <button class=\"danger\">Delete account</button>\n  </body>\n</html>",
+        "css": "/* Style only <button> elements that have the danger class */"
+      },
+      "hints": "- `.danger` alone matches **both** the button and the span — too broad.\n- `button.danger` (no space) means \"an element that is a `<button>` AND has the class `danger`\".",
+      "solution": "```css\nbutton.danger {\n  background-color: red;\n  color: white;\n}\n```",
+      "walkthrough": "1. In `style.css`, add a new rule with the selector `button.danger`.\n2. Set `background-color: red;` and `color: white;`.\n3. Save and refresh — the button turns red with white text; the inline `<span>` stays untouched."
+    },
+    {
+      "id": "800d4ecda2b7",
+      "slug": "card-descendant",
+      "title": "Card Descendant",
+      "categoryId": "fba9e9e68f2a",
+      "categorySlug": "css-basics-revision",
+      "order": 7,
+      "sourcePath": "questions/004-css-basics-revision/007-card-descendant.md",
+      "question": "The HTML contains two `<p>` elements: one inside a `<div class=\"card\">` and one outside.\n\nUsing a **descendant selector**, style **only the paragraphs inside `.card`** so that their text colour is `#555` (`rgb(85, 85, 85)`). The paragraph outside must keep its default colour.",
+      "answer": "Use `.card p { … }` — a descendant selector matches any `<p>` that is inside an element with class `card`.",
+      "testCases": [
+        "describe('Paragraphs inside .card', () => {\n  it('each <p> inside .card is #555', () => {\n    const els = document.querySelectorAll('.card p');\n    expect(els.length).to.be.at.least(1);\n    els.forEach(el => {\n      expect(getComputedStyle(el).color).to.equal('rgb(85, 85, 85)');\n    });\n  });\n});",
+        "describe('Paragraphs outside .card', () => {\n  it('a <p> outside .card is NOT #555', () => {\n    const outside = Array.from(document.querySelectorAll('p'))\n      .find(p => !p.closest('.card'));\n    expect(outside, 'expected a paragraph outside .card').to.exist;\n    expect(getComputedStyle(outside).color).to.not.equal('rgb(85, 85, 85)');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Card</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <p>This paragraph is outside the card.</p>\n\n    <div class=\"card\">\n      <h2>Featured</h2>\n      <p>This paragraph is inside the card and should look muted.</p>\n    </div>\n  </body>\n</html>",
+        "css": "/* Style only paragraphs inside a .card */"
+      },
+      "hints": "- A descendant selector is `ancestor descendant` — two selectors separated by **whitespace**.\n- `.card p` matches any `<p>` anywhere inside an element with class `card`, no matter how deeply nested.\n- `p` alone (no ancestor) would colour **every** paragraph.",
+      "solution": "```css\n.card p {\n  color: #555;\n}\n```",
+      "walkthrough": "1. In `style.css`, add a rule with the selector `.card p`.\n2. Set `color: #555;`.\n3. Save and refresh — only the paragraph inside the card turns muted; the outside paragraph is unaffected."
+    },
+    {
+      "id": "0095e8ae0163",
+      "slug": "card-multiple-classes",
+      "title": "Card Multiple Classes",
+      "categoryId": "fba9e9e68f2a",
+      "categorySlug": "css-basics-revision",
+      "order": 8,
+      "sourcePath": "questions/004-css-basics-revision/008-card-multiple-classes.md",
+      "question": "An element can have multiple classes at the same time — each class contributes its own styles.\n\nThe HTML contains a `<div>` with the class `card`. Your job:\n\n1. **In the HTML**, add a second class `featured` to the div (so it ends up with `class=\"card featured\"`).\n2. **In `style.css`**, write two rules:\n   - `.card` — `padding: 16px` and `border: 1px solid #ccc`\n   - `.featured` — `background-color: yellow` and `font-weight: bold`\n\nWhen combined, the div should appear with padding, a light border, a yellow background, and bold text.",
+      "answer": "Add `featured` to the div's class list in the HTML, then define the two class rules in CSS.",
+      "testCases": [
+        "describe('Div classes', () => {\n  it('the div has both classes \"card\" and \"featured\"', () => {\n    const div = document.querySelector('div');\n    expect(div).to.exist;\n    expect(div.classList.contains('card'), 'missing card class').to.equal(true);\n    expect(div.classList.contains('featured'), 'missing featured class').to.equal(true);\n  });\n});",
+        "describe('.card styles', () => {\n  it('padding is 16px on all sides', () => {\n    const div = document.querySelector('div');\n    const cs = getComputedStyle(div);\n    expect(cs.paddingTop).to.equal('16px');\n    expect(cs.paddingBottom).to.equal('16px');\n    expect(cs.paddingLeft).to.equal('16px');\n    expect(cs.paddingRight).to.equal('16px');\n  });\n\n  it('border is 1px solid #ccc', () => {\n    const div = document.querySelector('div');\n    const cs = getComputedStyle(div);\n    expect(cs.borderTopWidth).to.equal('1px');\n    expect(cs.borderTopStyle).to.equal('solid');\n    expect(cs.borderTopColor).to.equal('rgb(204, 204, 204)');\n  });\n});",
+        "describe('.featured styles', () => {\n  it('background is yellow', () => {\n    const div = document.querySelector('div');\n    expect(getComputedStyle(div).backgroundColor).to.equal('rgb(255, 255, 0)');\n  });\n\n  it('text is bold', () => {\n    const div = document.querySelector('div');\n    const weight = getComputedStyle(div).fontWeight;\n    expect(['bold', '700']).to.include(weight);\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Multiple Classes</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"card\">\n      <h2>Premium tier</h2>\n      <p>Unlock advanced features.</p>\n    </div>\n  </body>\n</html>",
+        "css": "/* Write one rule per class */"
+      },
+      "hints": "- Multiple classes go into the same `class` attribute, separated by spaces: `class=\"card featured\"`.\n- Don't create a single merged class like `card-featured` — the exercise is about combining class-based styles.\n- Each class is its own selector in CSS.\n- `border: 1px solid #ccc` is shorthand for three border properties.",
+      "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Multiple Classes</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"card featured\">\n      <h2>Premium tier</h2>\n      <p>Unlock advanced features.</p>\n    </div>\n  </body>\n</html>\n```\n\n```css\n.card {\n  padding: 16px;\n  border: 1px solid #ccc;\n}\n\n.featured {\n  background-color: yellow;\n  font-weight: bold;\n}\n```",
+      "walkthrough": "1. **HTML.** Change the div's class attribute to `class=\"card featured\"`.\n2. **CSS.** Write a `.card` rule with `padding: 16px;` and `border: 1px solid #ccc;`.\n3. Write a `.featured` rule with `background-color: yellow;` and `font-weight: bold;`.\n4. Save and refresh — the card now has padding, a light border, a yellow background, and bold text."
+    },
+    {
+      "id": "56b7d63886fa",
+      "slug": "important-override-links",
+      "title": "Important Override Links",
+      "categoryId": "fba9e9e68f2a",
+      "categorySlug": "css-basics-revision",
+      "order": 9,
+      "sourcePath": "questions/004-css-basics-revision/009-important-override-links.md",
+      "question": "The CSS already contains a high-specificity rule that paints every link inside `#nav` red:\n\n```css\n#nav a {\n  color: red;\n}\n```\n\nYou have a link with `class=\"external\"` that should appear **blue** instead. Because `#nav a` (specificity 0,1,0,1) beats `.external` (0,0,1,0), a plain class rule would lose.\n\nUse the `!important` keyword to force your class rule to win.\n\n**Rules:**\n\n1. Do **not** modify the existing `#nav a` rule.\n2. Add a `.external` rule that sets `color: blue !important;`.",
+      "answer": "Add `.external { color: blue !important; }` to the CSS.",
+      "testCases": [
+        "describe('Override with !important', () => {\n  it('the external link should be blue, not red', () => {\n    const el = document.querySelector('a.external');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).color).to.equal('rgb(0, 0, 255)');\n  });\n});",
+        "describe('!important is present', () => {\n  it('a rule uses !important on color', () => {\n    const sheets = Array.from(document.styleSheets);\n    const allText = sheets\n      .flatMap(s => {\n        try {\n          return Array.from(s.cssRules).map(r => r.cssText);\n        } catch {\n          return [];\n        }\n      })\n      .join('\\n');\n    expect(allText).to.match(/color\\s*:\\s*blue\\s*!important/i);\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>!important</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <nav id=\"nav\">\n      <a href=\"/\">Home</a>\n      <a href=\"https://developer.mozilla.org\" class=\"external\">MDN (external)</a>\n    </nav>\n  </body>\n</html>",
+        "css": "#nav a {\n  color: red;\n}\n\n/* Add a .external rule that wins using !important */"
+      },
+      "hints": "- Cascade order (highest wins): **`!important` declaration → specificity → source order**.\n- The `!important` flag goes after the value, before the semicolon: `color: blue !important;`.\n- Use `!important` sparingly in real projects — prefer raising specificity (next question).",
+      "solution": "```css\n#nav a {\n  color: red;\n}\n\n.external {\n  color: blue !important;\n}\n```",
+      "walkthrough": "1. Leave the `#nav a` rule in place.\n2. Below it, add `.external { color: blue !important; }`.\n3. Save and refresh — the external link turns blue even though the id-based rule is more specific."
+    },
+    {
+      "id": "2fbaaacdb17f",
+      "slug": "higher-specificity-nav",
+      "title": "Higher Specificity Nav",
+      "categoryId": "fba9e9e68f2a",
+      "categorySlug": "css-basics-revision",
+      "order": 10,
+      "sourcePath": "questions/004-css-basics-revision/010-higher-specificity-nav.md",
+      "question": "This question is the revision pair for the earlier specificity exercise. Again — no `!important` allowed. You win purely by making selectors more specific.\n\nThe starting CSS already contains two broad rules:\n\n```css\n.nav a {\n  color: black;\n}\n\n.card h2 {\n  color: black;\n}\n```\n\nThe HTML looks like this:\n\n```html\n<nav class=\"nav\">\n  <a href=\"/\" class=\"active\">Home</a>\n  <a href=\"/about\">About</a>\n</nav>\n\n<div class=\"card\">\n  <h2 id=\"title\">Welcome</h2>\n  <h2>Another section</h2>\n</div>\n```\n\n**Your task** — add **two** new rules (keep the existing two unchanged) so that:\n\n1. The link inside `.nav` that has class `active` becomes **red**.\n2. The `<h2>` inside `.card` that has `id=\"title\"` becomes **blue**.\n\nThe other `<a>` and the other `<h2>` must stay black.\n\nUse two different specificity-raising patterns: **add a class to the descendant** for the link, and **add an id to the descendant** for the heading. **Do not use `!important`.**",
+      "answer": "- `.nav a.active { color: red; }` — class added to the descendant raises specificity above `.nav a`.\n- `.card h2#title { color: blue; }` — id added to the descendant raises specificity above `.card h2`.",
+      "testCases": [
+        "describe('Active nav link', () => {\n  it('the active link is red', () => {\n    const el = document.querySelector('.nav a.active');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).color).to.equal('rgb(255, 0, 0)');\n  });\n\n  it('the other nav link is still black', () => {\n    const other = Array.from(document.querySelectorAll('.nav a'))\n      .find(a => !a.classList.contains('active'));\n    expect(other).to.exist;\n    expect(getComputedStyle(other).color).to.equal('rgb(0, 0, 0)');\n  });\n});",
+        "describe('Title heading', () => {\n  it('the h2#title is blue', () => {\n    const el = document.querySelector('.card h2#title');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).color).to.equal('rgb(0, 0, 255)');\n  });\n\n  it('the other h2 in the card is still black', () => {\n    const other = Array.from(document.querySelectorAll('.card h2'))\n      .find(h => h.id !== 'title');\n    expect(other).to.exist;\n    expect(getComputedStyle(other).color).to.equal('rgb(0, 0, 0)');\n  });\n});",
+        "describe('No !important used', () => {\n  it('no rule uses !important', () => {\n    const sheets = Array.from(document.styleSheets);\n    const allText = sheets\n      .flatMap(s => {\n        try {\n          return Array.from(s.cssRules).map(r => r.cssText);\n        } catch {\n          return [];\n        }\n      })\n      .join('\\n');\n    expect(allText).to.not.match(/!important/i);\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Specificity Revision</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <nav class=\"nav\">\n      <a href=\"/\" class=\"active\">Home</a>\n      <a href=\"/about\">About</a>\n    </nav>\n\n    <div class=\"card\">\n      <h2 id=\"title\">Welcome</h2>\n      <h2>Another section</h2>\n    </div>\n  </body>\n</html>",
+        "css": ".nav a {\n  color: black;\n}\n\n.card h2 {\n  color: black;\n}\n\n/* Add two more rules below — each MORE SPECIFIC than the matching base rule above.\n   Don't use !important. */"
+      },
+      "hints": "- Specificity roughly: (inline, ids, classes + attributes + pseudo-classes, elements).\n  - `.nav a` → (0, 0, 1, 1). `.nav a.active` → (0, 0, 2, 1) — class on the descendant wins.\n  - `.card h2` → (0, 0, 1, 1). `.card h2#title` → (0, 1, 1, 1) — id on the descendant wins (and by a lot).\n- The two solutions use *different* specificity-raising patterns: adding a class vs adding an id.",
+      "solution": "```css\n.nav a {\n  color: black;\n}\n\n.card h2 {\n  color: black;\n}\n\n.nav a.active {\n  color: red;\n}\n\n.card h2#title {\n  color: blue;\n}\n```",
+      "walkthrough": "1. Leave the two existing rules in place.\n2. Add `.nav a.active { color: red; }` — a class added to the descendant bumps specificity enough to beat `.nav a`.\n3. Add `.card h2#title { color: blue; }` — an id added to the descendant beats `.card h2` decisively.\n4. Save and refresh — the active link turns red, the title heading turns blue, nothing else changes."
+    },
+    {
+      "id": "8dd44e5adcc1",
+      "slug": "external-stylesheet-link",
+      "title": "External Stylesheet Link",
+      "categoryId": "fba9e9e68f2a",
+      "categorySlug": "css-basics-revision",
+      "order": 11,
+      "sourcePath": "questions/004-css-basics-revision/011-external-stylesheet-link.md",
+      "question": "The HTML is missing its connection to `style.css`. Inside the existing `<head>`, add a `<link>` tag that loads `style.css`:\n\n```html\n<link rel=\"stylesheet\" href=\"style.css\">\n```\n\nThe starting `style.css` already makes every `<p>` green. The test simply verifies that the `<link>` tag is present and correctly formed.",
+      "answer": "Add `<link rel=\"stylesheet\" href=\"style.css\">` inside `<head>`.",
+      "testCases": [
+        "describe('Stylesheet link', () => {\n  it('has a <link rel=\"stylesheet\" href=\"style.css\"> inside <head>', () => {\n    const link = document.querySelector('head link[rel=\"stylesheet\"][href=\"style.css\"]');\n    expect(link, 'expected <link rel=\"stylesheet\" href=\"style.css\"> in <head>').to.exist;\n  });\n});",
+        "describe('Styles applied', () => {\n  it('paragraphs are green (from style.css)', () => {\n    const p = document.querySelector('p');\n    expect(p).to.exist;\n    expect(getComputedStyle(p).color).to.equal('rgb(0, 128, 0)');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>External Stylesheet</title>\n    <!-- Add the <link> to style.css here -->\n  </head>\n  <body>\n    <h1>Greetings</h1>\n    <p>The paragraphs below should be green once the stylesheet is linked.</p>\n    <p>This one should be green too.</p>\n  </body>\n</html>",
+        "css": "p {\n  color: green;\n}"
+      },
+      "hints": "- The `<link>` element is self-closing — no closing tag.\n- Three parts to get right: `rel=\"stylesheet\"`, `href=\"style.css\"`, and it must live inside `<head>`.\n- `<link>` has no inner content — everything is in attributes.",
+      "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>External Stylesheet</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <h1>Greetings</h1>\n    <p>The paragraphs below should be green once the stylesheet is linked.</p>\n    <p>This one should be green too.</p>\n  </body>\n</html>\n```",
+      "walkthrough": "1. Inside `<head>`, after the `<title>`, add a new line.\n2. On that line, write `<link rel=\"stylesheet\" href=\"style.css\">`.\n3. Save and refresh — the paragraphs should be green, and the link test passes."
+    },
+    {
+      "id": "d22a23bc3aa1",
+      "slug": "text-variants-ii",
+      "title": "Text Variants Ii",
+      "categoryId": "fba9e9e68f2a",
+      "categorySlug": "css-basics-revision",
+      "order": 12,
+      "sourcePath": "questions/004-css-basics-revision/012-text-variants-ii.md",
+      "question": "This is the revision pair for the earlier text-variants exercise. It covers **four different** text-styling properties.\n\nFurther reading:\n\n- [MDN: `font-weight`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight) · [W3Schools](https://www.w3schools.com/cssref/pr_font_weight.php)\n- [MDN: `line-height`](https://developer.mozilla.org/en-US/docs/Web/CSS/line-height) · [W3Schools](https://www.w3schools.com/cssref/pr_dim_line-height.php)\n- [MDN: `letter-spacing`](https://developer.mozilla.org/en-US/docs/Web/CSS/letter-spacing) · [W3Schools](https://www.w3schools.com/cssref/pr_text_letter-spacing.php)\n- [MDN: `text-decoration`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration) · [W3Schools](https://www.w3schools.com/cssref/pr_text_text-decoration.php)\n\nThe HTML contains four paragraphs, each with a different class. In `style.css`, write four class rules so that:\n\n1. `.bold` — `font-weight: bold`.\n2. `.tall` — `line-height: 2`.\n3. `.spaced` — `letter-spacing: 4px`.\n4. `.strike` — `text-decoration: line-through`.",
+      "answer": "Write one class rule per variant, each setting the matching property to the listed value.",
+      "testCases": [
+        "describe('Bold text', () => {\n  it('.bold has font-weight bold', () => {\n    const el = document.querySelector('.bold');\n    expect(el).to.exist;\n    const weight = getComputedStyle(el).fontWeight;\n    expect(['bold', '700']).to.include(weight);\n  });\n});",
+        "describe('Tall line-height', () => {\n  it('.tall has line-height 2 (doubled)', () => {\n    const el = document.querySelector('.tall');\n    expect(el).to.exist;\n    const cs = getComputedStyle(el);\n    const ratio = parseFloat(cs.lineHeight) / parseFloat(cs.fontSize);\n    // Accept small floating-point error.\n    expect(Math.abs(ratio - 2)).to.be.lessThan(0.05);\n  });\n});",
+        "describe('Letter spacing', () => {\n  it('.spaced has letter-spacing 4px', () => {\n    const el = document.querySelector('.spaced');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).letterSpacing).to.equal('4px');\n  });\n});",
+        "describe('Strike-through text', () => {\n  it('.strike has text-decoration line-through', () => {\n    const el = document.querySelector('.strike');\n    expect(el).to.exist;\n    const deco = getComputedStyle(el).textDecorationLine || getComputedStyle(el).textDecoration;\n    expect(deco).to.match(/line-through/);\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Text Variants II</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <p class=\"bold\">This paragraph should be bold.</p>\n    <p class=\"tall\">This paragraph should have double line-height so the lines feel airy. Add more text here to actually see the effect across multiple wrapped lines.</p>\n    <p class=\"spaced\">This paragraph should have wider letter spacing.</p>\n    <p class=\"strike\">This paragraph should have a line through it.</p>\n  </body>\n</html>",
+        "css": "/* Add one rule per class: .bold, .tall, .spaced, .strike */"
+      },
+      "hints": "- `font-weight` controls boldness. Use `bold` (or a numeric value like `700`).\n- `line-height` without units is a multiplier of the element's font size — `2` means \"twice the font size\".\n- `letter-spacing` adds space between characters. Use a length like `4px`.\n- `text-decoration` shorthand accepts `underline`, `line-through`, `overline`, `none`, etc.",
+      "solution": "```css\n.bold {\n  font-weight: bold;\n}\n\n.tall {\n  line-height: 2;\n}\n\n.spaced {\n  letter-spacing: 4px;\n}\n\n.strike {\n  text-decoration: line-through;\n}\n```",
+      "walkthrough": "1. Open `style.css`.\n2. Add `.bold { font-weight: bold; }`.\n3. Add `.tall { line-height: 2; }`.\n4. Add `.spaced { letter-spacing: 4px; }`.\n5. Add `.strike { text-decoration: line-through; }`.\n6. Save and refresh — each paragraph should take on its corresponding visual change."
+    },
+    {
+      "id": "c80f0076664d",
+      "slug": "capstone-event-invite",
+      "title": "Capstone Event Invite",
+      "categoryId": "fba9e9e68f2a",
+      "categorySlug": "css-basics-revision",
+      "order": 13,
+      "sourcePath": "questions/004-css-basics-revision/013-capstone-event-invite.md",
+      "question": "Put everything from this category together to style an **event invitation poster**. The design is intentionally very different from the book-card capstone: dark background, amber highlights, dashed border, left-aligned uppercase heading, and an outlined (not filled) button.\n\nThe HTML markup is provided. Your job is to read each visual goal, pick a selector that fits, and write the CSS.\n\nYour goal is to recreate this design:\n\n![Event poster target design](/images/proposed-solution-2.png)\n\n**Starter CSS (do not modify):**\n\n```css\n#event-card a {\n  color: black;\n}\n```\n\nThis rule will fight you when you style the register button — you'll need to beat it.\n\n## Visual Goals\n\n1. **Connect your stylesheet.** The HTML isn't loading `style.css` yet — fix that first.\n2. **Page.** The page sits on a very dark navy background — think \"stage lights off\".\n3. **Card.** The invitation is a dark slate panel with an amber **dashed** border (not a solid one) and generous padding so it reads like a printed poster.\n4. **Heading.** The event title is a poster-style wordmark: **left-aligned** (not centred), ALL CAPS, widely spaced letters, rendered in amber.\n5. **Subtitle.** Italicised, white, with airy line-height so it breathes underneath the heading.\n6. **Speaker list.** Every speaker item appears in white, in ALL CAPS, with extra vertical space between lines.\n7. **Register button.** The register element is an `<a>` wearing two classes:\n   - Its **base** styling gives it chunky padding, removes the default link underline, and gives it a thin **white outline border** so it looks like an outlined button (no background fill).\n   - Its **call-to-action** variant makes the text bold.\n   - Your CSS must respect this split — one rule for the outlined base, a separate rule for the CTA weight.\n8. **Winning the colour fight.** The starter rule paints every link inside the card black. You need the register button's text to be **white** regardless — choose the minimum tool needed to override that starter rule.\n\n## Design Tokens\n\nUse these exact values so the tests match your colours and sizes:\n\n- Page background: `#0f172a`\n- Card padding: `40px`\n- Card border: `4px dashed #fbbf24`\n- Card background: `#1e293b`\n- Heading text-align: `left`\n- Heading text-transform: `uppercase`\n- Heading letter-spacing: `4px`\n- Heading colour: `#fbbf24`\n- Subtitle font-style: `italic`\n- Subtitle colour: `white`\n- Subtitle line-height: `1.8`\n- Speaker list colour: `white`\n- Speaker list text-transform: `uppercase`\n- Speaker list line-height: `2`\n- Register base padding: `14px 28px`\n- Register base underline: removed\n- Register base border: `2px solid white`\n- Register CTA font-weight: `bold`\n- Register CTA text colour: `white` (must win against the starter rule)\n\nYou pick the selectors. Any selector that correctly targets the right element and applies the tokenised values will pass.",
+      "answer": "Link the stylesheet, then translate each visual goal into a CSS rule. The register button's colour override needs `!important` because a plain class selector can't beat `#event-card a`.",
+      "testCases": [
+        "describe('External stylesheet', () => {\n  it('<head> links style.css', () => {\n    const link = document.querySelector('head link[rel=\"stylesheet\"][href=\"style.css\"]');\n    expect(link, 'missing <link rel=\"stylesheet\" href=\"style.css\">').to.exist;\n  });\n});",
+        "describe('Page background', () => {\n  it('body background is #0f172a', () => {\n    expect(getComputedStyle(document.body).backgroundColor).to.equal('rgb(15, 23, 42)');\n  });\n});",
+        "describe('Card container', () => {\n  it('#event-card has 40px padding', () => {\n    const el = document.querySelector('#event-card');\n    expect(el).to.exist;\n    const cs = getComputedStyle(el);\n    expect(cs.paddingTop).to.equal('40px');\n    expect(cs.paddingBottom).to.equal('40px');\n    expect(cs.paddingLeft).to.equal('40px');\n    expect(cs.paddingRight).to.equal('40px');\n  });\n\n  it('#event-card has a 4px dashed amber border', () => {\n    const el = document.querySelector('#event-card');\n    const cs = getComputedStyle(el);\n    expect(cs.borderTopWidth).to.equal('4px');\n    expect(cs.borderTopStyle).to.equal('dashed');\n    expect(cs.borderTopColor).to.equal('rgb(251, 191, 36)');\n  });\n\n  it('#event-card has a #1e293b background', () => {\n    const el = document.querySelector('#event-card');\n    expect(getComputedStyle(el).backgroundColor).to.equal('rgb(30, 41, 59)');\n  });\n});",
+        "describe('Heading', () => {\n  it('#event-card h1 is LEFT-aligned', () => {\n    const el = document.querySelector('#event-card h1');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).textAlign).to.equal('left');\n  });\n\n  it('#event-card h1 is uppercase', () => {\n    const el = document.querySelector('#event-card h1');\n    expect(getComputedStyle(el).textTransform).to.equal('uppercase');\n  });\n\n  it('#event-card h1 has letter-spacing 4px', () => {\n    const el = document.querySelector('#event-card h1');\n    expect(getComputedStyle(el).letterSpacing).to.equal('4px');\n  });\n\n  it('#event-card h1 is amber (#fbbf24)', () => {\n    const el = document.querySelector('#event-card h1');\n    expect(getComputedStyle(el).color).to.equal('rgb(251, 191, 36)');\n  });\n});",
+        "describe('Subtitle', () => {\n  it('.subtitle is italic', () => {\n    const el = document.querySelector('.subtitle');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).fontStyle).to.equal('italic');\n  });\n\n  it('.subtitle is white', () => {\n    const el = document.querySelector('.subtitle');\n    expect(getComputedStyle(el).color).to.equal('rgb(255, 255, 255)');\n  });\n\n  it('.subtitle has line-height ~1.8', () => {\n    const el = document.querySelector('.subtitle');\n    const cs = getComputedStyle(el);\n    const ratio = parseFloat(cs.lineHeight) / parseFloat(cs.fontSize);\n    expect(Math.abs(ratio - 1.8)).to.be.lessThan(0.05);\n  });\n});",
+        "describe('Speaker list', () => {\n  it('every .speakers li is white', () => {\n    const items = document.querySelectorAll('.speakers li');\n    expect(items.length).to.be.at.least(1);\n    items.forEach(li => {\n      expect(getComputedStyle(li).color).to.equal('rgb(255, 255, 255)');\n    });\n  });\n\n  it('every .speakers li is uppercase', () => {\n    const items = document.querySelectorAll('.speakers li');\n    items.forEach(li => {\n      expect(getComputedStyle(li).textTransform).to.equal('uppercase');\n    });\n  });\n\n  it('every .speakers li has line-height ~2', () => {\n    const items = document.querySelectorAll('.speakers li');\n    items.forEach(li => {\n      const cs = getComputedStyle(li);\n      const ratio = parseFloat(cs.lineHeight) / parseFloat(cs.fontSize);\n      expect(Math.abs(ratio - 2)).to.be.lessThan(0.05);\n    });\n  });\n});",
+        "describe('Register button (multiple classes)', () => {\n  it('the register link has both btn and cta classes', () => {\n    const a = document.querySelector('a.btn.cta');\n    expect(a, 'expected <a class=\"btn cta\">').to.exist;\n  });\n\n  it('.btn padding is 14px 28px', () => {\n    const el = document.querySelector('a.btn.cta');\n    const cs = getComputedStyle(el);\n    expect(cs.paddingTop).to.equal('14px');\n    expect(cs.paddingBottom).to.equal('14px');\n    expect(cs.paddingLeft).to.equal('28px');\n    expect(cs.paddingRight).to.equal('28px');\n  });\n\n  it('.btn removes the underline', () => {\n    const el = document.querySelector('a.btn.cta');\n    const deco = getComputedStyle(el).textDecorationLine || getComputedStyle(el).textDecoration;\n    expect(deco).to.match(/none/);\n  });\n\n  it('.btn has a 2px solid white border', () => {\n    const el = document.querySelector('a.btn.cta');\n    const cs = getComputedStyle(el);\n    expect(cs.borderTopWidth).to.equal('2px');\n    expect(cs.borderTopStyle).to.equal('solid');\n    expect(cs.borderTopColor).to.equal('rgb(255, 255, 255)');\n  });\n\n  it('.cta makes the text bold', () => {\n    const el = document.querySelector('a.btn.cta');\n    const weight = getComputedStyle(el).fontWeight;\n    expect(['bold', '700']).to.include(weight);\n  });\n});",
+        "describe('Colour override with !important', () => {\n  it('the register link ends up white, even though #event-card a is black', () => {\n    const el = document.querySelector('a.btn.cta');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).color).to.equal('rgb(255, 255, 255)');\n  });\n\n  it('a rule uses !important on color', () => {\n    const sheets = Array.from(document.styleSheets);\n    const allText = sheets\n      .flatMap(s => {\n        try {\n          return Array.from(s.cssRules).map(r => r.cssText);\n        } catch {\n          return [];\n        }\n      })\n      .join('\\n');\n    expect(allText).to.match(/color\\s*:\\s*white\\s*!important/i);\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Event invite</title>\n    <!-- Link style.css here -->\n  </head>\n  <body>\n    <section id=\"event-card\">\n      <h1>Summer Conference</h1>\n      <p class=\"subtitle\">Three days of talks, two nights of music, one great city.</p>\n      <ul class=\"speakers\">\n        <li>Ada Lovelace</li>\n        <li>Grace Hopper</li>\n        <li>Margaret Hamilton</li>\n      </ul>\n      <a href=\"/register\" class=\"btn cta\">Register now</a>\n    </section>\n  </body>\n</html>",
+        "css": "/* Starter rule — do not modify */\n#event-card a {\n  color: black;\n}\n\n/* Translate each visual goal from the question into a CSS rule below. */"
+      },
+      "hints": "- Work one visual goal at a time and run the tests after each — the test groups mirror the bulleted goals above.\n- The tests check **computed styles**, so whichever selector you pick, as long as it lands on the right element with the right value, it passes.\n- For each goal, ask: *is this element unique on the page (id), a reusable role (class), something nested inside another element (descendant selector), or a combination of behaviours (multiple classes)?*\n- `border: 4px dashed #fbbf24` is shorthand — it sets width, style, and colour together. `dashed` is critical; `solid` won't pass the style test.\n- Line-height without a unit (e.g. `1.8`, `2`) is a multiplier of the element's own font size — that's what the tests measure.\n- The starter `#event-card a` has specificity (0, 1, 0, 1). A plain class selector is only (0, 0, 1, 0) and will lose. Think about what single flag can force your colour to win without rewriting the selector.",
+      "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Event invite</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <section id=\"event-card\">\n      <h1>Summer Conference</h1>\n      <p class=\"subtitle\">Three days of talks, two nights of music, one great city.</p>\n      <ul class=\"speakers\">\n        <li>Ada Lovelace</li>\n        <li>Grace Hopper</li>\n        <li>Margaret Hamilton</li>\n      </ul>\n      <a href=\"/register\" class=\"btn cta\">Register now</a>\n    </section>\n  </body>\n</html>\n```\n\n```css\n#event-card a {\n  color: black;\n}\n\nbody {\n  background-color: #0f172a;\n}\n\n#event-card {\n  padding: 40px;\n  border: 4px dashed #fbbf24;\n  background-color: #1e293b;\n}\n\n#event-card h1 {\n  text-align: left;\n  text-transform: uppercase;\n  letter-spacing: 4px;\n  color: #fbbf24;\n}\n\n.subtitle {\n  font-style: italic;\n  color: white;\n  line-height: 1.8;\n}\n\n.speakers li {\n  color: white;\n  text-transform: uppercase;\n  line-height: 2;\n}\n\n.btn {\n  padding: 14px 28px;\n  text-decoration: none;\n  border: 2px solid white;\n}\n\n.cta {\n  font-weight: bold;\n  color: white !important;\n}\n```",
+      "walkthrough": "1. **Link the stylesheet.** Inside `<head>`, add `<link rel=\"stylesheet\" href=\"style.css\">`.\n2. **Dark page.** `body { background-color: #0f172a; }` — the whole stage goes dark.\n3. **Dark card with dashed border.** Use the card's id and set `padding: 40px;`, `border: 4px dashed #fbbf24;`, and `background-color: #1e293b;`. This is the biggest visual departure from the book-card capstone — dashed instead of solid, dark instead of light, larger padding.\n4. **Poster heading.** Use a descendant selector from the card to its `h1`. Set `text-align: left;`, `text-transform: uppercase;`, `letter-spacing: 4px;`, and `color: #fbbf24;`. The heading shouts in amber now.\n5. **Airy subtitle.** `.subtitle { font-style: italic; color: white; line-height: 1.8; }`.\n6. **Uppercase speaker list.** Use a descendant selector `.speakers li` and set `color: white; text-transform: uppercase; line-height: 2;`.\n7. **Outlined base button.** `.btn { padding: 14px 28px; text-decoration: none; border: 2px solid white; }` — note the white border instead of a filled background.\n8. **Bold CTA with colour override.** `.cta { font-weight: bold; color: white !important; }` — `!important` is what actually beats the starter `#event-card a` rule.\n9. Save, refresh, and run the tests. When everything passes you should see a dark, amber-bordered poster with uppercase white list items and an outlined register button — a very different vibe from the book card."
     }
   ]
 }
