@@ -7,10 +7,6 @@ The HTML contains an `<aside>` with `id="sidebar"`. Using an **id selector** in 
 
 The `<main>` content must remain unchanged.
 
-# Answer
-
-Use `#sidebar { … }` — an id selector targets the element whose `id` attribute matches.
-
 # Test Cases
 
 ```

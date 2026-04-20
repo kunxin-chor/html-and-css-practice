@@ -17,10 +17,6 @@ Use the `!important` keyword to force your class rule to win.
 1. Do **not** modify the existing `#nav a` rule.
 2. Add a `.external` rule that sets `color: blue !important;`.
 
-# Answer
-
-Add `.external { color: blue !important; }` to the CSS.
-
 # Test Cases
 
 ```

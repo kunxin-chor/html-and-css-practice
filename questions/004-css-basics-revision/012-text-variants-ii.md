@@ -16,10 +16,6 @@ The HTML contains four paragraphs, each with a different class. In `style.css`, 
 3. `.spaced` — `letter-spacing: 4px`.
 4. `.strike` — `text-decoration: line-through`.
 
-# Answer
-
-Write one class rule per variant, each setting the matching property to the listed value.
-
 # Test Cases
 
 ```

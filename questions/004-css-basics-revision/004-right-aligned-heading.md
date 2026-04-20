@@ -2,10 +2,6 @@
 
 The page has an `<h2>` with the class `title-right`. Align **only** that heading to the right using CSS. All other text on the page must keep its default left alignment.
 
-# Answer
-
-Use a class selector `.title-right` with `text-align: right;`.
-
 # Test Cases
 
 ```

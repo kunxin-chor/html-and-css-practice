@@ -11,10 +11,6 @@ The cell contents (row by row, left to right) must be:
 
 No header cells are required — use ordinary data cells only.
 
-# Answer
-
-Add four `<tr>` elements inside the existing `<table>`, each with two `<td>` cells.
-
 # Test Cases
 
 ```

@@ -7,10 +7,6 @@ Build a small news page that mixes paragraphs in between the headings. Inside `<
 3. An `<h2>` with the text `JavaScript turns 30`.
 4. A `<p>` with the text `A milestone for the language.`
 
-# Answer
-
-Add four elements in the order `<h1>` → `<p>` → `<h2>` → `<p>` with the required text.
-
 # Test Cases
 
 ```

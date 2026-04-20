@@ -2,10 +2,6 @@
 
 Style the page so that **every `<a>` element** on the page has the text colour `purple`.
 
-# Answer
-
-Add a rule in `style.css` using the element selector `a` and set `color: purple;`.
-
 # Test Cases
 
 ```

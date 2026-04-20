@@ -6,10 +6,6 @@ The `<div class="warning">` and any other elements must remain unchanged.
 
 You must use a **combined selector** — an element tag plus a class — to do this (e.g. `tag.class`).
 
-# Answer
-
-Use `p.warning { color: red; }` — this matches only `<p>` elements that also have the `warning` class.
-
 # Test Cases
 
 ```

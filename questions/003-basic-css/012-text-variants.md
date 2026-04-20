@@ -16,10 +16,6 @@ The HTML contains four paragraphs, each with a different class. In `style.css`, 
 3. `.underline` — has an underline (`text-decoration: underline`).
 4. `.uppercase` — is transformed to all uppercase letters (`text-transform: uppercase`).
 
-# Answer
-
-Write one class rule per variant, each setting the matching property to the listed value.
-
 # Test Cases
 
 ```

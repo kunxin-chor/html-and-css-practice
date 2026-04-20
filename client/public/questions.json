@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-20T15:56:06.442Z",
+  "generatedAt": "2026-04-20T16:24:46.741Z",
   "categories": [
     {
       "id": "63ebd4de56f3",
@@ -24,6 +24,12 @@
       "slug": "css-basics-revision",
       "name": "Css Basics Revision",
       "order": 4
+    },
+    {
+      "id": "b7b6256824b1",
+      "slug": "box-model",
+      "name": "Box Model",
+      "order": 5
     }
   ],
   "questions": [
@@ -36,7 +42,7 @@
       "order": 1,
       "sourcePath": "questions/001-basic-html/001-first-heading.md",
       "question": "Create a web page that displays the text **\"Hello, World!\"** as the main heading of the page.\n\nUse the appropriate HTML element for a top-level heading.",
-      "answer": "Edit `index.html` so that the page contains a single top-level heading with the text `Hello, World!`.",
+      "answer": "",
       "testCases": [
         "describe('Main heading', () => {\n  it('should contain exactly one <h1> element', () => {\n    expect(document.querySelectorAll('h1').length).to.equal(1);\n  });\n});",
         "describe('Heading text', () => {\n  it('the <h1> should say \"Hello, World!\"', () => {\n    const h1 = document.querySelector('h1');\n    expect(h1).to.exist;\n    expect(h1.textContent.trim()).to.equal('Hello, World!');\n  });\n});"
@@ -58,7 +64,7 @@
       "order": 2,
       "sourcePath": "questions/001-basic-html/002-headings.md",
       "question": "Build a small page with two headings of different levels:\n\n1. A top-level heading (`<h1>`) with the text `My Blog`.\n2. A sub-heading (`<h2>`) with the text `My first post`.\n\nThe `<h2>` must appear **after** the `<h1>` in the document.",
-      "answer": "Inside `<body>`, add an `<h1>` followed by an `<h2>` with the exact text above.",
+      "answer": "",
       "testCases": [
         "describe('Top-level heading', () => {\n  it('should contain exactly one <h1> that says \"My Blog\"', () => {\n    const h1s = document.querySelectorAll('h1');\n    expect(h1s.length).to.equal(1);\n    expect(h1s[0].textContent.trim()).to.equal('My Blog');\n  });\n});",
         "describe('Sub-heading', () => {\n  it('should contain exactly one <h2> that says \"My first post\"', () => {\n    const h2s = document.querySelectorAll('h2');\n    expect(h2s.length).to.equal(1);\n    expect(h2s[0].textContent.trim()).to.equal('My first post');\n  });\n});",
@@ -81,7 +87,7 @@
       "order": 3,
       "sourcePath": "questions/001-basic-html/003-paragraphs.md",
       "question": "Add two paragraphs of text to the page below the existing heading.\n\nThe first paragraph should say: `I am learning HTML.`\nThe second paragraph should say: `It is fun!`",
-      "answer": "Add two `<p>` elements inside the `<body>` of `index.html`, each containing the required text.",
+      "answer": "",
       "testCases": [
         "describe('Paragraph count', () => {\n  it('should contain exactly two <p> elements', () => {\n    expect(document.querySelectorAll('p').length).to.equal(2);\n  });\n});",
         "describe('First paragraph', () => {\n  it('should say \"I am learning HTML.\"', () => {\n    const p = document.querySelectorAll('p')[0];\n    expect(p).to.exist;\n    expect(p.textContent.trim()).to.equal('I am learning HTML.');\n  });\n});",
@@ -104,7 +110,7 @@
       "order": 4,
       "sourcePath": "questions/001-basic-html/004-links-and-images.md",
       "question": "Add the following to the page:\n\n1. A link that says `Visit Example` and goes to `https://example.com`.\n2. An image with the source `https://picsum.photos/200/300` and the alt text `Placeholder image`.",
-      "answer": "Use the `<a>` element for the link (with an `href` attribute) and the `<img>` element for the image (with `src` and `alt` attributes).",
+      "answer": "",
       "testCases": [
         "describe('Link', () => {\n  it('should have an <a> pointing to https://example.com with text \"Visit Example\"', () => {\n    const a = document.querySelector('a');\n    expect(a).to.exist;\n    expect(a.getAttribute('href')).to.equal('https://example.com');\n    expect(a.textContent.trim()).to.equal('Visit Example');\n  });\n});",
         "describe('Image', () => {\n  it('should have an <img> with the correct src', () => {\n    const img = document.querySelector('img');\n    expect(img).to.exist;\n    expect(img.getAttribute('src')).to.equal('https://picsum.photos/200/300');\n  });\n\n  it('should have the correct alt text', () => {\n    const img = document.querySelector('img');\n    expect(img).to.exist;\n    expect(img.getAttribute('alt')).to.equal('Placeholder image');\n  });\n});"
@@ -126,7 +132,7 @@
       "order": 5,
       "sourcePath": "questions/001-basic-html/005-unordered-list.md",
       "question": "Create an unordered list of your three favorite fruits. The list items, in order, must be:\n\n1. Apple\n2. Banana\n3. Cherry",
-      "answer": "Use a `<ul>` element with three `<li>` children inside `<body>`.",
+      "answer": "",
       "testCases": [
         "describe('Unordered list', () => {\n  it('should contain exactly one <ul> element', () => {\n    expect(document.querySelectorAll('ul').length).to.equal(1);\n  });\n\n  it('should contain exactly three <li> elements inside the <ul>', () => {\n    const items = document.querySelectorAll('ul > li');\n    expect(items.length).to.equal(3);\n  });\n});",
         "describe('List items in order', () => {\n  it('should list Apple, Banana, Cherry in that order', () => {\n    const items = Array.from(document.querySelectorAll('ul > li'))\n      .map(li => li.textContent.trim());\n    expect(items).to.deep.equal(['Apple', 'Banana', 'Cherry']);\n  });\n});"
@@ -148,7 +154,7 @@
       "order": 6,
       "sourcePath": "questions/001-basic-html/006-ordered-list.md",
       "question": "Create an **ordered** (numbered) list showing the top 3 finishers of a race. The items, in order, must be:\n\n1. Alice\n2. Bob\n3. Carol\n\nThe page must use an `<ol>` element — not `<ul>`.",
-      "answer": "Use an `<ol>` element with three `<li>` children inside `<body>`.",
+      "answer": "",
       "testCases": [
         "describe('Ordered list', () => {\n  it('should contain exactly one <ol> element', () => {\n    expect(document.querySelectorAll('ol').length).to.equal(1);\n  });\n\n  it('should not use a <ul> element', () => {\n    expect(document.querySelectorAll('ul').length).to.equal(0);\n  });\n\n  it('should contain exactly three <li> elements inside the <ol>', () => {\n    const items = document.querySelectorAll('ol > li');\n    expect(items.length).to.equal(3);\n  });\n});",
         "describe('Finisher order', () => {\n  it('should list Alice, Bob, Carol in that order', () => {\n    const items = Array.from(document.querySelectorAll('ol > li'))\n      .map(li => li.textContent.trim());\n    expect(items).to.deep.equal(['Alice', 'Bob', 'Carol']);\n  });\n});"
@@ -170,7 +176,7 @@
       "order": 7,
       "sourcePath": "questions/001-basic-html/007-rows-and-columns.md",
       "question": "The page already contains an empty `<table>` element. Your job is to fill it with **two rows**, each containing **three columns** of data.\n\nThe cell contents (row by row, left to right) must be:\n\n- Row 1: `A`, `B`, `C`\n- Row 2: `D`, `E`, `F`\n\nNo header cells are required for this question — use ordinary data cells only.",
-      "answer": "Add two `<tr>` elements inside the existing `<table>`, each containing three `<td>` cells with the values shown above.",
+      "answer": "",
       "testCases": [
         "describe('Rows', () => {\n  it('the table should contain exactly two <tr> rows', () => {\n    expect(document.querySelectorAll('table tr').length).to.equal(2);\n  });\n});",
         "describe('Columns', () => {\n  it('each row should contain exactly three <td> cells', () => {\n    const rows = document.querySelectorAll('table tr');\n    rows.forEach(row => {\n      expect(row.querySelectorAll('td').length).to.equal(3);\n    });\n  });\n\n  it('no <th> cells should be used', () => {\n    expect(document.querySelectorAll('table th').length).to.equal(0);\n  });\n});",
@@ -193,7 +199,7 @@
       "order": 8,
       "sourcePath": "questions/001-basic-html/008-table.md",
       "question": "Build a small HTML table that lists two people and their ages.\n\nRequirements:\n\n1. Use a `<table>` element.\n2. Inside it, include a `<thead>` with one row containing two header cells (`<th>`): `Name` and `Age`.\n3. Include a `<tbody>` with exactly two data rows (`<tr>`), each containing two `<td>` cells:\n   - Row 1: `Alice` / `30`\n   - Row 2: `Bob` / `25`",
-      "answer": "Use `<table>` with a `<thead>` for the header row and a `<tbody>` containing the two data rows.",
+      "answer": "",
       "testCases": [
         "describe('Table structure', () => {\n  it('should contain exactly one <table>', () => {\n    expect(document.querySelectorAll('table').length).to.equal(1);\n  });\n\n  it('the table should have a <thead> and a <tbody>', () => {\n    expect(document.querySelectorAll('table > thead').length).to.equal(1);\n    expect(document.querySelectorAll('table > tbody').length).to.equal(1);\n  });\n});",
         "describe('Header row', () => {\n  it('the <thead> should contain one row with two <th> cells \"Name\" and \"Age\"', () => {\n    const headerRows = document.querySelectorAll('thead > tr');\n    expect(headerRows.length).to.equal(1);\n    const ths = headerRows[0].querySelectorAll('th');\n    expect(ths.length).to.equal(2);\n    expect(ths[0].textContent.trim()).to.equal('Name');\n    expect(ths[1].textContent.trim()).to.equal('Age');\n  });\n});",
@@ -216,7 +222,7 @@
       "order": 9,
       "sourcePath": "questions/001-basic-html/009-about-me-page.md",
       "question": "Put everything from this category together and build a small **\"About Me\"** page. The page must contain all of the following, in this order:\n\n1. A top-level heading `<h1>` with the text `About Me`.\n2. An `<h2>` saying `Bio`, followed by a `<p>` with the text: `I am a web developer learning HTML.`\n3. An `<h2>` saying `Hobbies`, followed by an **unordered** list (`<ul>`) with exactly these items in order: `Reading`, `Cycling`, `Cooking`.\n4. An `<h2>` saying `Top 3 Favorite Foods`, followed by an **ordered** list (`<ol>`) with exactly these items in order: `Pizza`, `Sushi`, `Tacos`.\n5. An `<h2>` saying `Profile`, followed by:\n   - an `<img>` with `src=\"https://picsum.photos/200/200\"` and `alt=\"My profile picture\"`\n   - a link `<a href=\"https://example.com\">Visit my website</a>`\n6. An `<h2>` saying `Schedule`, followed by a `<table>` with:\n   - a `<thead>` containing one row with two `<th>` cells: `Day`, `Activity`\n   - a `<tbody>` with two rows:\n     - `Monday` / `Gym`\n     - `Tuesday` / `Reading`",
-      "answer": "Combine the elements from every question in this category — headings, paragraphs, links, images, lists, and a table — into one document.",
+      "answer": "",
       "testCases": [
         "describe('Main heading', () => {\n  it('has exactly one <h1> with text \"About Me\"', () => {\n    const h1s = document.querySelectorAll('h1');\n    expect(h1s.length).to.equal(1);\n    expect(h1s[0].textContent.trim()).to.equal('About Me');\n  });\n});",
         "describe('Section headings', () => {\n  it('has five <h2> sub-headings in the expected order', () => {\n    const titles = Array.from(document.querySelectorAll('h2'))\n      .map(h => h.textContent.trim());\n    expect(titles).to.deep.equal([\n      'Bio',\n      'Hobbies',\n      'Top 3 Favorite Foods',\n      'Profile',\n      'Schedule',\n    ]);\n  });\n});",
@@ -244,7 +250,7 @@
       "order": 1,
       "sourcePath": "questions/002-html-revision/001-shop-heading.md",
       "question": "Create a page whose main heading welcomes visitors to a small online shop. The page must contain a single top-level heading with the exact text:\n\n`Welcome to the Bookshop`",
-      "answer": "Use one `<h1>` element inside `<body>` with the required text.",
+      "answer": "",
       "testCases": [
         "describe('Main heading', () => {\n  it('should contain exactly one <h1>', () => {\n    expect(document.querySelectorAll('h1').length).to.equal(1);\n  });\n});",
         "describe('Heading text', () => {\n  it('the <h1> should say \"Welcome to the Bookshop\"', () => {\n    const h1 = document.querySelector('h1');\n    expect(h1).to.exist;\n    expect(h1.textContent.trim()).to.equal('Welcome to the Bookshop');\n  });\n});"
@@ -266,7 +272,7 @@
       "order": 2,
       "sourcePath": "questions/002-html-revision/002-news-headings.md",
       "question": "Build a small news page that mixes paragraphs in between the headings. Inside `<body>`, add — in this exact order:\n\n1. An `<h1>` with the text `Tech News`.\n2. A `<p>` with the text `Latest updates from the web.`\n3. An `<h2>` with the text `JavaScript turns 30`.\n4. A `<p>` with the text `A milestone for the language.`",
-      "answer": "Add four elements in the order `<h1>` → `<p>` → `<h2>` → `<p>` with the required text.",
+      "answer": "",
       "testCases": [
         "describe('Element order', () => {\n  it('the first four elements inside <body> are h1, p, h2, p', () => {\n    const tags = Array.from(document.body.children)\n      .slice(0, 4)\n      .map(el => el.tagName.toLowerCase());\n    expect(tags).to.deep.equal(['h1', 'p', 'h2', 'p']);\n  });\n});",
         "describe('Headings', () => {\n  it('the <h1> says \"Tech News\"', () => {\n    const h1 = document.querySelector('h1');\n    expect(h1).to.exist;\n    expect(h1.textContent.trim()).to.equal('Tech News');\n  });\n\n  it('the <h2> says \"JavaScript turns 30\"', () => {\n    const h2 = document.querySelector('h2');\n    expect(h2).to.exist;\n    expect(h2.textContent.trim()).to.equal('JavaScript turns 30');\n  });\n});",
@@ -289,7 +295,7 @@
       "order": 3,
       "sourcePath": "questions/002-html-revision/003-moon-paragraphs.md",
       "question": "Below the existing heading, add **three** paragraphs of text, in this order:\n\n1. `The Moon is Earth's only natural satellite.`\n2. `It is about 384,400 km away on average.`\n3. `A full orbit takes roughly 27 days.`",
-      "answer": "Add three `<p>` elements inside the `<body>`, each containing the required text.",
+      "answer": "",
       "testCases": [
         "describe('Paragraph count', () => {\n  it('should contain exactly three <p> elements', () => {\n    expect(document.querySelectorAll('p').length).to.equal(3);\n  });\n});",
         "describe('Paragraph contents in order', () => {\n  const expected = [\n    \"The Moon is Earth's only natural satellite.\",\n    'It is about 384,400 km away on average.',\n    'A full orbit takes roughly 27 days.',\n  ];\n  expected.forEach((text, i) => {\n    it('paragraph ' + (i + 1) + ' should say \"' + text + '\"', () => {\n      const p = document.querySelectorAll('p')[i];\n      expect(p).to.exist;\n      expect(p.textContent.trim()).to.equal(text);\n    });\n  });\n});"
@@ -311,7 +317,7 @@
       "order": 4,
       "sourcePath": "questions/002-html-revision/004-mdn-link-and-image.md",
       "question": "Add the following to the page, below the existing heading:\n\n1. A link that says `Read the MDN docs` and goes to `https://developer.mozilla.org`.\n2. A second link that says `Learn web.dev` and goes to `https://web.dev`.\n3. An image with `src=\"https://picsum.photos/250/150\"` and `alt=\"Code on a screen\"`.",
-      "answer": "Use two `<a>` elements for the links and one `<img>` for the image.",
+      "answer": "",
       "testCases": [
         "describe('Links', () => {\n  it('has exactly two <a> elements', () => {\n    expect(document.querySelectorAll('a').length).to.equal(2);\n  });\n\n  it('has an MDN link with the correct href and text', () => {\n    const links = Array.from(document.querySelectorAll('a'));\n    const mdn = links.find(a => a.getAttribute('href') === 'https://developer.mozilla.org');\n    expect(mdn, 'expected a link to https://developer.mozilla.org').to.exist;\n    expect(mdn.textContent.trim()).to.equal('Read the MDN docs');\n  });\n\n  it('has a web.dev link with the correct href and text', () => {\n    const links = Array.from(document.querySelectorAll('a'));\n    const webdev = links.find(a => a.getAttribute('href') === 'https://web.dev');\n    expect(webdev, 'expected a link to https://web.dev').to.exist;\n    expect(webdev.textContent.trim()).to.equal('Learn web.dev');\n  });\n});",
         "describe('Image', () => {\n  it('has exactly one <img>', () => {\n    expect(document.querySelectorAll('img').length).to.equal(1);\n  });\n\n  it('the <img> has the correct src and alt', () => {\n    const img = document.querySelector('img');\n    expect(img).to.exist;\n    expect(img.getAttribute('src')).to.equal('https://picsum.photos/250/150');\n    expect(img.getAttribute('alt')).to.equal('Code on a screen');\n  });\n});"
@@ -333,7 +339,7 @@
       "order": 5,
       "sourcePath": "questions/002-html-revision/005-grocery-list.md",
       "question": "Create an unordered list of items for a weekly grocery run. The list items, in order, must be:\n\n1. Bread\n2. Milk\n3. Eggs\n4. Butter\n5. Cheese",
-      "answer": "Use a `<ul>` with five `<li>` children inside `<body>`.",
+      "answer": "",
       "testCases": [
         "describe('Unordered list', () => {\n  it('should contain exactly one <ul> element', () => {\n    expect(document.querySelectorAll('ul').length).to.equal(1);\n  });\n\n  it('should contain exactly five <li> elements inside the <ul>', () => {\n    expect(document.querySelectorAll('ul > li').length).to.equal(5);\n  });\n});",
         "describe('List items in order', () => {\n  it('should list Bread, Milk, Eggs, Butter, Cheese in that order', () => {\n    const items = Array.from(document.querySelectorAll('ul > li'))\n      .map(li => li.textContent.trim());\n    expect(items).to.deep.equal(['Bread', 'Milk', 'Eggs', 'Butter', 'Cheese']);\n  });\n});"
@@ -355,7 +361,7 @@
       "order": 6,
       "sourcePath": "questions/002-html-revision/006-recipe-steps.md",
       "question": "Write out the cooking instructions for boiling pasta as an **ordered** (numbered) list with five steps, in this order:\n\n1. Boil water\n2. Add salt\n3. Add pasta\n4. Cook for 10 minutes\n5. Drain and serve\n\nUse an `<ol>` element — not `<ul>`.",
-      "answer": "Use an `<ol>` with five `<li>` children inside `<body>`.",
+      "answer": "",
       "testCases": [
         "describe('Ordered list', () => {\n  it('should contain exactly one <ol> element', () => {\n    expect(document.querySelectorAll('ol').length).to.equal(1);\n  });\n\n  it('should not use a <ul>', () => {\n    expect(document.querySelectorAll('ul').length).to.equal(0);\n  });\n\n  it('should contain exactly five <li> elements inside the <ol>', () => {\n    expect(document.querySelectorAll('ol > li').length).to.equal(5);\n  });\n});",
         "describe('Step order', () => {\n  it('should list the five steps in the correct order', () => {\n    const items = Array.from(document.querySelectorAll('ol > li'))\n      .map(li => li.textContent.trim());\n    expect(items).to.deep.equal([\n      'Boil water',\n      'Add salt',\n      'Add pasta',\n      'Cook for 10 minutes',\n      'Drain and serve',\n    ]);\n  });\n});"
@@ -377,7 +383,7 @@
       "order": 7,
       "sourcePath": "questions/002-html-revision/007-times-table-grid.md",
       "question": "The page already contains an empty `<table>` element. Fill it with **four rows** of **two columns** each.\n\nThe cell contents (row by row, left to right) must be:\n\n- Row 1: `Monday`, `09:00`\n- Row 2: `Tuesday`, `10:00`\n- Row 3: `Wednesday`, `11:00`\n- Row 4: `Thursday`, `12:00`\n\nNo header cells are required — use ordinary data cells only.",
-      "answer": "Add four `<tr>` elements inside the existing `<table>`, each with two `<td>` cells.",
+      "answer": "",
       "testCases": [
         "describe('Rows', () => {\n  it('the table should contain exactly four <tr> rows', () => {\n    expect(document.querySelectorAll('table tr').length).to.equal(4);\n  });\n});",
         "describe('Columns', () => {\n  it('each row should contain exactly two <td> cells', () => {\n    document.querySelectorAll('table tr').forEach(row => {\n      expect(row.querySelectorAll('td').length).to.equal(2);\n    });\n  });\n\n  it('no <th> cells should be used', () => {\n    expect(document.querySelectorAll('table th').length).to.equal(0);\n  });\n});",
@@ -400,7 +406,7 @@
       "order": 8,
       "sourcePath": "questions/002-html-revision/008-cities-table.md",
       "question": "Build a table listing three cities with their country and population.\n\nRequirements:\n\n1. Use a `<table>`.\n2. Include a `<thead>` with one row containing three `<th>` cells: `City`, `Country`, `Population`.\n3. Include a `<tbody>` with exactly three data rows (`<tr>`), each with three `<td>` cells:\n   - Row 1: `Tokyo` / `Japan` / `37400068`\n   - Row 2: `Delhi` / `India` / `28514000`\n   - Row 3: `Shanghai` / `China` / `25582000`",
-      "answer": "Use a `<table>` with a `<thead>` for the three-column header and a `<tbody>` with three data rows.",
+      "answer": "",
       "testCases": [
         "describe('Table structure', () => {\n  it('should contain exactly one <table>', () => {\n    expect(document.querySelectorAll('table').length).to.equal(1);\n  });\n\n  it('the table should have a <thead> and a <tbody>', () => {\n    expect(document.querySelectorAll('table > thead').length).to.equal(1);\n    expect(document.querySelectorAll('table > tbody').length).to.equal(1);\n  });\n});",
         "describe('Header row', () => {\n  it('the <thead> should contain one row with three <th> cells', () => {\n    const headerRows = document.querySelectorAll('thead > tr');\n    expect(headerRows.length).to.equal(1);\n    const ths = headerRows[0].querySelectorAll('th');\n    expect(ths.length).to.equal(3);\n    const labels = Array.from(ths).map(th => th.textContent.trim());\n    expect(labels).to.deep.equal(['City', 'Country', 'Population']);\n  });\n});",
@@ -423,7 +429,7 @@
       "order": 9,
       "sourcePath": "questions/002-html-revision/009-recipe-page.md",
       "question": "Put everything from this category together and build a small **recipe page** for pancakes. The page must contain all of the following, in this order:\n\n1. A top-level heading `<h1>` with the text `Fluffy Pancakes`.\n2. A tagline `<p>` directly under the `<h1>` with the text `A classic weekend breakfast recipe.`\n3. An `<h2>` saying `Links & Photo`, followed by:\n   - a link `<a href=\"https://en.wikipedia.org/wiki/Pancake\">Wikipedia: Pancake</a>`\n   - a link `<a href=\"https://example.com/pancakes\">Full recipe on example.com</a>`\n   - an `<img>` with `src=\"https://picsum.photos/320/200\"` and `alt=\"A stack of pancakes\"`\n4. An `<h2>` saying `Ingredients`, followed by an **unordered** list (`<ul>`) with exactly these five items in order: `Flour`, `Milk`, `Eggs`, `Sugar`, `Butter`.\n5. An `<h2>` saying `Steps`, followed by an **ordered** list (`<ol>`) with exactly these five items in order: `Mix dry ingredients`, `Add milk and eggs`, `Melt butter`, `Cook on the pan`, `Serve hot`.\n6. An `<h2>` saying `Nutrition`, followed by a `<table>` with:\n   - a `<thead>` containing one row with three `<th>` cells: `Nutrient`, `Amount`, `Daily Value`\n   - a `<tbody>` with three rows:\n     - `Calories` / `220` / `11%`\n     - `Protein` / `6g` / `12%`\n     - `Fat` / `8g` / `10%`",
-      "answer": "Combine every element from this category — headings, paragraphs, links, images, lists, and a table — into one document.",
+      "answer": "",
       "testCases": [
         "describe('Main heading and tagline', () => {\n  it('has exactly one <h1> with text \"Fluffy Pancakes\"', () => {\n    const h1s = document.querySelectorAll('h1');\n    expect(h1s.length).to.equal(1);\n    expect(h1s[0].textContent.trim()).to.equal('Fluffy Pancakes');\n  });\n\n  it('the first <p> is the tagline directly after the <h1>', () => {\n    const firstP = document.querySelector('p');\n    expect(firstP).to.exist;\n    expect(firstP.textContent.trim()).to.equal('A classic weekend breakfast recipe.');\n  });\n});",
         "describe('Section headings', () => {\n  it('has four <h2> sub-headings in the expected order', () => {\n    const titles = Array.from(document.querySelectorAll('h2'))\n      .map(h => h.textContent.trim());\n    expect(titles).to.deep.equal([\n      'Links & Photo',\n      'Ingredients',\n      'Steps',\n      'Nutrition',\n    ]);\n  });\n});",
@@ -449,7 +455,7 @@
       "order": 1,
       "sourcePath": "questions/003-basic-css/001-text-color.md",
       "question": "Make the `<h1>` heading on the page display in **red**.\n\nUse CSS to style the heading — do not use inline `style` attributes in the HTML.",
-      "answer": "In `style.css`, add a rule that targets `h1` and sets `color` to `red`.",
+      "answer": "",
       "testCases": [
         "describe('Heading color', () => {\n  it('the <h1> should be rendered in red', () => {\n    const h1 = document.querySelector('h1');\n    expect(h1).to.exist;\n    const color = getComputedStyle(h1).color;\n    expect(color).to.equal('rgb(255, 0, 0)');\n  });\n});"
       ],
@@ -470,7 +476,7 @@
       "order": 2,
       "sourcePath": "questions/003-basic-css/002-background-and-font-size.md",
       "question": "Style the page so that:\n\n1. The page background is light yellow (`#ffffcc`).\n2. All paragraphs have a font size of exactly `20px`.",
-      "answer": "In `style.css`, target the `body` element for the background color and the `p` element for the font size.",
+      "answer": "",
       "testCases": [
         "describe('Body background', () => {\n  it('the body should have background color #ffffcc', () => {\n    const bg = getComputedStyle(document.body).backgroundColor;\n    expect(bg).to.equal('rgb(255, 255, 204)');\n  });\n});",
         "describe('Paragraph font size', () => {\n  it('paragraphs should have a font size of 20px', () => {\n    const p = document.querySelector('p');\n    expect(p).to.exist;\n    expect(getComputedStyle(p).fontSize).to.equal('20px');\n  });\n});"
@@ -492,7 +498,7 @@
       "order": 3,
       "sourcePath": "questions/003-basic-css/003-class-selector.md",
       "question": "The HTML contains two paragraphs. Only the one with the class `highlight` should:\n\n1. Have a yellow background (`yellow`).\n2. Be displayed in bold.\n\nThe other paragraph must remain unstyled.",
-      "answer": "In `style.css`, use a class selector (`.highlight`) to apply `background-color: yellow` and `font-weight: bold`.",
+      "answer": "",
       "testCases": [
         "describe('Highlighted paragraph', () => {\n  it('should have a yellow background', () => {\n    const el = document.querySelector('p.highlight');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).backgroundColor).to.equal('rgb(255, 255, 0)');\n  });\n\n  it('should be bold', () => {\n    const el = document.querySelector('p.highlight');\n    expect(el).to.exist;\n    const weight = getComputedStyle(el).fontWeight;\n    // \"bold\" computes to 700 in most browsers\n    expect(['bold', '700']).to.include(weight);\n  });\n});",
         "describe('Non-highlighted paragraph', () => {\n  it('should NOT have a yellow background', () => {\n    const paragraphs = Array.from(document.querySelectorAll('p'));\n    const plain = paragraphs.find(p => !p.classList.contains('highlight'));\n    expect(plain, 'expected a paragraph without the highlight class').to.exist;\n    expect(getComputedStyle(plain).backgroundColor).to.not.equal('rgb(255, 255, 0)');\n  });\n});"
@@ -514,7 +520,7 @@
       "order": 4,
       "sourcePath": "questions/003-basic-css/004-center-text.md",
       "question": "Center-align the text of the `<h1>` heading horizontally using CSS.",
-      "answer": "In `style.css`, target `h1` and set `text-align` to `center`.",
+      "answer": "",
       "testCases": [
         "describe('Centered heading', () => {\n  it('the <h1> should have text-align center', () => {\n    const h1 = document.querySelector('h1');\n    expect(h1).to.exist;\n    expect(getComputedStyle(h1).textAlign).to.equal('center');\n  });\n});"
       ],
@@ -535,7 +541,7 @@
       "order": 5,
       "sourcePath": "questions/003-basic-css/005-id-selector.md",
       "question": "The HTML contains an `<h1>` with `id=\"page-title\"`. In `style.css`, use an **id selector** to style only that element:\n\n1. Text colour must be `red`.\n2. Text must be centered horizontally (`text-align: center`).\n\nAny other text on the page should remain unchanged.",
-      "answer": "Use `#page-title { … }` in `style.css` to target the element by its `id`.",
+      "answer": "",
       "testCases": [
         "describe('Styled heading', () => {\n  it('the #page-title should be red', () => {\n    const el = document.querySelector('#page-title');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).color).to.equal('rgb(255, 0, 0)');\n  });\n\n  it('the #page-title should be center-aligned', () => {\n    const el = document.querySelector('#page-title');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).textAlign).to.equal('center');\n  });\n});",
         "describe('Other text untouched', () => {\n  it('a paragraph without the id should not be red', () => {\n    const p = document.querySelector('p');\n    expect(p).to.exist;\n    expect(getComputedStyle(p).color).to.not.equal('rgb(255, 0, 0)');\n  });\n});"
@@ -557,7 +563,7 @@
       "order": 6,
       "sourcePath": "questions/003-basic-css/006-element-and-class-selector.md",
       "question": "The HTML has two elements with `class=\"warning\"` — one is a `<p>` and one is a `<div>`. Style **only the paragraph** that has the `warning` class so its text colour is `red`.\n\nThe `<div class=\"warning\">` and any other elements must remain unchanged.\n\nYou must use a **combined selector** — an element tag plus a class — to do this (e.g. `tag.class`).",
-      "answer": "Use `p.warning { color: red; }` — this matches only `<p>` elements that also have the `warning` class.",
+      "answer": "",
       "testCases": [
         "describe('Warning paragraph', () => {\n  it('the <p class=\"warning\"> should be red', () => {\n    const el = document.querySelector('p.warning');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).color).to.equal('rgb(255, 0, 0)');\n  });\n});",
         "describe('Warning div untouched', () => {\n  it('the <div class=\"warning\"> should NOT be red', () => {\n    const el = document.querySelector('div.warning');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).color).to.not.equal('rgb(255, 0, 0)');\n  });\n});"
@@ -579,7 +585,7 @@
       "order": 7,
       "sourcePath": "questions/003-basic-css/007-descendant-selector.md",
       "question": "The HTML has two links — one inside a `<nav>` and one outside it.\n\nUsing a **descendant selector**, style **only the link inside `<nav>`** so that:\n\n1. Its colour is `green`.\n2. Its underline is removed (`text-decoration: none`).\n\nThe link outside `<nav>` must remain unchanged.",
-      "answer": "Use `nav a { … }` — two selectors separated by a space means \"an `<a>` that is a descendant of a `<nav>`\".",
+      "answer": "",
       "testCases": [
         "describe('Nav link', () => {\n  it('the <a> inside <nav> should be green', () => {\n    const el = document.querySelector('nav a');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).color).to.equal('rgb(0, 128, 0)');\n  });\n\n  it('the <a> inside <nav> should have no underline', () => {\n    const el = document.querySelector('nav a');\n    expect(el).to.exist;\n    // text-decoration-line is the part we care about across browsers.\n    const deco = getComputedStyle(el).textDecorationLine || getComputedStyle(el).textDecoration;\n    expect(deco).to.match(/none/);\n  });\n});",
         "describe('Outside link', () => {\n  it('the link outside <nav> should NOT be green', () => {\n    const outside = Array.from(document.querySelectorAll('a'))\n      .find(a => !a.closest('nav'));\n    expect(outside, 'expected a link outside <nav>').to.exist;\n    expect(getComputedStyle(outside).color).to.not.equal('rgb(0, 128, 0)');\n  });\n});"
@@ -601,7 +607,7 @@
       "order": 8,
       "sourcePath": "questions/003-basic-css/008-multiple-classes.md",
       "question": "An element can have **multiple classes** at the same time — separate them with a space inside the single `class` attribute. Each class contributes its own styles.\n\nThe HTML contains a `<button>` with the class `btn`. Your job:\n\n1. **In the HTML**, add a second class `primary` to the button (so it ends up with `class=\"btn primary\"`).\n2. **In `style.css`**, write two rules:\n   - `.btn` — `padding: 10px 20px` and `border: none`\n   - `.primary` — `background-color: blue` and `color: white`\n\nWhen combined, the button should appear blue with white text, padded, and borderless.",
-      "answer": "Add `primary` to the button's class list in the HTML, then define the two class rules in CSS.",
+      "answer": "",
       "testCases": [
         "describe('Button classes', () => {\n  it('the button has both classes \"btn\" and \"primary\"', () => {\n    const btn = document.querySelector('button');\n    expect(btn).to.exist;\n    expect(btn.classList.contains('btn'), 'missing btn class').to.equal(true);\n    expect(btn.classList.contains('primary'), 'missing primary class').to.equal(true);\n  });\n});",
         "describe('.btn styles', () => {\n  it('the button has 10px top/bottom and 20px left/right padding', () => {\n    const btn = document.querySelector('button');\n    const cs = getComputedStyle(btn);\n    expect(cs.paddingTop).to.equal('10px');\n    expect(cs.paddingBottom).to.equal('10px');\n    expect(cs.paddingLeft).to.equal('20px');\n    expect(cs.paddingRight).to.equal('20px');\n  });\n\n  it('the button has no border', () => {\n    const btn = document.querySelector('button');\n    expect(getComputedStyle(btn).borderStyle).to.equal('none');\n  });\n});",
@@ -624,7 +630,7 @@
       "order": 9,
       "sourcePath": "questions/003-basic-css/009-important-override.md",
       "question": "The CSS already contains a very specific rule:\n\n```css\n#special {\n  color: red;\n}\n```\n\nThe element in the HTML is `<p id=\"special\" class=\"danger\">…</p>`. You need the paragraph to appear **green**, not red.\n\nBecause the id selector `#special` has higher specificity than a class selector, a plain `.danger { color: green; }` rule would lose. Use the `!important` keyword to force your class rule to win.\n\n**Rules:**\n\n1. Do **not** modify the existing `#special` rule.\n2. Add a `.danger` rule that sets `color: green !important;`.",
-      "answer": "Add `.danger { color: green !important; }` to the CSS. `!important` overrides normal cascade ordering, even against higher-specificity selectors.",
+      "answer": "",
       "testCases": [
         "describe('Override with !important', () => {\n  it('the paragraph should end up green, not red', () => {\n    const p = document.querySelector('#special');\n    expect(p).to.exist;\n    expect(getComputedStyle(p).color).to.equal('rgb(0, 128, 0)');\n  });\n});",
         "describe('!important is present', () => {\n  it('a rule uses !important on color', () => {\n    const sheets = Array.from(document.styleSheets);\n    const allText = sheets\n      .flatMap(s => {\n        try {\n          return Array.from(s.cssRules).map(r => r.cssText);\n        } catch {\n          return [];\n        }\n      })\n      .join('\\n');\n    expect(allText).to.match(/color\\s*:\\s*green\\s*!important/i);\n  });\n});"
@@ -646,7 +652,7 @@
       "order": 10,
       "sourcePath": "questions/003-basic-css/010-higher-specificity.md",
       "question": "`!important` is a blunt instrument. A cleaner way to override a rule is to write a **more specific selector**. This question demonstrates the technique — without using `!important` at all.\n\nThe starting CSS already contains two broad rules that paint everything inside `#main` black / gray:\n\n```css\n#main p {\n  color: black;\n}\n\n#main button {\n  background-color: gray;\n}\n```\n\nThe HTML inside `#main` contains two paragraphs *and* a submit button:\n\n```html\n<div id=\"main\">\n  <p class=\"first\">…</p>\n  <p class=\"second\">…</p>\n  <button type=\"submit\" class=\"cta\">Send</button>\n</div>\n```\n\n**Your task** — add **three** new rules (keep the existing two unchanged) so that:\n\n1. The paragraph with class `first` becomes **red**.\n2. The paragraph with class `second` becomes **green**.\n3. The `<button type=\"submit\">` gets a **purple** background (`rgb(128, 0, 128)`).\n\nEach new rule must be **more specific** than the matching base rule. For the paragraphs, combine id + element + class. For the button, use an **attribute selector** so the selector matches *only* submit buttons. **Do not use `!important`.**",
-      "answer": "- `#main p.first { color: red; }` — id + element + class beats `#main p`.\n- `#main p.second { color: green; }` — same pattern.\n- `#main button[type=\"submit\"] { background-color: purple; }` — the attribute selector `[type=\"submit\"]` raises specificity above `#main button`.",
+      "answer": "",
       "testCases": [
         "describe('Paragraph overrides', () => {\n  it('the first paragraph is red', () => {\n    const el = document.querySelector('#main p.first');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).color).to.equal('rgb(255, 0, 0)');\n  });\n\n  it('the second paragraph is green', () => {\n    const el = document.querySelector('#main p.second');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).color).to.equal('rgb(0, 128, 0)');\n  });\n});",
         "describe('Button override with attribute selector', () => {\n  it('the submit button has a purple background', () => {\n    const btn = document.querySelector('#main button[type=\"submit\"]');\n    expect(btn).to.exist;\n    expect(getComputedStyle(btn).backgroundColor).to.equal('rgb(128, 0, 128)');\n  });\n\n  it('an attribute selector [type=\"submit\"] is used in the CSS', () => {\n    const sheets = Array.from(document.styleSheets);\n    const allText = sheets\n      .flatMap(s => {\n        try {\n          return Array.from(s.cssRules).map(r => r.cssText);\n        } catch {\n          return [];\n        }\n      })\n      .join('\\n');\n    expect(allText).to.match(/\\[type\\s*=\\s*[\"']?submit[\"']?\\]/i);\n  });\n});",
@@ -669,7 +675,7 @@
       "order": 11,
       "sourcePath": "questions/003-basic-css/011-external-stylesheet.md",
       "question": "Every question in this course uses a separate CSS file called `style.css`. In real projects, you connect an external stylesheet to an HTML document using a `<link>` element in `<head>`.\n\n**Task:** inside the existing `<head>` of the HTML, add a `<link>` tag that loads `style.css`:\n\n```html\n<link rel=\"stylesheet\" href=\"style.css\">\n```\n\nYou don't need to write any new CSS for this question — the starting `style.css` already sets `h1` to `blue`. The test simply verifies that the `<link>` tag is present and correctly formed.",
-      "answer": "Add `<link rel=\"stylesheet\" href=\"style.css\">` inside `<head>`.",
+      "answer": "",
       "testCases": [
         "describe('External stylesheet link', () => {\n  it('has a <link rel=\"stylesheet\" href=\"style.css\"> inside <head>', () => {\n    const link = document.querySelector('head link[rel=\"stylesheet\"][href=\"style.css\"]');\n    expect(link, 'expected <link rel=\"stylesheet\" href=\"style.css\"> in <head>').to.exist;\n  });\n});",
         "describe('Styling still works', () => {\n  it('the <h1> is blue (from style.css)', () => {\n    const h1 = document.querySelector('h1');\n    expect(h1).to.exist;\n    expect(getComputedStyle(h1).color).to.equal('rgb(0, 0, 255)');\n  });\n});"
@@ -691,7 +697,7 @@
       "order": 12,
       "sourcePath": "questions/003-basic-css/012-text-variants.md",
       "question": "CSS offers several properties for changing how text looks. This exercise practises four of the most common ones.\n\nFurther reading (optional but recommended):\n\n- [MDN: `font-family`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family) · [W3Schools](https://www.w3schools.com/cssref/pr_font_font-family.php)\n- [MDN: `font-style`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-style) · [W3Schools](https://www.w3schools.com/cssref/pr_font_font-style.php)\n- [MDN: `text-decoration`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration) · [W3Schools](https://www.w3schools.com/cssref/pr_text_text-decoration.php)\n- [MDN: `text-transform`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform) · [W3Schools](https://www.w3schools.com/cssref/pr_text_text-transform.php)\n\nThe HTML contains four paragraphs, each with a different class. In `style.css`, write four class rules so that:\n\n1. `.serif` — uses a **serif** font family (`font-family: serif`).\n2. `.italic` — is shown in italics (`font-style: italic`).\n3. `.underline` — has an underline (`text-decoration: underline`).\n4. `.uppercase` — is transformed to all uppercase letters (`text-transform: uppercase`).",
-      "answer": "Write one class rule per variant, each setting the matching property to the listed value.",
+      "answer": "",
       "testCases": [
         "describe('Serif font', () => {\n  it('.serif uses a serif font family', () => {\n    const el = document.querySelector('.serif');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).fontFamily.toLowerCase()).to.match(/serif/);\n  });\n});",
         "describe('Italic text', () => {\n  it('.italic has font-style italic', () => {\n    const el = document.querySelector('.italic');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).fontStyle).to.equal('italic');\n  });\n});",
@@ -715,7 +721,7 @@
       "order": 13,
       "sourcePath": "questions/003-basic-css/013-capstone-book-card.md",
       "question": "Put everything from this category together to style a **book product card**. The HTML markup is already provided — your job is to decide which selectors best match each visual goal described below, then write the CSS.\n\nYour goal is to recreate this design:\n\n![Book card target design](/images/proposed-solution-1.png)\n\n## Visual Goals\n\n1. **Connect your stylesheet.** The HTML isn't loading `style.css` yet — fix that first.\n2. **Page.** The page should sit on a soft off-white background.\n3. **Card container.** The card should feel like a boxed product tile — give it comfortable internal spacing and a thin light-gray border so it separates from the page.\n4. **Book title.** The main heading should be centred and use a darker, nearly-black colour (plain `black` is too harsh).\n5. **Tagline.** The short line labelled as the tagline should read like a small-caps label: all-uppercase letters, a little extra space between characters, and a muted gray colour.\n6. **Tag list.** Every item in the tag list should appear in green.\n7. **Buy button.** The call-to-action button has two responsibilities split across two classes:\n   - Its **base** styling should remove the default border and give it generous horizontal padding.\n   - Its **primary** variant should fill it with a purple background and white text.\n   - Your CSS must respect this split — one rule for the base styling, a separate rule for the primary colours, so the pattern works for future non-primary buttons too.\n\n## Design Tokens\n\nUse these exact values so the tests can match your colours and sizes:\n\n- Page background: `#fafafa`\n- Card border: `1px solid #ccc`\n- Card padding: `24px`\n- Title colour: `#222`\n- Tagline letter-spacing: `2px`\n- Tag list colour: `green`\n- Base button padding: `10px 20px`\n- Primary button background: `purple`\n- Primary button text: `white`\n\nYou decide which selectors to reach for. The tests check computed styles on the relevant elements, so **any** selector that correctly targets the element will pass — but the concepts you practised earlier in this category (id selectors, descendant selectors, element + class combinations, multi-class styling, text variants) are all usable here. Pick the one that best fits each goal.",
-      "answer": "Read each visual goal and pick the selector that matches — ids for unique elements, classes for reusable labels, descendant selectors for \"X inside Y\", etc. Link the stylesheet first, then translate each goal into a rule.",
+      "answer": "",
       "testCases": [
         "describe('External stylesheet', () => {\n  it('<head> links style.css', () => {\n    const link = document.querySelector('head link[rel=\"stylesheet\"][href=\"style.css\"]');\n    expect(link, 'missing <link rel=\"stylesheet\" href=\"style.css\">').to.exist;\n  });\n});",
         "describe('Page background', () => {\n  it('body background is #fafafa', () => {\n    expect(getComputedStyle(document.body).backgroundColor).to.equal('rgb(250, 250, 250)');\n  });\n});",
@@ -742,7 +748,7 @@
       "order": 1,
       "sourcePath": "questions/004-css-basics-revision/001-link-color.md",
       "question": "Style the page so that **every `<a>` element** on the page has the text colour `purple`.",
-      "answer": "Add a rule in `style.css` using the element selector `a` and set `color: purple;`.",
+      "answer": "",
       "testCases": [
         "describe('Link colour', () => {\n  it('all <a> elements should be purple', () => {\n    const links = document.querySelectorAll('a');\n    expect(links.length).to.be.at.least(1);\n    links.forEach(a => {\n      expect(getComputedStyle(a).color).to.equal('rgb(128, 0, 128)');\n    });\n  });\n});"
       ],
@@ -763,7 +769,7 @@
       "order": 2,
       "sourcePath": "questions/004-css-basics-revision/002-page-background-and-heading-size.md",
       "question": "Style the page so that:\n\n1. The page background colour is light gray (`#f0f0f0`).\n2. All `<h2>` elements have a font size of exactly `32px`.",
-      "answer": "Target `body` for the background colour and `h2` for the font size.",
+      "answer": "",
       "testCases": [
         "describe('Body background', () => {\n  it('the body background should be #f0f0f0', () => {\n    expect(getComputedStyle(document.body).backgroundColor).to.equal('rgb(240, 240, 240)');\n  });\n});",
         "describe('Heading font size', () => {\n  it('every <h2> should have font-size: 32px', () => {\n    const h2s = document.querySelectorAll('h2');\n    expect(h2s.length).to.be.at.least(1);\n    h2s.forEach(h2 => {\n      expect(getComputedStyle(h2).fontSize).to.equal('32px');\n    });\n  });\n});"
@@ -785,7 +791,7 @@
       "order": 3,
       "sourcePath": "questions/004-css-basics-revision/003-muted-class.md",
       "question": "The HTML contains several paragraphs. Only the ones with the class `muted` should:\n\n1. Have a gray text colour (`gray`).\n2. Be displayed in italics.\n\nParagraphs without the `muted` class must remain unstyled.",
-      "answer": "Use a class selector `.muted` in `style.css` with `color: gray;` and `font-style: italic;`.",
+      "answer": "",
       "testCases": [
         "describe('Muted paragraphs', () => {\n  it('elements with class \"muted\" should be gray', () => {\n    const els = document.querySelectorAll('.muted');\n    expect(els.length).to.be.at.least(1);\n    els.forEach(el => {\n      expect(getComputedStyle(el).color).to.equal('rgb(128, 128, 128)');\n    });\n  });\n\n  it('elements with class \"muted\" should be italic', () => {\n    const els = document.querySelectorAll('.muted');\n    els.forEach(el => {\n      expect(getComputedStyle(el).fontStyle).to.equal('italic');\n    });\n  });\n});",
         "describe('Other paragraphs', () => {\n  it('paragraphs without the \"muted\" class should NOT be gray', () => {\n    const plain = Array.from(document.querySelectorAll('p'))\n      .find(p => !p.classList.contains('muted'));\n    expect(plain, 'expected a paragraph without the muted class').to.exist;\n    expect(getComputedStyle(plain).color).to.not.equal('rgb(128, 128, 128)');\n  });\n});"
@@ -807,7 +813,7 @@
       "order": 4,
       "sourcePath": "questions/004-css-basics-revision/004-right-aligned-heading.md",
       "question": "The page has an `<h2>` with the class `title-right`. Align **only** that heading to the right using CSS. All other text on the page must keep its default left alignment.",
-      "answer": "Use a class selector `.title-right` with `text-align: right;`.",
+      "answer": "",
       "testCases": [
         "describe('Right-aligned heading', () => {\n  it('the .title-right element has text-align: right', () => {\n    const el = document.querySelector('.title-right');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).textAlign).to.equal('right');\n  });\n});",
         "describe('Other elements untouched', () => {\n  it('paragraphs are NOT right-aligned', () => {\n    const p = document.querySelector('p');\n    expect(p).to.exist;\n    expect(getComputedStyle(p).textAlign).to.not.equal('right');\n  });\n});"
@@ -829,7 +835,7 @@
       "order": 5,
       "sourcePath": "questions/004-css-basics-revision/005-sidebar-id.md",
       "question": "The HTML contains an `<aside>` with `id=\"sidebar\"`. Using an **id selector** in `style.css`, style only that element so that:\n\n1. Its text colour is `white`.\n2. Its background colour is `#333` (which computes to `rgb(51, 51, 51)`).\n\nThe `<main>` content must remain unchanged.",
-      "answer": "Use `#sidebar { … }` — an id selector targets the element whose `id` attribute matches.",
+      "answer": "",
       "testCases": [
         "describe('Sidebar styling', () => {\n  it('#sidebar has white text', () => {\n    const el = document.querySelector('#sidebar');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).color).to.equal('rgb(255, 255, 255)');\n  });\n\n  it('#sidebar has a #333 background', () => {\n    const el = document.querySelector('#sidebar');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).backgroundColor).to.equal('rgb(51, 51, 51)');\n  });\n});",
         "describe('Main untouched', () => {\n  it('<main> should not have the sidebar background', () => {\n    const el = document.querySelector('main');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).backgroundColor).to.not.equal('rgb(51, 51, 51)');\n  });\n});"
@@ -851,7 +857,7 @@
       "order": 6,
       "sourcePath": "questions/004-css-basics-revision/006-button-danger-element-class.md",
       "question": "The HTML contains two elements with `class=\"danger\"` — one is a `<button>` and one is a `<span>`. Style **only** the button so that:\n\n1. Its background colour is `red`.\n2. Its text colour is `white`.\n\nThe `<span class=\"danger\">` must remain unstyled.\n\nYou must use a **combined element + class selector** (e.g. `tag.class`).",
-      "answer": "Use `button.danger { … }` — matches only `<button>` elements that also have the `danger` class.",
+      "answer": "",
       "testCases": [
         "describe('Dangerous button', () => {\n  it('button.danger has a red background', () => {\n    const el = document.querySelector('button.danger');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).backgroundColor).to.equal('rgb(255, 0, 0)');\n  });\n\n  it('button.danger has white text', () => {\n    const el = document.querySelector('button.danger');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).color).to.equal('rgb(255, 255, 255)');\n  });\n});",
         "describe('Span untouched', () => {\n  it('span.danger should NOT have a red background', () => {\n    const el = document.querySelector('span.danger');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).backgroundColor).to.not.equal('rgb(255, 0, 0)');\n  });\n});"
@@ -873,7 +879,7 @@
       "order": 7,
       "sourcePath": "questions/004-css-basics-revision/007-card-descendant.md",
       "question": "The HTML contains two `<p>` elements: one inside a `<div class=\"card\">` and one outside.\n\nUsing a **descendant selector**, style **only the paragraphs inside `.card`** so that their text colour is `#555` (`rgb(85, 85, 85)`). The paragraph outside must keep its default colour.",
-      "answer": "Use `.card p { … }` — a descendant selector matches any `<p>` that is inside an element with class `card`.",
+      "answer": "",
       "testCases": [
         "describe('Paragraphs inside .card', () => {\n  it('each <p> inside .card is #555', () => {\n    const els = document.querySelectorAll('.card p');\n    expect(els.length).to.be.at.least(1);\n    els.forEach(el => {\n      expect(getComputedStyle(el).color).to.equal('rgb(85, 85, 85)');\n    });\n  });\n});",
         "describe('Paragraphs outside .card', () => {\n  it('a <p> outside .card is NOT #555', () => {\n    const outside = Array.from(document.querySelectorAll('p'))\n      .find(p => !p.closest('.card'));\n    expect(outside, 'expected a paragraph outside .card').to.exist;\n    expect(getComputedStyle(outside).color).to.not.equal('rgb(85, 85, 85)');\n  });\n});"
@@ -895,7 +901,7 @@
       "order": 8,
       "sourcePath": "questions/004-css-basics-revision/008-card-multiple-classes.md",
       "question": "An element can have multiple classes at the same time — each class contributes its own styles.\n\nThe HTML contains a `<div>` with the class `card`. Your job:\n\n1. **In the HTML**, add a second class `featured` to the div (so it ends up with `class=\"card featured\"`).\n2. **In `style.css`**, write two rules:\n   - `.card` — `padding: 16px` and `border: 1px solid #ccc`\n   - `.featured` — `background-color: yellow` and `font-weight: bold`\n\nWhen combined, the div should appear with padding, a light border, a yellow background, and bold text.",
-      "answer": "Add `featured` to the div's class list in the HTML, then define the two class rules in CSS.",
+      "answer": "",
       "testCases": [
         "describe('Div classes', () => {\n  it('the div has both classes \"card\" and \"featured\"', () => {\n    const div = document.querySelector('div');\n    expect(div).to.exist;\n    expect(div.classList.contains('card'), 'missing card class').to.equal(true);\n    expect(div.classList.contains('featured'), 'missing featured class').to.equal(true);\n  });\n});",
         "describe('.card styles', () => {\n  it('padding is 16px on all sides', () => {\n    const div = document.querySelector('div');\n    const cs = getComputedStyle(div);\n    expect(cs.paddingTop).to.equal('16px');\n    expect(cs.paddingBottom).to.equal('16px');\n    expect(cs.paddingLeft).to.equal('16px');\n    expect(cs.paddingRight).to.equal('16px');\n  });\n\n  it('border is 1px solid #ccc', () => {\n    const div = document.querySelector('div');\n    const cs = getComputedStyle(div);\n    expect(cs.borderTopWidth).to.equal('1px');\n    expect(cs.borderTopStyle).to.equal('solid');\n    expect(cs.borderTopColor).to.equal('rgb(204, 204, 204)');\n  });\n});",
@@ -918,7 +924,7 @@
       "order": 9,
       "sourcePath": "questions/004-css-basics-revision/009-important-override-links.md",
       "question": "The CSS already contains a high-specificity rule that paints every link inside `#nav` red:\n\n```css\n#nav a {\n  color: red;\n}\n```\n\nYou have a link with `class=\"external\"` that should appear **blue** instead. Because `#nav a` (specificity 0,1,0,1) beats `.external` (0,0,1,0), a plain class rule would lose.\n\nUse the `!important` keyword to force your class rule to win.\n\n**Rules:**\n\n1. Do **not** modify the existing `#nav a` rule.\n2. Add a `.external` rule that sets `color: blue !important;`.",
-      "answer": "Add `.external { color: blue !important; }` to the CSS.",
+      "answer": "",
       "testCases": [
         "describe('Override with !important', () => {\n  it('the external link should be blue, not red', () => {\n    const el = document.querySelector('a.external');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).color).to.equal('rgb(0, 0, 255)');\n  });\n});",
         "describe('!important is present', () => {\n  it('a rule uses !important on color', () => {\n    const sheets = Array.from(document.styleSheets);\n    const allText = sheets\n      .flatMap(s => {\n        try {\n          return Array.from(s.cssRules).map(r => r.cssText);\n        } catch {\n          return [];\n        }\n      })\n      .join('\\n');\n    expect(allText).to.match(/color\\s*:\\s*blue\\s*!important/i);\n  });\n});"
@@ -940,7 +946,7 @@
       "order": 10,
       "sourcePath": "questions/004-css-basics-revision/010-higher-specificity-nav.md",
       "question": "This question is the revision pair for the earlier specificity exercise. Again — no `!important` allowed. You win purely by making selectors more specific.\n\nThe starting CSS already contains two broad rules:\n\n```css\n.nav a {\n  color: black;\n}\n\n.card h2 {\n  color: black;\n}\n```\n\nThe HTML looks like this:\n\n```html\n<nav class=\"nav\">\n  <a href=\"/\" class=\"active\">Home</a>\n  <a href=\"/about\">About</a>\n</nav>\n\n<div class=\"card\">\n  <h2 id=\"title\">Welcome</h2>\n  <h2>Another section</h2>\n</div>\n```\n\n**Your task** — add **two** new rules (keep the existing two unchanged) so that:\n\n1. The link inside `.nav` that has class `active` becomes **red**.\n2. The `<h2>` inside `.card` that has `id=\"title\"` becomes **blue**.\n\nThe other `<a>` and the other `<h2>` must stay black.\n\nUse two different specificity-raising patterns: **add a class to the descendant** for the link, and **add an id to the descendant** for the heading. **Do not use `!important`.**",
-      "answer": "- `.nav a.active { color: red; }` — class added to the descendant raises specificity above `.nav a`.\n- `.card h2#title { color: blue; }` — id added to the descendant raises specificity above `.card h2`.",
+      "answer": "",
       "testCases": [
         "describe('Active nav link', () => {\n  it('the active link is red', () => {\n    const el = document.querySelector('.nav a.active');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).color).to.equal('rgb(255, 0, 0)');\n  });\n\n  it('the other nav link is still black', () => {\n    const other = Array.from(document.querySelectorAll('.nav a'))\n      .find(a => !a.classList.contains('active'));\n    expect(other).to.exist;\n    expect(getComputedStyle(other).color).to.equal('rgb(0, 0, 0)');\n  });\n});",
         "describe('Title heading', () => {\n  it('the h2#title is blue', () => {\n    const el = document.querySelector('.card h2#title');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).color).to.equal('rgb(0, 0, 255)');\n  });\n\n  it('the other h2 in the card is still black', () => {\n    const other = Array.from(document.querySelectorAll('.card h2'))\n      .find(h => h.id !== 'title');\n    expect(other).to.exist;\n    expect(getComputedStyle(other).color).to.equal('rgb(0, 0, 0)');\n  });\n});",
@@ -963,7 +969,7 @@
       "order": 11,
       "sourcePath": "questions/004-css-basics-revision/011-external-stylesheet-link.md",
       "question": "The HTML is missing its connection to `style.css`. Inside the existing `<head>`, add a `<link>` tag that loads `style.css`:\n\n```html\n<link rel=\"stylesheet\" href=\"style.css\">\n```\n\nThe starting `style.css` already makes every `<p>` green. The test simply verifies that the `<link>` tag is present and correctly formed.",
-      "answer": "Add `<link rel=\"stylesheet\" href=\"style.css\">` inside `<head>`.",
+      "answer": "",
       "testCases": [
         "describe('Stylesheet link', () => {\n  it('has a <link rel=\"stylesheet\" href=\"style.css\"> inside <head>', () => {\n    const link = document.querySelector('head link[rel=\"stylesheet\"][href=\"style.css\"]');\n    expect(link, 'expected <link rel=\"stylesheet\" href=\"style.css\"> in <head>').to.exist;\n  });\n});",
         "describe('Styles applied', () => {\n  it('paragraphs are green (from style.css)', () => {\n    const p = document.querySelector('p');\n    expect(p).to.exist;\n    expect(getComputedStyle(p).color).to.equal('rgb(0, 128, 0)');\n  });\n});"
@@ -985,7 +991,7 @@
       "order": 12,
       "sourcePath": "questions/004-css-basics-revision/012-text-variants-ii.md",
       "question": "This is the revision pair for the earlier text-variants exercise. It covers **four different** text-styling properties.\n\nFurther reading:\n\n- [MDN: `font-weight`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight) · [W3Schools](https://www.w3schools.com/cssref/pr_font_weight.php)\n- [MDN: `line-height`](https://developer.mozilla.org/en-US/docs/Web/CSS/line-height) · [W3Schools](https://www.w3schools.com/cssref/pr_dim_line-height.php)\n- [MDN: `letter-spacing`](https://developer.mozilla.org/en-US/docs/Web/CSS/letter-spacing) · [W3Schools](https://www.w3schools.com/cssref/pr_text_letter-spacing.php)\n- [MDN: `text-decoration`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration) · [W3Schools](https://www.w3schools.com/cssref/pr_text_text-decoration.php)\n\nThe HTML contains four paragraphs, each with a different class. In `style.css`, write four class rules so that:\n\n1. `.bold` — `font-weight: bold`.\n2. `.tall` — `line-height: 2`.\n3. `.spaced` — `letter-spacing: 4px`.\n4. `.strike` — `text-decoration: line-through`.",
-      "answer": "Write one class rule per variant, each setting the matching property to the listed value.",
+      "answer": "",
       "testCases": [
         "describe('Bold text', () => {\n  it('.bold has font-weight bold', () => {\n    const el = document.querySelector('.bold');\n    expect(el).to.exist;\n    const weight = getComputedStyle(el).fontWeight;\n    expect(['bold', '700']).to.include(weight);\n  });\n});",
         "describe('Tall line-height', () => {\n  it('.tall has line-height 2 (doubled)', () => {\n    const el = document.querySelector('.tall');\n    expect(el).to.exist;\n    const cs = getComputedStyle(el);\n    const ratio = parseFloat(cs.lineHeight) / parseFloat(cs.fontSize);\n    // Accept small floating-point error.\n    expect(Math.abs(ratio - 2)).to.be.lessThan(0.05);\n  });\n});",
@@ -1009,7 +1015,7 @@
       "order": 13,
       "sourcePath": "questions/004-css-basics-revision/013-capstone-event-invite.md",
       "question": "Put everything from this category together to style an **event invitation poster**. The design is intentionally very different from the book-card capstone: dark background, amber highlights, dashed border, left-aligned uppercase heading, and an outlined (not filled) button.\n\nThe HTML markup is provided. Your job is to read each visual goal, pick a selector that fits, and write the CSS.\n\nYour goal is to recreate this design:\n\n![Event poster target design](/images/proposed-solution-2.png)\n\n**Starter CSS (do not modify):**\n\n```css\n#event-card a {\n  color: black;\n}\n```\n\nThis rule will fight you when you style the register button — you'll need to beat it.\n\n## Visual Goals\n\n1. **Connect your stylesheet.** The HTML isn't loading `style.css` yet — fix that first.\n2. **Page.** The page sits on a very dark navy background — think \"stage lights off\".\n3. **Card.** The invitation is a dark slate panel with an amber **dashed** border (not a solid one) and generous padding so it reads like a printed poster.\n4. **Heading.** The event title is a poster-style wordmark: **left-aligned** (not centred), ALL CAPS, widely spaced letters, rendered in amber.\n5. **Subtitle.** Italicised, white, with airy line-height so it breathes underneath the heading.\n6. **Speaker list.** Every speaker item appears in white, in ALL CAPS, with extra vertical space between lines.\n7. **Register button.** The register element is an `<a>` wearing two classes:\n   - Its **base** styling gives it chunky padding, removes the default link underline, and gives it a thin **white outline border** so it looks like an outlined button (no background fill).\n   - Its **call-to-action** variant makes the text bold.\n   - Your CSS must respect this split — one rule for the outlined base, a separate rule for the CTA weight.\n8. **Winning the colour fight.** The starter rule paints every link inside the card black. You need the register button's text to be **white** regardless — choose the minimum tool needed to override that starter rule.\n\n## Design Tokens\n\nUse these exact values so the tests match your colours and sizes:\n\n- Page background: `#0f172a`\n- Card padding: `40px`\n- Card border: `4px dashed #fbbf24`\n- Card background: `#1e293b`\n- Heading text-align: `left`\n- Heading text-transform: `uppercase`\n- Heading letter-spacing: `4px`\n- Heading colour: `#fbbf24`\n- Subtitle font-style: `italic`\n- Subtitle colour: `white`\n- Subtitle line-height: `1.8`\n- Speaker list colour: `white`\n- Speaker list text-transform: `uppercase`\n- Speaker list line-height: `2`\n- Register base padding: `14px 28px`\n- Register base underline: removed\n- Register base border: `2px solid white`\n- Register CTA font-weight: `bold`\n- Register CTA text colour: `white` (must win against the starter rule)\n\nYou pick the selectors. Any selector that correctly targets the right element and applies the tokenised values will pass.",
-      "answer": "Link the stylesheet, then translate each visual goal into a CSS rule. The register button's colour override needs `!important` because a plain class selector can't beat `#event-card a`.",
+      "answer": "",
       "testCases": [
         "describe('External stylesheet', () => {\n  it('<head> links style.css', () => {\n    const link = document.querySelector('head link[rel=\"stylesheet\"][href=\"style.css\"]');\n    expect(link, 'missing <link rel=\"stylesheet\" href=\"style.css\">').to.exist;\n  });\n});",
         "describe('Page background', () => {\n  it('body background is #0f172a', () => {\n    expect(getComputedStyle(document.body).backgroundColor).to.equal('rgb(15, 23, 42)');\n  });\n});",
@@ -1027,6 +1033,153 @@
       "hints": "- Work one visual goal at a time and run the tests after each — the test groups mirror the bulleted goals above.\n- The tests check **computed styles**, so whichever selector you pick, as long as it lands on the right element with the right value, it passes.\n- For each goal, ask: *is this element unique on the page (id), a reusable role (class), something nested inside another element (descendant selector), or a combination of behaviours (multiple classes)?*\n- `border: 4px dashed #fbbf24` is shorthand — it sets width, style, and colour together. `dashed` is critical; `solid` won't pass the style test.\n- Line-height without a unit (e.g. `1.8`, `2`) is a multiplier of the element's own font size — that's what the tests measure.\n- The starter `#event-card a` has specificity (0, 1, 0, 1). A plain class selector is only (0, 0, 1, 0) and will lose. Think about what single flag can force your colour to win without rewriting the selector.",
       "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Event invite</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <section id=\"event-card\">\n      <h1>Summer Conference</h1>\n      <p class=\"subtitle\">Three days of talks, two nights of music, one great city.</p>\n      <ul class=\"speakers\">\n        <li>Ada Lovelace</li>\n        <li>Grace Hopper</li>\n        <li>Margaret Hamilton</li>\n      </ul>\n      <a href=\"/register\" class=\"btn cta\">Register now</a>\n    </section>\n  </body>\n</html>\n```\n\n```css\n#event-card a {\n  color: black;\n}\n\nbody {\n  background-color: #0f172a;\n}\n\n#event-card {\n  padding: 40px;\n  border: 4px dashed #fbbf24;\n  background-color: #1e293b;\n}\n\n#event-card h1 {\n  text-align: left;\n  text-transform: uppercase;\n  letter-spacing: 4px;\n  color: #fbbf24;\n}\n\n.subtitle {\n  font-style: italic;\n  color: white;\n  line-height: 1.8;\n}\n\n.speakers li {\n  color: white;\n  text-transform: uppercase;\n  line-height: 2;\n}\n\n.btn {\n  padding: 14px 28px;\n  text-decoration: none;\n  border: 2px solid white;\n}\n\n.cta {\n  font-weight: bold;\n  color: white !important;\n}\n```",
       "walkthrough": "1. **Link the stylesheet.** Inside `<head>`, add `<link rel=\"stylesheet\" href=\"style.css\">`.\n2. **Dark page.** `body { background-color: #0f172a; }` — the whole stage goes dark.\n3. **Dark card with dashed border.** Use the card's id and set `padding: 40px;`, `border: 4px dashed #fbbf24;`, and `background-color: #1e293b;`. This is the biggest visual departure from the book-card capstone — dashed instead of solid, dark instead of light, larger padding.\n4. **Poster heading.** Use a descendant selector from the card to its `h1`. Set `text-align: left;`, `text-transform: uppercase;`, `letter-spacing: 4px;`, and `color: #fbbf24;`. The heading shouts in amber now.\n5. **Airy subtitle.** `.subtitle { font-style: italic; color: white; line-height: 1.8; }`.\n6. **Uppercase speaker list.** Use a descendant selector `.speakers li` and set `color: white; text-transform: uppercase; line-height: 2;`.\n7. **Outlined base button.** `.btn { padding: 14px 28px; text-decoration: none; border: 2px solid white; }` — note the white border instead of a filled background.\n8. **Bold CTA with colour override.** `.cta { font-weight: bold; color: white !important; }` — `!important` is what actually beats the starter `#event-card a` rule.\n9. Save, refresh, and run the tests. When everything passes you should see a dark, amber-bordered poster with uppercase white list items and an outlined register button — a very different vibe from the book card."
+    },
+    {
+      "id": "5033fb5f759a",
+      "slug": "margin",
+      "title": "Margin",
+      "categoryId": "b7b6256824b1",
+      "categorySlug": "box-model",
+      "order": 1,
+      "sourcePath": "questions/005-box-model/001-margin.md",
+      "question": "Create a box with **20px margin** on all sides. The box should have a visible background color so the margin effect is clear.\n\nThe HTML is provided with a `div` that has a class of `box`. Add CSS to give it the required margin.",
+      "answer": "",
+      "testCases": [
+        "describe('Box margin', () => {\n  it('should have 20px margin on all sides', () => {\n    const box = document.querySelector('.box');\n    expect(box).to.exist;\n    const style = getComputedStyle(box);\n    expect(style.marginTop).to.equal('20px');\n    expect(style.marginRight).to.equal('20px');\n    expect(style.marginBottom).to.equal('20px');\n    expect(style.marginLeft).to.equal('20px');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Margin Practice</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"box\">I have margin around me</div>\n  </body>\n</html>",
+        "css": ".box {\n  background-color: lightblue;\n  /* Add margin here */\n}"
+      },
+      "hints": "- `margin` is the space outside an element's border.\n- You can set all margins at once with `margin: 20px`.\n- Alternatively, use `margin-top`, `margin-right`, `margin-bottom`, `margin-left` individually.",
+      "solution": "```css\n.box {\n  background-color: lightblue;\n  margin: 20px;\n}\n```",
+      "walkthrough": "1. Open `style.css`.\n2. Find the `.box` selector — it already has a background color so you can see the box.\n3. Add `margin: 20px;` inside the braces.\n4. Save and refresh the preview. You should see space around the light blue box.\n5. Run the tests to verify all four margins are 20px."
+    },
+    {
+      "id": "dd4355d9d6a2",
+      "slug": "padding",
+      "title": "Padding",
+      "categoryId": "b7b6256824b1",
+      "categorySlug": "box-model",
+      "order": 2,
+      "sourcePath": "questions/005-box-model/002-padding.md",
+      "question": "Create a box with **16px padding** on all sides. The box should have a visible background color and a border so the padding effect is clear.\n\nThe HTML is provided with a `div` that has a class of `card`. Add CSS to give it the required padding.",
+      "answer": "",
+      "testCases": [
+        "describe('Card padding', () => {\n  it('should have 16px padding on all sides', () => {\n    const card = document.querySelector('.card');\n    expect(card).to.exist;\n    const style = getComputedStyle(card);\n    expect(style.paddingTop).to.equal('16px');\n    expect(style.paddingRight).to.equal('16px');\n    expect(style.paddingBottom).to.equal('16px');\n    expect(style.paddingLeft).to.equal('16px');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Padding Practice</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"card\">Content inside the card</div>\n  </body>\n</html>",
+        "css": ".card {\n  background-color: #f0f0f0;\n  border: 1px solid #ccc;\n  /* Add padding here */\n}"
+      },
+      "hints": "- `padding` is the space inside an element, between content and border.\n- You can set all padding at once with `padding: 16px`.\n- The background color extends into the padding area.",
+      "solution": "```css\n.card {\n  background-color: #f0f0f0;\n  border: 1px solid #ccc;\n  padding: 16px;\n}\n```",
+      "walkthrough": "1. Open `style.css`.\n2. Find the `.card` selector — it has a background and border.\n3. Add `padding: 16px;` inside the braces.\n4. Save and refresh. Notice how the text has breathing room inside the card.\n5. Run the tests to verify all four padding values are 16px."
+    },
+    {
+      "id": "ca6bcd4b6f3f",
+      "slug": "border",
+      "title": "Border",
+      "categoryId": "b7b6256824b1",
+      "categorySlug": "box-model",
+      "order": 3,
+      "sourcePath": "questions/005-box-model/003-border.md",
+      "question": "Create a box with a **2px solid blue border** on all sides.\n\nThe HTML is provided with a `div` that has a class of `box`. Add CSS to give it the required border styling.",
+      "answer": "",
+      "testCases": [
+        "describe('Box border', () => {\n  it('should have a 2px solid blue border', () => {\n    const box = document.querySelector('.box');\n    expect(box).to.exist;\n    const style = getComputedStyle(box);\n    expect(style.borderTopWidth).to.equal('2px');\n    expect(style.borderTopStyle).to.equal('solid');\n    expect(style.borderTopColor).to.equal('rgb(0, 0, 255)');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Border Practice</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"box\">I have a border</div>\n  </body>\n</html>",
+        "css": ".box {\n  background-color: #fff;\n  padding: 20px;\n  /* Add border here */\n}"
+      },
+      "hints": "- Border has three components: width, style, and color.\n- The shorthand `border: 2px solid blue` sets all three at once.\n- Common border styles: `solid`, `dashed`, `dotted`, `double`, `none`.",
+      "solution": "```css\n.box {\n  background-color: #fff;\n  padding: 20px;\n  border: 2px solid blue;\n}\n```",
+      "walkthrough": "1. Open `style.css`.\n2. Find the `.box` selector.\n3. Add `border: 2px solid blue;` inside the braces.\n4. Save and refresh. You should see a blue outline around the white box.\n5. Run the tests to verify the border width, style, and color."
+    },
+    {
+      "id": "35124e42f4f2",
+      "slug": "margin-padding",
+      "title": "Margin Padding",
+      "categoryId": "b7b6256824b1",
+      "categorySlug": "box-model",
+      "order": 4,
+      "sourcePath": "questions/005-box-model/004-margin-padding.md",
+      "question": "Create a notification badge with **10px margin** and **12px padding** on all sides.\n\nThe HTML is provided with a `span` that has a class of `badge`. Add CSS to give it both margin and padding.",
+      "answer": "",
+      "testCases": [
+        "describe('Badge margin and padding', () => {\n  it('should have 10px margin on all sides', () => {\n    const badge = document.querySelector('.badge');\n    expect(badge).to.exist;\n    const style = getComputedStyle(badge);\n    expect(style.marginTop).to.equal('10px');\n    expect(style.marginRight).to.equal('10px');\n    expect(style.marginBottom).to.equal('10px');\n    expect(style.marginLeft).to.equal('10px');\n  });\n\n  it('should have 12px padding on all sides', () => {\n    const badge = document.querySelector('.badge');\n    expect(badge).to.exist;\n    const style = getComputedStyle(badge);\n    expect(style.paddingTop).to.equal('12px');\n    expect(style.paddingRight).to.equal('12px');\n    expect(style.paddingBottom).to.equal('12px');\n    expect(style.paddingLeft).to.equal('12px');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Margin and Padding</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <span class=\"badge\">New</span>\n    <span>Some other content</span>\n  </body>\n</html>",
+        "css": ".badge {\n  background-color: #ff6b6b;\n  color: white;\n  border-radius: 4px;\n  /* Add margin and padding here */\n}"
+      },
+      "hints": "- `margin` creates space outside the element.\n- `padding` creates space inside the element.\n- Both can be set with a single value for all sides.",
+      "solution": "```css\n.badge {\n  background-color: #ff6b6b;\n  color: white;\n  border-radius: 4px;\n  margin: 10px;\n  padding: 12px;\n}\n```",
+      "walkthrough": "1. Open `style.css`.\n2. Find the `.badge` selector.\n3. Add `margin: 10px;` to create space around the badge.\n4. Add `padding: 12px;` to create space inside the badge.\n5. Save and refresh. The badge should have space around it and comfortable internal spacing.\n6. Run the tests to verify both margin and padding values."
+    },
+    {
+      "id": "666b8aa1ac28",
+      "slug": "margin-padding-border",
+      "title": "Margin Padding Border",
+      "categoryId": "b7b6256824b1",
+      "categorySlug": "box-model",
+      "order": 5,
+      "sourcePath": "questions/005-box-model/005-margin-padding-border.md",
+      "question": "Create a profile card with **15px margin**, **20px padding**, and a **1px solid gray border** on all sides.\n\nThe HTML is provided with a `div` that has a class of `profile-card`. Add CSS to give it all three box model properties.",
+      "answer": "",
+      "testCases": [
+        "describe('Profile card box model', () => {\n  it('should have 15px margin on all sides', () => {\n    const card = document.querySelector('.profile-card');\n    expect(card).to.exist;\n    const style = getComputedStyle(card);\n    expect(style.marginTop).to.equal('15px');\n    expect(style.marginRight).to.equal('15px');\n    expect(style.marginBottom).to.equal('15px');\n    expect(style.marginLeft).to.equal('15px');\n  });\n\n  it('should have 20px padding on all sides', () => {\n    const card = document.querySelector('.profile-card');\n    const style = getComputedStyle(card);\n    expect(style.paddingTop).to.equal('20px');\n    expect(style.paddingRight).to.equal('20px');\n    expect(style.paddingBottom).to.equal('20px');\n    expect(style.paddingLeft).to.equal('20px');\n  });\n\n  it('should have a 1px solid gray border', () => {\n    const card = document.querySelector('.profile-card');\n    const style = getComputedStyle(card);\n    expect(style.borderTopWidth).to.equal('1px');\n    expect(style.borderTopStyle).to.equal('solid');\n    expect(style.borderTopColor).to.equal('rgb(128, 128, 128)');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Complete Box Model</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"profile-card\">\n      <h3>John Doe</h3>\n      <p>Web Developer</p>\n    </div>\n  </body>\n</html>",
+        "css": ".profile-card {\n  background-color: white;\n  /* Add margin, padding, and border here */\n}"
+      },
+      "hints": "- The complete box model includes content, padding, border, and margin.\n- Order from inside to outside: content → padding → border → margin.\n- Use `border: 1px solid gray` for the border.",
+      "solution": "```css\n.profile-card {\n  background-color: white;\n  margin: 15px;\n  padding: 20px;\n  border: 1px solid gray;\n}\n```",
+      "walkthrough": "1. Open `style.css`.\n2. Find the `.profile-card` selector.\n3. Add `margin: 15px;` for external spacing.\n4. Add `padding: 20px;` for internal spacing.\n5. Add `border: 1px solid gray;` for the outline.\n6. Save and refresh. The card should be nicely spaced with a gray border.\n7. Run the tests to verify all three properties."
+    },
+    {
+      "id": "b243e786e378",
+      "slug": "box-sizing",
+      "title": "Box Sizing",
+      "categoryId": "b7b6256824b1",
+      "categorySlug": "box-model",
+      "order": 6,
+      "sourcePath": "questions/005-box-model/006-box-sizing.md",
+      "question": "Create two boxes that both have **width: 200px**, **padding: 20px**, and **border: 5px solid black**.\n\nThe first box (`.content-box`) should use `content-box` sizing (the default). The second box (`.border-box`) should use `border-box` sizing.\n\nThis demonstrates how `box-sizing` affects the total rendered width.",
+      "answer": "",
+      "testCases": [
+        "describe('Box sizing behavior', () => {\n  it('content-box should have default box-sizing', () => {\n    const box = document.querySelector('.content-box');\n    expect(box).to.exist;\n    const style = getComputedStyle(box);\n    expect(style.boxSizing).to.equal('content-box');\n  });\n\n  it('border-box should have border-box sizing', () => {\n    const box = document.querySelector('.border-box');\n    expect(box).to.exist;\n    const style = getComputedStyle(box);\n    expect(style.boxSizing).to.equal('border-box');\n  });\n\n  it('both boxes should have 200px width', () => {\n    const contentBox = document.querySelector('.content-box');\n    const borderBox = document.querySelector('.border-box');\n    expect(contentBox).to.exist;\n    expect(borderBox).to.exist;\n    const contentStyle = getComputedStyle(contentBox);\n    const borderStyle = getComputedStyle(borderBox);\n    expect(contentStyle.width).to.equal('200px');\n    expect(borderStyle.width).to.equal('200px');\n  });\n\n  it('both boxes should have 20px padding and 5px border', () => {\n    const contentBox = document.querySelector('.content-box');\n    const borderBox = document.querySelector('.border-box');\n    const contentStyle = getComputedStyle(contentBox);\n    const borderStyle = getComputedStyle(borderBox);\n    expect(contentStyle.paddingTop).to.equal('20px');\n    expect(contentStyle.borderTopWidth).to.equal('5px');\n    expect(borderStyle.paddingTop).to.equal('20px');\n    expect(borderStyle.borderTopWidth).to.equal('5px');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Box Sizing</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"content-box\">Content Box (I get wider with padding/border)</div>\n    <div class=\"border-box\">Border Box (I stay 200px total)</div>\n  </body>\n</html>",
+        "css": ".content-box {\n  width: 200px;\n  padding: 20px;\n  border: 5px solid black;\n  background-color: lightcoral;\n  margin-bottom: 10px;\n  /* Add box-sizing here */\n}\n\n.border-box {\n  width: 200px;\n  padding: 20px;\n  border: 5px solid black;\n  background-color: lightgreen;\n  /* Add box-sizing here */\n}"
+      },
+      "hints": "- `content-box`: width/height applies to content only. Padding and border are added outside.\n- `border-box`: width/height applies to the entire box including padding and border.\n- `border-box` is often preferred for easier layout calculations.",
+      "solution": "```css\n.content-box {\n  width: 200px;\n  padding: 20px;\n  border: 5px solid black;\n  background-color: lightcoral;\n  margin-bottom: 10px;\n  box-sizing: content-box;\n}\n\n.border-box {\n  width: 200px;\n  padding: 20px;\n  border: 5px solid black;\n  background-color: lightgreen;\n  box-sizing: border-box;\n}\n```",
+      "walkthrough": "1. Open `style.css`.\n2. Find the `.content-box` selector and add `box-sizing: content-box;`.\n3. Find the `.border-box` selector and add `box-sizing: border-box;`.\n4. Save and refresh. Notice the content-box is wider because padding and border add to its total size.\n5. Run the tests to verify the box-sizing properties."
+    },
+    {
+      "id": "7df0c738ad15",
+      "slug": "display-types",
+      "title": "Display Types",
+      "categoryId": "b7b6256824b1",
+      "categorySlug": "box-model",
+      "order": 7,
+      "sourcePath": "questions/005-box-model/007-display-types.md",
+      "question": "Create three elements demonstrating different `display` behaviors:\n\n1. `.inline-el`: Should display as `inline` (flows with text, cannot set width/height)\n2. `.block-el`: Should display as `block` (takes full width, starts on new line)\n3. `.inline-block-el`: Should display as `inline-block` (flows with text, but can set width/height)\n\nAll three should have `width: 100px`, `height: 50px`, and `background-color` set to see the difference.",
+      "answer": "",
+      "testCases": [
+        "describe('Display types', () => {\n  it('inline element should have inline display', () => {\n    const el = document.querySelector('.inline-el');\n    expect(el).to.exist;\n    const style = getComputedStyle(el);\n    expect(style.display).to.equal('inline');\n  });\n\n  it('block element should have block display', () => {\n    const el = document.querySelector('.block-el');\n    expect(el).to.exist;\n    const style = getComputedStyle(el);\n    expect(style.display).to.equal('block');\n  });\n\n  it('inline-block element should have inline-block display', () => {\n    const el = document.querySelector('.inline-block-el');\n    expect(el).to.exist;\n    const style = getComputedStyle(el);\n    expect(style.display).to.equal('inline-block');\n  });\n\n  it('all elements should have 100px width and 50px height', () => {\n    const inline = document.querySelector('.inline-el');\n    const block = document.querySelector('.block-el');\n    const inlineBlock = document.querySelector('.inline-block-el');\n    \n    expect(getComputedStyle(inline).width).to.equal('100px');\n    expect(getComputedStyle(block).width).to.equal('100px');\n    expect(getComputedStyle(inlineBlock).width).to.equal('100px');\n    expect(getComputedStyle(inline).height).to.equal('50px');\n    expect(getComputedStyle(block).height).to.equal('50px');\n    expect(getComputedStyle(inlineBlock).height).to.equal('50px');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Display Types</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <p>\n      Text before\n      <span class=\"inline-el\">Inline</span>\n      text after\n    </p>\n    <div class=\"block-el\">Block</div>\n    <p>\n      Text before\n      <span class=\"inline-block-el\">Inline-Block</span>\n      text after\n    </p>\n  </body>\n</html>",
+        "css": ".inline-el {\n  background-color: #ff9999;\n  width: 100px;\n  height: 50px;\n  /* Add display here */\n}\n\n.block-el {\n  background-color: #99ff99;\n  width: 100px;\n  height: 50px;\n  /* Add display here */\n}\n\n.inline-block-el {\n  background-color: #9999ff;\n  width: 100px;\n  height: 50px;\n  /* Add display here */\n}"
+      },
+      "hints": "- `inline`: Flows with text, ignores width/height properties.\n- `block`: Takes full available width, respects width/height.\n- `inline-block`: Flows with text like inline, but respects width/height.\n- Notice how inline elements ignore the 100px width and 50px height settings.",
+      "solution": "```css\n.inline-el {\n  background-color: #ff9999;\n  width: 100px;\n  height: 50px;\n  display: inline;\n}\n\n.block-el {\n  background-color: #99ff99;\n  width: 100px;\n  height: 50px;\n  display: block;\n}\n\n.inline-block-el {\n  background-color: #9999ff;\n  width: 100px;\n  height: 50px;\n  display: inline-block;\n}\n```",
+      "walkthrough": "1. Open `style.css`.\n2. Add `display: inline;` to `.inline-el`. Notice it ignores the width/height.\n3. Add `display: block;` to `.block-el`. It takes full width and the set dimensions.\n4. Add `display: inline-block;` to `.inline-block-el`. It flows with text but shows at 100x50px.\n5. Save and refresh. Compare how each element behaves in the layout.\n6. Run the tests to verify all display properties and dimensions."
     }
   ]
 }

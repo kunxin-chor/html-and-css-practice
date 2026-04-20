@@ -15,10 +15,6 @@ Put everything from this category together and build a small **"About Me"** page
      - `Monday` / `Gym`
      - `Tuesday` / `Reading`
 
-# Answer
-
-Combine the elements from every question in this category — headings, paragraphs, links, images, lists, and a table — into one document.
-
 # Test Cases
 
 ```

@@ -4,10 +4,6 @@ Create a web page that displays the text **"Hello, World!"** as the main heading
 
 Use the appropriate HTML element for a top-level heading.
 
-# Answer
-
-Edit `index.html` so that the page contains a single top-level heading with the text `Hello, World!`.
-
 # Test Cases
 
 ```

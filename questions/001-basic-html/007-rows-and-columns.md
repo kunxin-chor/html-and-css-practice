@@ -9,10 +9,6 @@ The cell contents (row by row, left to right) must be:
 
 No header cells are required for this question — use ordinary data cells only.
 
-# Answer
-
-Add two `<tr>` elements inside the existing `<table>`, each containing three `<td>` cells with the values shown above.
-
 # Test Cases
 
 ```

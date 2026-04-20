@@ -11,10 +11,6 @@ The HTML contains a `<div>` with the class `card`. Your job:
 
 When combined, the div should appear with padding, a light border, a yellow background, and bold text.
 
-# Answer
-
-Add `featured` to the div's class list in the HTML, then define the two class rules in CSS.
-
 # Test Cases
 
 ```

@@ -11,10 +11,6 @@ The HTML contains a `<button>` with the class `btn`. Your job:
 
 When combined, the button should appear blue with white text, padded, and borderless.
 
-# Answer
-
-Add `primary` to the button's class list in the HTML, then define the two class rules in CSS.
-
 # Test Cases
 
 ```

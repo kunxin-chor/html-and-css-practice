@@ -8,10 +8,6 @@ The HTML is missing its connection to `style.css`. Inside the existing `<head>`,
 
 The starting `style.css` already makes every `<p>` green. The test simply verifies that the `<link>` tag is present and correctly formed.
 
-# Answer
-
-Add `<link rel="stylesheet" href="style.css">` inside `<head>`.
-
 # Test Cases
 
 ```

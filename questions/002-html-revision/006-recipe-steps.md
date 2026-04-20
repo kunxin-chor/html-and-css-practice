@@ -10,10 +10,6 @@ Write out the cooking instructions for boiling pasta as an **ordered** (numbered
 
 Use an `<ol>` element — not `<ul>`.
 
-# Answer
-
-Use an `<ol>` with five `<li>` children inside `<body>`.
-
 # Test Cases
 
 ```

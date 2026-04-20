@@ -10,10 +10,6 @@ Every question in this course uses a separate CSS file called `style.css`. In re
 
 You don't need to write any new CSS for this question — the starting `style.css` already sets `h1` to `blue`. The test simply verifies that the `<link>` tag is present and correctly formed.
 
-# Answer
-
-Add `<link rel="stylesheet" href="style.css">` inside `<head>`.
-
 # Test Cases
 
 ```

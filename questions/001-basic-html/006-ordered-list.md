@@ -8,10 +8,6 @@ Create an **ordered** (numbered) list showing the top 3 finishers of a race. The
 
 The page must use an `<ol>` element — not `<ul>`.
 
-# Answer
-
-Use an `<ol>` element with three `<li>` children inside `<body>`.
-
 # Test Cases
 
 ```

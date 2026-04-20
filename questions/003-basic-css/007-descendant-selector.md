@@ -9,10 +9,6 @@ Using a **descendant selector**, style **only the link inside `<nav>`** so that:
 
 The link outside `<nav>` must remain unchanged.
 
-# Answer
-
-Use `nav a { … }` — two selectors separated by a space means "an `<a>` that is a descendant of a `<nav>`".
-
 # Test Cases
 
 ```

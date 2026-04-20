@@ -7,10 +7,6 @@ The HTML contains several paragraphs. Only the ones with the class `muted` shoul
 
 Paragraphs without the `muted` class must remain unstyled.
 
-# Answer
-
-Use a class selector `.muted` in `style.css` with `color: gray;` and `font-style: italic;`.
-
 # Test Cases
 
 ```

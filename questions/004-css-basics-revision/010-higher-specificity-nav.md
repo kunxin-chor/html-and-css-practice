@@ -37,11 +37,6 @@ The other `<a>` and the other `<h2>` must stay black.
 
 Use two different specificity-raising patterns: **add a class to the descendant** for the link, and **add an id to the descendant** for the heading. **Do not use `!important`.**
 
-# Answer
-
-- `.nav a.active { color: red; }` — class added to the descendant raises specificity above `.nav a`.
-- `.card h2#title { color: blue; }` — id added to the descendant raises specificity above `.card h2`.
-
 # Test Cases
 
 ```

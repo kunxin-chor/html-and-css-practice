@@ -5,10 +5,6 @@ Style the page so that:
 1. The page background colour is light gray (`#f0f0f0`).
 2. All `<h2>` elements have a font size of exactly `32px`.
 
-# Answer
-
-Target `body` for the background colour and `h2` for the font size.
-
 # Test Cases
 
 ```

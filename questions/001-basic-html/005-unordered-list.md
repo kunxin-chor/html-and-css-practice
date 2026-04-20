@@ -6,10 +6,6 @@ Create an unordered list of your three favorite fruits. The list items, in order
 2. Banana
 3. Cherry
 
-# Answer
-
-Use a `<ul>` element with three `<li>` children inside `<body>`.
-
 # Test Cases
 
 ```

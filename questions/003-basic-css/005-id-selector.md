@@ -7,10 +7,6 @@ The HTML contains an `<h1>` with `id="page-title"`. In `style.css`, use an **id 
 
 Any other text on the page should remain unchanged.
 
-# Answer
-
-Use `#page-title { … }` in `style.css` to target the element by its `id`.
-
 # Test Cases
 
 ```

@@ -2,10 +2,6 @@
 
 Center-align the text of the `<h1>` heading horizontally using CSS.
 
-# Answer
-
-In `style.css`, target `h1` and set `text-align` to `center`.
-
 # Test Cases
 
 ```

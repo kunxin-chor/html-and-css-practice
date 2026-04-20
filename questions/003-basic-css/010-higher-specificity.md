@@ -32,12 +32,6 @@ The HTML inside `#main` contains two paragraphs *and* a submit button:
 
 Each new rule must be **more specific** than the matching base rule. For the paragraphs, combine id + element + class. For the button, use an **attribute selector** so the selector matches *only* submit buttons. **Do not use `!important`.**
 
-# Answer
-
-- `#main p.first { color: red; }` — id + element + class beats `#main p`.
-- `#main p.second { color: green; }` — same pattern.
-- `#main button[type="submit"] { background-color: purple; }` — the attribute selector `[type="submit"]` raises specificity above `#main button`.
-
 # Test Cases
 
 ```

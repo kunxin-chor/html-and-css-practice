@@ -35,8 +35,7 @@ However, question authoring is done via a md file for each question.
 - each category must begin with a three digits number, such as`001`, or `002` for ordering
 - each md file use the following headers to indicate different parts of the question:
 
-  - # Question
-  - # Answer
+  - # Question 
   - # Test Cases: the actual code to test if the answer is correct, written using a testing library that works in the browser. Use code fences ``` to seperate each test case. Example:    
     ```
     describe('Test 1', () => {

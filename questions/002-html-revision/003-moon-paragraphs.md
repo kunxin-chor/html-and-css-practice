@@ -6,10 +6,6 @@ Below the existing heading, add **three** paragraphs of text, in this order:
 2. `It is about 384,400 km away on average.`
 3. `A full orbit takes roughly 27 days.`
 
-# Answer
-
-Add three `<p>` elements inside the `<body>`, each containing the required text.
-
 # Test Cases
 
 ```

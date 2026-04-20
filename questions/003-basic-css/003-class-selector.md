@@ -7,10 +7,6 @@ The HTML contains two paragraphs. Only the one with the class `highlight` should
 
 The other paragraph must remain unstyled.
 
-# Answer
-
-In `style.css`, use a class selector (`.highlight`) to apply `background-color: yellow` and `font-weight: bold`.
-
 # Test Cases
 
 ```

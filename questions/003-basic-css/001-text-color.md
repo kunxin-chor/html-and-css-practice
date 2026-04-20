@@ -4,10 +4,6 @@ Make the `<h1>` heading on the page display in **red**.
 
 Use CSS to style the heading — do not use inline `style` attributes in the HTML.
 
-# Answer
-
-In `style.css`, add a rule that targets `h1` and sets `color` to `red`.
-
 # Test Cases
 
 ```

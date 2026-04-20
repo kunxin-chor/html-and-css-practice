@@ -11,10 +11,6 @@ Requirements:
    - Row 2: `Delhi` / `India` / `28514000`
    - Row 3: `Shanghai` / `China` / `25582000`
 
-# Answer
-
-Use a `<table>` with a `<thead>` for the three-column header and a `<tbody>` with three data rows.
-
 # Test Cases
 
 ```

@@ -17,10 +17,6 @@ Because the id selector `#special` has higher specificity than a class selector,
 1. Do **not** modify the existing `#special` rule.
 2. Add a `.danger` rule that sets `color: green !important;`.
 
-# Answer
-
-Add `.danger { color: green !important; }` to the CSS. `!important` overrides normal cascade ordering, even against higher-specificity selectors.
-
 # Test Cases
 
 ```

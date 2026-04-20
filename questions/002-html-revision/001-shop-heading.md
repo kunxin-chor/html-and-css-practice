@@ -4,10 +4,6 @@ Create a page whose main heading welcomes visitors to a small online shop. The p
 
 `Welcome to the Bookshop`
 
-# Answer
-
-Use one `<h1>` element inside `<body>` with the required text.
-
 # Test Cases
 
 ```

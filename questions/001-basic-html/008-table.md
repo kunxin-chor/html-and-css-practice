@@ -10,10 +10,6 @@ Requirements:
    - Row 1: `Alice` / `30`
    - Row 2: `Bob` / `25`
 
-# Answer
-
-Use `<table>` with a `<thead>` for the header row and a `<tbody>` containing the two data rows.
-
 # Test Cases
 
 ```

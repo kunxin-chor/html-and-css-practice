@@ -4,10 +4,6 @@ The HTML contains two `<p>` elements: one inside a `<div class="card">` and one 
 
 Using a **descendant selector**, style **only the paragraphs inside `.card`** so that their text colour is `#555` (`rgb(85, 85, 85)`). The paragraph outside must keep its default colour.
 
-# Answer
-
-Use `.card p { … }` — a descendant selector matches any `<p>` that is inside an element with class `card`.
-
 # Test Cases
 
 ```

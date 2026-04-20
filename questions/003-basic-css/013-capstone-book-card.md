@@ -35,10 +35,6 @@ Use these exact values so the tests can match your colours and sizes:
 
 You decide which selectors to reach for. The tests check computed styles on the relevant elements, so **any** selector that correctly targets the element will pass — but the concepts you practised earlier in this category (id selectors, descendant selectors, element + class combinations, multi-class styling, text variants) are all usable here. Pick the one that best fits each goal.
 
-# Answer
-
-Read each visual goal and pick the selector that matches — ids for unique elements, classes for reusable labels, descendant selectors for "X inside Y", etc. Link the stylesheet first, then translate each goal into a rule.
-
 # Test Cases
 
 ```

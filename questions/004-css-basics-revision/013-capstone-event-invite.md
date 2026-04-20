@@ -58,10 +58,6 @@ Use these exact values so the tests match your colours and sizes:
 
 You pick the selectors. Any selector that correctly targets the right element and applies the tokenised values will pass.
 
-# Answer
-
-Link the stylesheet, then translate each visual goal into a CSS rule. The register button's colour override needs `!important` because a plain class selector can't beat `#event-card a`.
-
 # Test Cases
 
 ```

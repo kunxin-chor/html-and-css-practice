@@ -5,10 +5,6 @@ Style the page so that:
 1. The page background is light yellow (`#ffffcc`).
 2. All paragraphs have a font size of exactly `20px`.
 
-# Answer
-
-In `style.css`, target the `body` element for the background color and the `p` element for the font size.
-
 # Test Cases
 
 ```

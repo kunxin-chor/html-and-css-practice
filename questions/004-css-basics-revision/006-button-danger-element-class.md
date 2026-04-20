@@ -9,10 +9,6 @@ The `<span class="danger">` must remain unstyled.
 
 You must use a **combined element + class selector** (e.g. `tag.class`).
 
-# Answer
-
-Use `button.danger { … }` — matches only `<button>` elements that also have the `danger` class.
-
 # Test Cases
 
 ```

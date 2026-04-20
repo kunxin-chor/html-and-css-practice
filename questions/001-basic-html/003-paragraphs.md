@@ -5,10 +5,6 @@ Add two paragraphs of text to the page below the existing heading.
 The first paragraph should say: `I am learning HTML.`
 The second paragraph should say: `It is fun!`
 
-# Answer
-
-Add two `<p>` elements inside the `<body>` of `index.html`, each containing the required text.
-
 # Test Cases
 
 ```

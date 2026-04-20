@@ -8,10 +8,6 @@ Create an unordered list of items for a weekly grocery run. The list items, in o
 4. Butter
 5. Cheese
 
-# Answer
-
-Use a `<ul>` with five `<li>` children inside `<body>`.
-
 # Test Cases
 
 ```

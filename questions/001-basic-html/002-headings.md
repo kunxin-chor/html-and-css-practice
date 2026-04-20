@@ -7,10 +7,6 @@ Build a small page with two headings of different levels:
 
 The `<h2>` must appear **after** the `<h1>` in the document.
 
-# Answer
-
-Inside `<body>`, add an `<h1>` followed by an `<h2>` with the exact text above.
-
 # Test Cases
 
 ```

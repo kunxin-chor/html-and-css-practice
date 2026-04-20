@@ -17,10 +17,6 @@ Put everything from this category together and build a small **recipe page** for
      - `Protein` / `6g` / `12%`
      - `Fat` / `8g` / `10%`
 
-# Answer
-
-Combine every element from this category — headings, paragraphs, links, images, lists, and a table — into one document.
-
 # Test Cases
 
 ```

@@ -6,10 +6,6 @@ Add the following to the page, below the existing heading:
 2. A second link that says `Learn web.dev` and goes to `https://web.dev`.
 3. An image with `src="https://picsum.photos/250/150"` and `alt="Code on a screen"`.
 
-# Answer
-
-Use two `<a>` elements for the links and one `<img>` for the image.
-
 # Test Cases
 
 ```

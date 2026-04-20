@@ -5,10 +5,6 @@ Add the following to the page:
 1. A link that says `Visit Example` and goes to `https://example.com`.
 2. An image with the source `https://picsum.photos/200/300` and the alt text `Placeholder image`.
 
-# Answer
-
-Use the `<a>` element for the link (with an `href` attribute) and the `<img>` element for the image (with `src` and `alt` attributes).
-
 # Test Cases
 
 ```
