@@ -1,12 +1,14 @@
 # Question
 
-Create three elements demonstrating different `display` behaviors:
+The page contains three elements, each with its own class: `.inline-el`, `.block-el`, and `.inline-block-el`. Each class already has `width: 100px`, `height: 50px`, and a background colour set.
 
-1. `.inline-el`: Should display as `inline` (flows with text, cannot set width/height)
-2. `.block-el`: Should display as `block` (takes full width, starts on new line)
-3. `.inline-block-el`: Should display as `inline-block` (flows with text, but can set width/height)
+Your task is to set the CSS `display` property on each of the three classes to the correct value so that the three elements each behave differently on the page:
 
-All three should have `width: 100px`, `height: 50px`, and `background-color` set to see the difference.
+1. **`.inline-el`** — must flow inline with the surrounding text, **just like a normal `<span>` does**. Because of this behaviour, even though `width` and `height` are set in the CSS, the browser will **ignore them** and the element will size itself purely to its content.
+2. **`.block-el`** — must start on a **new line** and behave like a normal paragraph or `<div>`. It should take up the full width available in its parent unless a width is given, and it should **respect** the 100×50 dimensions declared in the CSS.
+3. **`.inline-block-el`** — must be a "hybrid": it should **flow inline alongside text** (not start a new line), **but** it should **still respect** the 100×50 width and height declared in the CSS.
+
+Use the `display` property with three different values — one per class.
 
 # Test Cases
 
@@ -102,10 +104,12 @@ describe('Display types', () => {
 
 ## Hints
 
-- `inline`: Flows with text, ignores width/height properties.
-- `block`: Takes full available width, respects width/height.
-- `inline-block`: Flows with text like inline, but respects width/height.
-- Notice how inline elements ignore the 100px width and 50px height settings.
+- The `display` property has several values. Three of them are especially common:
+  - one makes an element behave like plain text inside a sentence (no new line, and the browser ignores width/height),
+  - one makes an element behave like a paragraph or `<div>` (starts on a new line, respects width/height),
+  - one is a hybrid that keeps the element in line with surrounding text **while still** respecting width and height.
+- Match each of the three behaviours described in the question to the correct value.
+- When the tests run, the elements that "ignore" width/height in behaviour will still report `100px`/`50px` in the CSS because that is what you declared — the tests only check the `display` value and the declared size, not the rendered size.
 
 # Solution
 
