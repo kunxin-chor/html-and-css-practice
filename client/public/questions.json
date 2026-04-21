@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-20T16:24:46.741Z",
+  "generatedAt": "2026-04-21T16:02:09.772Z",
   "categories": [
     {
       "id": "63ebd4de56f3",
@@ -30,6 +30,36 @@
       "slug": "box-model",
       "name": "Box Model",
       "order": 5
+    },
+    {
+      "id": "a3c32bb45376",
+      "slug": "box-model-revision",
+      "name": "Box Model Revision",
+      "order": 6
+    },
+    {
+      "id": "4f5c93567409",
+      "slug": "positioning",
+      "name": "Positioning",
+      "order": 7
+    },
+    {
+      "id": "ec35f198ab9c",
+      "slug": "positioning-revision",
+      "name": "Positioning Revision",
+      "order": 8
+    },
+    {
+      "id": "50a32efd9d7c",
+      "slug": "flexbox",
+      "name": "Flexbox",
+      "order": 9
+    },
+    {
+      "id": "258e58bfdc30",
+      "slug": "flexbox-revision",
+      "name": "Flexbox Revision",
+      "order": 10
     }
   ],
   "questions": [
@@ -1168,7 +1198,7 @@
       "categorySlug": "box-model",
       "order": 7,
       "sourcePath": "questions/005-box-model/007-display-types.md",
-      "question": "Create three elements demonstrating different `display` behaviors:\n\n1. `.inline-el`: Should display as `inline` (flows with text, cannot set width/height)\n2. `.block-el`: Should display as `block` (takes full width, starts on new line)\n3. `.inline-block-el`: Should display as `inline-block` (flows with text, but can set width/height)\n\nAll three should have `width: 100px`, `height: 50px`, and `background-color` set to see the difference.",
+      "question": "The page contains three elements, each with its own class: `.inline-el`, `.block-el`, and `.inline-block-el`. Each class already has `width: 100px`, `height: 50px`, and a background colour set.\n\nYour task is to set the CSS `display` property on each of the three classes to the correct value so that the three elements each behave differently on the page:\n\n1. **`.inline-el`** — must flow inline with the surrounding text, **just like a normal `<span>` does**. Because of this behaviour, even though `width` and `height` are set in the CSS, the browser will **ignore them** and the element will size itself purely to its content.\n2. **`.block-el`** — must start on a **new line** and behave like a normal paragraph or `<div>`. It should take up the full width available in its parent unless a width is given, and it should **respect** the 100×50 dimensions declared in the CSS.\n3. **`.inline-block-el`** — must be a \"hybrid\": it should **flow inline alongside text** (not start a new line), **but** it should **still respect** the 100×50 width and height declared in the CSS.\n\nUse the `display` property with three different values — one per class.",
       "answer": "",
       "testCases": [
         "describe('Display types', () => {\n  it('inline element should have inline display', () => {\n    const el = document.querySelector('.inline-el');\n    expect(el).to.exist;\n    const style = getComputedStyle(el);\n    expect(style.display).to.equal('inline');\n  });\n\n  it('block element should have block display', () => {\n    const el = document.querySelector('.block-el');\n    expect(el).to.exist;\n    const style = getComputedStyle(el);\n    expect(style.display).to.equal('block');\n  });\n\n  it('inline-block element should have inline-block display', () => {\n    const el = document.querySelector('.inline-block-el');\n    expect(el).to.exist;\n    const style = getComputedStyle(el);\n    expect(style.display).to.equal('inline-block');\n  });\n\n  it('all elements should have 100px width and 50px height', () => {\n    const inline = document.querySelector('.inline-el');\n    const block = document.querySelector('.block-el');\n    const inlineBlock = document.querySelector('.inline-block-el');\n    \n    expect(getComputedStyle(inline).width).to.equal('100px');\n    expect(getComputedStyle(block).width).to.equal('100px');\n    expect(getComputedStyle(inlineBlock).width).to.equal('100px');\n    expect(getComputedStyle(inline).height).to.equal('50px');\n    expect(getComputedStyle(block).height).to.equal('50px');\n    expect(getComputedStyle(inlineBlock).height).to.equal('50px');\n  });\n});"
@@ -1177,9 +1207,681 @@
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Display Types</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <p>\n      Text before\n      <span class=\"inline-el\">Inline</span>\n      text after\n    </p>\n    <div class=\"block-el\">Block</div>\n    <p>\n      Text before\n      <span class=\"inline-block-el\">Inline-Block</span>\n      text after\n    </p>\n  </body>\n</html>",
         "css": ".inline-el {\n  background-color: #ff9999;\n  width: 100px;\n  height: 50px;\n  /* Add display here */\n}\n\n.block-el {\n  background-color: #99ff99;\n  width: 100px;\n  height: 50px;\n  /* Add display here */\n}\n\n.inline-block-el {\n  background-color: #9999ff;\n  width: 100px;\n  height: 50px;\n  /* Add display here */\n}"
       },
-      "hints": "- `inline`: Flows with text, ignores width/height properties.\n- `block`: Takes full available width, respects width/height.\n- `inline-block`: Flows with text like inline, but respects width/height.\n- Notice how inline elements ignore the 100px width and 50px height settings.",
+      "hints": "- The `display` property has several values. Three of them are especially common:\n  - one makes an element behave like plain text inside a sentence (no new line, and the browser ignores width/height),\n  - one makes an element behave like a paragraph or `<div>` (starts on a new line, respects width/height),\n  - one is a hybrid that keeps the element in line with surrounding text **while still** respecting width and height.\n- Match each of the three behaviours described in the question to the correct value.\n- When the tests run, the elements that \"ignore\" width/height in behaviour will still report `100px`/`50px` in the CSS because that is what you declared — the tests only check the `display` value and the declared size, not the rendered size.",
       "solution": "```css\n.inline-el {\n  background-color: #ff9999;\n  width: 100px;\n  height: 50px;\n  display: inline;\n}\n\n.block-el {\n  background-color: #99ff99;\n  width: 100px;\n  height: 50px;\n  display: block;\n}\n\n.inline-block-el {\n  background-color: #9999ff;\n  width: 100px;\n  height: 50px;\n  display: inline-block;\n}\n```",
       "walkthrough": "1. Open `style.css`.\n2. Add `display: inline;` to `.inline-el`. Notice it ignores the width/height.\n3. Add `display: block;` to `.block-el`. It takes full width and the set dimensions.\n4. Add `display: inline-block;` to `.inline-block-el`. It flows with text but shows at 100x50px.\n5. Save and refresh. Compare how each element behaves in the layout.\n6. Run the tests to verify all display properties and dimensions."
+    },
+    {
+      "id": "f23b1117d705",
+      "slug": "asymmetric-padding",
+      "title": "Asymmetric Padding",
+      "categoryId": "a3c32bb45376",
+      "categorySlug": "box-model-revision",
+      "order": 1,
+      "sourcePath": "questions/006-box-model-revision/001-asymmetric-padding.md",
+      "question": "The page contains a blog post card (a `div` with the class `blog-card`). Right now the text sits flush against the edge of the card and the card has no outline.\n\nUpdate the CSS so that:\n\n1. There is **12 pixels of empty space above and below the text** inside the card.\n2. There is **24 pixels of empty space to the left and right of the text** inside the card.\n3. The whole card is wrapped in a **thin light-gray outline**. The outline must be exactly **1 pixel thick**, drawn as a solid line, and coloured `#ddd`.\n\nThe spacing you add must be on the **inside** of the card (between the card's edge and its text), not on the outside.",
+      "answer": "",
+      "testCases": [
+        "describe('Blog card box model', () => {\n  it('should have 12px padding top and bottom', () => {\n    const card = document.querySelector('.blog-card');\n    expect(card).to.exist;\n    const style = getComputedStyle(card);\n    expect(style.paddingTop).to.equal('12px');\n    expect(style.paddingBottom).to.equal('12px');\n  });\n\n  it('should have 24px padding left and right', () => {\n    const card = document.querySelector('.blog-card');\n    const style = getComputedStyle(card);\n    expect(style.paddingLeft).to.equal('24px');\n    expect(style.paddingRight).to.equal('24px');\n  });\n\n  it('should have a 1px solid #ddd border on all sides', () => {\n    const card = document.querySelector('.blog-card');\n    const style = getComputedStyle(card);\n    expect(style.borderTopWidth).to.equal('1px');\n    expect(style.borderTopStyle).to.equal('solid');\n    expect(style.borderTopColor).to.equal('rgb(221, 221, 221)');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Asymmetric Padding</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"blog-card\">\n      <h3>Post Title</h3>\n      <p>A short summary of the blog post.</p>\n    </div>\n  </body>\n</html>",
+        "css": ".blog-card {\n  background-color: #fff;\n  /* Add asymmetric padding and border here */\n}"
+      },
+      "hints": "- \"Space on the inside of an element, between its edge and its content\" is the box-model property you need — not the one for space outside the element.\n- You do not have to set each side in a separate declaration. Think about whether there is a shorthand that lets you give one value for vertical sides and a different value for horizontal sides.\n- An outline around the element is drawn by setting its width, its style (such as solid or dashed), and its colour.",
+      "solution": "```css\n.blog-card {\n  background-color: #fff;\n  padding: 12px 24px;\n  border: 1px solid #ddd;\n}\n```",
+      "walkthrough": "1. Open `style.css` and find the `.blog-card` selector.\n2. Add `padding: 12px 24px;` — this gives 12px to top and bottom, and 24px to left and right.\n3. Add `border: 1px solid #ddd;` for the outline.\n4. Save and refresh. The card should feel taller inside horizontally than vertically.\n5. Run the tests to confirm the exact padding and border values."
+    },
+    {
+      "id": "34bc7da2a642",
+      "slug": "widget-row",
+      "title": "Widget Row",
+      "categoryId": "a3c32bb45376",
+      "categorySlug": "box-model-revision",
+      "order": 2,
+      "sourcePath": "questions/006-box-model-revision/002-widget-row.md",
+      "question": "The page has three `div` elements, all sharing the class `widget`. Right now they are cramped against each other with no outlines.\n\nWrite **a single CSS rule** that targets every widget and makes all three of them look the same. After your change, each widget must:\n\n1. Have **15 pixels of empty space on every side between its edge and its text**.\n2. Be wrapped in a **thin gray outline made of short dashes**. The outline is **1 pixel thick**, its style is dashed (not solid), and its colour is `#999`.\n3. Have a **20-pixel gap below it** so that the next widget stacked underneath does not sit flush against it. There should be **no extra space** added to the top, left, or right sides of each widget — only below.\n\nYou must use only **one class selector** to apply the styles — do not write three separate rules.",
+      "answer": "",
+      "testCases": [
+        "describe('Widget row box model', () => {\n  it('all three widgets should exist', () => {\n    const widgets = document.querySelectorAll('.widget');\n    expect(widgets.length).to.equal(3);\n  });\n\n  it('each widget should have 15px padding on all sides', () => {\n    const widgets = document.querySelectorAll('.widget');\n    widgets.forEach((w) => {\n      const style = getComputedStyle(w);\n      expect(style.paddingTop).to.equal('15px');\n      expect(style.paddingRight).to.equal('15px');\n      expect(style.paddingBottom).to.equal('15px');\n      expect(style.paddingLeft).to.equal('15px');\n    });\n  });\n\n  it('each widget should have a 1px dashed #999 border', () => {\n    const widgets = document.querySelectorAll('.widget');\n    widgets.forEach((w) => {\n      const style = getComputedStyle(w);\n      expect(style.borderTopWidth).to.equal('1px');\n      expect(style.borderTopStyle).to.equal('dashed');\n      expect(style.borderTopColor).to.equal('rgb(153, 153, 153)');\n    });\n  });\n\n  it('each widget should have 20px margin-bottom', () => {\n    const widgets = document.querySelectorAll('.widget');\n    widgets.forEach((w) => {\n      const style = getComputedStyle(w);\n      expect(style.marginBottom).to.equal('20px');\n    });\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Widget Row</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"widget\">Widget A</div>\n    <div class=\"widget\">Widget B</div>\n    <div class=\"widget\">Widget C</div>\n  </body>\n</html>",
+        "css": "/* Use a single selector to style all .widget elements */"
+      },
+      "hints": "- A class selector (starts with `.`) will match every element that has that class, so one rule is enough to style all three widgets.\n- There are two different box-model properties for spacing: one adds space on the **inside** of an element, and one adds space on the **outside**. This question uses both.\n- Outlines have a `style` value. `solid` is the default shape, but there are others such as `dashed` and `dotted`.\n- To add space on only one side of an element (rather than all four), there is a specific property that targets that side.",
+      "solution": "```css\n.widget {\n  padding: 15px;\n  border: 1px dashed #999;\n  margin-bottom: 20px;\n}\n```",
+      "walkthrough": "1. Open `style.css`.\n2. Add a single rule for `.widget`.\n3. Inside the braces, add `padding: 15px;`, `border: 1px dashed #999;`, and `margin-bottom: 20px;`.\n4. Save and refresh. You should see three outlined boxes with breathing room inside and gaps between them.\n5. Run the tests to verify padding, border, and margin-bottom on every widget."
+    },
+    {
+      "id": "8b487db67d57",
+      "slug": "equal-width-challenge",
+      "title": "Equal Width Challenge",
+      "categoryId": "a3c32bb45376",
+      "categorySlug": "box-model-revision",
+      "order": 3,
+      "sourcePath": "questions/006-box-model-revision/003-equal-width-challenge.md",
+      "question": "The page contains two boxes, `.box-a` and `.box-b`. Both are declared with the same `width: 300px`, yet when you open the preview `.box-a` takes up noticeably more horizontal space than `.box-b`.\n\nThe reason is that `.box-a` also has inner spacing and a thick outline, which by default get **added on top of** the declared width. Your job is to change this behaviour for `.box-a` so that its declared width of `300px` is treated as the **total visible width** of the box — including its inner spacing and outline.\n\nAfter your change:\n\n- The two boxes must occupy the **same amount of horizontal space on the page**.\n- `.box-a` must still keep its inner spacing and its outline — do not remove them.\n- `.box-b` must remain untouched. Do not add any new properties to it.\n\nYou should only need to add **one line** to `.box-a`.",
+      "answer": "",
+      "testCases": [
+        "describe('Equal width challenge', () => {\n  it('.box-a should use border-box sizing', () => {\n    const box = document.querySelector('.box-a');\n    expect(box).to.exist;\n    expect(getComputedStyle(box).boxSizing).to.equal('border-box');\n  });\n\n  it('.box-b should keep the default content-box sizing', () => {\n    const box = document.querySelector('.box-b');\n    expect(box).to.exist;\n    expect(getComputedStyle(box).boxSizing).to.equal('content-box');\n  });\n\n  it('both boxes should report 300px width in getComputedStyle', () => {\n    const a = document.querySelector('.box-a');\n    const b = document.querySelector('.box-b');\n    expect(getComputedStyle(a).width).to.equal('300px');\n    expect(getComputedStyle(b).width).to.equal('300px');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Equal Width Challenge</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"box-a\">Box A (padding + border)</div>\n    <div class=\"box-b\">Box B (plain)</div>\n  </body>\n</html>",
+        "css": ".box-a {\n  width: 300px;\n  padding: 20px;\n  border: 5px solid black;\n  background-color: lightcoral;\n  /* Add box-sizing here */\n}\n\n.box-b {\n  width: 300px;\n  background-color: lightgreen;\n}"
+      },
+      "hints": "- By default, the `width` property only describes the width of the **content area**; the browser then adds inner spacing and outline on top when rendering.\n- There is a CSS property that changes how the `width` is interpreted, so that it covers the content, the inner spacing, and the outline all together.\n- Try to recall the two possible values of that property — one of them is the default, and one of them is the fix you need here.\n- Only `.box-a` needs to be changed.",
+      "solution": "```css\n.box-a {\n  width: 300px;\n  padding: 20px;\n  border: 5px solid black;\n  background-color: lightcoral;\n  box-sizing: border-box;\n}\n\n.box-b {\n  width: 300px;\n  background-color: lightgreen;\n}\n```",
+      "walkthrough": "1. Open `style.css` and find `.box-a`.\n2. Add `box-sizing: border-box;` inside the braces.\n3. Save and refresh. Both boxes should now occupy the same horizontal space on the page, even though only `.box-a` has padding and a border.\n4. Run the tests to confirm `.box-a` uses `border-box` and `.box-b` keeps the default `content-box`."
+    },
+    {
+      "id": "42e8ffa17ff7",
+      "slug": "inline-block-nav",
+      "title": "Inline Block Nav",
+      "categoryId": "a3c32bb45376",
+      "categorySlug": "box-model-revision",
+      "order": 4,
+      "sourcePath": "questions/006-box-model-revision/004-inline-block-nav.md",
+      "question": "The HTML contains a vertical bulleted list of four links inside a `<nav>`. Your task is to turn it into a **horizontal navigation bar** using only CSS.\n\nAfter your changes, the page must look like this:\n\n- The four items must sit **side by side on a single line**, not stacked vertically.\n- The list must have **no bullet markers** in front of the items.\n- The list must **start flush against the left edge** of the page — the browser's default indent on unordered lists must be removed.\n- Each item must have **10 pixels of empty space on all sides between its edge and the link text**.\n- Each item must be wrapped in a **thin dark outline**: 1 pixel thick, solid, coloured `#333`.\n- There must be **8 pixels of space to the right of each item** so that the items do not touch each other. No extra space should be added to the top, bottom, or left sides of the items.\n\nSize and outline settings on the items must actually take effect — so make sure you put them in a layout mode that respects width, height, and inner spacing.",
+      "answer": "",
+      "testCases": [
+        "describe('Inline-block navigation', () => {\n  it('all li items should use display: inline-block', () => {\n    const items = document.querySelectorAll('nav li');\n    expect(items.length).to.equal(4);\n    items.forEach((li) => {\n      expect(getComputedStyle(li).display).to.equal('inline-block');\n    });\n  });\n\n  it('each li should have 10px padding on all sides', () => {\n    const items = document.querySelectorAll('nav li');\n    items.forEach((li) => {\n      const style = getComputedStyle(li);\n      expect(style.paddingTop).to.equal('10px');\n      expect(style.paddingRight).to.equal('10px');\n      expect(style.paddingBottom).to.equal('10px');\n      expect(style.paddingLeft).to.equal('10px');\n    });\n  });\n\n  it('each li should have a 1px solid #333 border', () => {\n    const items = document.querySelectorAll('nav li');\n    items.forEach((li) => {\n      const style = getComputedStyle(li);\n      expect(style.borderTopWidth).to.equal('1px');\n      expect(style.borderTopStyle).to.equal('solid');\n      expect(style.borderTopColor).to.equal('rgb(51, 51, 51)');\n    });\n  });\n\n  it('each li should have 8px margin-right', () => {\n    const items = document.querySelectorAll('nav li');\n    items.forEach((li) => {\n      expect(getComputedStyle(li).marginRight).to.equal('8px');\n    });\n  });\n\n  it('the ul should have no list-style and no padding-left', () => {\n    const ul = document.querySelector('nav ul');\n    expect(ul).to.exist;\n    const style = getComputedStyle(ul);\n    expect(style.listStyleType).to.equal('none');\n    expect(style.paddingLeft).to.equal('0px');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Horizontal Nav</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <nav>\n      <ul>\n        <li><a href=\"#\">Home</a></li>\n        <li><a href=\"#\">About</a></li>\n        <li><a href=\"#\">Services</a></li>\n        <li><a href=\"#\">Contact</a></li>\n      </ul>\n    </nav>\n  </body>\n</html>",
+        "css": "nav ul {\n  /* Remove bullets and default padding here */\n}\n\nnav li {\n  /* Make horizontal, then add padding, border, and margin-right */\n}"
+      },
+      "hints": "- By default, each `<li>` is a block and stacks vertically. There is a CSS property that controls how an element is laid out — and one of its values makes elements flow horizontally **while still respecting width, inner spacing, and outlines**.\n- Browsers add default indentation on `<ul>` elements. You can remove it by setting the appropriate side's inner spacing to `0`.\n- There is a CSS property dedicated to the bullet/number markers on lists. One of its values means \"no marker at all\".\n- To push items away from each other on only one side, use the side-specific form of the outer-spacing property.",
+      "solution": "```css\nnav ul {\n  list-style-type: none;\n  padding-left: 0;\n}\n\nnav li {\n  display: inline-block;\n  padding: 10px;\n  border: 1px solid #333;\n  margin-right: 8px;\n}\n```",
+      "walkthrough": "1. Open `style.css`.\n2. In the `nav ul` rule, add `list-style-type: none;` and `padding-left: 0;` to strip the default bullet styling.\n3. In the `nav li` rule, add `display: inline-block;` so the items sit side-by-side.\n4. Add `padding: 10px;` for internal spacing, `border: 1px solid #333;` for an outline, and `margin-right: 8px;` for gaps between items.\n5. Save and refresh. The four links should appear in a neat horizontal row.\n6. Run the tests to verify display, padding, border, margin-right, and list styling."
+    },
+    {
+      "id": "8e42f855e188",
+      "slug": "border-left-quote",
+      "title": "Border Left Quote",
+      "categoryId": "a3c32bb45376",
+      "categorySlug": "box-model-revision",
+      "order": 5,
+      "sourcePath": "questions/006-box-model-revision/005-border-left-quote.md",
+      "question": "The page contains a `<blockquote>` with the class `featured-quote`. Style it so it stands out as a featured quote on a blog.\n\nRequirements:\n\n1. There must be a **red accent bar running down the left side only** of the quote. The bar is **3 pixels wide**, drawn as a solid line, and uses the colour `#e74c3c`. There must be **no outline at all on the top, right, or bottom** of the quote.\n2. The text inside the quote must have **16 pixels of empty space on every side between the text and the edge of the quote box**.\n3. There must be a **20-pixel vertical gap above and below the quote**, separating it from the paragraphs around it. At the same time, the quote must **not be pushed inwards** horizontally — it should stretch to the same left/right position as the surrounding paragraphs (no extra outer spacing on the left or right sides).\n4. The quote should have a **very light gray background** with the colour `#f9f9f9`.",
+      "answer": "",
+      "testCases": [
+        "describe('Featured quote styling', () => {\n  it('should have a 3px solid #e74c3c left border', () => {\n    const quote = document.querySelector('.featured-quote');\n    expect(quote).to.exist;\n    const style = getComputedStyle(quote);\n    expect(style.borderLeftWidth).to.equal('3px');\n    expect(style.borderLeftStyle).to.equal('solid');\n    expect(style.borderLeftColor).to.equal('rgb(231, 76, 60)');\n  });\n\n  it('should have no border on top, right, or bottom', () => {\n    const quote = document.querySelector('.featured-quote');\n    const style = getComputedStyle(quote);\n    expect(style.borderTopWidth).to.equal('0px');\n    expect(style.borderRightWidth).to.equal('0px');\n    expect(style.borderBottomWidth).to.equal('0px');\n  });\n\n  it('should have 16px padding on all sides', () => {\n    const quote = document.querySelector('.featured-quote');\n    const style = getComputedStyle(quote);\n    expect(style.paddingTop).to.equal('16px');\n    expect(style.paddingRight).to.equal('16px');\n    expect(style.paddingBottom).to.equal('16px');\n    expect(style.paddingLeft).to.equal('16px');\n  });\n\n  it('should have 20px margin-top and margin-bottom, 0px left and right', () => {\n    const quote = document.querySelector('.featured-quote');\n    const style = getComputedStyle(quote);\n    expect(style.marginTop).to.equal('20px');\n    expect(style.marginBottom).to.equal('20px');\n    expect(style.marginLeft).to.equal('0px');\n    expect(style.marginRight).to.equal('0px');\n  });\n\n  it('should have a #f9f9f9 background', () => {\n    const quote = document.querySelector('.featured-quote');\n    expect(getComputedStyle(quote).backgroundColor).to.equal('rgb(249, 249, 249)');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Featured Quote</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <p>Some introductory text about design.</p>\n    <blockquote class=\"featured-quote\">\n      Design is not just what it looks like and feels like. Design is how it works.\n    </blockquote>\n    <p>More content follows the quote.</p>\n  </body>\n</html>",
+        "css": ".featured-quote {\n  /* Style the quote here */\n}"
+      },
+      "hints": "- Outlines can be applied to all four sides at once, or to just one specific side. Since the accent bar is only on the left, look for the side-specific form of the outline property.\n- There is a shorthand that lets you set the outer spacing with one value for the top/bottom sides and a different value for the left/right sides in a single line.\n- `0` is a valid value on its own — you do not need to write `0px` for sides that should have no spacing.\n- The background colour is a single CSS property set to the hex value `#f9f9f9`.",
+      "solution": "```css\n.featured-quote {\n  border-left: 3px solid #e74c3c;\n  padding: 16px;\n  margin: 20px 0;\n  background-color: #f9f9f9;\n}\n```",
+      "walkthrough": "1. Open `style.css` and find `.featured-quote`.\n2. Add `border-left: 3px solid #e74c3c;` for the red accent bar.\n3. Add `padding: 16px;` for internal spacing.\n4. Add `margin: 20px 0;` — 20px top and bottom, 0px left and right.\n5. Add `background-color: #f9f9f9;` for the light gray fill.\n6. Save and refresh. The quote should stand out with a red left border and breathing room around it.\n7. Run the tests to verify all border, padding, margin, and background values."
+    },
+    {
+      "id": "c71683371ce0",
+      "slug": "product-preview",
+      "title": "Product Preview",
+      "categoryId": "a3c32bb45376",
+      "categorySlug": "box-model-revision",
+      "order": 6,
+      "sourcePath": "questions/006-box-model-revision/006-product-preview.md",
+      "question": "The page already contains two `div` elements with the class `product-card`. Each card holds a product title and a price. Right now the two cards stack vertically and have no styling.\n\nBuild a small product preview row by adding CSS so that:\n\n1. The two cards sit **next to each other on the same line**, not stacked. The layout mode you pick must still let you set a fixed width and inner spacing on each card.\n2. Each card has a **fixed width of exactly 160 pixels**.\n3. Inside each card, there are **10 pixels of empty space on every side between the card's edge and its text content**.\n4. Each card is wrapped in a **thin light-gray outline**: 1 pixel thick, solid, coloured `#ccc`.\n5. There is a **15-pixel gap to the right of each card** so the two cards are not touching. Do not add any extra space to the top, bottom, or left sides.\n6. Each card has a **pure white background** (`#fff`).",
+      "answer": "",
+      "testCases": [
+        "describe('Product preview cards', () => {\n  it('there should be exactly two product cards', () => {\n    const cards = document.querySelectorAll('.product-card');\n    expect(cards.length).to.equal(2);\n  });\n\n  it('each card should use display: inline-block', () => {\n    const cards = document.querySelectorAll('.product-card');\n    cards.forEach((card) => {\n      expect(getComputedStyle(card).display).to.equal('inline-block');\n    });\n  });\n\n  it('each card should have 10px padding on all sides', () => {\n    const cards = document.querySelectorAll('.product-card');\n    cards.forEach((card) => {\n      const style = getComputedStyle(card);\n      expect(style.paddingTop).to.equal('10px');\n      expect(style.paddingRight).to.equal('10px');\n      expect(style.paddingBottom).to.equal('10px');\n      expect(style.paddingLeft).to.equal('10px');\n    });\n  });\n\n  it('each card should have a 1px solid #ccc border', () => {\n    const cards = document.querySelectorAll('.product-card');\n    cards.forEach((card) => {\n      const style = getComputedStyle(card);\n      expect(style.borderTopWidth).to.equal('1px');\n      expect(style.borderTopStyle).to.equal('solid');\n      expect(style.borderTopColor).to.equal('rgb(204, 204, 204)');\n    });\n  });\n\n  it('each card should have 15px margin-right', () => {\n    const cards = document.querySelectorAll('.product-card');\n    cards.forEach((card) => {\n      expect(getComputedStyle(card).marginRight).to.equal('15px');\n    });\n  });\n\n  it('each card should be 160px wide with a white background', () => {\n    const cards = document.querySelectorAll('.product-card');\n    cards.forEach((card) => {\n      expect(getComputedStyle(card).width).to.equal('160px');\n      expect(getComputedStyle(card).backgroundColor).to.equal('rgb(255, 255, 255)');\n    });\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Product Preview</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"product-card\">\n      <h3>T-Shirt</h3>\n      <p>$20</p>\n    </div>\n    <div class=\"product-card\">\n      <h3>Hoodie</h3>\n      <p>$45</p>\n    </div>\n  </body>\n</html>",
+        "css": ".product-card {\n  /* Add display, width, padding, border, margin-right, and background here */\n}"
+      },
+      "hints": "- By default, a `<div>` takes up the full width of its parent and stacks vertically. There is a CSS property that controls this, and one of its values makes elements flow horizontally **while still respecting width and inner spacing** (unlike the plain inline value, which ignores width).\n- Use the `width` property with an exact pixel value to fix the size of the cards.\n- When you only want to add outer space on one specific side, use the side-specific version of the outer-spacing property rather than the shorthand.\n- All six requirements can be solved inside a single rule targeting `.product-card`.",
+      "solution": "```css\n.product-card {\n  display: inline-block;\n  width: 160px;\n  padding: 10px;\n  border: 1px solid #ccc;\n  margin-right: 15px;\n  background-color: #fff;\n}\n```",
+      "walkthrough": "1. Open `style.css` and find the `.product-card` selector.\n2. Add `display: inline-block;` so both cards line up horizontally.\n3. Add `width: 160px;` to keep them uniformly sized.\n4. Add `padding: 10px;` for internal spacing.\n5. Add `border: 1px solid #ccc;` for the outline.\n6. Add `margin-right: 15px;` for a gap between the two cards.\n7. Add `background-color: #fff;` so the cards look clean.\n8. Save and refresh. The two product cards should appear side by side with consistent spacing, borders, and padding.\n9. Run the tests to confirm all six properties."
+    },
+    {
+      "id": "1553f2b7f2bf",
+      "slug": "fixed-header",
+      "title": "Fixed Header",
+      "categoryId": "4f5c93567409",
+      "categorySlug": "positioning",
+      "order": 1,
+      "sourcePath": "questions/007-positioning/001-fixed-header.md",
+      "question": "The page contains a site header (`<header class=\"site-header\">`) and a long block of content underneath. Right now the header scrolls away with the rest of the page as soon as the user scrolls down.\n\nYour job is to make the header **stay visible at the top of the browser window no matter how far the user scrolls**.\n\nRequirements for the header:\n\n1. Use the CSS `position` property with the value that **takes an element out of the normal document flow and pins it to the browser window**, so that scrolling the page does not move it.\n2. The header must be anchored to the **top edge of the viewport** (0 pixels from the top).\n3. The header must be anchored to the **left edge of the viewport** (0 pixels from the left).\n4. The header must stretch across the **full width of the viewport** (`width: 100%`).\n\nDo **not** change the styling of the rest of the page.",
+      "answer": "",
+      "testCases": [
+        "describe('Fixed site header', () => {\n  it('the header should stay at the top regardless of scrolling', () => {\n    const header = document.querySelector('.site-header');\n    expect(header).to.exist;\n    expect(getComputedStyle(header).position).to.equal('fixed');\n  });\n\n  it('the header should be anchored to the top-left of the viewport', () => {\n    const header = document.querySelector('.site-header');\n    const style = getComputedStyle(header);\n    expect(style.top).to.equal('0px');\n    expect(style.left).to.equal('0px');\n  });\n\n  it('the header should span the full width of the viewport', () => {\n    const header = document.querySelector('.site-header');\n    expect(getComputedStyle(header).width).to.equal(String(window.innerWidth) + 'px');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Fixed Header</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <header class=\"site-header\">My Site</header>\n    <main>\n      <p>Scroll down to see the header stay in place.</p>\n      <p style=\"height: 2000px;\">Lots of content here...</p>\n    </main>\n  </body>\n</html>",
+        "css": ".site-header {\n  background-color: #2c3e50;\n  color: white;\n  padding: 16px;\n  /* Pin the header to the top of the viewport here */\n}"
+      },
+      "hints": "- The `position` property has several possible values. One of them attaches an element to the **browser window itself**, so the element stays put even when the page scrolls.\n- Once you pick the right value, you still need to tell the browser *where* to stick it. That is what the `top` and `left` offset properties are for.\n- `width: 100%` makes the element stretch the full width of its containing box — in this case, the viewport.",
+      "solution": "```css\n.site-header {\n  background-color: #2c3e50;\n  color: white;\n  padding: 16px;\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n}\n```",
+      "walkthrough": "1. Open `style.css` and find the `.site-header` rule.\n2. Add a `position` value that anchors the element to the viewport rather than to the normal page flow.\n3. Add `top: 0;` and `left: 0;` so the header is anchored to the top-left corner of the window.\n4. Add `width: 100%;` so the header spans the full width of the viewport.\n5. Save and scroll the preview. The header should stay locked to the top while the content underneath scrolls.\n6. Run the tests to confirm the position, offsets, and width."
+    },
+    {
+      "id": "6af39458e5f0",
+      "slug": "relative-nudge",
+      "title": "Relative Nudge",
+      "categoryId": "4f5c93567409",
+      "categorySlug": "positioning",
+      "order": 2,
+      "sourcePath": "questions/007-positioning/002-relative-nudge.md",
+      "question": "The page contains three paragraphs. The middle paragraph has the class `nudged`. Right now it sits in line with the other two.\n\nYour task is to **shift the middle paragraph 10 pixels down and 20 pixels to the right** of where it would normally appear, **without affecting the other paragraphs**.\n\nImportant behaviour the tests will check:\n\n1. Use the CSS `position` property with the value that lets an element be **offset from its normal position while still occupying the space it originally took up** in the document flow. (In other words, the paragraphs above and below must **not shift upwards** to fill the gap.)\n2. Shift the paragraph **10 pixels downward** using the appropriate offset property.\n3. Shift the paragraph **20 pixels to the right** using the appropriate offset property.\n\nDo not change the HTML or the other paragraphs.",
+      "answer": "",
+      "testCases": [
+        "describe('Nudged paragraph', () => {\n  it('should use the position value that keeps the element in document flow', () => {\n    const p = document.querySelector('.nudged');\n    expect(p).to.exist;\n    expect(getComputedStyle(p).position).to.equal('relative');\n  });\n\n  it('should be offset 10px down', () => {\n    const p = document.querySelector('.nudged');\n    expect(getComputedStyle(p).top).to.equal('10px');\n  });\n\n  it('should be offset 20px to the right', () => {\n    const p = document.querySelector('.nudged');\n    expect(getComputedStyle(p).left).to.equal('20px');\n  });\n\n  it('the sibling paragraphs should not be repositioned', () => {\n    const ps = document.querySelectorAll('p');\n    ps.forEach((p) => {\n      if (!p.classList.contains('nudged')) {\n        expect(getComputedStyle(p).position).to.equal('static');\n      }\n    });\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Relative Nudge</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <p>I am the first paragraph.</p>\n    <p class=\"nudged\">I should be nudged down and to the right.</p>\n    <p>I am the third paragraph and should not move.</p>\n  </body>\n</html>",
+        "css": ".nudged {\n  background-color: #ffeaa7;\n  /* Nudge this paragraph here */\n}"
+      },
+      "hints": "- There are several values the `position` property can take. The one you need lets an element move by an offset but **still reserves its original slot in the layout** — so surrounding elements stay put.\n- Once the position value is set, use the `top` and `left` offset properties to shift the element in the desired direction. Positive numbers push the element away from the top edge and away from the left edge of its original spot.",
+      "solution": "```css\n.nudged {\n  background-color: #ffeaa7;\n  position: relative;\n  top: 10px;\n  left: 20px;\n}\n```",
+      "walkthrough": "1. Open `style.css` and find the `.nudged` rule.\n2. Pick the `position` value that keeps the element in the document flow while allowing it to be offset.\n3. Add `top: 10px;` to push it down.\n4. Add `left: 20px;` to push it to the right.\n5. Save and refresh. The middle paragraph should appear shifted, but the first and third paragraphs should remain exactly where they were.\n6. Run the tests."
+    },
+    {
+      "id": "61e506b41258",
+      "slug": "absolute-badge",
+      "title": "Absolute Badge",
+      "categoryId": "4f5c93567409",
+      "categorySlug": "positioning",
+      "order": 3,
+      "sourcePath": "questions/007-positioning/003-absolute-badge.md",
+      "question": "The page has a product card (`<div class=\"card\">`) with a heading and a small badge element (`<span class=\"badge\">NEW</span>`) inside it.\n\nYour task is to **pin the `NEW` badge to the top-right corner of the card**, so that no matter where the card is placed on the page, the badge always sits in that corner.\n\nImportant behaviour the tests will check:\n\n1. The badge must use a `position` value that **removes it from the normal document flow and positions it relative to its closest positioned ancestor**. The badge itself should no longer push the heading around.\n2. For the badge to anchor to the **card** (and not to the whole page), the `.card` must be turned into a *positioning context*. Do this by giving the card a `position` value that **does not actually move it**, but does make it act as the reference for its positioned children.\n3. The badge must sit with its **top edge** at `0px` and its **right edge** at `0px` relative to the card.",
+      "answer": "",
+      "testCases": [
+        "describe('Card acts as positioning context', () => {\n  it('.card should be positioned (non-static) so its children anchor to it', () => {\n    const card = document.querySelector('.card');\n    expect(card).to.exist;\n    expect(getComputedStyle(card).position).to.equal('relative');\n  });\n});\n\ndescribe('Badge pinned to corner', () => {\n  it('.badge should be taken out of document flow and positioned against its ancestor', () => {\n    const badge = document.querySelector('.badge');\n    expect(badge).to.exist;\n    expect(getComputedStyle(badge).position).to.equal('absolute');\n  });\n\n  it('.badge should be offset to the top-right corner', () => {\n    const badge = document.querySelector('.badge');\n    const style = getComputedStyle(badge);\n    expect(style.top).to.equal('0px');\n    expect(style.right).to.equal('0px');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Corner Badge</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"card\">\n      <span class=\"badge\">NEW</span>\n      <h3>Product name</h3>\n      <p>A short description of the product.</p>\n    </div>\n  </body>\n</html>",
+        "css": ".card {\n  width: 260px;\n  padding: 20px;\n  border: 1px solid #ccc;\n  background-color: #fff;\n  /* Make this card the positioning context for its children */\n}\n\n.badge {\n  background-color: #e74c3c;\n  color: white;\n  padding: 4px 8px;\n  font-size: 12px;\n  /* Pin this badge to the top-right corner of the card */\n}"
+      },
+      "hints": "- The `position` property has four main values beyond the default. One of them lets an element be **offset from its nearest positioned ancestor** and takes it out of the document flow.\n- For the badge to anchor to the **card** rather than to the viewport or the whole page, the card must itself be \"positioned\". There is a `position` value that does this **without actually moving the card** — it simply makes the element act as a reference for its positioned children.\n- You already know `top` as an offset property. There is a matching one for the right-hand side.",
+      "solution": "```css\n.card {\n  width: 260px;\n  padding: 20px;\n  border: 1px solid #ccc;\n  background-color: #fff;\n  position: relative;\n}\n\n.badge {\n  background-color: #e74c3c;\n  color: white;\n  padding: 4px 8px;\n  font-size: 12px;\n  position: absolute;\n  top: 0;\n  right: 0;\n}\n```",
+      "walkthrough": "1. Open `style.css` and find the `.card` rule.\n2. Give the card a `position` value that does not move it but turns it into a positioning context for its children.\n3. Find the `.badge` rule.\n4. Give the badge a `position` value that takes it out of the flow and anchors it to the nearest positioned ancestor (which is now the card).\n5. Add `top: 0;` and `right: 0;` so the badge sits against the top-right corner of the card.\n6. Save and refresh. The `NEW` badge should appear in the card's top-right corner, and the heading should no longer be pushed down by it.\n7. Run the tests."
+    },
+    {
+      "id": "64741a534afe",
+      "slug": "sticky-section-header",
+      "title": "Sticky Section Header",
+      "categoryId": "4f5c93567409",
+      "categorySlug": "positioning",
+      "order": 4,
+      "sourcePath": "questions/007-positioning/004-sticky-section-header.md",
+      "question": "The page is a long article split into several sections. Each section has an `<h2 class=\"section-heading\">` at the top followed by lots of content.\n\nYour task is to make each section heading **behave normally until the user scrolls past it, and then stick to the top of the viewport while the rest of that section scrolls underneath it**. When the next section reaches the top, its own heading takes over.\n\nImportant behaviour the tests will check:\n\n1. Use the `position` value that gives this hybrid behaviour — it acts like a normal in-flow element **until** it would scroll off the top of the viewport, at which point it becomes pinned until its parent section scrolls past. (It is neither purely relative nor purely fixed.)\n2. The heading must be pinned to the **top edge of the viewport** (0 pixels from the top) once it becomes pinned.\n\nDo not wrap the heading in anything new; apply the styles directly to `.section-heading`.",
+      "answer": "",
+      "testCases": [
+        "describe('Sticky section headings', () => {\n  it('section headings should use the position value that sticks on scroll', () => {\n    const heading = document.querySelector('.section-heading');\n    expect(heading).to.exist;\n    expect(getComputedStyle(heading).position).to.equal('sticky');\n  });\n\n  it('section headings should pin to the top of the viewport', () => {\n    const heading = document.querySelector('.section-heading');\n    expect(getComputedStyle(heading).top).to.equal('0px');\n  });\n\n  it('every section heading on the page should use the same behaviour', () => {\n    const headings = document.querySelectorAll('.section-heading');\n    expect(headings.length).to.be.at.least(2);\n    headings.forEach((h) => {\n      expect(getComputedStyle(h).position).to.equal('sticky');\n      expect(getComputedStyle(h).top).to.equal('0px');\n    });\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Sticky Headings</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <section>\n      <h2 class=\"section-heading\">Section 1</h2>\n      <p style=\"height: 600px;\">Lots of content in section 1...</p>\n    </section>\n    <section>\n      <h2 class=\"section-heading\">Section 2</h2>\n      <p style=\"height: 600px;\">Lots of content in section 2...</p>\n    </section>\n    <section>\n      <h2 class=\"section-heading\">Section 3</h2>\n      <p style=\"height: 600px;\">Lots of content in section 3...</p>\n    </section>\n  </body>\n</html>",
+        "css": ".section-heading {\n  background-color: #f1c40f;\n  padding: 10px;\n  margin: 0;\n  /* Make the heading stick to the top while its section is on screen */\n}"
+      },
+      "hints": "- The `position` property has a value that is sometimes called \"hybrid\": the element behaves like a normally-flowing element at first, and only becomes pinned once scrolling would push it off the top of the viewport.\n- For the pinning behaviour to kick in you **must** also specify an offset (like `top`) — without it, the browser has no idea where to stick the element.\n- You do not need to add a new wrapper element. The pinned heading uses its existing parent `<section>` as the container it stays within.",
+      "solution": "```css\n.section-heading {\n  background-color: #f1c40f;\n  padding: 10px;\n  margin: 0;\n  position: sticky;\n  top: 0;\n}\n```",
+      "walkthrough": "1. Open `style.css` and find the `.section-heading` rule.\n2. Pick the `position` value that mixes normal flow with fixed-style pinning.\n3. Add `top: 0;` so the heading pins against the very top of the viewport.\n4. Save and scroll the preview slowly. As each section reaches the top, its heading should stick there until the next section takes over.\n5. Run the tests to confirm the position value and the top offset on every heading."
+    },
+    {
+      "id": "e07c57bb3f27",
+      "slug": "dashboard-layout",
+      "title": "Dashboard Layout",
+      "categoryId": "4f5c93567409",
+      "categorySlug": "positioning",
+      "order": 5,
+      "sourcePath": "questions/007-positioning/005-dashboard-layout.md",
+      "question": "This is a mini-capstone for the positioning category. The page is a simple dashboard layout with four roles that each need a different behaviour from the CSS `position` property.\n\nThe HTML contains:\n\n- A top bar: `<header class=\"top-bar\">`\n- A main area with a card: `<section class=\"card\">` containing a ribbon `<span class=\"ribbon\">SALE</span>` and a heading.\n- Inside the main area there is also an `<h2 class=\"sidebar-title\">` acting as a sidebar section title.\n- A \"scroll to top\" button at the bottom: `<button class=\"scroll-top\">Top</button>`.\n\nApply CSS so that each of these four elements has the correct behaviour:\n\n1. **Top bar (`.top-bar`)** — must stay **pinned to the top-left of the browser window at all times**, even while the page scrolls. It should be anchored at `top: 0` and `left: 0`, and stretch to `width: 100%`.\n\n2. **Card (`.card`) + ribbon (`.ribbon`)** — the ribbon must sit in the **top-right corner of the card** (`top: 0`, `right: 0`). The ribbon must be taken out of the document flow so it overlays the card, and it must anchor to the card (not to the viewport). To achieve that, the card itself must also be given a `position` value that acts as a positioning context **without actually moving** the card.\n\n3. **Sidebar title (`.sidebar-title`)** — must behave normally while in view, but **stick to the top of the viewport** (at `top: 0`) once the user scrolls past it, until its parent section scrolls out.\n\n4. **Scroll-to-top button (`.scroll-top`)** — must stay **pinned to the bottom-right corner of the browser window** at all times, `20px` from the bottom and `20px` from the right.\n\nAll four elements use different values of the same `position` property family. Pick the right one for each.",
+      "answer": "",
+      "testCases": [
+        "describe('Top bar pinned to viewport', () => {\n  it('should stay anchored to the top of the window', () => {\n    const bar = document.querySelector('.top-bar');\n    expect(bar).to.exist;\n    const style = getComputedStyle(bar);\n    expect(style.position).to.equal('fixed');\n    expect(style.top).to.equal('0px');\n    expect(style.left).to.equal('0px');\n    expect(style.width).to.equal(String(window.innerWidth) + 'px');\n  });\n});\n\ndescribe('Card and ribbon', () => {\n  it('.card should act as a positioning context without moving', () => {\n    const card = document.querySelector('.card');\n    expect(card).to.exist;\n    expect(getComputedStyle(card).position).to.equal('relative');\n  });\n\n  it('.ribbon should be taken out of flow and pinned to the card corner', () => {\n    const ribbon = document.querySelector('.ribbon');\n    expect(ribbon).to.exist;\n    const style = getComputedStyle(ribbon);\n    expect(style.position).to.equal('absolute');\n    expect(style.top).to.equal('0px');\n    expect(style.right).to.equal('0px');\n  });\n});\n\ndescribe('Sidebar title stickiness', () => {\n  it('should use the hybrid position value and stick to top:0', () => {\n    const title = document.querySelector('.sidebar-title');\n    expect(title).to.exist;\n    const style = getComputedStyle(title);\n    expect(style.position).to.equal('sticky');\n    expect(style.top).to.equal('0px');\n  });\n});\n\ndescribe('Scroll-to-top button', () => {\n  it('should stay pinned to the bottom-right corner of the viewport', () => {\n    const btn = document.querySelector('.scroll-top');\n    expect(btn).to.exist;\n    const style = getComputedStyle(btn);\n    expect(style.position).to.equal('fixed');\n    expect(style.bottom).to.equal('20px');\n    expect(style.right).to.equal('20px');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Dashboard Layout</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <header class=\"top-bar\">Dashboard</header>\n\n    <main>\n      <h2 class=\"sidebar-title\">Overview</h2>\n\n      <section class=\"card\">\n        <span class=\"ribbon\">SALE</span>\n        <h3>Featured product</h3>\n        <p>A great product at a great price.</p>\n      </section>\n\n      <p style=\"height: 1500px;\">Lots of content so the page is scrollable...</p>\n    </main>\n\n    <button class=\"scroll-top\">Top</button>\n  </body>\n</html>",
+        "css": ".top-bar {\n  background-color: #2c3e50;\n  color: white;\n  padding: 12px 16px;\n  /* Pin to top of viewport, full width */\n}\n\n.sidebar-title {\n  background-color: #f1c40f;\n  padding: 8px;\n  margin: 0;\n  /* Stick to the top once the user scrolls past it */\n}\n\n.card {\n  width: 260px;\n  padding: 20px;\n  border: 1px solid #ccc;\n  background-color: #fff;\n  margin-top: 80px;\n  /* Make this card a positioning context without moving it */\n}\n\n.ribbon {\n  background-color: #e74c3c;\n  color: white;\n  padding: 4px 8px;\n  font-size: 12px;\n  /* Pin to the top-right corner of the card */\n}\n\n.scroll-top {\n  padding: 8px 12px;\n  /* Pin to bottom-right of the viewport, 20px from each edge */\n}"
+      },
+      "hints": "- Re-read the previous questions in this category — each of the four required behaviours was covered by one specific `position` value.\n- The top bar and the scroll-to-top button both stay locked to the **browser window**, but anchored to different corners — the same `position` value works for both; just use different offset properties (`top`/`left` vs `bottom`/`right`).\n- The ribbon needs to anchor to the card, not the page. That only happens if the card itself has been turned into a positioning context — remember the `position` value that does this without actually moving the element.\n- The sidebar title has a hybrid behaviour: in-flow at first, pinned later. That is the fourth `position` value you have learned.",
+      "solution": "```css\n.top-bar {\n  background-color: #2c3e50;\n  color: white;\n  padding: 12px 16px;\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n}\n\n.sidebar-title {\n  background-color: #f1c40f;\n  padding: 8px;\n  margin: 0;\n  position: sticky;\n  top: 0;\n}\n\n.card {\n  width: 260px;\n  padding: 20px;\n  border: 1px solid #ccc;\n  background-color: #fff;\n  margin-top: 80px;\n  position: relative;\n}\n\n.ribbon {\n  background-color: #e74c3c;\n  color: white;\n  padding: 4px 8px;\n  font-size: 12px;\n  position: absolute;\n  top: 0;\n  right: 0;\n}\n\n.scroll-top {\n  padding: 8px 12px;\n  position: fixed;\n  bottom: 20px;\n  right: 20px;\n}\n```",
+      "walkthrough": "1. **Top bar.** Give `.top-bar` the `position` value that locks it to the viewport. Add `top: 0;`, `left: 0;`, and `width: 100%;`.\n2. **Sidebar title.** Give `.sidebar-title` the hybrid `position` value that makes it stick on scroll. Add `top: 0;` so it sticks to the very top of the viewport.\n3. **Card.** Give `.card` the `position` value that makes it a positioning context **without moving it**. This turns the card into the anchor point for the ribbon.\n4. **Ribbon.** Give `.ribbon` the `position` value that takes an element out of the flow and anchors it to its nearest positioned ancestor. Add `top: 0;` and `right: 0;` so it sits in the card's top-right corner.\n5. **Scroll-to-top button.** Give `.scroll-top` the same viewport-locking `position` value as the top bar, but use the `bottom` and `right` offsets with `20px` so it floats in the bottom-right corner.\n6. Save and scroll the preview. You should see: top bar stays pinned, the ribbon stays in the card's corner, the sidebar title sticks when scrolled past, and the scroll-to-top button stays in the bottom-right corner.\n7. Run the tests — each section covers one of the four behaviours."
+    },
+    {
+      "id": "09649083d2a3",
+      "slug": "chat-button",
+      "title": "Chat Button",
+      "categoryId": "ec35f198ab9c",
+      "categorySlug": "positioning-revision",
+      "order": 1,
+      "sourcePath": "questions/008-positioning-revision/001-chat-button.md",
+      "question": "The page contains a floating help-chat button (`<button class=\"chat-button\">Chat</button>`) and a lot of long content underneath. Right now the button sits in line with the other content and scrolls away with the page.\n\nYour task is to make the button **hover in the bottom-left corner of the browser window at all times**, even as the user scrolls through the page.\n\nRequirements:\n\n1. Use the CSS `position` property with the value that **takes an element out of the normal document flow and locks it to the browser window**.\n2. The button must be anchored **16 pixels above the bottom edge** of the viewport.\n3. The button must be anchored **16 pixels away from the left edge** of the viewport.",
+      "answer": "",
+      "testCases": [
+        "describe('Floating chat button', () => {\n  it('should be pinned to the browser window', () => {\n    const btn = document.querySelector('.chat-button');\n    expect(btn).to.exist;\n    expect(getComputedStyle(btn).position).to.equal('fixed');\n  });\n\n  it('should sit 16px from the bottom of the viewport', () => {\n    const btn = document.querySelector('.chat-button');\n    expect(getComputedStyle(btn).bottom).to.equal('16px');\n  });\n\n  it('should sit 16px from the left of the viewport', () => {\n    const btn = document.querySelector('.chat-button');\n    expect(getComputedStyle(btn).left).to.equal('16px');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Chat Button</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <main>\n      <h1>Help Center</h1>\n      <p style=\"height: 2000px;\">Lots of content to scroll through...</p>\n    </main>\n    <button class=\"chat-button\">Chat</button>\n  </body>\n</html>",
+        "css": ".chat-button {\n  background-color: #27ae60;\n  color: white;\n  padding: 12px 18px;\n  border: none;\n  border-radius: 999px;\n  /* Pin the button to the bottom-left of the viewport */\n}"
+      },
+      "hints": "- The `position` property has a value that attaches an element directly to the **browser window**, so scrolling the page does not move it.\n- Once you pick the right value, tell the browser *where* to place it using offset properties. Here you want to anchor from the **bottom** and from the **left** edge of the viewport rather than from the top.",
+      "solution": "```css\n.chat-button {\n  background-color: #27ae60;\n  color: white;\n  padding: 12px 18px;\n  border: none;\n  border-radius: 999px;\n  position: fixed;\n  bottom: 16px;\n  left: 16px;\n}\n```",
+      "walkthrough": "1. Open `style.css` and find the `.chat-button` rule.\n2. Add a `position` value that locks the element to the viewport.\n3. Add `bottom: 16px;` so it sits 16 pixels above the bottom edge.\n4. Add `left: 16px;` so it sits 16 pixels away from the left edge.\n5. Save and scroll the preview. The green Chat button should stay in the bottom-left corner while the content scrolls.\n6. Run the tests."
+    },
+    {
+      "id": "b2a7cf0d2098",
+      "slug": "highlight-nudge",
+      "title": "Highlight Nudge",
+      "categoryId": "ec35f198ab9c",
+      "categorySlug": "positioning-revision",
+      "order": 2,
+      "sourcePath": "questions/008-positioning-revision/002-highlight-nudge.md",
+      "question": "The page contains a row of three small boxes. The middle box has the class `highlight`. Right now it is aligned with its neighbours.\n\nYour task is to **shift the highlighted box 15 pixels UPWARD and 25 pixels to the LEFT** of where it would normally sit, **without affecting the boxes around it**.\n\nImportant behaviour the tests will check:\n\n1. Use the CSS `position` property with the value that lets an element be **offset from its natural spot while still reserving the space it originally took up** in the document. The other two boxes must **not shift over** to fill the gap.\n2. Shift the box **15 pixels upward** using the offset property that measures from the **bottom** of its original position.\n3. Shift the box **25 pixels to the left** using the offset property that measures from the **right** of its original position.\n\nThe neighbouring boxes (without any class) must stay untouched.",
+      "answer": "",
+      "testCases": [
+        "describe('Highlight nudge', () => {\n  it('should use the position value that keeps the element in document flow', () => {\n    const el = document.querySelector('.highlight');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).position).to.equal('relative');\n  });\n\n  it('should be offset 15px upward using the bottom property', () => {\n    const el = document.querySelector('.highlight');\n    expect(getComputedStyle(el).bottom).to.equal('15px');\n  });\n\n  it('should be offset 25px to the left using the right property', () => {\n    const el = document.querySelector('.highlight');\n    expect(getComputedStyle(el).right).to.equal('25px');\n  });\n\n  it('sibling boxes should remain in the default static flow', () => {\n    const siblings = document.querySelectorAll('.box:not(.highlight)');\n    expect(siblings.length).to.equal(2);\n    siblings.forEach((el) => {\n      expect(getComputedStyle(el).position).to.equal('static');\n    });\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Highlight Nudge</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"box\">A</div>\n    <div class=\"box highlight\">B</div>\n    <div class=\"box\">C</div>\n  </body>\n</html>",
+        "css": ".box {\n  display: inline-block;\n  width: 60px;\n  height: 60px;\n  background-color: #dfe6e9;\n  text-align: center;\n  line-height: 60px;\n  margin-right: 8px;\n}\n\n.highlight {\n  background-color: #fdcb6e;\n  /* Nudge this box up and to the left here */\n}"
+      },
+      "hints": "- The `position` property has a value designed for \"move an element a bit, but do not disturb anything around it\". Siblings stay put because the original slot in the flow is preserved.\n- There are four offset properties: `top`, `bottom`, `left`, and `right`. Choose the pair that measures from the **bottom** and from the **right** edges of the original position — they push the element upward and leftward respectively.",
+      "solution": "```css\n.highlight {\n  background-color: #fdcb6e;\n  position: relative;\n  bottom: 15px;\n  right: 25px;\n}\n```",
+      "walkthrough": "1. Open `style.css` and find the `.highlight` rule.\n2. Pick the `position` value that keeps the element in the document flow while allowing offsets.\n3. Add `bottom: 15px;` to push it upward.\n4. Add `right: 25px;` to push it leftward.\n5. Save and refresh. The middle box should appear shifted up-left, while boxes A and C stay exactly where they were.\n6. Run the tests."
+    },
+    {
+      "id": "fb2b799bd089",
+      "slug": "modal-close",
+      "title": "Modal Close",
+      "categoryId": "ec35f198ab9c",
+      "categorySlug": "positioning-revision",
+      "order": 3,
+      "sourcePath": "questions/008-positioning-revision/003-modal-close.md",
+      "question": "The page contains a modal dialog (`<div class=\"modal\">`). Inside the modal there is a close button (`<button class=\"close-btn\">×</button>`) and some content.\n\nYour task is to **place the close button in the bottom-right corner of the modal**, overlaying the content rather than pushing it around. No matter where the modal is positioned on the page, the close button must stay anchored to the modal's corner.\n\nImportant behaviour the tests will check:\n\n1. The close button must use a `position` value that **removes it from the normal document flow and positions it relative to its closest positioned ancestor**. It should no longer take up space next to the modal's content.\n2. For the close button to anchor to the **modal** (not to the whole page), the `.modal` must itself be turned into a *positioning context*. Give the modal a `position` value that **does not actually move it**, but makes it act as the reference frame for its positioned children.\n3. The close button must sit **8 pixels from the bottom edge of the modal** and **8 pixels from the right edge of the modal**.",
+      "answer": "",
+      "testCases": [
+        "describe('Modal acts as positioning context', () => {\n  it('.modal should be positioned (non-static) so its children anchor to it', () => {\n    const modal = document.querySelector('.modal');\n    expect(modal).to.exist;\n    expect(getComputedStyle(modal).position).to.equal('relative');\n  });\n});\n\ndescribe('Close button pinned to modal corner', () => {\n  it('.close-btn should be taken out of flow and positioned against its ancestor', () => {\n    const btn = document.querySelector('.close-btn');\n    expect(btn).to.exist;\n    expect(getComputedStyle(btn).position).to.equal('absolute');\n  });\n\n  it('.close-btn should be offset 8px from the bottom and 8px from the right of the modal', () => {\n    const btn = document.querySelector('.close-btn');\n    const style = getComputedStyle(btn);\n    expect(style.bottom).to.equal('8px');\n    expect(style.right).to.equal('8px');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Modal Close Button</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"modal\">\n      <h3>Are you sure?</h3>\n      <p>This action cannot be undone.</p>\n      <button class=\"close-btn\">&times;</button>\n    </div>\n  </body>\n</html>",
+        "css": ".modal {\n  width: 300px;\n  height: 180px;\n  padding: 20px;\n  border: 1px solid #ccc;\n  background-color: #fff;\n  /* Make this modal a positioning context for its children */\n}\n\n.close-btn {\n  background-color: #d63031;\n  color: white;\n  border: none;\n  width: 28px;\n  height: 28px;\n  font-size: 18px;\n  /* Pin this button to the bottom-right corner of the modal */\n}"
+      },
+      "hints": "- The `position` property has a value that lets an element be **offset from its nearest positioned ancestor** and is removed from the document flow.\n- For the close button to anchor to the **modal** instead of the whole page, the modal itself has to be \"positioned\". There is a `position` value that sets this up **without moving the modal** — it simply makes the modal the reference point.\n- You have used `top` and `left` before. This question uses the other two offset properties: the ones that measure from the **bottom** and from the **right** edges of the ancestor.",
+      "solution": "```css\n.modal {\n  width: 300px;\n  height: 180px;\n  padding: 20px;\n  border: 1px solid #ccc;\n  background-color: #fff;\n  position: relative;\n}\n\n.close-btn {\n  background-color: #d63031;\n  color: white;\n  border: none;\n  width: 28px;\n  height: 28px;\n  font-size: 18px;\n  position: absolute;\n  bottom: 8px;\n  right: 8px;\n}\n```",
+      "walkthrough": "1. Open `style.css` and find the `.modal` rule.\n2. Give the modal a `position` value that turns it into a positioning context without moving it.\n3. Find the `.close-btn` rule.\n4. Give the button a `position` value that takes it out of the document flow and anchors it to the nearest positioned ancestor (the modal).\n5. Add `bottom: 8px;` and `right: 8px;` so the button sits in the modal's bottom-right corner.\n6. Save and refresh. The red × should overlay the modal's bottom-right corner.\n7. Run the tests."
+    },
+    {
+      "id": "035b8466e75c",
+      "slug": "sticky-sidebar",
+      "title": "Sticky Sidebar",
+      "categoryId": "ec35f198ab9c",
+      "categorySlug": "positioning-revision",
+      "order": 4,
+      "sourcePath": "questions/008-positioning-revision/004-sticky-sidebar.md",
+      "question": "The page has a long article with a small sidebar navigation on the side (`<aside class=\"sidebar-nav\">`). As the user scrolls, the sidebar should **stay visible alongside the article** instead of scrolling away with it.\n\nYour task is to make the sidebar behave normally while it is in view, and then **stick to a point near the top of the viewport while the article keeps scrolling**. Unlike a fixed element, the sidebar must still be part of the layout and must stop sticking if its parent container scrolls past.\n\nImportant behaviour the tests will check:\n\n1. Use the CSS `position` property with the value that is \"hybrid\" — the element behaves like a normal in-flow element **until** it would scroll off the top of the viewport, at which point it becomes pinned (but only while its containing section is still on screen).\n2. The sidebar must pin **20 pixels below the top of the viewport** (not flush against the top — leave a small gap). Use the appropriate offset property.\n\nDo not change the HTML.",
+      "answer": "",
+      "testCases": [
+        "describe('Sticky sidebar nav', () => {\n  it('should use the hybrid position value that sticks on scroll', () => {\n    const nav = document.querySelector('.sidebar-nav');\n    expect(nav).to.exist;\n    expect(getComputedStyle(nav).position).to.equal('sticky');\n  });\n\n  it('should pin 20px below the top of the viewport', () => {\n    const nav = document.querySelector('.sidebar-nav');\n    expect(getComputedStyle(nav).top).to.equal('20px');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Sticky Sidebar</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"layout\">\n      <aside class=\"sidebar-nav\">\n        <h3>Sections</h3>\n        <ul>\n          <li>Intro</li>\n          <li>Details</li>\n          <li>Summary</li>\n        </ul>\n      </aside>\n      <article>\n        <h1>An Article</h1>\n        <p style=\"height: 2000px;\">Lots of article content to scroll...</p>\n      </article>\n    </div>\n  </body>\n</html>",
+        "css": ".layout {\n  display: flex;\n  gap: 24px;\n  align-items: flex-start;\n}\n\n.sidebar-nav {\n  width: 180px;\n  padding: 12px;\n  background-color: #ecf0f1;\n  /* Make the sidebar stick near the top while the article scrolls */\n}"
+      },
+      "hints": "- The `position` property has a value that combines two behaviours: the element flows normally at first, and then gets pinned at a specific offset once the user scrolls past it.\n- This pinning behaviour only kicks in when an offset property is set. Without it, the browser does not know where to stick the element.\n- A value of `20px` on the offset property that measures from the top of the viewport will leave a small gap between the sidebar and the top edge of the browser window.",
+      "solution": "```css\n.sidebar-nav {\n  width: 180px;\n  padding: 12px;\n  background-color: #ecf0f1;\n  position: sticky;\n  top: 20px;\n}\n```",
+      "walkthrough": "1. Open `style.css` and find the `.sidebar-nav` rule.\n2. Pick the `position` value that mixes normal flow with fixed-style pinning.\n3. Add `top: 20px;` so the sidebar pins with a 20-pixel gap from the top of the viewport.\n4. Save and scroll the preview. The sidebar should scroll normally for a moment, then stick 20 pixels below the top while the article continues to scroll.\n5. Run the tests."
+    },
+    {
+      "id": "f13ca98814d3",
+      "slug": "social-feed",
+      "title": "Social Feed",
+      "categoryId": "ec35f198ab9c",
+      "categorySlug": "positioning-revision",
+      "order": 5,
+      "sourcePath": "questions/008-positioning-revision/005-social-feed.md",
+      "question": "This is a capstone for the positioning revision. You are styling a simple social-media feed page that has four different elements, each needing a different value of the CSS `position` property.\n\nThe HTML contains:\n\n- An announcement banner: `<div class=\"announcement\">`\n- A post card: `<article class=\"post\">` containing an avatar `<img class=\"avatar\">` and the post text.\n- A \"What's new\" label: `<h2 class=\"new-label\">` that appears above the feed.\n- A compose-post floating button: `<button class=\"compose\">+</button>` at the bottom.\n\nApply CSS so each element has the correct behaviour:\n\n1. **Announcement banner (`.announcement`)** — must stay **pinned to the top of the browser window** at all times, anchored at `top: 0` and `left: 0`, stretching the full width of the viewport (`width: 100%`).\n\n2. **Post card (`.post`) + avatar (`.avatar`)** — the avatar must **overlay the top-left corner of the post card**, sticking out slightly. Anchor the avatar **−20 pixels from the top** (so it sits above the card's top edge) and **−20 pixels from the left** (so it sits to the left of the card's left edge). The avatar must be taken out of the document flow and anchored to the **post card**, not to the viewport. To achieve that, give the post card a `position` value that acts as a positioning context **without actually moving** the card.\n\n3. **\"What's new\" label (`.new-label`)** — must behave normally while in view, but **stick to the top of the viewport** (at `top: 0`) once the user scrolls past it, releasing once its containing section scrolls out.\n\n4. **Compose button (`.compose`)** — must stay **pinned to the bottom-right corner of the browser window** at all times, anchored **24 pixels from the bottom** and **24 pixels from the right**.\n\nAll four elements use different values of the same `position` property family. Pick the right one for each.",
+      "answer": "",
+      "testCases": [
+        "describe('Announcement banner pinned to viewport', () => {\n  it('should stay locked to the top of the window', () => {\n    const el = document.querySelector('.announcement');\n    expect(el).to.exist;\n    const style = getComputedStyle(el);\n    expect(style.position).to.equal('fixed');\n    expect(style.top).to.equal('0px');\n    expect(style.left).to.equal('0px');\n    expect(style.width).to.equal(String(window.innerWidth) + 'px');\n  });\n});\n\ndescribe('Post card and avatar', () => {\n  it('.post should act as a positioning context without moving', () => {\n    const post = document.querySelector('.post');\n    expect(post).to.exist;\n    expect(getComputedStyle(post).position).to.equal('relative');\n  });\n\n  it('.avatar should be taken out of flow and anchored to the post card', () => {\n    const avatar = document.querySelector('.avatar');\n    expect(avatar).to.exist;\n    const style = getComputedStyle(avatar);\n    expect(style.position).to.equal('absolute');\n    expect(style.top).to.equal('-20px');\n    expect(style.left).to.equal('-20px');\n  });\n});\n\ndescribe('New label stickiness', () => {\n  it('should use the hybrid position value and pin at top:0', () => {\n    const el = document.querySelector('.new-label');\n    expect(el).to.exist;\n    const style = getComputedStyle(el);\n    expect(style.position).to.equal('sticky');\n    expect(style.top).to.equal('0px');\n  });\n});\n\ndescribe('Compose floating button', () => {\n  it('should stay locked to the bottom-right corner of the viewport', () => {\n    const btn = document.querySelector('.compose');\n    expect(btn).to.exist;\n    const style = getComputedStyle(btn);\n    expect(style.position).to.equal('fixed');\n    expect(style.bottom).to.equal('24px');\n    expect(style.right).to.equal('24px');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Social Feed</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"announcement\">New messaging features are live!</div>\n\n    <main>\n      <h2 class=\"new-label\">What's new</h2>\n\n      <article class=\"post\">\n        <img class=\"avatar\" src=\"https://picsum.photos/60/60\" alt=\"User avatar\">\n        <h3>Jane Doe</h3>\n        <p>Just launched my new portfolio site!</p>\n      </article>\n\n      <p style=\"height: 1500px;\">More posts would go here...</p>\n    </main>\n\n    <button class=\"compose\">+</button>\n  </body>\n</html>",
+        "css": ".announcement {\n  background-color: #0984e3;\n  color: white;\n  padding: 10px 16px;\n  text-align: center;\n  /* Pin to top of viewport, full width */\n}\n\n.new-label {\n  background-color: #fab1a0;\n  padding: 8px 12px;\n  margin: 0;\n  /* Stick to the top once scrolled past */\n}\n\n.post {\n  width: 320px;\n  padding: 20px;\n  border: 1px solid #ccc;\n  background-color: #fff;\n  margin: 80px auto;\n  /* Make this post a positioning context without moving it */\n}\n\n.avatar {\n  width: 60px;\n  height: 60px;\n  border-radius: 50%;\n  border: 3px solid #fff;\n  background-color: #ddd;\n  /* Overlay the top-left corner of the post, sticking out by 20px */\n}\n\n.compose {\n  background-color: #6c5ce7;\n  color: white;\n  border: none;\n  width: 52px;\n  height: 52px;\n  border-radius: 50%;\n  font-size: 24px;\n  /* Pin to bottom-right of the viewport, 24px from each edge */\n}"
+      },
+      "hints": "- Re-read the first four questions in this category — each of the four required behaviours maps onto one specific `position` value.\n- The announcement banner and the compose button both stay locked to the **browser window**, just anchored to different corners. The same `position` value works for both; use different offset properties (`top`/`left` vs `bottom`/`right`).\n- For the avatar to anchor to the post card (and not to the page), the card itself must first be turned into a positioning context using the `position` value that does **not** actually move it.\n- Negative offsets are allowed. `top: -20px` pushes an element **above** its anchor point, and `left: -20px` pushes it further to the left.\n- The \"What's new\" label needs the hybrid behaviour — in-flow at first, pinned once scrolled past.",
+      "solution": "```css\n.announcement {\n  background-color: #0984e3;\n  color: white;\n  padding: 10px 16px;\n  text-align: center;\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n}\n\n.new-label {\n  background-color: #fab1a0;\n  padding: 8px 12px;\n  margin: 0;\n  position: sticky;\n  top: 0;\n}\n\n.post {\n  width: 320px;\n  padding: 20px;\n  border: 1px solid #ccc;\n  background-color: #fff;\n  margin: 80px auto;\n  position: relative;\n}\n\n.avatar {\n  width: 60px;\n  height: 60px;\n  border-radius: 50%;\n  border: 3px solid #fff;\n  background-color: #ddd;\n  position: absolute;\n  top: -20px;\n  left: -20px;\n}\n\n.compose {\n  background-color: #6c5ce7;\n  color: white;\n  border: none;\n  width: 52px;\n  height: 52px;\n  border-radius: 50%;\n  font-size: 24px;\n  position: fixed;\n  bottom: 24px;\n  right: 24px;\n}\n```",
+      "walkthrough": "1. **Announcement banner.** Give `.announcement` the `position` value that locks it to the viewport. Add `top: 0;`, `left: 0;`, and `width: 100%;`.\n2. **\"What's new\" label.** Give `.new-label` the hybrid `position` value so it sticks on scroll. Add `top: 0;` so it pins to the very top of the viewport.\n3. **Post card.** Give `.post` the `position` value that turns it into a positioning context without moving it. This makes the card the anchor point for the avatar.\n4. **Avatar.** Give `.avatar` the `position` value that takes an element out of the flow and anchors it to its nearest positioned ancestor. Use **negative** offsets: `top: -20px;` and `left: -20px;` so the avatar sticks out above and to the left of the card's corner.\n5. **Compose button.** Give `.compose` the same viewport-locking `position` value as the announcement, but use the `bottom` and `right` offsets with `24px` so it floats in the bottom-right corner.\n6. Save and scroll the preview. You should see: the announcement stays pinned at the top, the avatar hangs off the corner of the post, the \"What's new\" label sticks when scrolled past, and the compose button stays in the bottom-right corner.\n7. Run the tests — each section covers one of the four behaviours."
+    },
+    {
+      "id": "ff5da1624b55",
+      "slug": "vertical-stack",
+      "title": "Vertical Stack",
+      "categoryId": "50a32efd9d7c",
+      "categorySlug": "flexbox",
+      "order": 1,
+      "sourcePath": "questions/009-flexbox/001-vertical-stack.md",
+      "question": "You have a navigation menu (`<nav class=\"menu\">`) that contains four links. The parent `.menu` is already a flex container, but the links are currently laid out **side by side in a row**.\n\nYour task is to make the links stack **vertically from top to bottom**, one per line, using Flexbox.\n\nRequirements:\n\n1. Keep `.menu` as a flex container (`display: flex`).\n2. Use the Flexbox property that **controls the direction of the main axis** so children flow from **top to bottom** instead of left to right.",
+      "answer": "",
+      "testCases": [
+        "describe('Vertical menu stack', () => {\n  it('.menu should be a flex container', () => {\n    const menu = document.querySelector('.menu');\n    expect(menu).to.exist;\n    expect(getComputedStyle(menu).display).to.equal('flex');\n  });\n\n  it('.menu children should flow top-to-bottom', () => {\n    const menu = document.querySelector('.menu');\n    expect(getComputedStyle(menu).flexDirection).to.equal('column');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Vertical Menu</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <nav class=\"menu\">\n      <a href=\"#\">Home</a>\n      <a href=\"#\">About</a>\n      <a href=\"#\">Blog</a>\n      <a href=\"#\">Contact</a>\n    </nav>\n  </body>\n</html>",
+        "css": ".menu {\n  display: flex;\n  gap: 8px;\n  padding: 12px;\n  background-color: #f1f2f6;\n  /* Stack the links from top to bottom */\n}\n\n.menu a {\n  padding: 8px 12px;\n  background-color: #dff9fb;\n  text-decoration: none;\n  color: #130f40;\n}"
+      },
+      "hints": "- A flex container has a **main axis**. By default the main axis runs **horizontally** (left to right), which is why your links are in a row.\n- One Flexbox property flips the main axis so it runs **vertically**. The value you want is the one that literally names a vertical arrangement.",
+      "solution": "```css\n.menu {\n  display: flex;\n  gap: 8px;\n  padding: 12px;\n  background-color: #f1f2f6;\n  flex-direction: column;\n}\n\n.menu a {\n  padding: 8px 12px;\n  background-color: #dff9fb;\n  text-decoration: none;\n  color: #130f40;\n}\n```",
+      "walkthrough": "1. Open `style.css` and find the `.menu` rule.\n2. `.menu` is already a flex container because of `display: flex`, but its main axis is horizontal.\n3. Add `flex-direction: column;` to flip the main axis to vertical.\n4. Save. The four links should now stack one on top of another.\n5. Run the tests."
+    },
+    {
+      "id": "45d31a0a9970",
+      "slug": "justify-content",
+      "title": "Justify Content",
+      "categoryId": "50a32efd9d7c",
+      "categorySlug": "flexbox",
+      "order": 2,
+      "sourcePath": "questions/009-flexbox/002-justify-content.md",
+      "question": "You have a toolbar (`<div class=\"toolbar\">`) that is a flex container with three buttons inside. Right now all three buttons are bunched together on the left side of the toolbar.\n\nYour task is to **spread the buttons out evenly across the main axis**, so the first button sits flush against the left edge, the last button sits flush against the right edge, and the middle button is centered — with equal empty space between each pair of buttons.\n\nRequirements:\n\n1. Keep `.toolbar` as a flex container (`display: flex`).\n2. Use the Flexbox property that **positions children along the main axis** with a value that puts **equal space between each item** and **no space at the outer edges**.",
+      "answer": "",
+      "testCases": [
+        "describe('Toolbar spacing', () => {\n  it('.toolbar should be a flex container', () => {\n    const bar = document.querySelector('.toolbar');\n    expect(bar).to.exist;\n    expect(getComputedStyle(bar).display).to.equal('flex');\n  });\n\n  it('.toolbar should place equal space between buttons with no outer gap', () => {\n    const bar = document.querySelector('.toolbar');\n    expect(getComputedStyle(bar).justifyContent).to.equal('space-between');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Toolbar</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"toolbar\">\n      <button>Back</button>\n      <button>Home</button>\n      <button>Next</button>\n    </div>\n  </body>\n</html>",
+        "css": ".toolbar {\n  display: flex;\n  padding: 12px;\n  background-color: #2d3436;\n  /* Spread the three buttons across the toolbar */\n}\n\n.toolbar button {\n  padding: 8px 16px;\n  border: none;\n  border-radius: 4px;\n  background-color: #dfe6e9;\n  color: #2d3436;\n}"
+      },
+      "hints": "- There is a Flexbox property dedicated to aligning children along the **main axis** (the direction the items flow).\n- Several values are available; the one you want pushes the first item to the start, the last item to the end, and distributes the **remaining space between** the items.",
+      "solution": "```css\n.toolbar {\n  display: flex;\n  padding: 12px;\n  background-color: #2d3436;\n  justify-content: space-between;\n}\n\n.toolbar button {\n  padding: 8px 16px;\n  border: none;\n  border-radius: 4px;\n  background-color: #dfe6e9;\n  color: #2d3436;\n}\n```",
+      "walkthrough": "1. Open `style.css` and find the `.toolbar` rule.\n2. The container is already flex, so items flow along the horizontal main axis.\n3. Add `justify-content: space-between;` — this puts the first button at the left edge, the last button at the right edge, and splits the remaining space evenly between the items.\n4. Save and preview. The three buttons should now span the full width of the toolbar.\n5. Run the tests."
+    },
+    {
+      "id": "c143f9e71c2f",
+      "slug": "align-items",
+      "title": "Align Items",
+      "categoryId": "50a32efd9d7c",
+      "categorySlug": "flexbox",
+      "order": 3,
+      "sourcePath": "questions/009-flexbox/003-align-items.md",
+      "question": "You have a header bar (`<header class=\"bar\">`) that is a flex container. It contains a tall logo block and a short tagline. Because the two children have different heights, the tagline currently sits along the top edge of the bar.\n\nYour task is to make every child of `.bar` sit **vertically centered** along the cross axis, so the short tagline lines up with the middle of the taller logo.\n\nRequirements:\n\n1. Keep `.bar` as a flex container (`display: flex`).\n2. Use the Flexbox property that **aligns children along the cross axis** with the value that centers them.",
+      "answer": "",
+      "testCases": [
+        "describe('Header bar cross-axis alignment', () => {\n  it('.bar should be a flex container', () => {\n    const bar = document.querySelector('.bar');\n    expect(bar).to.exist;\n    expect(getComputedStyle(bar).display).to.equal('flex');\n  });\n\n  it('.bar children should be centered on the cross axis', () => {\n    const bar = document.querySelector('.bar');\n    expect(getComputedStyle(bar).alignItems).to.equal('center');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Header Bar</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <header class=\"bar\">\n      <div class=\"logo\">LOGO</div>\n      <span class=\"tagline\">Built for speed</span>\n    </header>\n  </body>\n</html>",
+        "css": ".bar {\n  display: flex;\n  gap: 16px;\n  padding: 12px;\n  background-color: #192a56;\n  color: white;\n  /* Vertically center the children */\n}\n\n.logo {\n  width: 80px;\n  height: 80px;\n  background-color: #e1b12c;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-weight: bold;\n}\n\n.tagline {\n  font-style: italic;\n}"
+      },
+      "hints": "- `justify-content` handles the **main** axis. You want the **cross** axis — the one perpendicular to the direction items flow.\n- The default main axis is horizontal, so its cross axis is vertical. The property you need aligns **items** along this cross axis.\n- Pick the value that means \"middle\".",
+      "solution": "```css\n.bar {\n  display: flex;\n  gap: 16px;\n  padding: 12px;\n  background-color: #192a56;\n  color: white;\n  align-items: center;\n}\n```",
+      "walkthrough": "1. Open `style.css` and find the `.bar` rule.\n2. The children have different heights, so the shorter one needs to be pushed down to align with the taller one's middle.\n3. Add `align-items: center;` — this centers every child along the cross axis (vertically, in a normal row).\n4. Save. The tagline should now line up with the middle of the logo square.\n5. Run the tests."
+    },
+    {
+      "id": "40e48d5aba27",
+      "slug": "flex-basis",
+      "title": "Flex Basis",
+      "categoryId": "50a32efd9d7c",
+      "categorySlug": "flexbox",
+      "order": 4,
+      "sourcePath": "questions/009-flexbox/004-flex-basis.md",
+      "question": "You have a row of three cards inside a flex container (`.cards`). You want each `.card` to **start at 200 pixels wide** before any growing or shrinking is applied by the flex container.\n\nNote: you are not allowed to use the `width` property here — the whole point is to set the item's **starting size along the main axis** using the proper Flexbox property, so it behaves predictably inside the flex layout.\n\nRequirements:\n\n1. Do **not** add a `width` declaration to `.card`.\n2. Use the Flexbox property that sets an item's **initial main-axis size** (its \"starting size\" before growing or shrinking), with a value of `200px`.",
+      "answer": "",
+      "testCases": [
+        "describe('Card initial size', () => {\n  it('.card should set its starting main-axis size to 200px', () => {\n    const card = document.querySelector('.card');\n    expect(card).to.exist;\n    expect(getComputedStyle(card).flexBasis).to.equal('200px');\n  });\n\n  it('.card should not use the width property', () => {\n    const styleText = document.querySelector('style')?.textContent\n      ?? Array.from(document.styleSheets)\n           .flatMap(s => {\n             try { return Array.from(s.cssRules); } catch (e) { return []; }\n           })\n           .map(r => r.cssText)\n           .join('\\n');\n    expect(/\\.card\\s*\\{[^}]*\\bwidth\\s*:/.test(styleText)).to.equal(false);\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Cards</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"cards\">\n      <div class=\"card\">One</div>\n      <div class=\"card\">Two</div>\n      <div class=\"card\">Three</div>\n    </div>\n  </body>\n</html>",
+        "css": ".cards {\n  display: flex;\n  gap: 12px;\n  padding: 12px;\n  background-color: #f5f6fa;\n}\n\n.card {\n  padding: 20px;\n  background-color: #40739e;\n  color: white;\n  /* Give each card a starting main-axis size of 200px (no width!) */\n}"
+      },
+      "hints": "- Setting `width` works in simple cases, but Flexbox has its own dedicated property for an item's **starting size** along the main axis.\n- The name of the property literally describes what it is: the item's \"basis\" from which growing and shrinking is calculated.\n- Use the pixel value requested in the question.",
+      "solution": "```css\n.card {\n  padding: 20px;\n  background-color: #40739e;\n  color: white;\n  flex-basis: 200px;\n}\n```",
+      "walkthrough": "1. Open `style.css` and find the `.card` rule.\n2. Avoid adding `width`; Flexbox items have a dedicated \"starting size\" property.\n3. Add `flex-basis: 200px;` to set the initial main-axis size of each card.\n4. Save. Each card should start at 200 pixels wide before any flex growing/shrinking takes effect.\n5. Run the tests."
+    },
+    {
+      "id": "95a3dfabefff",
+      "slug": "flex-grow",
+      "title": "Flex Grow",
+      "categoryId": "50a32efd9d7c",
+      "categorySlug": "flexbox",
+      "order": 5,
+      "sourcePath": "questions/009-flexbox/005-flex-grow.md",
+      "question": "You have a layout with three columns inside a flex container (`.layout`): `.side-left`, `.main`, and `.side-right`. The two sides are narrow and their widths should stay roughly as-is. The main column, however, should **expand to take up all the leftover space** in the row as the container grows.\n\nYour task is to tell the main column that it is allowed to **grow** and consume the remaining free space, while the two sides do not grow.\n\nRequirements:\n\n1. Use the Flexbox property that controls **how much remaining space an item absorbs** relative to its siblings.\n2. Give `.main` a growth factor of `1` so it expands to fill the free space.\n3. Do not add the same property to `.side-left` or `.side-right` — leave them at their default (they should not grow).",
+      "answer": "",
+      "testCases": [
+        "describe('Main column expansion', () => {\n  it('.main should be allowed to absorb remaining space (flex-grow: 1)', () => {\n    const main = document.querySelector('.main');\n    expect(main).to.exist;\n    expect(getComputedStyle(main).flexGrow).to.equal('1');\n  });\n\n  it('.side-left should keep the default non-growing behaviour', () => {\n    const left = document.querySelector('.side-left');\n    expect(getComputedStyle(left).flexGrow).to.equal('0');\n  });\n\n  it('.side-right should keep the default non-growing behaviour', () => {\n    const right = document.querySelector('.side-right');\n    expect(getComputedStyle(right).flexGrow).to.equal('0');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Three-column Layout</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"layout\">\n      <aside class=\"side-left\">L</aside>\n      <section class=\"main\">Main content</section>\n      <aside class=\"side-right\">R</aside>\n    </div>\n  </body>\n</html>",
+        "css": ".layout {\n  display: flex;\n  gap: 12px;\n  padding: 12px;\n  background-color: #dcdde1;\n}\n\n.side-left,\n.side-right {\n  width: 80px;\n  padding: 20px;\n  background-color: #718093;\n  color: white;\n  text-align: center;\n}\n\n.main {\n  padding: 20px;\n  background-color: #44bd32;\n  color: white;\n  /* Let this column take up all remaining space */\n}"
+      },
+      "hints": "- There is a single Flexbox property on the child that tells it: \"take a share of the **leftover** free space in the container.\"\n- Its value is a **unitless number** describing the growth factor. `0` means \"do not grow\" (the default); `1` means \"take all the remaining space\" if no other sibling also wants to grow.",
+      "solution": "```css\n.main {\n  padding: 20px;\n  background-color: #44bd32;\n  color: white;\n  flex-grow: 1;\n}\n```",
+      "walkthrough": "1. Open `style.css` and find the `.main` rule.\n2. Think about which property controls how a flex item **absorbs free space**.\n3. Add `flex-grow: 1;` so `.main` takes up all the remaining horizontal space inside `.layout`.\n4. Leave `.side-left` and `.side-right` alone — their default `flex-grow: 0` keeps them at their natural width.\n5. Save and preview. Resize the window and notice that only the main column grows.\n6. Run the tests."
+    },
+    {
+      "id": "4e9234eb2209",
+      "slug": "flex-shrink",
+      "title": "Flex Shrink",
+      "categoryId": "50a32efd9d7c",
+      "categorySlug": "flexbox",
+      "order": 6,
+      "sourcePath": "questions/009-flexbox/006-flex-shrink.md",
+      "question": "You have a flex container (`.row`) with a fixed-size `.logo` on the left and a long `.title` on the right. When the container gets narrower than the sum of the two items' widths, the browser shrinks every flex item proportionally — including the logo, which distorts it.\n\nYour task is to tell the logo that it is **not allowed to shrink** when space is tight, while leaving the title free to shrink as usual.\n\nRequirements:\n\n1. Use the Flexbox property that controls **how much an item is allowed to shrink** when there is not enough room.\n2. Give `.logo` the value `0` so it keeps its size.\n3. Do not change `.title` — it should keep the default shrinking behaviour.",
+      "answer": "",
+      "testCases": [
+        "describe('Logo does not shrink', () => {\n  it('.logo should refuse to shrink', () => {\n    const logo = document.querySelector('.logo');\n    expect(logo).to.exist;\n    expect(getComputedStyle(logo).flexShrink).to.equal('0');\n  });\n\n  it('.title should keep the default shrink behaviour', () => {\n    const title = document.querySelector('.title');\n    expect(getComputedStyle(title).flexShrink).to.equal('1');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Logo Row</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"row\">\n      <div class=\"logo\">LOGO</div>\n      <h1 class=\"title\">A very long article title that takes up lots of room</h1>\n    </div>\n  </body>\n</html>",
+        "css": ".row {\n  display: flex;\n  gap: 16px;\n  padding: 12px;\n  background-color: #f5f6fa;\n  align-items: center;\n}\n\n.logo {\n  width: 120px;\n  height: 60px;\n  background-color: #e84118;\n  color: white;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-weight: bold;\n  /* Do not allow this logo to shrink when space is tight */\n}\n\n.title {\n  margin: 0;\n  font-size: 1.2rem;\n}"
+      },
+      "hints": "- Flexbox has a dedicated property that is the **opposite** of `flex-grow`: it controls how eagerly an item gives up space when the container is too small.\n- Its value is a **unitless number**. `1` (the default) means \"shrink normally\"; `0` means \"refuse to shrink\".",
+      "solution": "```css\n.logo {\n  width: 120px;\n  height: 60px;\n  background-color: #e84118;\n  color: white;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-weight: bold;\n  flex-shrink: 0;\n}\n```",
+      "walkthrough": "1. Open `style.css` and find the `.logo` rule.\n2. Identify the Flexbox property that controls **shrinking** when space is short.\n3. Add `flex-shrink: 0;` so the logo keeps its declared 120x60 size even when the row gets narrow.\n4. Leave `.title` alone — its default `flex-shrink: 1` lets it give up space.\n5. Save, shrink the preview window, and confirm the logo stays the same size.\n6. Run the tests."
+    },
+    {
+      "id": "ac5cc41eca55",
+      "slug": "flex-shorthand",
+      "title": "Flex Shorthand",
+      "categoryId": "50a32efd9d7c",
+      "categorySlug": "flexbox",
+      "order": 7,
+      "sourcePath": "questions/009-flexbox/007-flex-shorthand.md",
+      "question": "You have a row of four equal-width pill buttons inside a flex container (`.pills`). You want every button to:\n\n- have a **starting main-axis size of `0`** (so content width does not matter),\n- be allowed to **grow** with a factor of `1`,\n- be allowed to **shrink** with a factor of `1`.\n\nInstead of writing three separate properties (`flex-grow`, `flex-shrink`, `flex-basis`), use the **single shorthand property** that sets all three at once.\n\nRequirements:\n\n1. On `.pill`, use the Flexbox shorthand property (not the three individual properties) with the value `1 1 0`.\n2. Do not declare `flex-grow`, `flex-shrink`, or `flex-basis` separately on `.pill`.",
+      "answer": "",
+      "testCases": [
+        "describe('Equal-width pills via flex shorthand', () => {\n  it('.pill should grow with factor 1', () => {\n    const pill = document.querySelector('.pill');\n    expect(pill).to.exist;\n    expect(getComputedStyle(pill).flexGrow).to.equal('1');\n  });\n\n  it('.pill should shrink with factor 1', () => {\n    const pill = document.querySelector('.pill');\n    expect(getComputedStyle(pill).flexShrink).to.equal('1');\n  });\n\n  it('.pill should have a zero starting main-axis size', () => {\n    const pill = document.querySelector('.pill');\n    expect(getComputedStyle(pill).flexBasis).to.equal('0px');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Equal Pills</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"pills\">\n      <button class=\"pill\">New</button>\n      <button class=\"pill\">Popular</button>\n      <button class=\"pill\">Trending this week</button>\n      <button class=\"pill\">Top</button>\n    </div>\n  </body>\n</html>",
+        "css": ".pills {\n  display: flex;\n  gap: 8px;\n  padding: 12px;\n  background-color: #f1f2f6;\n}\n\n.pill {\n  padding: 8px 12px;\n  border: none;\n  border-radius: 999px;\n  background-color: #5352ed;\n  color: white;\n  /* Make every pill grow and shrink equally, starting from size 0 */\n}"
+      },
+      "hints": "- There is a Flexbox **shorthand** property whose name is simply `flex`. It bundles three longhand properties in this order: `<grow> <shrink> <basis>`.\n- The target value for this question is three tokens separated by spaces.\n- Do not also write the longhand versions — the shorthand must do the whole job.",
+      "solution": "```css\n.pill {\n  padding: 8px 12px;\n  border: none;\n  border-radius: 999px;\n  background-color: #5352ed;\n  color: white;\n  flex: 1 1 0;\n}\n```",
+      "walkthrough": "1. Open `style.css` and find the `.pill` rule.\n2. Instead of writing three properties, use the shorthand `flex` property.\n3. Remember the order: `flex: <grow> <shrink> <basis>;`.\n4. Write `flex: 1 1 0;` — each pill grows equally, shrinks equally, and starts at 0, so they end up the same width regardless of text length.\n5. Save and preview. All four pills should be equal in width.\n6. Run the tests."
+    },
+    {
+      "id": "1eb5c6df38c1",
+      "slug": "flex-wrap",
+      "title": "Flex Wrap",
+      "categoryId": "50a32efd9d7c",
+      "categorySlug": "flexbox",
+      "order": 8,
+      "sourcePath": "questions/009-flexbox/008-flex-wrap.md",
+      "question": "You have a gallery (`<div class=\"gallery\">`) that is a flex container with eight fixed-size tiles inside. Because the container is narrower than the combined width of all tiles, the tiles currently overflow on a single line (or get squished).\n\nYour task is to allow the tiles to **wrap onto multiple lines** when they do not all fit on one line, instead of staying on a single line.\n\nRequirements:\n\n1. Keep `.gallery` as a flex container (`display: flex`).\n2. Use the Flexbox property that **controls whether items wrap to new lines** with the value that enables wrapping.",
+      "answer": "",
+      "testCases": [
+        "describe('Wrapping gallery', () => {\n  it('.gallery should be a flex container', () => {\n    const g = document.querySelector('.gallery');\n    expect(g).to.exist;\n    expect(getComputedStyle(g).display).to.equal('flex');\n  });\n\n  it('.gallery should allow its items to wrap onto multiple lines', () => {\n    const g = document.querySelector('.gallery');\n    expect(getComputedStyle(g).flexWrap).to.equal('wrap');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Gallery</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"gallery\">\n      <div class=\"tile\">1</div>\n      <div class=\"tile\">2</div>\n      <div class=\"tile\">3</div>\n      <div class=\"tile\">4</div>\n      <div class=\"tile\">5</div>\n      <div class=\"tile\">6</div>\n      <div class=\"tile\">7</div>\n      <div class=\"tile\">8</div>\n    </div>\n  </body>\n</html>",
+        "css": ".gallery {\n  display: flex;\n  gap: 8px;\n  padding: 12px;\n  width: 360px;\n  background-color: #2f3640;\n  /* Let the tiles flow onto multiple lines when they do not fit */\n}\n\n.tile {\n  flex: 0 0 100px;\n  height: 80px;\n  background-color: #00a8ff;\n  color: white;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-weight: bold;\n}"
+      },
+      "hints": "- By default, a flex container forces all its children onto a **single line**, even if they overflow.\n- One Flexbox property on the **container** toggles this behaviour. Its name literally describes what you want the items to do when they run out of room.\n- The value you want is the one that means \"yes, wrap onto new lines\".",
+      "solution": "```css\n.gallery {\n  display: flex;\n  gap: 8px;\n  padding: 12px;\n  width: 360px;\n  background-color: #2f3640;\n  flex-wrap: wrap;\n}\n```",
+      "walkthrough": "1. Open `style.css` and find the `.gallery` rule.\n2. The container is only 360px wide but each tile is 100px — they cannot all fit on one line.\n3. Add `flex-wrap: wrap;` so that when a tile would overflow, it moves to the next line instead.\n4. Save and preview. The eight tiles should arrange themselves across multiple rows.\n5. Run the tests."
+    },
+    {
+      "id": "2dba268962dd",
+      "slug": "dialog-footer",
+      "title": "Dialog Footer",
+      "categoryId": "258e58bfdc30",
+      "categorySlug": "flexbox-revision",
+      "order": 1,
+      "sourcePath": "questions/010-flexbox-revision/001-dialog-footer.md",
+      "question": "You are styling a dialog footer (`<footer class=\"actions\">`) that contains two buttons. In the HTML the **primary** action (`<button class=\"primary\">Confirm</button>`) comes first, and the **secondary** action (`<button class=\"secondary\">Cancel</button>`) comes second.\n\nHowever, the design requires the primary button to appear on the **right**, and the secondary button on the **left** — without changing the HTML order.\n\nYour task is to use Flexbox to **reverse the visual order** of the children along the main axis.\n\nRequirements:\n\n1. Keep `.actions` as a flex container (`display: flex`).\n2. Use the Flexbox property that controls the **direction of the main axis**, with the value that flips the horizontal flow so the first child renders on the **right** and subsequent children go to the left.",
+      "answer": "",
+      "testCases": [
+        "describe('Dialog footer order', () => {\n  it('.actions should be a flex container', () => {\n    const el = document.querySelector('.actions');\n    expect(el).to.exist;\n    expect(getComputedStyle(el).display).to.equal('flex');\n  });\n\n  it('.actions should render children in reversed row order', () => {\n    const el = document.querySelector('.actions');\n    expect(getComputedStyle(el).flexDirection).to.equal('row-reverse');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Dialog Footer</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <footer class=\"actions\">\n      <button class=\"primary\">Confirm</button>\n      <button class=\"secondary\">Cancel</button>\n    </footer>\n  </body>\n</html>",
+        "css": ".actions {\n  display: flex;\n  gap: 8px;\n  padding: 12px;\n  background-color: #f1f2f6;\n  /* Flip the horizontal order so Confirm is on the right */\n}\n\n.primary {\n  padding: 8px 16px;\n  border: none;\n  background-color: #0984e3;\n  color: white;\n}\n\n.secondary {\n  padding: 8px 16px;\n  border: none;\n  background-color: #dfe6e9;\n  color: #2d3436;\n}"
+      },
+      "hints": "- You are **not** supposed to edit the HTML. Flexbox can flip the visual order of items on its own.\n- The property that controls main-axis direction has a value that keeps the axis horizontal but runs it the **other way** (right to left).",
+      "solution": "```css\n.actions {\n  display: flex;\n  gap: 8px;\n  padding: 12px;\n  background-color: #f1f2f6;\n  flex-direction: row-reverse;\n}\n```",
+      "walkthrough": "1. Open `style.css` and find the `.actions` rule.\n2. `flex-direction` has four values: `row`, `row-reverse`, `column`, `column-reverse`.\n3. To swap the horizontal order without touching the HTML, use `flex-direction: row-reverse;`.\n4. Save. The Confirm button should now sit on the right and Cancel on the left.\n5. Run the tests."
+    },
+    {
+      "id": "3c53f9c71234",
+      "slug": "centered-hero",
+      "title": "Centered Hero",
+      "categoryId": "258e58bfdc30",
+      "categorySlug": "flexbox-revision",
+      "order": 2,
+      "sourcePath": "questions/010-flexbox-revision/002-centered-hero.md",
+      "question": "You have a hero section (`<section class=\"hero\">`) that is a flex container. Inside it there is a single call-to-action button. Right now the button sits against the left edge of the hero.\n\nYour task is to push the button so it is **horizontally centered** along the main axis of the hero.\n\nRequirements:\n\n1. Keep `.hero` as a flex container (`display: flex`).\n2. Use the Flexbox property that aligns items along the **main axis**, with the value that **centers** them.",
+      "answer": "",
+      "testCases": [
+        "describe('Centered hero button', () => {\n  it('.hero should be a flex container', () => {\n    const hero = document.querySelector('.hero');\n    expect(hero).to.exist;\n    expect(getComputedStyle(hero).display).to.equal('flex');\n  });\n\n  it('.hero should center its children on the main axis', () => {\n    const hero = document.querySelector('.hero');\n    expect(getComputedStyle(hero).justifyContent).to.equal('center');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Hero</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <section class=\"hero\">\n      <button class=\"cta\">Get Started</button>\n    </section>\n  </body>\n</html>",
+        "css": ".hero {\n  display: flex;\n  padding: 40px;\n  background-color: #6c5ce7;\n  /* Horizontally center the CTA button */\n}\n\n.cta {\n  padding: 12px 24px;\n  border: none;\n  border-radius: 6px;\n  background-color: #fdcb6e;\n  color: #2d3436;\n  font-weight: bold;\n}"
+      },
+      "hints": "- There is a property whose job is to position items along the **main axis** — the same axis the items flow along.\n- Pick the value that means \"middle of the line\".",
+      "solution": "```css\n.hero {\n  display: flex;\n  padding: 40px;\n  background-color: #6c5ce7;\n  justify-content: center;\n}\n```",
+      "walkthrough": "1. Open `style.css` and find the `.hero` rule.\n2. The hero is already a flex container; the default main axis is horizontal.\n3. Add `justify-content: center;` to center the CTA button along that axis.\n4. Save. The button should now sit in the middle of the hero horizontally.\n5. Run the tests."
+    },
+    {
+      "id": "882ce91a088e",
+      "slug": "bottom-aligned-cards",
+      "title": "Bottom Aligned Cards",
+      "categoryId": "258e58bfdc30",
+      "categorySlug": "flexbox-revision",
+      "order": 3,
+      "sourcePath": "questions/010-flexbox-revision/003-bottom-aligned-cards.md",
+      "question": "You have a row (`<div class=\"row\">`) that is a flex container with three cards of different heights. Right now the cards line up along the top of the row, which looks uneven.\n\nYour task is to make every child of `.row` sit along the **bottom edge** of the row (aligned along the cross axis to the end of the axis).\n\nRequirements:\n\n1. Keep `.row` as a flex container (`display: flex`).\n2. Use the Flexbox property that aligns children along the **cross axis**, with the value that sticks them to the **end** of that axis (in a normal row, the bottom).",
+      "answer": "",
+      "testCases": [
+        "describe('Bottom-aligned cards', () => {\n  it('.row should be a flex container', () => {\n    const row = document.querySelector('.row');\n    expect(row).to.exist;\n    expect(getComputedStyle(row).display).to.equal('flex');\n  });\n\n  it('.row children should align to the end of the cross axis', () => {\n    const row = document.querySelector('.row');\n    expect(getComputedStyle(row).alignItems).to.equal('flex-end');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Uneven Cards</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"row\">\n      <div class=\"card short\">Short</div>\n      <div class=\"card medium\">Medium height</div>\n      <div class=\"card tall\">Tall card with more text inside</div>\n    </div>\n  </body>\n</html>",
+        "css": ".row {\n  display: flex;\n  gap: 12px;\n  padding: 12px;\n  background-color: #dff9fb;\n  height: 200px;\n  /* Align every card to the bottom of the row */\n}\n\n.card {\n  width: 120px;\n  padding: 12px;\n  background-color: #22a6b3;\n  color: white;\n}\n\n.short { height: 60px; }\n.medium { height: 100px; }\n.tall { height: 150px; }"
+      },
+      "hints": "- `justify-content` handles the **main** axis. You need the one for the **cross** axis.\n- Cross-axis alignment has a value that sticks items to the **end** of the axis (the opposite of the start).\n- In a default row layout, the cross axis runs top-to-bottom, so the end of that axis is the bottom.",
+      "solution": "```css\n.row {\n  display: flex;\n  gap: 12px;\n  padding: 12px;\n  background-color: #dff9fb;\n  height: 200px;\n  align-items: flex-end;\n}\n```",
+      "walkthrough": "1. Open `style.css` and find the `.row` rule.\n2. Pick the property that aligns items along the cross axis.\n3. Add `align-items: flex-end;` so every card's bottom edge sits on the bottom of the row.\n4. Save. The three cards should now line up along the bottom instead of the top.\n5. Run the tests."
+    },
+    {
+      "id": "0c34d6dbbf8b",
+      "slug": "sidebar-basis",
+      "title": "Sidebar Basis",
+      "categoryId": "258e58bfdc30",
+      "categorySlug": "flexbox-revision",
+      "order": 4,
+      "sourcePath": "questions/010-flexbox-revision/004-sidebar-basis.md",
+      "question": "You have a two-column layout (`<div class=\"layout\">`) with a `.sidebar` and a `.content` area. You want the sidebar's **starting main-axis size** to be `25%` of the container (so it scales with the layout, not a hard pixel value).\n\nYou must not use the `width` property — use the Flexbox property that sets an item's **initial main-axis size** before growing/shrinking is applied.\n\nRequirements:\n\n1. Do **not** declare `width` on `.sidebar`.\n2. Use the Flexbox property that sets the **starting size** of a flex item, with the value `25%`.",
+      "answer": "",
+      "testCases": [
+        "describe('Sidebar starting size', () => {\n  it('.sidebar should use a 25% starting main-axis size', () => {\n    const s = document.querySelector('.sidebar');\n    expect(s).to.exist;\n    expect(getComputedStyle(s).flexBasis).to.equal('25%');\n  });\n\n  it('.sidebar should not declare the width property', () => {\n    const styleText = Array.from(document.styleSheets)\n      .flatMap(s => {\n        try { return Array.from(s.cssRules); } catch (e) { return []; }\n      })\n      .map(r => r.cssText)\n      .join('\\n');\n    expect(/\\.sidebar\\s*\\{[^}]*\\bwidth\\s*:/.test(styleText)).to.equal(false);\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Sidebar Layout</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"layout\">\n      <aside class=\"sidebar\">Sidebar</aside>\n      <main class=\"content\">Content</main>\n    </div>\n  </body>\n</html>",
+        "css": ".layout {\n  display: flex;\n  gap: 12px;\n  padding: 12px;\n  background-color: #f5f6fa;\n}\n\n.sidebar {\n  padding: 20px;\n  background-color: #30336b;\n  color: white;\n  /* Give the sidebar a starting size of 25% (no width!) */\n}\n\n.content {\n  padding: 20px;\n  background-color: #95afc0;\n  flex-grow: 1;\n}"
+      },
+      "hints": "- Flexbox has a property for an item's **starting size** along the main axis, named after the word \"basis\".\n- Its value can be any CSS length — including percentages.",
+      "solution": "```css\n.sidebar {\n  padding: 20px;\n  background-color: #30336b;\n  color: white;\n  flex-basis: 25%;\n}\n```",
+      "walkthrough": "1. Open `style.css` and find the `.sidebar` rule.\n2. Use the Flexbox \"starting size\" property instead of `width`.\n3. Add `flex-basis: 25%;` so the sidebar starts at a quarter of the container's width.\n4. Save and preview. The sidebar should occupy roughly 25% of the row width.\n5. Run the tests."
+    },
+    {
+      "id": "9c9300b50211",
+      "slug": "article-twice-as-wide",
+      "title": "Article Twice As Wide",
+      "categoryId": "258e58bfdc30",
+      "categorySlug": "flexbox-revision",
+      "order": 5,
+      "sourcePath": "questions/010-flexbox-revision/005-article-twice-as-wide.md",
+      "question": "You have a two-pane layout (`<div class=\"split\">`) with a `.notes` pane and an `.article` pane. Both are supposed to absorb extra space when the window is wide — but the `.article` should absorb **twice as much** extra space as the `.notes` does.\n\nYour task is to use the Flexbox property that controls how an item **absorbs remaining space**, and set numeric growth factors so that `.article` grows twice as fast as `.notes`.\n\nRequirements:\n\n1. Give `.notes` a growth factor of `1`.\n2. Give `.article` a growth factor of `2`.",
+      "answer": "",
+      "testCases": [
+        "describe('Article grows twice as fast as notes', () => {\n  it('.notes should grow with factor 1', () => {\n    const n = document.querySelector('.notes');\n    expect(n).to.exist;\n    expect(getComputedStyle(n).flexGrow).to.equal('1');\n  });\n\n  it('.article should grow with factor 2', () => {\n    const a = document.querySelector('.article');\n    expect(a).to.exist;\n    expect(getComputedStyle(a).flexGrow).to.equal('2');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Split View</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"split\">\n      <section class=\"notes\">Notes</section>\n      <section class=\"article\">Article</section>\n    </div>\n  </body>\n</html>",
+        "css": ".split {\n  display: flex;\n  gap: 12px;\n  padding: 12px;\n  background-color: #f5f6fa;\n}\n\n.notes {\n  padding: 20px;\n  background-color: #fab1a0;\n  /* Grow, but only half as fast as the article */\n}\n\n.article {\n  padding: 20px;\n  background-color: #74b9ff;\n  /* Grow twice as fast as the notes */\n}"
+      },
+      "hints": "- The property that controls how much **remaining space** a flex item absorbs takes a unitless **growth factor**.\n- The factors are relative: if one item has `1` and another has `2`, the second item takes twice the share of remaining space the first one takes.",
+      "solution": "```css\n.notes {\n  padding: 20px;\n  background-color: #fab1a0;\n  flex-grow: 1;\n}\n\n.article {\n  padding: 20px;\n  background-color: #74b9ff;\n  flex-grow: 2;\n}\n```",
+      "walkthrough": "1. Open `style.css` and find the `.notes` and `.article` rules.\n2. Pick the Flexbox property that distributes **extra** space across items.\n3. Give `.notes` the growth factor `1` and `.article` the growth factor `2`.\n4. Save and resize the preview. The article pane should grow twice as fast as the notes pane.\n5. Run the tests."
+    },
+    {
+      "id": "da459d94430b",
+      "slug": "avatar-no-shrink",
+      "title": "Avatar No Shrink",
+      "categoryId": "258e58bfdc30",
+      "categorySlug": "flexbox-revision",
+      "order": 6,
+      "sourcePath": "questions/010-flexbox-revision/006-avatar-no-shrink.md",
+      "question": "You have a chat row (`<div class=\"chat-row\">`) that is a flex container. Inside, a small circular `.avatar` sits next to a long `.message`. When the container is narrow, the avatar currently gets squashed into an oval because the browser shrinks every flex item proportionally.\n\nYour task is to tell the avatar that it must **never shrink**, no matter how cramped the row gets. The message should still be allowed to shrink as usual.\n\nRequirements:\n\n1. Use the Flexbox property that controls **how much an item is allowed to shrink**.\n2. Give `.avatar` the value `0` so it keeps its declared size.\n3. Do not change `.message` — it should keep the default shrinking behaviour.",
+      "answer": "",
+      "testCases": [
+        "describe('Avatar does not shrink', () => {\n  it('.avatar should refuse to shrink', () => {\n    const a = document.querySelector('.avatar');\n    expect(a).to.exist;\n    expect(getComputedStyle(a).flexShrink).to.equal('0');\n  });\n\n  it('.message should keep the default shrink behaviour', () => {\n    const m = document.querySelector('.message');\n    expect(getComputedStyle(m).flexShrink).to.equal('1');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Chat Row</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"chat-row\">\n      <div class=\"avatar\"></div>\n      <p class=\"message\">Hey! Just wanted to check in about the meeting tomorrow and confirm the agenda items.</p>\n    </div>\n  </body>\n</html>",
+        "css": ".chat-row {\n  display: flex;\n  gap: 12px;\n  padding: 12px;\n  background-color: #f5f6fa;\n  align-items: center;\n}\n\n.avatar {\n  width: 48px;\n  height: 48px;\n  border-radius: 50%;\n  background-color: #e17055;\n  /* Do not allow the avatar to shrink */\n}\n\n.message {\n  margin: 0;\n}"
+      },
+      "hints": "- The property that governs shrinking is the mirror of `flex-grow`.\n- Its default is `1` (shrink normally); set it to `0` to keep an item at its declared size.",
+      "solution": "```css\n.avatar {\n  width: 48px;\n  height: 48px;\n  border-radius: 50%;\n  background-color: #e17055;\n  flex-shrink: 0;\n}\n```",
+      "walkthrough": "1. Open `style.css` and find the `.avatar` rule.\n2. Add `flex-shrink: 0;` so the avatar refuses to give up space.\n3. Leave `.message` alone — it keeps the default `flex-shrink: 1` and absorbs the tightening instead.\n4. Save and narrow the preview window. The avatar should stay a perfect circle.\n5. Run the tests."
+    },
+    {
+      "id": "b078f25eb0d5",
+      "slug": "nav-fill-shorthand",
+      "title": "Nav Fill Shorthand",
+      "categoryId": "258e58bfdc30",
+      "categorySlug": "flexbox-revision",
+      "order": 7,
+      "sourcePath": "questions/010-flexbox-revision/007-nav-fill-shorthand.md",
+      "question": "You have a navigation bar (`<nav class=\"nav\">`) with four links inside. You want every link to **absorb an equal share of the remaining space**, using each link's natural content size as the starting size.\n\nThe three longhand values you want are:\n\n- grow: `1`\n- shrink: `1`\n- basis: `auto`\n\nInstead of writing three properties, use the **single shorthand** that sets all three at once. Here, the shorthand accepts the one-value form — a single unitless number — because `1` is a common shortcut for \"grow 1, shrink 1, basis 0\".\n\nBut wait: that shortcut changes the basis to `0`, which is **not** what you want. You want the basis to stay `auto`. So you need to write out the three tokens explicitly using the shorthand.\n\nRequirements:\n\n1. On `.nav a`, use the Flexbox shorthand property (not the three longhand ones) with the value `1 1 auto`.\n2. Do not declare `flex-grow`, `flex-shrink`, or `flex-basis` separately on `.nav a`.",
+      "answer": "",
+      "testCases": [
+        "describe('Nav links with shorthand flex', () => {\n  it('.nav a should grow with factor 1', () => {\n    const a = document.querySelector('.nav a');\n    expect(a).to.exist;\n    expect(getComputedStyle(a).flexGrow).to.equal('1');\n  });\n\n  it('.nav a should shrink with factor 1', () => {\n    const a = document.querySelector('.nav a');\n    expect(getComputedStyle(a).flexShrink).to.equal('1');\n  });\n\n  it('.nav a should keep an auto starting size', () => {\n    const a = document.querySelector('.nav a');\n    expect(getComputedStyle(a).flexBasis).to.equal('auto');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Nav</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <nav class=\"nav\">\n      <a href=\"#\">Home</a>\n      <a href=\"#\">Products</a>\n      <a href=\"#\">About</a>\n      <a href=\"#\">Contact Us</a>\n    </nav>\n  </body>\n</html>",
+        "css": ".nav {\n  display: flex;\n  gap: 8px;\n  padding: 12px;\n  background-color: #2d3436;\n}\n\n.nav a {\n  padding: 8px 12px;\n  background-color: #0984e3;\n  color: white;\n  text-align: center;\n  text-decoration: none;\n  /* Grow & shrink equally, but keep the link's natural size as basis */\n}"
+      },
+      "hints": "- The shorthand `flex` property takes three tokens in this order: `<grow> <shrink> <basis>`.\n- Writing `flex: 1;` is a shortcut that expands to `1 1 0`. You don't want a zero basis here — you want `auto`.\n- Write all three tokens explicitly.",
+      "solution": "```css\n.nav a {\n  padding: 8px 12px;\n  background-color: #0984e3;\n  color: white;\n  text-align: center;\n  text-decoration: none;\n  flex: 1 1 auto;\n}\n```",
+      "walkthrough": "1. Open `style.css` and find the `.nav a` rule.\n2. Use the shorthand `flex` property with three tokens.\n3. Write `flex: 1 1 auto;` — grow factor 1, shrink factor 1, basis auto (the link's natural size).\n4. Save and preview. Longer links will be naturally wider, and extra space is split evenly between all links.\n5. Run the tests."
+    },
+    {
+      "id": "62a0f89bde99",
+      "slug": "tag-cloud-wrap",
+      "title": "Tag Cloud Wrap",
+      "categoryId": "258e58bfdc30",
+      "categorySlug": "flexbox-revision",
+      "order": 8,
+      "sourcePath": "questions/010-flexbox-revision/008-tag-cloud-wrap.md",
+      "question": "You have a tag cloud (`<div class=\"tags\">`) that is a flex container with many `.tag` children. When the container is narrower than the combined width of the tags, they currently overflow the container on a single line.\n\nYour task is to allow the tags to **wrap onto multiple lines**, *but in reverse order*: the first row of tags should sit at the **bottom** of the container, and additional rows should stack **upwards**.\n\nRequirements:\n\n1. Keep `.tags` as a flex container (`display: flex`).\n2. Use the Flexbox property that controls wrapping, with the value that wraps items onto new lines **in reverse cross-axis order** (so new rows stack upward instead of downward).",
+      "answer": "",
+      "testCases": [
+        "describe('Reverse-wrapping tag cloud', () => {\n  it('.tags should be a flex container', () => {\n    const t = document.querySelector('.tags');\n    expect(t).to.exist;\n    expect(getComputedStyle(t).display).to.equal('flex');\n  });\n\n  it('.tags should wrap items in reverse cross-axis order', () => {\n    const t = document.querySelector('.tags');\n    expect(getComputedStyle(t).flexWrap).to.equal('wrap-reverse');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Tag Cloud</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"tags\">\n      <span class=\"tag\">html</span>\n      <span class=\"tag\">css</span>\n      <span class=\"tag\">flexbox</span>\n      <span class=\"tag\">grid</span>\n      <span class=\"tag\">javascript</span>\n      <span class=\"tag\">typescript</span>\n      <span class=\"tag\">accessibility</span>\n      <span class=\"tag\">animation</span>\n    </div>\n  </body>\n</html>",
+        "css": ".tags {\n  display: flex;\n  gap: 8px;\n  padding: 12px;\n  width: 320px;\n  background-color: #2f3640;\n  /* Let the tags wrap, but stack new rows upward */\n}\n\n.tag {\n  padding: 4px 10px;\n  border-radius: 999px;\n  background-color: #f1c40f;\n  color: #2d3436;\n  white-space: nowrap;\n}"
+      },
+      "hints": "- The wrap-controlling property has three values: one that disables wrapping, one that wraps downward, and one that wraps **upward**.\n- The value you want literally has the word \"reverse\" in it.",
+      "solution": "```css\n.tags {\n  display: flex;\n  gap: 8px;\n  padding: 12px;\n  width: 320px;\n  background-color: #2f3640;\n  flex-wrap: wrap-reverse;\n}\n```",
+      "walkthrough": "1. Open `style.css` and find the `.tags` rule.\n2. Pick the Flexbox property that allows items to wrap to new lines.\n3. Instead of the normal `wrap` value, use `wrap-reverse` so subsequent rows stack **upward**.\n4. Save. The first row of tags should appear at the bottom of the container, with extra rows above it.\n5. Run the tests."
     }
   ]
 }

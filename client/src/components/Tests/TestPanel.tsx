@@ -5,6 +5,7 @@ import type { LintMessage, Question, TestRunSummary } from '../../types';
 import { runTests } from '../../services/testRunner';
 import { lintAll } from '../../services/linter';
 import { lastRunAtom, progressAtom } from '../../state/atoms';
+import { CheckByAI } from '../Question/CheckByAI';
 
 interface Props {
   question: Question;
@@ -45,23 +46,26 @@ export function TestPanel({ question, html, css }: Props) {
     <div className="d-flex flex-column h-100">
       <div className="d-flex align-items-center justify-content-between mb-2">
         <h6 className="mb-0">Tests &amp; Lint</h6>
-        <Button
-          size="sm"
-          variant="primary"
-          onClick={handleRun}
-          disabled={running}
-        >
-          {running ? (
-            <>
-              <Spinner size="sm" animation="border" className="me-1" />
-              Running…
-            </>
-          ) : summary ? (
-            'Re-run tests'
-          ) : (
-            'Run tests'
-          )}
-        </Button>
+        <div className="d-flex align-items-center">
+          <Button
+            size="sm"
+            variant="primary"
+            onClick={handleRun}
+            disabled={running}
+          >
+            {running ? (
+              <>
+                <Spinner size="sm" animation="border" className="me-1" />
+                Running…
+              </>
+            ) : summary ? (
+              'Re-run tests'
+            ) : (
+              'Run tests'
+            )}
+          </Button>
+          <CheckByAI question={question} html={html} css={css} />
+        </div>
       </div>
 
       <div className="flex-grow-1 overflow-auto pe-1">
