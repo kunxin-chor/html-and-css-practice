@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-21T16:02:09.772Z",
+  "generatedAt": "2026-04-23T04:58:52.835Z",
   "categories": [
     {
       "id": "63ebd4de56f3",
@@ -60,6 +60,12 @@
       "slug": "flexbox-revision",
       "name": "Flexbox Revision",
       "order": 10
+    },
+    {
+      "id": "94bba40f25a1",
+      "slug": "bootstrap-basics",
+      "name": "Bootstrap Basics",
+      "order": 11
     }
   ],
   "questions": [
@@ -1882,6 +1888,132 @@
       "hints": "- The wrap-controlling property has three values: one that disables wrapping, one that wraps downward, and one that wraps **upward**.\n- The value you want literally has the word \"reverse\" in it.",
       "solution": "```css\n.tags {\n  display: flex;\n  gap: 8px;\n  padding: 12px;\n  width: 320px;\n  background-color: #2f3640;\n  flex-wrap: wrap-reverse;\n}\n```",
       "walkthrough": "1. Open `style.css` and find the `.tags` rule.\n2. Pick the Flexbox property that allows items to wrap to new lines.\n3. Instead of the normal `wrap` value, use `wrap-reverse` so subsequent rows stack **upward**.\n4. Save. The first row of tags should appear at the bottom of the container, with extra rows above it.\n5. Run the tests."
+    },
+    {
+      "id": "cb24999f1d84",
+      "slug": "add-bootstrap-cdn",
+      "title": "Add Bootstrap Cdn",
+      "categoryId": "94bba40f25a1",
+      "categorySlug": "bootstrap-basics",
+      "order": 1,
+      "sourcePath": "questions/011-bootstrap-basics/001-add-bootstrap-cdn.md",
+      "question": "You have a plain HTML page with a single top-level `<div>` that will hold all of your page content. You need to start using **Bootstrap 5** on this page.\n\nYour task is to:\n\n1. Load Bootstrap's CSS from the official CDN by adding a `<link>` tag inside `<head>`. Use the Bootstrap 5 CSS CDN URL (any Bootstrap 5.x version is fine).\n2. Add the Bootstrap `container` class to the existing main `<div>` so that its contents are centered with responsive horizontal padding.\n\nYou should **not** remove or rename the existing `<div class=\"main\">` — just add `container` to its class list.",
+      "answer": "",
+      "testCases": [
+        "describe('Add Bootstrap CDN and container class', () => {\n  it('should include a Bootstrap 5 CSS <link> in the <head>', () => {\n    const links = Array.from(document.head.querySelectorAll('link[rel=\"stylesheet\"]'));\n    const bootstrapLink = links.find((l) => /bootstrap.*\\.css/i.test(l.getAttribute('href') || ''));\n    expect(bootstrapLink, 'Expected a <link rel=\"stylesheet\"> pointing to a Bootstrap CSS file').to.exist;\n    expect(bootstrapLink.getAttribute('href')).to.match(/bootstrap@?5/i);\n  });\n\n  it('should load Bootstrap from a CDN (not a local path)', () => {\n    const links = Array.from(document.head.querySelectorAll('link[rel=\"stylesheet\"]'));\n    const bootstrapLink = links.find((l) => /bootstrap.*\\.css/i.test(l.getAttribute('href') || ''));\n    expect(bootstrapLink).to.exist;\n    expect(bootstrapLink.getAttribute('href')).to.match(/^https?:\\/\\//);\n  });\n\n  it('the main <div> should have both the \"main\" and \"container\" classes', () => {\n    const main = document.querySelector('div.main');\n    expect(main, 'Expected to still find <div class=\"main\">').to.exist;\n    expect(main.classList.contains('container')).to.equal(true);\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Bootstrap Start</title>\n    <!-- Add the Bootstrap 5 CSS CDN link here -->\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"main\">\n      <h1>Welcome</h1>\n      <p>This is the start of a Bootstrap page.</p>\n    </div>\n  </body>\n</html>",
+        "css": "/* No custom CSS needed for this question. */"
+      },
+      "hints": "- The Bootstrap 5 CDN link looks like `https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css`.\n- You can keep multiple class names on a single element by separating them with a space, e.g. `class=\"main container\"`.\n- Order matters: put the Bootstrap `<link>` **before** your own `style.css` so your styles can override Bootstrap if needed.",
+      "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Bootstrap Start</title>\n    <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css\">\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"main container\">\n      <h1>Welcome</h1>\n      <p>This is the start of a Bootstrap page.</p>\n    </div>\n  </body>\n</html>\n```",
+      "walkthrough": "1. Open `index.html`.\n2. Inside the `<head>`, add a `<link rel=\"stylesheet\" href=\"...\">` that points to the Bootstrap 5 CSS on a CDN (e.g. jsDelivr).\n3. Keep your own `style.css` link **after** the Bootstrap link so your rules can override Bootstrap's defaults later.\n4. Find `<div class=\"main\">` and add `container` to its `class` attribute: `class=\"main container\"`.\n5. Save and run the tests. Visually, the content should now be horizontally centered with responsive padding."
+    },
+    {
+      "id": "138fe02a72e1",
+      "slug": "two-equal-columns",
+      "title": "Two Equal Columns",
+      "categoryId": "94bba40f25a1",
+      "categorySlug": "bootstrap-basics",
+      "order": 2,
+      "sourcePath": "questions/011-bootstrap-basics/002-two-equal-columns.md",
+      "question": "Bootstrap's grid is built on **rows** and **columns**. A row (`<div class=\"row\">`) holds up to 12 column units on each line, and each column uses a class like `col-6` to declare how many of those 12 units it occupies.\n\nInside the existing `<div class=\"container\">`, create a Bootstrap **row** that contains **two columns of equal width**. Each column should take up half of the row.\n\nRequirements:\n\n1. Add one `<div class=\"row\">` inside the container.\n2. Inside that row, add **two** child `<div>` elements, each a Bootstrap column that takes up **6 of 12 units** (so they are equal width).\n3. Put the text `Left` inside the first column and `Right` inside the second column so the structure is easy to see.",
+      "answer": "",
+      "testCases": [
+        "describe('Two equal-width Bootstrap columns', () => {\n  it('should have a .row inside the .container', () => {\n    const row = document.querySelector('.container > .row');\n    expect(row, 'Expected a <div class=\"row\"> as a direct child of .container').to.exist;\n  });\n\n  it('the row should contain exactly two column children', () => {\n    const row = document.querySelector('.container > .row');\n    const cols = row.querySelectorAll(':scope > [class*=\"col-\"]');\n    expect(cols.length).to.equal(2);\n  });\n\n  it('both columns should be col-6 (equal width)', () => {\n    const row = document.querySelector('.container > .row');\n    const cols = row.querySelectorAll(':scope > [class*=\"col-\"]');\n    cols.forEach((c) => {\n      expect(c.classList.contains('col-6'), `Expected column to have class \"col-6\", got: ${c.className}`).to.equal(true);\n    });\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Two Equal Columns</title>\n    <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css\">\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"container\">\n      <!-- Add a .row with two equal-width columns here -->\n    </div>\n  </body>\n</html>",
+        "css": "/* Optional: add borders so you can see the columns */\n.row > [class*=\"col-\"] {\n  border: 1px solid #ced4da;\n  padding: 12px;\n}"
+      },
+      "hints": "- A Bootstrap row = `<div class=\"row\">`.\n- The grid has 12 units per row. Two equal columns means each takes **12 / 2 = 6** units → `col-6`.\n- Columns must be **direct children** of the row.",
+      "solution": "```html\n<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-6\">Left</div>\n    <div class=\"col-6\">Right</div>\n  </div>\n</div>\n```",
+      "walkthrough": "1. Inside `.container`, add a new `<div class=\"row\">`.\n2. Inside that row, add two `<div>` elements.\n3. Give each of the two inner `<div>`s the class `col-6` so they split the 12-unit row evenly.\n4. Add some text like `Left` and `Right` so you can see the layout.\n5. Save and run the tests. The two columns should sit side-by-side, each taking half the container's width."
+    },
+    {
+      "id": "a9efeec39fc4",
+      "slug": "three-equal-columns",
+      "title": "Three Equal Columns",
+      "categoryId": "94bba40f25a1",
+      "categorySlug": "bootstrap-basics",
+      "order": 3,
+      "sourcePath": "questions/011-bootstrap-basics/003-three-equal-columns.md",
+      "question": "Inside the existing `<div class=\"container\">`, create a Bootstrap **row** that contains **three columns of equal width**.\n\nRequirements:\n\n1. Add one `<div class=\"row\">` inside the container.\n2. Inside that row, add **three** child `<div>` elements, each a Bootstrap column that takes up **4 of 12 units** (so all three are equal width).\n3. Put the text `One`, `Two`, and `Three` in the three columns in order.",
+      "answer": "",
+      "testCases": [
+        "describe('Three equal-width Bootstrap columns', () => {\n  it('should have a .row inside the .container', () => {\n    const row = document.querySelector('.container > .row');\n    expect(row, 'Expected a <div class=\"row\"> as a direct child of .container').to.exist;\n  });\n\n  it('the row should contain exactly three column children', () => {\n    const row = document.querySelector('.container > .row');\n    const cols = row.querySelectorAll(':scope > [class*=\"col-\"]');\n    expect(cols.length).to.equal(3);\n  });\n\n  it('each column should be col-4 (equal width, 12 / 3 = 4)', () => {\n    const row = document.querySelector('.container > .row');\n    const cols = row.querySelectorAll(':scope > [class*=\"col-\"]');\n    cols.forEach((c) => {\n      expect(c.classList.contains('col-4'), `Expected column to have class \"col-4\", got: ${c.className}`).to.equal(true);\n    });\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Three Equal Columns</title>\n    <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css\">\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"container\">\n      <!-- Add a .row with three equal-width columns here -->\n    </div>\n  </body>\n</html>",
+        "css": ".row > [class*=\"col-\"] {\n  border: 1px solid #ced4da;\n  padding: 12px;\n}"
+      },
+      "hints": "- 12 units divided evenly by 3 columns = **4 units each** → use `col-4` three times.\n- The three `col-4` columns must all be direct children of the same `<div class=\"row\">`.",
+      "solution": "```html\n<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-4\">One</div>\n    <div class=\"col-4\">Two</div>\n    <div class=\"col-4\">Three</div>\n  </div>\n</div>\n```",
+      "walkthrough": "1. Inside `.container`, add `<div class=\"row\">`.\n2. Inside that row, add three `<div>` elements.\n3. Give each of them the class `col-4`.\n4. Add text `One`, `Two`, `Three` so the columns are visible.\n5. Save and run the tests. The three columns should sit side-by-side, each one third of the container's width."
+    },
+    {
+      "id": "c4783d18ccdb",
+      "slug": "three-seven-columns",
+      "title": "Three Seven Columns",
+      "categoryId": "94bba40f25a1",
+      "categorySlug": "bootstrap-basics",
+      "order": 4,
+      "sourcePath": "questions/011-bootstrap-basics/004-three-seven-columns.md",
+      "question": "A Bootstrap row is **12 units** wide in total. When your columns add up to exactly 12, they fill the row completely with no leftover space on the right.\n\nInside the existing `<div class=\"container\">`, create a Bootstrap **row** with **three columns**:\n\n- The **left** column should take **3 units**.\n- The **middle** column should take **7 units**.\n- The **right** column should fill whatever is **left over** so the three columns together fill the row exactly.\n\nThe width of the right column is **not given to you** — you need to work it out from the row's total of 12 units and the two columns you already know.\n\nRequirements:\n\n1. Add one `<div class=\"row\">` inside the container.\n2. First column: `col-3` with the text `Left (3)`.\n3. Second column: `col-7` with the text `Middle (7)`.\n4. Third column: the correct `col-N` so that the three columns add up to **exactly 12 units**, with the text `Right`.",
+      "answer": "",
+      "testCases": [
+        "describe('Bootstrap columns: 3 + 7 + (remainder)', () => {\n  it('should have a .row inside the .container', () => {\n    const row = document.querySelector('.container > .row');\n    expect(row, 'Expected a <div class=\"row\"> as a direct child of .container').to.exist;\n  });\n\n  it('the row should contain exactly three column children', () => {\n    const row = document.querySelector('.container > .row');\n    const cols = row.querySelectorAll(':scope > [class*=\"col-\"]');\n    expect(cols.length).to.equal(3);\n  });\n\n  it('the first column should be col-3', () => {\n    const row = document.querySelector('.container > .row');\n    const first = row.querySelector(':scope > [class*=\"col-\"]:nth-child(1)');\n    expect(first, 'Expected a first column child').to.exist;\n    expect(first.classList.contains('col-3'), `Expected first column class \"col-3\", got: ${first.className}`).to.equal(true);\n  });\n\n  it('the middle column should be col-7', () => {\n    const row = document.querySelector('.container > .row');\n    const middle = row.querySelector(':scope > [class*=\"col-\"]:nth-child(2)');\n    expect(middle, 'Expected a middle column child').to.exist;\n    expect(middle.classList.contains('col-7'), `Expected middle column class \"col-7\", got: ${middle.className}`).to.equal(true);\n  });\n\n  it('the third column should fill the remaining units so the row sums to 12', () => {\n    const row = document.querySelector('.container > .row');\n    const third = row.querySelector(':scope > [class*=\"col-\"]:nth-child(3)');\n    expect(third, 'Expected a third column child').to.exist;\n    expect(third.classList.contains('col-2'), `Expected third column class \"col-2\" (12 - 3 - 7 = 2), got: ${third.className}`).to.equal(true);\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>3 + 7 + ? Columns</title>\n    <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css\">\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"container\">\n      <!-- Add a .row with three columns: 3 units, 7 units, and the remainder -->\n    </div>\n  </body>\n</html>",
+        "css": ".row > [class*=\"col-\"] {\n  border: 1px solid #ced4da;\n  padding: 12px;\n}"
+      },
+      "hints": "- The number in `col-N` is the number of **12ths** the column occupies.\n- A row has 12 units total. If two of the three columns use 3 and 7 units, how many units are left for the third?\n- Sanity check: all three `col-N` numbers should add up to exactly **12**.",
+      "solution": "```html\n<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-3\">Left (3)</div>\n    <div class=\"col-7\">Middle (7)</div>\n    <div class=\"col-2\">Right</div>\n  </div>\n</div>\n```",
+      "walkthrough": "1. Inside `.container`, add `<div class=\"row\">`.\n2. Add a first child `<div class=\"col-3\">` with text `Left (3)`.\n3. Add a second child `<div class=\"col-7\">` with text `Middle (7)`.\n4. Work out how many units are left: the row totals 12 units and you've used 3 + 7 = 10, so the third column needs `12 - 10 = 2` units.\n5. Add a third child with the corresponding `col-N` class and the text `Right`.\n6. Save and run the tests. The three columns should together fill the row exactly."
+    },
+    {
+      "id": "460637b1f4e0",
+      "slug": "quarter-and-three-quarters",
+      "title": "Quarter And Three Quarters",
+      "categoryId": "94bba40f25a1",
+      "categorySlug": "bootstrap-basics",
+      "order": 5,
+      "sourcePath": "questions/011-bootstrap-basics/005-quarter-and-three-quarters.md",
+      "question": "Bootstrap's grid has **12 units** in every row, and each column uses a class like `col-N` where `N` is how many of those 12 units the column takes up.\n\nInside the existing `<div class=\"container\">`, create a Bootstrap **row** with **two columns**:\n\n- The **left** column should take **25%** of the row's width.\n- The **right** column should take **75%** of the row's width.\n\nYou'll need to figure out the correct `col-N` value for each column yourself — convert the percentages into a number of 12-unit pieces.\n\nRequirements:\n\n1. Add one `<div class=\"row\">` inside the container.\n2. A first column whose width equals 25% of the row, containing the text `Sidebar (25%)`.\n3. A second column whose width equals 75% of the row, containing the text `Content (75%)`.\n4. The two columns together should fill the entire row with no leftover space.",
+      "answer": "",
+      "testCases": [
+        "describe('Bootstrap 25% / 75% split', () => {\n  it('should have a .row inside the .container', () => {\n    const row = document.querySelector('.container > .row');\n    expect(row, 'Expected a <div class=\"row\"> as a direct child of .container').to.exist;\n  });\n\n  it('the row should contain exactly two column children', () => {\n    const row = document.querySelector('.container > .row');\n    const cols = row.querySelectorAll(':scope > [class*=\"col-\"]');\n    expect(cols.length).to.equal(2);\n  });\n\n  it('the first column should be col-3 (25%)', () => {\n    const row = document.querySelector('.container > .row');\n    const first = row.querySelector(':scope > [class*=\"col-\"]:nth-child(1)');\n    expect(first).to.exist;\n    expect(first.classList.contains('col-3'), `Expected \"col-3\", got: ${first.className}`).to.equal(true);\n  });\n\n  it('the second column should be col-9 (75%)', () => {\n    const row = document.querySelector('.container > .row');\n    const second = row.querySelector(':scope > [class*=\"col-\"]:nth-child(2)');\n    expect(second).to.exist;\n    expect(second.classList.contains('col-9'), `Expected \"col-9\", got: ${second.className}`).to.equal(true);\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>25 / 75 Columns</title>\n    <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css\">\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"container\">\n      <!-- Add a .row with a 25% column and a 75% column here -->\n    </div>\n  </body>\n</html>",
+        "css": ".row > [class*=\"col-\"] {\n  border: 1px solid #ced4da;\n  padding: 12px;\n}"
+      },
+      "hints": "- A Bootstrap row is split into **12 equal units**. Ask yourself: *how many of those 12 units equal 25%? How many equal 75%?*\n- One way to work it out: `percentage / 100 * 12`. For example, 50% would be `50 / 100 * 12 = 6`, so 50% is `col-6`.\n- Sanity check: the two numbers you pick should add up to **12** so the row is completely filled.\n- A common real-world use of this layout is a **sidebar + main content** area.",
+      "solution": "```html\n<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-3\">Sidebar (25%)</div>\n    <div class=\"col-9\">Content (75%)</div>\n  </div>\n</div>\n```",
+      "walkthrough": "1. Inside `.container`, add `<div class=\"row\">`.\n2. Add a first child `<div class=\"col-3\">` for the 25% sidebar.\n3. Add a second child `<div class=\"col-9\">` for the 75% content.\n4. Confirm `3 + 9 = 12` so the two columns completely fill the row.\n5. Save and run the tests."
+    },
+    {
+      "id": "0f79345a04b3",
+      "slug": "sidebar-content-sidebar",
+      "title": "Sidebar Content Sidebar",
+      "categoryId": "94bba40f25a1",
+      "categorySlug": "bootstrap-basics",
+      "order": 6,
+      "sourcePath": "questions/011-bootstrap-basics/006-sidebar-content-sidebar.md",
+      "question": "Let's combine what you've learned. A common layout is **two narrow sidebars with a wide content area in the middle**.\n\nInside the existing `<div class=\"container\">`, create a Bootstrap **row** with **three columns**:\n\n- The **left** column should take **25%** of the row.\n- The **right** column should take **25%** of the row.\n- The **middle** column should take the **remaining width** so the three columns together fill the row exactly.\n\nYou'll need to figure out the correct `col-N` value for each column yourself — remember a Bootstrap row is always 12 units wide.\n\nRequirements:\n\n1. Add one `<div class=\"row\">` inside the container.\n2. A first column whose width equals 25% of the row, containing the text `Left (25%)`.\n3. A middle column that fills the remaining width, containing text describing it (e.g. `Middle (50%)`).\n4. A third column whose width equals 25% of the row, containing the text `Right (25%)`.\n5. The three columns together should fill the row exactly (they must add up to 12 units).",
+      "answer": "",
+      "testCases": [
+        "describe('Bootstrap 25% / 50% / 25% three-column layout', () => {\n  it('should have a .row inside the .container', () => {\n    const row = document.querySelector('.container > .row');\n    expect(row, 'Expected a <div class=\"row\"> as a direct child of .container').to.exist;\n  });\n\n  it('the row should contain exactly three column children', () => {\n    const row = document.querySelector('.container > .row');\n    const cols = row.querySelectorAll(':scope > [class*=\"col-\"]');\n    expect(cols.length).to.equal(3);\n  });\n\n  it('the first column should be col-3 (25%)', () => {\n    const row = document.querySelector('.container > .row');\n    const first = row.querySelector(':scope > [class*=\"col-\"]:nth-child(1)');\n    expect(first).to.exist;\n    expect(first.classList.contains('col-3'), `Expected first column \"col-3\", got: ${first.className}`).to.equal(true);\n  });\n\n  it('the middle column should be col-6 (the remaining 50%)', () => {\n    const row = document.querySelector('.container > .row');\n    const middle = row.querySelector(':scope > [class*=\"col-\"]:nth-child(2)');\n    expect(middle).to.exist;\n    expect(middle.classList.contains('col-6'), `Expected middle column \"col-6\", got: ${middle.className}`).to.equal(true);\n  });\n\n  it('the third column should be col-3 (25%)', () => {\n    const row = document.querySelector('.container > .row');\n    const third = row.querySelector(':scope > [class*=\"col-\"]:nth-child(3)');\n    expect(third).to.exist;\n    expect(third.classList.contains('col-3'), `Expected third column \"col-3\", got: ${third.className}`).to.equal(true);\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Sidebar + Content + Sidebar</title>\n    <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css\">\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"container\">\n      <!-- Add a .row with three columns (25% / middle / 25%) here -->\n    </div>\n  </body>\n</html>",
+        "css": ".row > [class*=\"col-\"] {\n  border: 1px solid #ced4da;\n  padding: 12px;\n}"
+      },
+      "hints": "- Start by converting each 25% side column into a number of 12-unit pieces. (Hint: `25 / 100 * 12 = ?`)\n- Then subtract the two side columns from 12 to find out how many units are left for the middle.\n- Sanity check: your three `col-N` numbers must add up to exactly **12** for the row to be completely filled with no leftover space.\n- The order of the columns in the HTML matches their left-to-right visual order.",
+      "solution": "```html\n<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-3\">Left (25%)</div>\n    <div class=\"col-6\">Middle (50%)</div>\n    <div class=\"col-3\">Right (25%)</div>\n  </div>\n</div>\n```",
+      "walkthrough": "1. Inside `.container`, add `<div class=\"row\">`.\n2. Add three child `<div>` elements in this order: left, middle, right.\n3. Work out how many of the 12 units equal 25%, and give both the left and right columns that `col-N` class.\n4. Subtract the two side columns from 12 to get the middle column's unit count, and give the middle column that `col-N` class.\n5. Add identifying text in each column so the layout is easy to see.\n6. Save and run the tests. You should see a narrow-wide-narrow three-column layout filling the container."
     }
   ]
 }
