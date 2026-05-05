@@ -74,7 +74,12 @@ export const answersAtom = atom(
     if (action.type === 'save') {
       const next: AnswersMap = {
         ...current,
-        [action.id]: { ...action.entry, updatedAt: new Date().toISOString() },
+        [action.id]: { 
+          html: action.entry.html,
+          css: action.entry.css,
+          javascript: action.entry.javascript ?? '',
+          updatedAt: new Date().toISOString() 
+        },
       };
       saveJSON(STORAGE_KEYS.answers, next);
       set(answersBaseAtom, next);
@@ -90,5 +95,4 @@ export const answersAtom = atom(
 );
 
 // ---------- transient (per-question) ----------
-
-export const lastRunAtom = atom<TestRunSummary | null>(null);
+// Note: lastRun is managed as local state in components since it's transient

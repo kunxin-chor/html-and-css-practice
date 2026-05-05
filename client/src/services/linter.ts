@@ -61,6 +61,71 @@ export function lintCss(source: string): LintMessage[] {
   }
 }
 
-export function lintAll(html: string, css: string): LintMessage[] {
-  return [...lintHtml(html), ...lintCss(css)];
+export function lintAll(html: string, css: string, javascript: string): LintMessage[] {
+  return [...lintHtml(html), ...lintCss(css), ...lintJavascript(javascript)];
+}
+
+// JavaScript linting using basic syntax checking
+// For production, integrate ESLint via a proper build step or service worker
+export function lintJavascript(source: string): LintMessage[] {
+  if (!source.trim()) return [];
+  const messages: LintMessage[] = [];
+
+  // Basic syntax error detection using try/catch
+  try {
+    // This will catch syntax errors in the code
+    new Function(source);
+  } catch (err) {
+    const error = err as Error;
+    // Try to extract line number from error message
+    const lineMatch = error.message.match(/:(\d+):/);
+    const line = lineMatch ? parseInt(lineMatch[1], 10) : undefined;
+    messages.push({
+      source: 'javascript',
+      line,
+      message: `Syntax error: ${error.message}`,
+      severity: 'error',
+    });
+  }
+
+  // Basic linting rules (can be expanded)
+  const lines = source.split('\n');
+  lines.forEach((lineContent, index) => {
+    const lineNum = index + 1;
+
+    // Check for console.log (warning)
+    if (/console\.(log|warn|error|info)/.test(lineContent)) {
+      messages.push({
+        source: 'javascript',
+        line: lineNum,
+        message: 'Console statement detected - remove before production',
+        severity: 'warning',
+        rule: 'no-console',
+      });
+    }
+
+    // Check for var (suggest let/const)
+    if (/^\s*var\s+/.test(lineContent)) {
+      messages.push({
+        source: 'javascript',
+        line: lineNum,
+        message: 'Use let or const instead of var',
+        severity: 'warning',
+        rule: 'no-var',
+      });
+    }
+
+    // Check for == (suggest ===)
+    if (/[!=]==(?!=)/.test(lineContent)) {
+      messages.push({
+        source: 'javascript',
+        line: lineNum,
+        message: 'Use === or !== instead of == or !=',
+        severity: 'warning',
+        rule: 'eqeqeq',
+      });
+    }
+  });
+
+  return messages;
 }

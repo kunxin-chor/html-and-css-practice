@@ -6,22 +6,41 @@
  * Any <link rel="stylesheet" href="style.css"> the student writes is
  * kept in the DOM (so tests can detect it) but will 404 harmlessly —
  * the inlined <style> is the real source of truth for styling.
+ *
+ * JavaScript is injected via a <script> tag at the end of <body>.
  */
-export function buildPreviewSrcDoc(html: string, css: string): string {
+export function buildPreviewSrcDoc(
+  html: string,
+  css: string,
+  javascript: string
+): string {
   const out = html;
 
   const styleTag = `<style>\n${css}\n</style>`;
+  const scriptTag = `<script>\n// Console capture for preview\n(function() {\n  const originalConsole = { ...console };\n  window.parent.postMessage({ type: 'console', method: 'log', args: ['Console ready'] }, '*');\n  ['log', 'warn', 'error', 'info'].forEach(method => {\n    console[method] = function(...args) {\n      originalConsole[method](...args);\n      window.parent.postMessage({ type: 'console', method, args: args.map(a => typeof a === 'object' ? JSON.stringify(a) : String(a)) }, '*');\n    };\n  });\n  window.addEventListener('error', (e) => {\n    window.parent.postMessage({ type: 'console', method: 'error', args: [e.message + ' at ' + e.filename + ':' + e.lineno] }, '*');\n  });\n})();\n\n${javascript}\n<\/script>`;
 
-  if (/<head[^>]*>/i.test(out)) {
-    return out.replace(/<head([^>]*)>/i, `<head$1>\n${styleTag}`);
-  }
+  let result = out;
 
-  if (/<html[^>]*>/i.test(out)) {
-    return out.replace(
+  // Inject CSS
+  if (/<head[^>]*>/i.test(result)) {
+    result = result.replace(/<head([^>]*)>/i, `<head$1>\n${styleTag}`);
+  } else if (/<html[^>]*>/i.test(result)) {
+    result = result.replace(
       /<html([^>]*)>/i,
       `<html$1>\n<head>${styleTag}</head>`
     );
+  } else {
+    result = `<!DOCTYPE html><html><head>${styleTag}</head><body>${result}</body></html>`;
   }
 
-  return `<!DOCTYPE html><html><head>${styleTag}</head><body>${out}</body></html>`;
+  // Inject JavaScript at the end of body
+  if (/<body[^>]*>/i.test(result)) {
+    result = result.replace(/<\/body>/i, `${scriptTag}\n</body>`);
+  } else if (/<html[^>]*>/i.test(result)) {
+    result = result.replace(/<\/html>/i, `</body>\n${scriptTag}\n</html>`);
+  } else {
+    result = `${result}\n${scriptTag}`;
+  }
+
+  return result;
 }

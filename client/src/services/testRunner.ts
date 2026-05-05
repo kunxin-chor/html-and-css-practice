@@ -13,10 +13,11 @@ const CHAI_JS = 'https://cdn.jsdelivr.net/npm/chai@4/chai.js';
 function buildTestSrcDoc(
   html: string,
   css: string,
+  javascript: string,
   testCases: string[],
   runId: string
 ): string {
-  const preview = buildPreviewSrcDoc(html, css);
+  const preview = buildPreviewSrcDoc(html, css, javascript);
 
   const harness = `
 <div id="mocha" style="display:none"></div>
@@ -74,6 +75,7 @@ function buildTestSrcDoc(
 export function runTests(
   html: string,
   css: string,
+  javascript: string,
   testCases: string[]
 ): Promise<TestRunSummary> {
   return new Promise((resolve) => {
@@ -130,7 +132,7 @@ export function runTests(
 
     window.addEventListener('message', onMessage);
 
-    iframe.srcdoc = buildTestSrcDoc(html, css, testCases, runId);
+    iframe.srcdoc = buildTestSrcDoc(html, css, javascript, testCases, runId);
     document.body.appendChild(iframe);
   });
 }

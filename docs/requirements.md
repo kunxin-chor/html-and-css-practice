@@ -1,28 +1,45 @@
 
-This is a HTML/CSS question bank.
-The interface has
+This is a HTML/CSS/JavaScript question bank.
+The interface has a two-column layout:
+
+**Layout Structure:**
+- Left column: Code Editor
+  - Tabbed interface for each file (HTML, CSS, JavaScript)
+  - Syntax highlighting for all languages
+  - Auto-saves
+- Right column: Preview/Test/Question panel
+  - Tabbed interface to switch between Preview, Test, and Question views
+  - Preview tab: shows rendered output with console
+  - Test tab: shows test results and errors
+  - Question tab: shows question description, solution, and walkthrough
+
+**Interface Components:**
 1. Question selection (collapsible, group by category)
 - show indiciator for questions that have been done correct
 - show indiator for questions that has been done incorrectly
 - no indicator for question not tried yet   
 2. Question Display
- - display the question
-3. Answer Display
- - use a code editor to enter the answer
- - two tabs - HTML (index.html) and CSS (style.css)
- - have syntax highlighting
- - auto-saves
-4. Preview
-- show the rendered HTML and CSS code
+ - display the question in the Question tab of the right panel
+3. Answer Display (Code Editor - Left Column)
+ - Tabbed interface for HTML (index.html), CSS (style.css), and JavaScript (script.js)
+ - Syntax highlighting for all languages
+ - Auto-saves
+4. Preview (Preview Tab - Right Column)
+- Show the rendered HTML and CSS code
+- Execute JavaScript code in the preview
 - Have a button to refresh the preview. Make it look like a real web browser if possible
-5. Run Test
-- show the requirements
-- for each requirement, check if pass or fail
-- show the requriements that have failed
-- show errors from linters or css validators
-- have a button to run test or to rerun test
-6. Display proposed solution
-7. Display walktrhough
+- Display console output (logs, errors, warnings) from JavaScript execution
+- Provide a console panel to view and interact with JavaScript console messages
+5. Run Test (Test Tab - Right Column)
+- Show the requirements
+- For each requirement, check if pass or fail
+- Show the requirements that have failed
+- Show errors from linters or css validators
+- Show JavaScript syntax errors and runtime errors
+- Show JavaScript linting warnings and errors (e.g., ESLint)
+- Have a button to run test or to rerun test
+6. Display proposed solution (in Question tab)
+7. Display walkthrough (in Question tab)
 
 Question storage:
 Use a JSON file to store all the questions as an array of objects. 
@@ -47,6 +64,7 @@ However, question authoring is done via a md file for each question.
   - # Starting Files
   - ## HTML
   - ## CSS
+  - ## JavaScript
   - ## Hints
   - # Solution
   - # Walkthrough: step by step guide, with pesudeo code or hint, to guide the student
@@ -55,7 +73,7 @@ Write a NodeJS script to convert the md files to JSON files.
 
 Testing should be done via a testing library that be can ran within the browser.
 
-Use a lint or similiar tool to check the student's submitted HTML and CSS for errors
+Use a lint or similiar tool to check the student's submitted HTML, CSS, and JavaScript for errors
 
 
 Stack: React, react-bootstrap, SPA, localstorage saving

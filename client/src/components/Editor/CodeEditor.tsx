@@ -5,12 +5,12 @@ import { useAtom } from 'jotai';
 import { answersAtom } from '../../state/atoms';
 import type { Question } from '../../types';
 
-type Tab = 'html' | 'css';
+type Tab = 'html' | 'css' | 'javascript';
 
 interface Props {
   question: Question;
-  onChange: (value: { html: string; css: string }) => void;
-  value: { html: string; css: string };
+  onChange: (value: { html: string; css: string; javascript: string }) => void;
+  value: { html: string; css: string; javascript: string };
 }
 
 export function CodeEditor({ question, onChange, value }: Props) {
@@ -25,15 +25,15 @@ export function CodeEditor({ question, onChange, value }: Props) {
       dispatchAnswers({
         type: 'save',
         id: question.id,
-        entry: { html: value.html, css: value.css },
+        entry: { html: value.html, css: value.css, javascript: value.javascript },
       });
     }, 400);
     return () => {
       if (saveTimer.current) window.clearTimeout(saveTimer.current);
     };
-  }, [value.html, value.css, question.id, dispatchAnswers]);
+  }, [value.html, value.css, value.javascript, question.id, dispatchAnswers]);
 
-  const language = tab === 'html' ? 'html' : 'css';
+  const language = tab === 'html' ? 'html' : tab === 'css' ? 'css' : 'javascript';
   const current = value[tab];
 
   return (
@@ -53,6 +53,11 @@ export function CodeEditor({ question, onChange, value }: Props) {
           <Nav.Item>
             <Nav.Link eventKey="css" className="py-1">
               style.css
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link eventKey="javascript" className="py-1">
+              script.js
             </Nav.Link>
           </Nav.Item>
         </Nav>

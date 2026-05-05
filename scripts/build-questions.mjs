@@ -211,6 +211,7 @@ function parseQuestionMarkdown(raw) {
     startingFiles: {
       html: firstCodeBlock(topLevel['starting files']?.subs['html'] ?? []),
       css: firstCodeBlock(topLevel['starting files']?.subs['css'] ?? []),
+      javascript: firstCodeBlock(topLevel['starting files']?.subs['javascript'] ?? []),
     },
     hints: getSub('starting files', 'hints'),
     solution: getBody('solution'),

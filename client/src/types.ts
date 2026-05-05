@@ -8,6 +8,7 @@ export interface Category {
 export interface StartingFiles {
   html: string;
   css: string;
+  javascript: string;
 }
 
 export interface Question {
@@ -47,6 +48,7 @@ export type ProgressMap = Record<string, ProgressEntry>;
 export interface AnswerEntry {
   html: string;
   css: string;
+  javascript: string;
   updatedAt: string;
 }
 
@@ -66,7 +68,7 @@ export interface TestRunSummary {
 }
 
 export interface LintMessage {
-  source: 'html' | 'css';
+  source: 'html' | 'css' | 'javascript';
   line?: number;
   col?: number;
   message: string;

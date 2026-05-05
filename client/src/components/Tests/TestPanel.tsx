@@ -4,23 +4,24 @@ import { useAtom } from 'jotai';
 import type { LintMessage, Question, TestRunSummary } from '../../types';
 import { runTests } from '../../services/testRunner';
 import { lintAll } from '../../services/linter';
-import { lastRunAtom, progressAtom } from '../../state/atoms';
+import { progressAtom } from '../../state/atoms';
 import { CheckByAI } from '../Question/CheckByAI';
 
 interface Props {
   question: Question;
   html: string;
   css: string;
+  javascript: string;
 }
 
-export function TestPanel({ question, html, css }: Props) {
+export function TestPanel({ question, html, css, javascript }: Props) {
   const [running, setRunning] = useState(false);
-  const [summary, setSummary] = useAtom(lastRunAtom);
+  const [summary, setSummary] = useState<TestRunSummary | null>(null);
   const [, dispatchProgress] = useAtom(progressAtom);
 
   const lintMessages = useMemo<LintMessage[]>(
-    () => lintAll(html, css),
-    [html, css]
+    () => lintAll(html, css, javascript),
+    [html, css, javascript]
   );
 
   async function handleRun() {
@@ -29,6 +30,7 @@ export function TestPanel({ question, html, css }: Props) {
       const result: TestRunSummary = await runTests(
         html,
         css,
+        javascript,
         question.testCases
       );
       setSummary(result);

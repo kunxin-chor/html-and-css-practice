@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-23T04:58:52.835Z",
+  "generatedAt": "2026-04-24T05:09:28.533Z",
   "categories": [
     {
       "id": "63ebd4de56f3",
@@ -66,6 +66,18 @@
       "slug": "bootstrap-basics",
       "name": "Bootstrap Basics",
       "order": 11
+    },
+    {
+      "id": "c248574ad54a",
+      "slug": "dom-selectors",
+      "name": "Dom Selectors",
+      "order": 12
+    },
+    {
+      "id": "e63bc40c45d8",
+      "slug": "event-listeners",
+      "name": "Event Listeners",
+      "order": 13
     }
   ],
   "questions": [
@@ -85,7 +97,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>My First Page</title>\n  </head>\n  <body>\n    <!-- Write your heading here -->\n  </body>\n</html>",
-        "css": "/* No CSS needed for this question */"
+        "css": "/* No CSS needed for this question */",
+        "javascript": ""
       },
       "hints": "- The `<h1>` element is used for the most important heading on a page.\n- The text goes between the opening `<h1>` and closing `</h1>` tags.\n- Make sure the text matches exactly, including the comma and exclamation mark.",
       "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>My First Page</title>\n  </head>\n  <body>\n    <h1>Hello, World!</h1>\n  </body>\n</html>\n```",
@@ -108,7 +121,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>My Blog</title>\n  </head>\n  <body>\n    <!-- Add your headings here -->\n  </body>\n</html>",
-        "css": ""
+        "css": "",
+        "javascript": ""
       },
       "hints": "- `<h1>` is the most important heading; `<h2>` is the next level down.\n- Both take their visible text between their opening and closing tags.\n- Order matters in HTML — elements render in the order they appear in the source.",
       "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>My Blog</title>\n  </head>\n  <body>\n    <h1>My Blog</h1>\n    <h2>My first post</h2>\n  </body>\n</html>\n```",
@@ -131,7 +145,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>About Me</title>\n  </head>\n  <body>\n    <h1>About Me</h1>\n    <!-- Add your paragraphs here -->\n  </body>\n</html>",
-        "css": ""
+        "css": "",
+        "javascript": ""
       },
       "hints": "- Paragraphs use the `<p>` tag.\n- Each paragraph should be its own `<p>...</p>` element.\n- Place them **after** the `<h1>` but still **inside** `<body>`.",
       "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>About Me</title>\n  </head>\n  <body>\n    <h1>About Me</h1>\n    <p>I am learning HTML.</p>\n    <p>It is fun!</p>\n  </body>\n</html>\n```",
@@ -153,7 +168,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Links and Images</title>\n  </head>\n  <body>\n    <h1>Links and Images</h1>\n    <!-- Add your link and image here -->\n  </body>\n</html>",
-        "css": ""
+        "css": "",
+        "javascript": ""
       },
       "hints": "- `<a href=\"URL\">link text</a>` creates a clickable link.\n- `<img src=\"URL\" alt=\"description\">` is a self-closing element — it has no closing tag.\n- The `alt` attribute is required for accessibility.",
       "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Links and Images</title>\n  </head>\n  <body>\n    <h1>Links and Images</h1>\n    <a href=\"https://example.com\">Visit Example</a>\n    <img src=\"https://picsum.photos/200/300\" alt=\"Placeholder image\">\n  </body>\n</html>\n```",
@@ -175,7 +191,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Favorite Fruits</title>\n  </head>\n  <body>\n    <h1>My Favorite Fruits</h1>\n    <!-- Add your unordered list here -->\n  </body>\n</html>",
-        "css": ""
+        "css": "",
+        "javascript": ""
       },
       "hints": "- `<ul>` creates an unordered (bulleted) list.\n- Each item inside the list uses `<li>`.\n- Keep the order the same as the question.",
       "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Favorite Fruits</title>\n  </head>\n  <body>\n    <h1>My Favorite Fruits</h1>\n    <ul>\n      <li>Apple</li>\n      <li>Banana</li>\n      <li>Cherry</li>\n    </ul>\n  </body>\n</html>\n```",
@@ -197,7 +214,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Race Results</title>\n  </head>\n  <body>\n    <h1>Race Results</h1>\n    <!-- Add your ordered list here -->\n  </body>\n</html>",
-        "css": ""
+        "css": "",
+        "javascript": ""
       },
       "hints": "- `<ol>` creates an **o**rdered (numbered) list; `<ul>` is for **u**nordered bullet lists.\n- Each item inside the list still uses `<li>`.\n- The numbers are rendered automatically by the browser — you do not write \"1.\", \"2.\", etc. in the text.",
       "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Race Results</title>\n  </head>\n  <body>\n    <h1>Race Results</h1>\n    <ol>\n      <li>Alice</li>\n      <li>Bob</li>\n      <li>Carol</li>\n    </ol>\n  </body>\n</html>\n```",
@@ -220,7 +238,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Rows and Columns</title>\n  </head>\n  <body>\n    <h1>Rows and Columns</h1>\n    <table border=\"1\">\n      <!-- Add two rows of three columns here -->\n    </table>\n  </body>\n</html>",
-        "css": ""
+        "css": "",
+        "javascript": ""
       },
       "hints": "- `<tr>` = **t**able **r**ow. One `<tr>` per horizontal row of the table.\n- `<td>` = **t**able **d**ata cell. One `<td>` per column.\n- A 2×3 table therefore has two `<tr>` elements, each holding three `<td>` elements.\n- You do **not** need a `<thead>`, `<tbody>`, or any `<th>` for this question.",
       "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Rows and Columns</title>\n  </head>\n  <body>\n    <h1>Rows and Columns</h1>\n    <table border=\"1\">\n      <tr>\n        <td>A</td>\n        <td>B</td>\n        <td>C</td>\n      </tr>\n      <tr>\n        <td>D</td>\n        <td>E</td>\n        <td>F</td>\n      </tr>\n    </table>\n  </body>\n</html>\n```",
@@ -243,7 +262,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>People</title>\n  </head>\n  <body>\n    <h1>People</h1>\n    <!-- Build your table here -->\n  </body>\n</html>",
-        "css": ""
+        "css": "",
+        "javascript": ""
       },
       "hints": "- A table is a grid: rows (`<tr>`) contain cells.\n- Header cells use `<th>` (bold + centered by default). Data cells use `<td>`.\n- `<thead>` groups the header row(s); `<tbody>` groups the data rows. Browsers tolerate missing `<thead>`/`<tbody>`, but the tests for this question require them explicitly.\n- Structure:\n  ```\n  <table>\n    <thead>\n      <tr>\n        <th>...</th>\n        <th>...</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr> ... </tr>\n      <tr> ... </tr>\n    </tbody>\n  </table>\n  ```",
       "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>People</title>\n  </head>\n  <body>\n    <h1>People</h1>\n    <table>\n      <thead>\n        <tr>\n          <th>Name</th>\n          <th>Age</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td>Alice</td>\n          <td>30</td>\n        </tr>\n        <tr>\n          <td>Bob</td>\n          <td>25</td>\n        </tr>\n      </tbody>\n    </table>\n  </body>\n</html>\n```",
@@ -271,7 +291,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>About Me</title>\n  </head>\n  <body>\n    <!-- Build your About Me page here -->\n  </body>\n</html>",
-        "css": ""
+        "css": "",
+        "javascript": ""
       },
       "hints": "- Work top-to-bottom — add one section at a time and run the tests as you go.\n- Review each earlier question in this category if you forget a tag: headings (`<h1>`/`<h2>`), paragraphs (`<p>`), links (`<a>`), images (`<img>`), unordered lists (`<ul>`), ordered lists (`<ol>`), and tables (`<table>` / `<thead>` / `<tbody>` / `<tr>` / `<th>` / `<td>`).\n- Exact text matters — the tests compare strings including capitalisation and punctuation.\n- The image source uses Lorem Picsum: `https://picsum.photos/200/200`.",
       "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>About Me</title>\n  </head>\n  <body>\n    <h1>About Me</h1>\n\n    <h2>Bio</h2>\n    <p>I am a web developer learning HTML.</p>\n\n    <h2>Hobbies</h2>\n    <ul>\n      <li>Reading</li>\n      <li>Cycling</li>\n      <li>Cooking</li>\n    </ul>\n\n    <h2>Top 3 Favorite Foods</h2>\n    <ol>\n      <li>Pizza</li>\n      <li>Sushi</li>\n      <li>Tacos</li>\n    </ol>\n\n    <h2>Profile</h2>\n    <img src=\"https://picsum.photos/200/200\" alt=\"My profile picture\">\n    <p><a href=\"https://example.com\">Visit my website</a></p>\n\n    <h2>Schedule</h2>\n    <table>\n      <thead>\n        <tr>\n          <th>Day</th>\n          <th>Activity</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td>Monday</td>\n          <td>Gym</td>\n        </tr>\n        <tr>\n          <td>Tuesday</td>\n          <td>Reading</td>\n        </tr>\n      </tbody>\n    </table>\n  </body>\n</html>\n```",
@@ -293,7 +314,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Bookshop</title>\n  </head>\n  <body>\n    <!-- Write your heading here -->\n  </body>\n</html>",
-        "css": "/* No CSS needed for this question */"
+        "css": "/* No CSS needed for this question */",
+        "javascript": ""
       },
       "hints": "- The `<h1>` element is for the single most important heading on a page.\n- Text goes between the opening `<h1>` and closing `</h1>` tags.\n- The tests compare text exactly — capitalisation and spacing matter.",
       "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Bookshop</title>\n  </head>\n  <body>\n    <h1>Welcome to the Bookshop</h1>\n  </body>\n</html>\n```",
@@ -316,7 +338,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Tech News</title>\n  </head>\n  <body>\n    <!-- Add your headings and paragraphs here, in order -->\n  </body>\n</html>",
-        "css": ""
+        "css": "",
+        "javascript": ""
       },
       "hints": "- HTML renders elements in the order they appear in the source — watch the order carefully.\n- `<h1>` is for the page title, `<h2>` for a section heading. A paragraph `<p>` can sit directly between them.\n- The tests check the tag order of the first four children of `<body>`.",
       "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Tech News</title>\n  </head>\n  <body>\n    <h1>Tech News</h1>\n    <p>Latest updates from the web.</p>\n    <h2>JavaScript turns 30</h2>\n    <p>A milestone for the language.</p>\n  </body>\n</html>\n```",
@@ -338,7 +361,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>The Moon</title>\n  </head>\n  <body>\n    <h1>The Moon</h1>\n    <!-- Add three paragraphs here -->\n  </body>\n</html>",
-        "css": ""
+        "css": "",
+        "javascript": ""
       },
       "hints": "- Each paragraph is its own `<p>...</p>` element.\n- Order matters: the tests check `querySelectorAll('p')[i]`.\n- Text is compared character-by-character.",
       "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>The Moon</title>\n  </head>\n  <body>\n    <h1>The Moon</h1>\n    <p>The Moon is Earth's only natural satellite.</p>\n    <p>It is about 384,400 km away on average.</p>\n    <p>A full orbit takes roughly 27 days.</p>\n  </body>\n</html>\n```",
@@ -360,7 +384,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Learn Web Dev</title>\n  </head>\n  <body>\n    <h1>Learn Web Dev</h1>\n    <!-- Add two links and one image here -->\n  </body>\n</html>",
-        "css": ""
+        "css": "",
+        "javascript": ""
       },
       "hints": "- Each link is its own `<a href=\"URL\">text</a>` element — you'll need two of them.\n- `<img>` is self-closing — no closing tag.\n- The `alt` attribute is required for every image.",
       "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Learn Web Dev</title>\n  </head>\n  <body>\n    <h1>Learn Web Dev</h1>\n    <a href=\"https://developer.mozilla.org\">Read the MDN docs</a>\n    <a href=\"https://web.dev\">Learn web.dev</a>\n    <img src=\"https://picsum.photos/250/150\" alt=\"Code on a screen\">\n  </body>\n</html>\n```",
@@ -382,7 +407,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Grocery List</title>\n  </head>\n  <body>\n    <h1>Weekly Groceries</h1>\n    <!-- Add your unordered list here -->\n  </body>\n</html>",
-        "css": ""
+        "css": "",
+        "javascript": ""
       },
       "hints": "- `<ul>` creates an unordered (bulleted) list.\n- Each item is its own `<li>`.\n- Bullets are drawn automatically — don't type them into the text.",
       "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Grocery List</title>\n  </head>\n  <body>\n    <h1>Weekly Groceries</h1>\n    <ul>\n      <li>Bread</li>\n      <li>Milk</li>\n      <li>Eggs</li>\n      <li>Butter</li>\n      <li>Cheese</li>\n    </ul>\n  </body>\n</html>\n```",
@@ -404,7 +430,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>How to boil pasta</title>\n  </head>\n  <body>\n    <h1>How to boil pasta</h1>\n    <!-- Add your ordered list here -->\n  </body>\n</html>",
-        "css": ""
+        "css": "",
+        "javascript": ""
       },
       "hints": "- `<ol>` renders a numbered list; `<ul>` renders a bulleted list — be sure to use the right one.\n- Both still use `<li>` for their items.\n- The browser numbers the steps automatically.",
       "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>How to boil pasta</title>\n  </head>\n  <body>\n    <h1>How to boil pasta</h1>\n    <ol>\n      <li>Boil water</li>\n      <li>Add salt</li>\n      <li>Add pasta</li>\n      <li>Cook for 10 minutes</li>\n      <li>Drain and serve</li>\n    </ol>\n  </body>\n</html>\n```",
@@ -427,7 +454,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Weekly Plan</title>\n  </head>\n  <body>\n    <h1>Weekly Plan</h1>\n    <table border=\"1\">\n      <!-- Add four rows of two columns here -->\n    </table>\n  </body>\n</html>",
-        "css": ""
+        "css": "",
+        "javascript": ""
       },
       "hints": "- One `<tr>` per horizontal row; one `<td>` per column inside a row.\n- A 4×2 table has four `<tr>` elements, each holding two `<td>` elements.\n- Times like `09:00` are plain text — no special tag needed.",
       "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Weekly Plan</title>\n  </head>\n  <body>\n    <h1>Weekly Plan</h1>\n    <table border=\"1\">\n      <tr>\n        <td>Monday</td>\n        <td>09:00</td>\n      </tr>\n      <tr>\n        <td>Tuesday</td>\n        <td>10:00</td>\n      </tr>\n      <tr>\n        <td>Wednesday</td>\n        <td>11:00</td>\n      </tr>\n      <tr>\n        <td>Thursday</td>\n        <td>12:00</td>\n      </tr>\n    </table>\n  </body>\n</html>\n```",
@@ -450,7 +478,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>World Cities</title>\n  </head>\n  <body>\n    <h1>Largest Cities</h1>\n    <!-- Build your table here -->\n  </body>\n</html>",
-        "css": ""
+        "css": "",
+        "javascript": ""
       },
       "hints": "- Header cells use `<th>`; data cells use `<td>`.\n- Group the header row inside `<thead>` and the data rows inside `<tbody>` — the tests check for both explicitly.\n- This table has **three** columns, so each row needs three cells.",
       "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>World Cities</title>\n  </head>\n  <body>\n    <h1>Largest Cities</h1>\n    <table>\n      <thead>\n        <tr>\n          <th>City</th>\n          <th>Country</th>\n          <th>Population</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td>Tokyo</td>\n          <td>Japan</td>\n          <td>37400068</td>\n        </tr>\n        <tr>\n          <td>Delhi</td>\n          <td>India</td>\n          <td>28514000</td>\n        </tr>\n        <tr>\n          <td>Shanghai</td>\n          <td>China</td>\n          <td>25582000</td>\n        </tr>\n      </tbody>\n    </table>\n  </body>\n</html>\n```",
@@ -476,7 +505,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Fluffy Pancakes</title>\n  </head>\n  <body>\n    <!-- Build your recipe page here -->\n  </body>\n</html>",
-        "css": ""
+        "css": "",
+        "javascript": ""
       },
       "hints": "- Work top-to-bottom and run the tests as you go.\n- The tagline is a plain `<p>` directly under the `<h1>` — the tests check it's the first `<p>` on the page.\n- The Nutrition table has **three** columns (Nutrient, Amount, Daily Value) — don't forget the third one.\n- The image uses Lorem Picsum: `https://picsum.photos/320/200`.",
       "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Fluffy Pancakes</title>\n  </head>\n  <body>\n    <h1>Fluffy Pancakes</h1>\n    <p>A classic weekend breakfast recipe.</p>\n\n    <h2>Links & Photo</h2>\n    <a href=\"https://en.wikipedia.org/wiki/Pancake\">Wikipedia: Pancake</a>\n    <a href=\"https://example.com/pancakes\">Full recipe on example.com</a>\n    <img src=\"https://picsum.photos/320/200\" alt=\"A stack of pancakes\">\n\n    <h2>Ingredients</h2>\n    <ul>\n      <li>Flour</li>\n      <li>Milk</li>\n      <li>Eggs</li>\n      <li>Sugar</li>\n      <li>Butter</li>\n    </ul>\n\n    <h2>Steps</h2>\n    <ol>\n      <li>Mix dry ingredients</li>\n      <li>Add milk and eggs</li>\n      <li>Melt butter</li>\n      <li>Cook on the pan</li>\n      <li>Serve hot</li>\n    </ol>\n\n    <h2>Nutrition</h2>\n    <table>\n      <thead>\n        <tr>\n          <th>Nutrient</th>\n          <th>Amount</th>\n          <th>Daily Value</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td>Calories</td>\n          <td>220</td>\n          <td>11%</td>\n        </tr>\n        <tr>\n          <td>Protein</td>\n          <td>6g</td>\n          <td>12%</td>\n        </tr>\n        <tr>\n          <td>Fat</td>\n          <td>8g</td>\n          <td>10%</td>\n        </tr>\n      </tbody>\n    </table>\n  </body>\n</html>\n```",
@@ -497,7 +527,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Red Heading</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <h1>I should be red</h1>\n  </body>\n</html>",
-        "css": "/* Add your styles here */"
+        "css": "/* Add your styles here */",
+        "javascript": ""
       },
       "hints": "- CSS rules look like: `selector { property: value; }`\n- The selector for an `<h1>` element is simply `h1`.\n- The property for text color is `color`.",
       "solution": "```css\nh1 {\n  color: red;\n}\n```",
@@ -519,7 +550,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Styling Basics</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <h1>Styling Basics</h1>\n    <p>This paragraph should be 20 pixels tall.</p>\n    <p>So should this one.</p>\n  </body>\n</html>",
-        "css": "/* Add your styles here */"
+        "css": "/* Add your styles here */",
+        "javascript": ""
       },
       "hints": "- `background-color` sets the background of an element.\n- Hex color `#ffffcc` equals `rgb(255, 255, 204)`.\n- `font-size` takes a length value like `20px`.",
       "solution": "```css\nbody {\n  background-color: #ffffcc;\n}\n\np {\n  font-size: 20px;\n}\n```",
@@ -541,7 +573,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Class Selector</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <p>This paragraph should look normal.</p>\n    <p class=\"highlight\">This paragraph should be highlighted.</p>\n  </body>\n</html>",
-        "css": "/* Add your styles here */"
+        "css": "/* Add your styles here */",
+        "javascript": ""
       },
       "hints": "- A class selector in CSS starts with a dot, e.g. `.myClass`.\n- Only elements with `class=\"myClass\"` will match.\n- Use `font-weight: bold;` to make text bold.",
       "solution": "```css\n.highlight {\n  background-color: yellow;\n  font-weight: bold;\n}\n```",
@@ -562,7 +595,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Centered Heading</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <h1>Center me</h1>\n    <p>This paragraph can stay on the left.</p>\n  </body>\n</html>",
-        "css": "/* Add your styles here */"
+        "css": "/* Add your styles here */",
+        "javascript": ""
       },
       "hints": "- The `text-align` property controls horizontal alignment of text inside a block element.\n- Valid values include `left`, `right`, `center`, and `justify`.\n- Only style the `h1`, not the `body` — otherwise the paragraph will also move.",
       "solution": "```css\nh1 {\n  text-align: center;\n}\n```",
@@ -584,7 +618,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>ID Selector</title>\n  </head>\n  <body>\n    <h1 id=\"page-title\">Welcome</h1>\n    <p>This paragraph should not be affected.</p>\n  </body>\n</html>",
-        "css": "/* Target the heading by its id */"
+        "css": "/* Target the heading by its id */",
+        "javascript": ""
       },
       "hints": "- An id selector starts with `#` followed by the id value — e.g. `#page-title`.\n- There should only ever be **one** element with a given id in a document.\n- Id selectors have higher specificity than class or element selectors.",
       "solution": "```css\n#page-title {\n  color: red;\n  text-align: center;\n}\n```",
@@ -606,7 +641,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Element + Class</title>\n  </head>\n  <body>\n    <p class=\"warning\">This paragraph warning should be red.</p>\n    <div class=\"warning\">This div warning must stay the default colour.</div>\n    <p>A regular paragraph.</p>\n  </body>\n</html>",
-        "css": "/* Style only <p> elements that have the warning class */"
+        "css": "/* Style only <p> elements that have the warning class */",
+        "javascript": ""
       },
       "hints": "- `.warning` alone would match both the `<p>` and the `<div>` — too broad.\n- `p.warning` (no space) means \"an element that is a `<p>` **and** has the class `warning`\".\n- Combined selectors are one of the most common patterns in day-to-day CSS.",
       "solution": "```css\np.warning {\n  color: red;\n}\n```",
@@ -628,7 +664,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Descendant Selector</title>\n  </head>\n  <body>\n    <nav>\n      <a href=\"/\">Home</a>\n    </nav>\n    <p>\n      Read the <a href=\"https://developer.mozilla.org\">MDN docs</a>.\n    </p>\n  </body>\n</html>",
-        "css": "/* Style only the link inside <nav> */"
+        "css": "/* Style only the link inside <nav> */",
+        "javascript": ""
       },
       "hints": "- A descendant selector is written as `ancestor descendant` — two selectors separated by **whitespace**.\n- `nav a` matches every `<a>` that is somewhere inside a `<nav>`, no matter how deeply nested.\n- `a` alone would style **every** link on the page — too broad.",
       "solution": "```css\nnav a {\n  color: green;\n  text-decoration: none;\n}\n```",
@@ -651,7 +688,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Multiple Classes</title>\n  </head>\n  <body>\n    <button class=\"btn\">Click me</button>\n  </body>\n</html>",
-        "css": "/* Write one rule per class */"
+        "css": "/* Write one rule per class */",
+        "javascript": ""
       },
       "hints": "- Multiple classes go into the **same** `class` attribute, separated by spaces: `class=\"btn primary\"`.\n- Don't invent a single class like `btn-primary` — the exercise is about *combining* class-based styles.\n- Each class is its own selector in CSS: `.btn { … }` and `.primary { … }`.\n- The order of classes in the HTML doesn't matter; what matters is whether both selectors match.",
       "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Multiple Classes</title>\n  </head>\n  <body>\n    <button class=\"btn primary\">Click me</button>\n  </body>\n</html>\n```\n\n```css\n.btn {\n  padding: 10px 20px;\n  border: none;\n}\n\n.primary {\n  background-color: blue;\n  color: white;\n}\n```",
@@ -673,7 +711,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>!important</title>\n  </head>\n  <body>\n    <p id=\"special\" class=\"danger\">This text must end up green.</p>\n  </body>\n</html>",
-        "css": "#special {\n  color: red;\n}\n\n/* Add a .danger rule that wins using !important */"
+        "css": "#special {\n  color: red;\n}\n\n/* Add a .danger rule that wins using !important */",
+        "javascript": ""
       },
       "hints": "- The cascade order (highest wins): **`!important` declaration → specificity → source order**.\n- Without `!important`, `#special` (id, specificity 100) beats `.danger` (class, specificity 10).\n- Write `color: green !important;` — the `!important` flag goes **after** the value, before the semicolon.\n- `!important` should be used sparingly in real projects — prefer raising specificity first (see the next question).",
       "solution": "```css\n#special {\n  color: red;\n}\n\n.danger {\n  color: green !important;\n}\n```",
@@ -696,7 +735,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Specificity</title>\n  </head>\n  <body>\n    <div id=\"main\">\n      <p class=\"first\">Should become red.</p>\n      <p class=\"second\">Should become green.</p>\n      <button type=\"submit\" class=\"cta\">Send</button>\n    </div>\n  </body>\n</html>",
-        "css": "#main p {\n  color: black;\n}\n\n#main button {\n  background-color: gray;\n}\n\n/* Add three rules below — each MORE SPECIFIC than the matching base rule above.\n   Don't use !important. */"
+        "css": "#main p {\n  color: black;\n}\n\n#main button {\n  background-color: gray;\n}\n\n/* Add three rules below — each MORE SPECIFIC than the matching base rule above.\n   Don't use !important. */",
+        "javascript": ""
       },
       "hints": "- Specificity is counted roughly as (inline, ids, classes + attributes + pseudo-classes, elements).\n  - `#main p` → (0, 1, 0, 1). `#main p.first` → (0, 1, 1, 1) — adding a class wins.\n  - `#main button` → (0, 1, 0, 1). `#main button[type=\"submit\"]` → (0, 1, 1, 1) — the attribute selector also counts as a \"class-level\" bump.\n- You can always beat a rule without `!important` by writing a more specific selector.\n- **Attribute selectors** are written in square brackets: `[attr=\"value\"]`. They're great for styling form controls without adding extra classes.",
       "solution": "```css\n#main p {\n  color: black;\n}\n\n#main button {\n  background-color: gray;\n}\n\n#main p.first {\n  color: red;\n}\n\n#main p.second {\n  color: green;\n}\n\n#main button[type=\"submit\"] {\n  background-color: purple;\n}\n```",
@@ -718,7 +758,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>External Stylesheet</title>\n    <!-- Add the <link> to style.css here -->\n  </head>\n  <body>\n    <h1>Hello, stylesheet!</h1>\n  </body>\n</html>",
-        "css": "h1 {\n  color: blue;\n}"
+        "css": "h1 {\n  color: blue;\n}",
+        "javascript": ""
       },
       "hints": "- The `<link>` element is self-closing — no closing tag.\n- Three attributes to get right: `rel=\"stylesheet\"`, `href=\"style.css\"`, and it must live inside `<head>`.\n- Unlike `<script>`, `<link>` does not take inner content — everything is in attributes.\n- In this course the CSS is auto-applied even without the link for convenience, but you still need to add the link to pass this question's test.",
       "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>External Stylesheet</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <h1>Hello, stylesheet!</h1>\n  </body>\n</html>\n```",
@@ -742,7 +783,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Text Variants</title>\n  </head>\n  <body>\n    <p class=\"serif\">This paragraph should render in a serif font.</p>\n    <p class=\"italic\">This paragraph should render in italics.</p>\n    <p class=\"underline\">This paragraph should be underlined.</p>\n    <p class=\"uppercase\">this paragraph should appear all uppercase.</p>\n  </body>\n</html>",
-        "css": "/* Add one rule per class: .serif, .italic, .underline, .uppercase */"
+        "css": "/* Add one rule per class: .serif, .italic, .underline, .uppercase */",
+        "javascript": ""
       },
       "hints": "- `font-family` accepts a list of font names — the browser uses the first one it has available. Generic families like `serif`, `sans-serif`, and `monospace` always work.\n- `font-style` is for italics. Bold goes through `font-weight`, not `font-style`.\n- `text-decoration` is the shorthand for the line (underline / overline / line-through), its colour, and its style. For this question, just `text-decoration: underline;` is enough.\n- `text-transform` changes capitalisation visually — the underlying text in the HTML stays the same.",
       "solution": "```css\n.serif {\n  font-family: serif;\n}\n\n.italic {\n  font-style: italic;\n}\n\n.underline {\n  text-decoration: underline;\n}\n\n.uppercase {\n  text-transform: uppercase;\n}\n```",
@@ -769,7 +811,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Book card</title>\n    <!-- Link style.css here -->\n  </head>\n  <body>\n    <article id=\"book-card\">\n      <h1>The Pragmatic Programmer</h1>\n      <p class=\"tagline\">A modern classic</p>\n      <p>A timeless guide for working programmers.</p>\n      <ul class=\"tags\">\n        <li>software</li>\n        <li>career</li>\n        <li>craft</li>\n      </ul>\n      <button class=\"btn primary\">Buy now</button>\n    </article>\n  </body>\n</html>",
-        "css": "/* Translate each visual goal from the question into a CSS rule. */"
+        "css": "/* Translate each visual goal from the question into a CSS rule. */",
+        "javascript": ""
       },
       "hints": "- Work one visual goal at a time and run the tests after each — the test groups mirror the bulleted goals above.\n- The tests check **computed styles**, so whichever selector you pick, as long as it lands on the right element with the right value, it passes.\n- For each goal, ask: *is this element unique on the page (id), a reusable role (class), something nested inside another element (descendant selector), or a combination of behaviours (multiple classes)?*\n- Look at the HTML — the class and id names already hint at what each part is responsible for.\n- `border: 1px solid #ccc;` is shorthand — it sets width, style, and colour in one go.",
       "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Book card</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <article id=\"book-card\">\n      <h1>The Pragmatic Programmer</h1>\n      <p class=\"tagline\">A modern classic</p>\n      <p>A timeless guide for working programmers.</p>\n      <ul class=\"tags\">\n        <li>software</li>\n        <li>career</li>\n        <li>craft</li>\n      </ul>\n      <button class=\"btn primary\">Buy now</button>\n    </article>\n  </body>\n</html>\n```\n\n```css\nbody {\n  background-color: #fafafa;\n}\n\n#book-card {\n  padding: 24px;\n  border: 1px solid #ccc;\n}\n\n#book-card h1 {\n  text-align: center;\n  color: #222;\n}\n\n.tagline {\n  text-transform: uppercase;\n  letter-spacing: 2px;\n  color: gray;\n}\n\n.tags li {\n  color: green;\n}\n\n.btn {\n  padding: 10px 20px;\n  border: none;\n}\n\n.primary {\n  background-color: purple;\n  color: white;\n}\n```",
@@ -790,7 +833,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Purple Links</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <p>Read the <a href=\"https://developer.mozilla.org\">MDN docs</a>.</p>\n    <p>Or visit <a href=\"https://web.dev\">web.dev</a>.</p>\n  </body>\n</html>",
-        "css": "/* Add your styles here */"
+        "css": "/* Add your styles here */",
+        "javascript": ""
       },
       "hints": "- Selector for any `<a>` element is just `a`.\n- Colour names work out of the box — `purple` computes to `rgb(128, 0, 128)`.",
       "solution": "```css\na {\n  color: purple;\n}\n```",
@@ -812,7 +856,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Background + Heading</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <h1>Main title</h1>\n    <h2>First section</h2>\n    <p>Some content.</p>\n    <h2>Second section</h2>\n    <p>More content.</p>\n  </body>\n</html>",
-        "css": "/* Add your styles here */"
+        "css": "/* Add your styles here */",
+        "javascript": ""
       },
       "hints": "- Hex value `#f0f0f0` equals `rgb(240, 240, 240)`.\n- Font sizes take length units — here, `px` (pixels).\n- Use `body` as the selector for the page background, not `html`.",
       "solution": "```css\nbody {\n  background-color: #f0f0f0;\n}\n\nh2 {\n  font-size: 32px;\n}\n```",
@@ -834,7 +879,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Muted class</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <p>This paragraph should look normal.</p>\n    <p class=\"muted\">This paragraph is a side comment.</p>\n    <p>Another normal paragraph.</p>\n    <p class=\"muted\">Another side comment.</p>\n  </body>\n</html>",
-        "css": "/* Add your styles here */"
+        "css": "/* Add your styles here */",
+        "javascript": ""
       },
       "hints": "- Class selectors start with a dot: `.muted`.\n- `color: gray;` computes to `rgb(128, 128, 128)`.\n- `font-style: italic;` slants text — don't confuse it with `font-weight`, which is for bold.",
       "solution": "```css\n.muted {\n  color: gray;\n  font-style: italic;\n}\n```",
@@ -856,7 +902,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Right Aligned</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <h2 class=\"title-right\">Announcements</h2>\n    <p>We will be closed on Monday.</p>\n    <p>New items arrive on Wednesday.</p>\n  </body>\n</html>",
-        "css": "/* Add your styles here */"
+        "css": "/* Add your styles here */",
+        "javascript": ""
       },
       "hints": "- `text-align` controls horizontal alignment inside a block element.\n- Valid values include `left`, `right`, `center`, and `justify`.\n- Target the class, not the element, so the paragraphs aren't affected.",
       "solution": "```css\n.title-right {\n  text-align: right;\n}\n```",
@@ -878,7 +925,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Sidebar</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <aside id=\"sidebar\">\n      <p>Links and filters go here.</p>\n    </aside>\n    <main>\n      <h1>Main content</h1>\n      <p>Lorem ipsum dolor sit amet.</p>\n    </main>\n  </body>\n</html>",
-        "css": "/* Style the sidebar by its id */"
+        "css": "/* Style the sidebar by its id */",
+        "javascript": ""
       },
       "hints": "- Id selectors start with `#`. The id value is the exact string in the `id` attribute.\n- `#333` is shorthand for `#333333` and computes to `rgb(51, 51, 51)`.",
       "solution": "```css\n#sidebar {\n  color: white;\n  background-color: #333;\n}\n```",
@@ -900,7 +948,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Danger</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <p>Status: <span class=\"danger\">critical</span></p>\n    <button class=\"danger\">Delete account</button>\n  </body>\n</html>",
-        "css": "/* Style only <button> elements that have the danger class */"
+        "css": "/* Style only <button> elements that have the danger class */",
+        "javascript": ""
       },
       "hints": "- `.danger` alone matches **both** the button and the span — too broad.\n- `button.danger` (no space) means \"an element that is a `<button>` AND has the class `danger`\".",
       "solution": "```css\nbutton.danger {\n  background-color: red;\n  color: white;\n}\n```",
@@ -922,7 +971,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Card</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <p>This paragraph is outside the card.</p>\n\n    <div class=\"card\">\n      <h2>Featured</h2>\n      <p>This paragraph is inside the card and should look muted.</p>\n    </div>\n  </body>\n</html>",
-        "css": "/* Style only paragraphs inside a .card */"
+        "css": "/* Style only paragraphs inside a .card */",
+        "javascript": ""
       },
       "hints": "- A descendant selector is `ancestor descendant` — two selectors separated by **whitespace**.\n- `.card p` matches any `<p>` anywhere inside an element with class `card`, no matter how deeply nested.\n- `p` alone (no ancestor) would colour **every** paragraph.",
       "solution": "```css\n.card p {\n  color: #555;\n}\n```",
@@ -945,7 +995,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Multiple Classes</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"card\">\n      <h2>Premium tier</h2>\n      <p>Unlock advanced features.</p>\n    </div>\n  </body>\n</html>",
-        "css": "/* Write one rule per class */"
+        "css": "/* Write one rule per class */",
+        "javascript": ""
       },
       "hints": "- Multiple classes go into the same `class` attribute, separated by spaces: `class=\"card featured\"`.\n- Don't create a single merged class like `card-featured` — the exercise is about combining class-based styles.\n- Each class is its own selector in CSS.\n- `border: 1px solid #ccc` is shorthand for three border properties.",
       "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Multiple Classes</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"card featured\">\n      <h2>Premium tier</h2>\n      <p>Unlock advanced features.</p>\n    </div>\n  </body>\n</html>\n```\n\n```css\n.card {\n  padding: 16px;\n  border: 1px solid #ccc;\n}\n\n.featured {\n  background-color: yellow;\n  font-weight: bold;\n}\n```",
@@ -967,7 +1018,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>!important</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <nav id=\"nav\">\n      <a href=\"/\">Home</a>\n      <a href=\"https://developer.mozilla.org\" class=\"external\">MDN (external)</a>\n    </nav>\n  </body>\n</html>",
-        "css": "#nav a {\n  color: red;\n}\n\n/* Add a .external rule that wins using !important */"
+        "css": "#nav a {\n  color: red;\n}\n\n/* Add a .external rule that wins using !important */",
+        "javascript": ""
       },
       "hints": "- Cascade order (highest wins): **`!important` declaration → specificity → source order**.\n- The `!important` flag goes after the value, before the semicolon: `color: blue !important;`.\n- Use `!important` sparingly in real projects — prefer raising specificity (next question).",
       "solution": "```css\n#nav a {\n  color: red;\n}\n\n.external {\n  color: blue !important;\n}\n```",
@@ -990,7 +1042,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Specificity Revision</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <nav class=\"nav\">\n      <a href=\"/\" class=\"active\">Home</a>\n      <a href=\"/about\">About</a>\n    </nav>\n\n    <div class=\"card\">\n      <h2 id=\"title\">Welcome</h2>\n      <h2>Another section</h2>\n    </div>\n  </body>\n</html>",
-        "css": ".nav a {\n  color: black;\n}\n\n.card h2 {\n  color: black;\n}\n\n/* Add two more rules below — each MORE SPECIFIC than the matching base rule above.\n   Don't use !important. */"
+        "css": ".nav a {\n  color: black;\n}\n\n.card h2 {\n  color: black;\n}\n\n/* Add two more rules below — each MORE SPECIFIC than the matching base rule above.\n   Don't use !important. */",
+        "javascript": ""
       },
       "hints": "- Specificity roughly: (inline, ids, classes + attributes + pseudo-classes, elements).\n  - `.nav a` → (0, 0, 1, 1). `.nav a.active` → (0, 0, 2, 1) — class on the descendant wins.\n  - `.card h2` → (0, 0, 1, 1). `.card h2#title` → (0, 1, 1, 1) — id on the descendant wins (and by a lot).\n- The two solutions use *different* specificity-raising patterns: adding a class vs adding an id.",
       "solution": "```css\n.nav a {\n  color: black;\n}\n\n.card h2 {\n  color: black;\n}\n\n.nav a.active {\n  color: red;\n}\n\n.card h2#title {\n  color: blue;\n}\n```",
@@ -1012,7 +1065,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>External Stylesheet</title>\n    <!-- Add the <link> to style.css here -->\n  </head>\n  <body>\n    <h1>Greetings</h1>\n    <p>The paragraphs below should be green once the stylesheet is linked.</p>\n    <p>This one should be green too.</p>\n  </body>\n</html>",
-        "css": "p {\n  color: green;\n}"
+        "css": "p {\n  color: green;\n}",
+        "javascript": ""
       },
       "hints": "- The `<link>` element is self-closing — no closing tag.\n- Three parts to get right: `rel=\"stylesheet\"`, `href=\"style.css\"`, and it must live inside `<head>`.\n- `<link>` has no inner content — everything is in attributes.",
       "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>External Stylesheet</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <h1>Greetings</h1>\n    <p>The paragraphs below should be green once the stylesheet is linked.</p>\n    <p>This one should be green too.</p>\n  </body>\n</html>\n```",
@@ -1036,7 +1090,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Text Variants II</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <p class=\"bold\">This paragraph should be bold.</p>\n    <p class=\"tall\">This paragraph should have double line-height so the lines feel airy. Add more text here to actually see the effect across multiple wrapped lines.</p>\n    <p class=\"spaced\">This paragraph should have wider letter spacing.</p>\n    <p class=\"strike\">This paragraph should have a line through it.</p>\n  </body>\n</html>",
-        "css": "/* Add one rule per class: .bold, .tall, .spaced, .strike */"
+        "css": "/* Add one rule per class: .bold, .tall, .spaced, .strike */",
+        "javascript": ""
       },
       "hints": "- `font-weight` controls boldness. Use `bold` (or a numeric value like `700`).\n- `line-height` without units is a multiplier of the element's font size — `2` means \"twice the font size\".\n- `letter-spacing` adds space between characters. Use a length like `4px`.\n- `text-decoration` shorthand accepts `underline`, `line-through`, `overline`, `none`, etc.",
       "solution": "```css\n.bold {\n  font-weight: bold;\n}\n\n.tall {\n  line-height: 2;\n}\n\n.spaced {\n  letter-spacing: 4px;\n}\n\n.strike {\n  text-decoration: line-through;\n}\n```",
@@ -1064,7 +1119,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Event invite</title>\n    <!-- Link style.css here -->\n  </head>\n  <body>\n    <section id=\"event-card\">\n      <h1>Summer Conference</h1>\n      <p class=\"subtitle\">Three days of talks, two nights of music, one great city.</p>\n      <ul class=\"speakers\">\n        <li>Ada Lovelace</li>\n        <li>Grace Hopper</li>\n        <li>Margaret Hamilton</li>\n      </ul>\n      <a href=\"/register\" class=\"btn cta\">Register now</a>\n    </section>\n  </body>\n</html>",
-        "css": "/* Starter rule — do not modify */\n#event-card a {\n  color: black;\n}\n\n/* Translate each visual goal from the question into a CSS rule below. */"
+        "css": "/* Starter rule — do not modify */\n#event-card a {\n  color: black;\n}\n\n/* Translate each visual goal from the question into a CSS rule below. */",
+        "javascript": ""
       },
       "hints": "- Work one visual goal at a time and run the tests after each — the test groups mirror the bulleted goals above.\n- The tests check **computed styles**, so whichever selector you pick, as long as it lands on the right element with the right value, it passes.\n- For each goal, ask: *is this element unique on the page (id), a reusable role (class), something nested inside another element (descendant selector), or a combination of behaviours (multiple classes)?*\n- `border: 4px dashed #fbbf24` is shorthand — it sets width, style, and colour together. `dashed` is critical; `solid` won't pass the style test.\n- Line-height without a unit (e.g. `1.8`, `2`) is a multiplier of the element's own font size — that's what the tests measure.\n- The starter `#event-card a` has specificity (0, 1, 0, 1). A plain class selector is only (0, 0, 1, 0) and will lose. Think about what single flag can force your colour to win without rewriting the selector.",
       "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Event invite</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <section id=\"event-card\">\n      <h1>Summer Conference</h1>\n      <p class=\"subtitle\">Three days of talks, two nights of music, one great city.</p>\n      <ul class=\"speakers\">\n        <li>Ada Lovelace</li>\n        <li>Grace Hopper</li>\n        <li>Margaret Hamilton</li>\n      </ul>\n      <a href=\"/register\" class=\"btn cta\">Register now</a>\n    </section>\n  </body>\n</html>\n```\n\n```css\n#event-card a {\n  color: black;\n}\n\nbody {\n  background-color: #0f172a;\n}\n\n#event-card {\n  padding: 40px;\n  border: 4px dashed #fbbf24;\n  background-color: #1e293b;\n}\n\n#event-card h1 {\n  text-align: left;\n  text-transform: uppercase;\n  letter-spacing: 4px;\n  color: #fbbf24;\n}\n\n.subtitle {\n  font-style: italic;\n  color: white;\n  line-height: 1.8;\n}\n\n.speakers li {\n  color: white;\n  text-transform: uppercase;\n  line-height: 2;\n}\n\n.btn {\n  padding: 14px 28px;\n  text-decoration: none;\n  border: 2px solid white;\n}\n\n.cta {\n  font-weight: bold;\n  color: white !important;\n}\n```",
@@ -1085,7 +1141,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Margin Practice</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"box\">I have margin around me</div>\n  </body>\n</html>",
-        "css": ".box {\n  background-color: lightblue;\n  /* Add margin here */\n}"
+        "css": ".box {\n  background-color: lightblue;\n  /* Add margin here */\n}",
+        "javascript": ""
       },
       "hints": "- `margin` is the space outside an element's border.\n- You can set all margins at once with `margin: 20px`.\n- Alternatively, use `margin-top`, `margin-right`, `margin-bottom`, `margin-left` individually.",
       "solution": "```css\n.box {\n  background-color: lightblue;\n  margin: 20px;\n}\n```",
@@ -1106,7 +1163,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Padding Practice</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"card\">Content inside the card</div>\n  </body>\n</html>",
-        "css": ".card {\n  background-color: #f0f0f0;\n  border: 1px solid #ccc;\n  /* Add padding here */\n}"
+        "css": ".card {\n  background-color: #f0f0f0;\n  border: 1px solid #ccc;\n  /* Add padding here */\n}",
+        "javascript": ""
       },
       "hints": "- `padding` is the space inside an element, between content and border.\n- You can set all padding at once with `padding: 16px`.\n- The background color extends into the padding area.",
       "solution": "```css\n.card {\n  background-color: #f0f0f0;\n  border: 1px solid #ccc;\n  padding: 16px;\n}\n```",
@@ -1127,7 +1185,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Border Practice</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"box\">I have a border</div>\n  </body>\n</html>",
-        "css": ".box {\n  background-color: #fff;\n  padding: 20px;\n  /* Add border here */\n}"
+        "css": ".box {\n  background-color: #fff;\n  padding: 20px;\n  /* Add border here */\n}",
+        "javascript": ""
       },
       "hints": "- Border has three components: width, style, and color.\n- The shorthand `border: 2px solid blue` sets all three at once.\n- Common border styles: `solid`, `dashed`, `dotted`, `double`, `none`.",
       "solution": "```css\n.box {\n  background-color: #fff;\n  padding: 20px;\n  border: 2px solid blue;\n}\n```",
@@ -1148,7 +1207,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Margin and Padding</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <span class=\"badge\">New</span>\n    <span>Some other content</span>\n  </body>\n</html>",
-        "css": ".badge {\n  background-color: #ff6b6b;\n  color: white;\n  border-radius: 4px;\n  /* Add margin and padding here */\n}"
+        "css": ".badge {\n  background-color: #ff6b6b;\n  color: white;\n  border-radius: 4px;\n  /* Add margin and padding here */\n}",
+        "javascript": ""
       },
       "hints": "- `margin` creates space outside the element.\n- `padding` creates space inside the element.\n- Both can be set with a single value for all sides.",
       "solution": "```css\n.badge {\n  background-color: #ff6b6b;\n  color: white;\n  border-radius: 4px;\n  margin: 10px;\n  padding: 12px;\n}\n```",
@@ -1169,7 +1229,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Complete Box Model</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"profile-card\">\n      <h3>John Doe</h3>\n      <p>Web Developer</p>\n    </div>\n  </body>\n</html>",
-        "css": ".profile-card {\n  background-color: white;\n  /* Add margin, padding, and border here */\n}"
+        "css": ".profile-card {\n  background-color: white;\n  /* Add margin, padding, and border here */\n}",
+        "javascript": ""
       },
       "hints": "- The complete box model includes content, padding, border, and margin.\n- Order from inside to outside: content → padding → border → margin.\n- Use `border: 1px solid gray` for the border.",
       "solution": "```css\n.profile-card {\n  background-color: white;\n  margin: 15px;\n  padding: 20px;\n  border: 1px solid gray;\n}\n```",
@@ -1190,7 +1251,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Box Sizing</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"content-box\">Content Box (I get wider with padding/border)</div>\n    <div class=\"border-box\">Border Box (I stay 200px total)</div>\n  </body>\n</html>",
-        "css": ".content-box {\n  width: 200px;\n  padding: 20px;\n  border: 5px solid black;\n  background-color: lightcoral;\n  margin-bottom: 10px;\n  /* Add box-sizing here */\n}\n\n.border-box {\n  width: 200px;\n  padding: 20px;\n  border: 5px solid black;\n  background-color: lightgreen;\n  /* Add box-sizing here */\n}"
+        "css": ".content-box {\n  width: 200px;\n  padding: 20px;\n  border: 5px solid black;\n  background-color: lightcoral;\n  margin-bottom: 10px;\n  /* Add box-sizing here */\n}\n\n.border-box {\n  width: 200px;\n  padding: 20px;\n  border: 5px solid black;\n  background-color: lightgreen;\n  /* Add box-sizing here */\n}",
+        "javascript": ""
       },
       "hints": "- `content-box`: width/height applies to content only. Padding and border are added outside.\n- `border-box`: width/height applies to the entire box including padding and border.\n- `border-box` is often preferred for easier layout calculations.",
       "solution": "```css\n.content-box {\n  width: 200px;\n  padding: 20px;\n  border: 5px solid black;\n  background-color: lightcoral;\n  margin-bottom: 10px;\n  box-sizing: content-box;\n}\n\n.border-box {\n  width: 200px;\n  padding: 20px;\n  border: 5px solid black;\n  background-color: lightgreen;\n  box-sizing: border-box;\n}\n```",
@@ -1211,7 +1273,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Display Types</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <p>\n      Text before\n      <span class=\"inline-el\">Inline</span>\n      text after\n    </p>\n    <div class=\"block-el\">Block</div>\n    <p>\n      Text before\n      <span class=\"inline-block-el\">Inline-Block</span>\n      text after\n    </p>\n  </body>\n</html>",
-        "css": ".inline-el {\n  background-color: #ff9999;\n  width: 100px;\n  height: 50px;\n  /* Add display here */\n}\n\n.block-el {\n  background-color: #99ff99;\n  width: 100px;\n  height: 50px;\n  /* Add display here */\n}\n\n.inline-block-el {\n  background-color: #9999ff;\n  width: 100px;\n  height: 50px;\n  /* Add display here */\n}"
+        "css": ".inline-el {\n  background-color: #ff9999;\n  width: 100px;\n  height: 50px;\n  /* Add display here */\n}\n\n.block-el {\n  background-color: #99ff99;\n  width: 100px;\n  height: 50px;\n  /* Add display here */\n}\n\n.inline-block-el {\n  background-color: #9999ff;\n  width: 100px;\n  height: 50px;\n  /* Add display here */\n}",
+        "javascript": ""
       },
       "hints": "- The `display` property has several values. Three of them are especially common:\n  - one makes an element behave like plain text inside a sentence (no new line, and the browser ignores width/height),\n  - one makes an element behave like a paragraph or `<div>` (starts on a new line, respects width/height),\n  - one is a hybrid that keeps the element in line with surrounding text **while still** respecting width and height.\n- Match each of the three behaviours described in the question to the correct value.\n- When the tests run, the elements that \"ignore\" width/height in behaviour will still report `100px`/`50px` in the CSS because that is what you declared — the tests only check the `display` value and the declared size, not the rendered size.",
       "solution": "```css\n.inline-el {\n  background-color: #ff9999;\n  width: 100px;\n  height: 50px;\n  display: inline;\n}\n\n.block-el {\n  background-color: #99ff99;\n  width: 100px;\n  height: 50px;\n  display: block;\n}\n\n.inline-block-el {\n  background-color: #9999ff;\n  width: 100px;\n  height: 50px;\n  display: inline-block;\n}\n```",
@@ -1232,7 +1295,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Asymmetric Padding</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"blog-card\">\n      <h3>Post Title</h3>\n      <p>A short summary of the blog post.</p>\n    </div>\n  </body>\n</html>",
-        "css": ".blog-card {\n  background-color: #fff;\n  /* Add asymmetric padding and border here */\n}"
+        "css": ".blog-card {\n  background-color: #fff;\n  /* Add asymmetric padding and border here */\n}",
+        "javascript": ""
       },
       "hints": "- \"Space on the inside of an element, between its edge and its content\" is the box-model property you need — not the one for space outside the element.\n- You do not have to set each side in a separate declaration. Think about whether there is a shorthand that lets you give one value for vertical sides and a different value for horizontal sides.\n- An outline around the element is drawn by setting its width, its style (such as solid or dashed), and its colour.",
       "solution": "```css\n.blog-card {\n  background-color: #fff;\n  padding: 12px 24px;\n  border: 1px solid #ddd;\n}\n```",
@@ -1253,7 +1317,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Widget Row</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"widget\">Widget A</div>\n    <div class=\"widget\">Widget B</div>\n    <div class=\"widget\">Widget C</div>\n  </body>\n</html>",
-        "css": "/* Use a single selector to style all .widget elements */"
+        "css": "/* Use a single selector to style all .widget elements */",
+        "javascript": ""
       },
       "hints": "- A class selector (starts with `.`) will match every element that has that class, so one rule is enough to style all three widgets.\n- There are two different box-model properties for spacing: one adds space on the **inside** of an element, and one adds space on the **outside**. This question uses both.\n- Outlines have a `style` value. `solid` is the default shape, but there are others such as `dashed` and `dotted`.\n- To add space on only one side of an element (rather than all four), there is a specific property that targets that side.",
       "solution": "```css\n.widget {\n  padding: 15px;\n  border: 1px dashed #999;\n  margin-bottom: 20px;\n}\n```",
@@ -1274,7 +1339,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Equal Width Challenge</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"box-a\">Box A (padding + border)</div>\n    <div class=\"box-b\">Box B (plain)</div>\n  </body>\n</html>",
-        "css": ".box-a {\n  width: 300px;\n  padding: 20px;\n  border: 5px solid black;\n  background-color: lightcoral;\n  /* Add box-sizing here */\n}\n\n.box-b {\n  width: 300px;\n  background-color: lightgreen;\n}"
+        "css": ".box-a {\n  width: 300px;\n  padding: 20px;\n  border: 5px solid black;\n  background-color: lightcoral;\n  /* Add box-sizing here */\n}\n\n.box-b {\n  width: 300px;\n  background-color: lightgreen;\n}",
+        "javascript": ""
       },
       "hints": "- By default, the `width` property only describes the width of the **content area**; the browser then adds inner spacing and outline on top when rendering.\n- There is a CSS property that changes how the `width` is interpreted, so that it covers the content, the inner spacing, and the outline all together.\n- Try to recall the two possible values of that property — one of them is the default, and one of them is the fix you need here.\n- Only `.box-a` needs to be changed.",
       "solution": "```css\n.box-a {\n  width: 300px;\n  padding: 20px;\n  border: 5px solid black;\n  background-color: lightcoral;\n  box-sizing: border-box;\n}\n\n.box-b {\n  width: 300px;\n  background-color: lightgreen;\n}\n```",
@@ -1295,7 +1361,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Horizontal Nav</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <nav>\n      <ul>\n        <li><a href=\"#\">Home</a></li>\n        <li><a href=\"#\">About</a></li>\n        <li><a href=\"#\">Services</a></li>\n        <li><a href=\"#\">Contact</a></li>\n      </ul>\n    </nav>\n  </body>\n</html>",
-        "css": "nav ul {\n  /* Remove bullets and default padding here */\n}\n\nnav li {\n  /* Make horizontal, then add padding, border, and margin-right */\n}"
+        "css": "nav ul {\n  /* Remove bullets and default padding here */\n}\n\nnav li {\n  /* Make horizontal, then add padding, border, and margin-right */\n}",
+        "javascript": ""
       },
       "hints": "- By default, each `<li>` is a block and stacks vertically. There is a CSS property that controls how an element is laid out — and one of its values makes elements flow horizontally **while still respecting width, inner spacing, and outlines**.\n- Browsers add default indentation on `<ul>` elements. You can remove it by setting the appropriate side's inner spacing to `0`.\n- There is a CSS property dedicated to the bullet/number markers on lists. One of its values means \"no marker at all\".\n- To push items away from each other on only one side, use the side-specific form of the outer-spacing property.",
       "solution": "```css\nnav ul {\n  list-style-type: none;\n  padding-left: 0;\n}\n\nnav li {\n  display: inline-block;\n  padding: 10px;\n  border: 1px solid #333;\n  margin-right: 8px;\n}\n```",
@@ -1316,7 +1383,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Featured Quote</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <p>Some introductory text about design.</p>\n    <blockquote class=\"featured-quote\">\n      Design is not just what it looks like and feels like. Design is how it works.\n    </blockquote>\n    <p>More content follows the quote.</p>\n  </body>\n</html>",
-        "css": ".featured-quote {\n  /* Style the quote here */\n}"
+        "css": ".featured-quote {\n  /* Style the quote here */\n}",
+        "javascript": ""
       },
       "hints": "- Outlines can be applied to all four sides at once, or to just one specific side. Since the accent bar is only on the left, look for the side-specific form of the outline property.\n- There is a shorthand that lets you set the outer spacing with one value for the top/bottom sides and a different value for the left/right sides in a single line.\n- `0` is a valid value on its own — you do not need to write `0px` for sides that should have no spacing.\n- The background colour is a single CSS property set to the hex value `#f9f9f9`.",
       "solution": "```css\n.featured-quote {\n  border-left: 3px solid #e74c3c;\n  padding: 16px;\n  margin: 20px 0;\n  background-color: #f9f9f9;\n}\n```",
@@ -1337,7 +1405,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Product Preview</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"product-card\">\n      <h3>T-Shirt</h3>\n      <p>$20</p>\n    </div>\n    <div class=\"product-card\">\n      <h3>Hoodie</h3>\n      <p>$45</p>\n    </div>\n  </body>\n</html>",
-        "css": ".product-card {\n  /* Add display, width, padding, border, margin-right, and background here */\n}"
+        "css": ".product-card {\n  /* Add display, width, padding, border, margin-right, and background here */\n}",
+        "javascript": ""
       },
       "hints": "- By default, a `<div>` takes up the full width of its parent and stacks vertically. There is a CSS property that controls this, and one of its values makes elements flow horizontally **while still respecting width and inner spacing** (unlike the plain inline value, which ignores width).\n- Use the `width` property with an exact pixel value to fix the size of the cards.\n- When you only want to add outer space on one specific side, use the side-specific version of the outer-spacing property rather than the shorthand.\n- All six requirements can be solved inside a single rule targeting `.product-card`.",
       "solution": "```css\n.product-card {\n  display: inline-block;\n  width: 160px;\n  padding: 10px;\n  border: 1px solid #ccc;\n  margin-right: 15px;\n  background-color: #fff;\n}\n```",
@@ -1358,7 +1427,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Fixed Header</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <header class=\"site-header\">My Site</header>\n    <main>\n      <p>Scroll down to see the header stay in place.</p>\n      <p style=\"height: 2000px;\">Lots of content here...</p>\n    </main>\n  </body>\n</html>",
-        "css": ".site-header {\n  background-color: #2c3e50;\n  color: white;\n  padding: 16px;\n  /* Pin the header to the top of the viewport here */\n}"
+        "css": ".site-header {\n  background-color: #2c3e50;\n  color: white;\n  padding: 16px;\n  /* Pin the header to the top of the viewport here */\n}",
+        "javascript": ""
       },
       "hints": "- The `position` property has several possible values. One of them attaches an element to the **browser window itself**, so the element stays put even when the page scrolls.\n- Once you pick the right value, you still need to tell the browser *where* to stick it. That is what the `top` and `left` offset properties are for.\n- `width: 100%` makes the element stretch the full width of its containing box — in this case, the viewport.",
       "solution": "```css\n.site-header {\n  background-color: #2c3e50;\n  color: white;\n  padding: 16px;\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n}\n```",
@@ -1379,7 +1449,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Relative Nudge</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <p>I am the first paragraph.</p>\n    <p class=\"nudged\">I should be nudged down and to the right.</p>\n    <p>I am the third paragraph and should not move.</p>\n  </body>\n</html>",
-        "css": ".nudged {\n  background-color: #ffeaa7;\n  /* Nudge this paragraph here */\n}"
+        "css": ".nudged {\n  background-color: #ffeaa7;\n  /* Nudge this paragraph here */\n}",
+        "javascript": ""
       },
       "hints": "- There are several values the `position` property can take. The one you need lets an element move by an offset but **still reserves its original slot in the layout** — so surrounding elements stay put.\n- Once the position value is set, use the `top` and `left` offset properties to shift the element in the desired direction. Positive numbers push the element away from the top edge and away from the left edge of its original spot.",
       "solution": "```css\n.nudged {\n  background-color: #ffeaa7;\n  position: relative;\n  top: 10px;\n  left: 20px;\n}\n```",
@@ -1400,7 +1471,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Corner Badge</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"card\">\n      <span class=\"badge\">NEW</span>\n      <h3>Product name</h3>\n      <p>A short description of the product.</p>\n    </div>\n  </body>\n</html>",
-        "css": ".card {\n  width: 260px;\n  padding: 20px;\n  border: 1px solid #ccc;\n  background-color: #fff;\n  /* Make this card the positioning context for its children */\n}\n\n.badge {\n  background-color: #e74c3c;\n  color: white;\n  padding: 4px 8px;\n  font-size: 12px;\n  /* Pin this badge to the top-right corner of the card */\n}"
+        "css": ".card {\n  width: 260px;\n  padding: 20px;\n  border: 1px solid #ccc;\n  background-color: #fff;\n  /* Make this card the positioning context for its children */\n}\n\n.badge {\n  background-color: #e74c3c;\n  color: white;\n  padding: 4px 8px;\n  font-size: 12px;\n  /* Pin this badge to the top-right corner of the card */\n}",
+        "javascript": ""
       },
       "hints": "- The `position` property has four main values beyond the default. One of them lets an element be **offset from its nearest positioned ancestor** and takes it out of the document flow.\n- For the badge to anchor to the **card** rather than to the viewport or the whole page, the card must itself be \"positioned\". There is a `position` value that does this **without actually moving the card** — it simply makes the element act as a reference for its positioned children.\n- You already know `top` as an offset property. There is a matching one for the right-hand side.",
       "solution": "```css\n.card {\n  width: 260px;\n  padding: 20px;\n  border: 1px solid #ccc;\n  background-color: #fff;\n  position: relative;\n}\n\n.badge {\n  background-color: #e74c3c;\n  color: white;\n  padding: 4px 8px;\n  font-size: 12px;\n  position: absolute;\n  top: 0;\n  right: 0;\n}\n```",
@@ -1421,7 +1493,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Sticky Headings</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <section>\n      <h2 class=\"section-heading\">Section 1</h2>\n      <p style=\"height: 600px;\">Lots of content in section 1...</p>\n    </section>\n    <section>\n      <h2 class=\"section-heading\">Section 2</h2>\n      <p style=\"height: 600px;\">Lots of content in section 2...</p>\n    </section>\n    <section>\n      <h2 class=\"section-heading\">Section 3</h2>\n      <p style=\"height: 600px;\">Lots of content in section 3...</p>\n    </section>\n  </body>\n</html>",
-        "css": ".section-heading {\n  background-color: #f1c40f;\n  padding: 10px;\n  margin: 0;\n  /* Make the heading stick to the top while its section is on screen */\n}"
+        "css": ".section-heading {\n  background-color: #f1c40f;\n  padding: 10px;\n  margin: 0;\n  /* Make the heading stick to the top while its section is on screen */\n}",
+        "javascript": ""
       },
       "hints": "- The `position` property has a value that is sometimes called \"hybrid\": the element behaves like a normally-flowing element at first, and only becomes pinned once scrolling would push it off the top of the viewport.\n- For the pinning behaviour to kick in you **must** also specify an offset (like `top`) — without it, the browser has no idea where to stick the element.\n- You do not need to add a new wrapper element. The pinned heading uses its existing parent `<section>` as the container it stays within.",
       "solution": "```css\n.section-heading {\n  background-color: #f1c40f;\n  padding: 10px;\n  margin: 0;\n  position: sticky;\n  top: 0;\n}\n```",
@@ -1442,7 +1515,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Dashboard Layout</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <header class=\"top-bar\">Dashboard</header>\n\n    <main>\n      <h2 class=\"sidebar-title\">Overview</h2>\n\n      <section class=\"card\">\n        <span class=\"ribbon\">SALE</span>\n        <h3>Featured product</h3>\n        <p>A great product at a great price.</p>\n      </section>\n\n      <p style=\"height: 1500px;\">Lots of content so the page is scrollable...</p>\n    </main>\n\n    <button class=\"scroll-top\">Top</button>\n  </body>\n</html>",
-        "css": ".top-bar {\n  background-color: #2c3e50;\n  color: white;\n  padding: 12px 16px;\n  /* Pin to top of viewport, full width */\n}\n\n.sidebar-title {\n  background-color: #f1c40f;\n  padding: 8px;\n  margin: 0;\n  /* Stick to the top once the user scrolls past it */\n}\n\n.card {\n  width: 260px;\n  padding: 20px;\n  border: 1px solid #ccc;\n  background-color: #fff;\n  margin-top: 80px;\n  /* Make this card a positioning context without moving it */\n}\n\n.ribbon {\n  background-color: #e74c3c;\n  color: white;\n  padding: 4px 8px;\n  font-size: 12px;\n  /* Pin to the top-right corner of the card */\n}\n\n.scroll-top {\n  padding: 8px 12px;\n  /* Pin to bottom-right of the viewport, 20px from each edge */\n}"
+        "css": ".top-bar {\n  background-color: #2c3e50;\n  color: white;\n  padding: 12px 16px;\n  /* Pin to top of viewport, full width */\n}\n\n.sidebar-title {\n  background-color: #f1c40f;\n  padding: 8px;\n  margin: 0;\n  /* Stick to the top once the user scrolls past it */\n}\n\n.card {\n  width: 260px;\n  padding: 20px;\n  border: 1px solid #ccc;\n  background-color: #fff;\n  margin-top: 80px;\n  /* Make this card a positioning context without moving it */\n}\n\n.ribbon {\n  background-color: #e74c3c;\n  color: white;\n  padding: 4px 8px;\n  font-size: 12px;\n  /* Pin to the top-right corner of the card */\n}\n\n.scroll-top {\n  padding: 8px 12px;\n  /* Pin to bottom-right of the viewport, 20px from each edge */\n}",
+        "javascript": ""
       },
       "hints": "- Re-read the previous questions in this category — each of the four required behaviours was covered by one specific `position` value.\n- The top bar and the scroll-to-top button both stay locked to the **browser window**, but anchored to different corners — the same `position` value works for both; just use different offset properties (`top`/`left` vs `bottom`/`right`).\n- The ribbon needs to anchor to the card, not the page. That only happens if the card itself has been turned into a positioning context — remember the `position` value that does this without actually moving the element.\n- The sidebar title has a hybrid behaviour: in-flow at first, pinned later. That is the fourth `position` value you have learned.",
       "solution": "```css\n.top-bar {\n  background-color: #2c3e50;\n  color: white;\n  padding: 12px 16px;\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n}\n\n.sidebar-title {\n  background-color: #f1c40f;\n  padding: 8px;\n  margin: 0;\n  position: sticky;\n  top: 0;\n}\n\n.card {\n  width: 260px;\n  padding: 20px;\n  border: 1px solid #ccc;\n  background-color: #fff;\n  margin-top: 80px;\n  position: relative;\n}\n\n.ribbon {\n  background-color: #e74c3c;\n  color: white;\n  padding: 4px 8px;\n  font-size: 12px;\n  position: absolute;\n  top: 0;\n  right: 0;\n}\n\n.scroll-top {\n  padding: 8px 12px;\n  position: fixed;\n  bottom: 20px;\n  right: 20px;\n}\n```",
@@ -1463,7 +1537,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Chat Button</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <main>\n      <h1>Help Center</h1>\n      <p style=\"height: 2000px;\">Lots of content to scroll through...</p>\n    </main>\n    <button class=\"chat-button\">Chat</button>\n  </body>\n</html>",
-        "css": ".chat-button {\n  background-color: #27ae60;\n  color: white;\n  padding: 12px 18px;\n  border: none;\n  border-radius: 999px;\n  /* Pin the button to the bottom-left of the viewport */\n}"
+        "css": ".chat-button {\n  background-color: #27ae60;\n  color: white;\n  padding: 12px 18px;\n  border: none;\n  border-radius: 999px;\n  /* Pin the button to the bottom-left of the viewport */\n}",
+        "javascript": ""
       },
       "hints": "- The `position` property has a value that attaches an element directly to the **browser window**, so scrolling the page does not move it.\n- Once you pick the right value, tell the browser *where* to place it using offset properties. Here you want to anchor from the **bottom** and from the **left** edge of the viewport rather than from the top.",
       "solution": "```css\n.chat-button {\n  background-color: #27ae60;\n  color: white;\n  padding: 12px 18px;\n  border: none;\n  border-radius: 999px;\n  position: fixed;\n  bottom: 16px;\n  left: 16px;\n}\n```",
@@ -1484,7 +1559,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Highlight Nudge</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"box\">A</div>\n    <div class=\"box highlight\">B</div>\n    <div class=\"box\">C</div>\n  </body>\n</html>",
-        "css": ".box {\n  display: inline-block;\n  width: 60px;\n  height: 60px;\n  background-color: #dfe6e9;\n  text-align: center;\n  line-height: 60px;\n  margin-right: 8px;\n}\n\n.highlight {\n  background-color: #fdcb6e;\n  /* Nudge this box up and to the left here */\n}"
+        "css": ".box {\n  display: inline-block;\n  width: 60px;\n  height: 60px;\n  background-color: #dfe6e9;\n  text-align: center;\n  line-height: 60px;\n  margin-right: 8px;\n}\n\n.highlight {\n  background-color: #fdcb6e;\n  /* Nudge this box up and to the left here */\n}",
+        "javascript": ""
       },
       "hints": "- The `position` property has a value designed for \"move an element a bit, but do not disturb anything around it\". Siblings stay put because the original slot in the flow is preserved.\n- There are four offset properties: `top`, `bottom`, `left`, and `right`. Choose the pair that measures from the **bottom** and from the **right** edges of the original position — they push the element upward and leftward respectively.",
       "solution": "```css\n.highlight {\n  background-color: #fdcb6e;\n  position: relative;\n  bottom: 15px;\n  right: 25px;\n}\n```",
@@ -1505,7 +1581,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Modal Close Button</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"modal\">\n      <h3>Are you sure?</h3>\n      <p>This action cannot be undone.</p>\n      <button class=\"close-btn\">&times;</button>\n    </div>\n  </body>\n</html>",
-        "css": ".modal {\n  width: 300px;\n  height: 180px;\n  padding: 20px;\n  border: 1px solid #ccc;\n  background-color: #fff;\n  /* Make this modal a positioning context for its children */\n}\n\n.close-btn {\n  background-color: #d63031;\n  color: white;\n  border: none;\n  width: 28px;\n  height: 28px;\n  font-size: 18px;\n  /* Pin this button to the bottom-right corner of the modal */\n}"
+        "css": ".modal {\n  width: 300px;\n  height: 180px;\n  padding: 20px;\n  border: 1px solid #ccc;\n  background-color: #fff;\n  /* Make this modal a positioning context for its children */\n}\n\n.close-btn {\n  background-color: #d63031;\n  color: white;\n  border: none;\n  width: 28px;\n  height: 28px;\n  font-size: 18px;\n  /* Pin this button to the bottom-right corner of the modal */\n}",
+        "javascript": ""
       },
       "hints": "- The `position` property has a value that lets an element be **offset from its nearest positioned ancestor** and is removed from the document flow.\n- For the close button to anchor to the **modal** instead of the whole page, the modal itself has to be \"positioned\". There is a `position` value that sets this up **without moving the modal** — it simply makes the modal the reference point.\n- You have used `top` and `left` before. This question uses the other two offset properties: the ones that measure from the **bottom** and from the **right** edges of the ancestor.",
       "solution": "```css\n.modal {\n  width: 300px;\n  height: 180px;\n  padding: 20px;\n  border: 1px solid #ccc;\n  background-color: #fff;\n  position: relative;\n}\n\n.close-btn {\n  background-color: #d63031;\n  color: white;\n  border: none;\n  width: 28px;\n  height: 28px;\n  font-size: 18px;\n  position: absolute;\n  bottom: 8px;\n  right: 8px;\n}\n```",
@@ -1526,7 +1603,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Sticky Sidebar</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"layout\">\n      <aside class=\"sidebar-nav\">\n        <h3>Sections</h3>\n        <ul>\n          <li>Intro</li>\n          <li>Details</li>\n          <li>Summary</li>\n        </ul>\n      </aside>\n      <article>\n        <h1>An Article</h1>\n        <p style=\"height: 2000px;\">Lots of article content to scroll...</p>\n      </article>\n    </div>\n  </body>\n</html>",
-        "css": ".layout {\n  display: flex;\n  gap: 24px;\n  align-items: flex-start;\n}\n\n.sidebar-nav {\n  width: 180px;\n  padding: 12px;\n  background-color: #ecf0f1;\n  /* Make the sidebar stick near the top while the article scrolls */\n}"
+        "css": ".layout {\n  display: flex;\n  gap: 24px;\n  align-items: flex-start;\n}\n\n.sidebar-nav {\n  width: 180px;\n  padding: 12px;\n  background-color: #ecf0f1;\n  /* Make the sidebar stick near the top while the article scrolls */\n}",
+        "javascript": ""
       },
       "hints": "- The `position` property has a value that combines two behaviours: the element flows normally at first, and then gets pinned at a specific offset once the user scrolls past it.\n- This pinning behaviour only kicks in when an offset property is set. Without it, the browser does not know where to stick the element.\n- A value of `20px` on the offset property that measures from the top of the viewport will leave a small gap between the sidebar and the top edge of the browser window.",
       "solution": "```css\n.sidebar-nav {\n  width: 180px;\n  padding: 12px;\n  background-color: #ecf0f1;\n  position: sticky;\n  top: 20px;\n}\n```",
@@ -1547,7 +1625,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Social Feed</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"announcement\">New messaging features are live!</div>\n\n    <main>\n      <h2 class=\"new-label\">What's new</h2>\n\n      <article class=\"post\">\n        <img class=\"avatar\" src=\"https://picsum.photos/60/60\" alt=\"User avatar\">\n        <h3>Jane Doe</h3>\n        <p>Just launched my new portfolio site!</p>\n      </article>\n\n      <p style=\"height: 1500px;\">More posts would go here...</p>\n    </main>\n\n    <button class=\"compose\">+</button>\n  </body>\n</html>",
-        "css": ".announcement {\n  background-color: #0984e3;\n  color: white;\n  padding: 10px 16px;\n  text-align: center;\n  /* Pin to top of viewport, full width */\n}\n\n.new-label {\n  background-color: #fab1a0;\n  padding: 8px 12px;\n  margin: 0;\n  /* Stick to the top once scrolled past */\n}\n\n.post {\n  width: 320px;\n  padding: 20px;\n  border: 1px solid #ccc;\n  background-color: #fff;\n  margin: 80px auto;\n  /* Make this post a positioning context without moving it */\n}\n\n.avatar {\n  width: 60px;\n  height: 60px;\n  border-radius: 50%;\n  border: 3px solid #fff;\n  background-color: #ddd;\n  /* Overlay the top-left corner of the post, sticking out by 20px */\n}\n\n.compose {\n  background-color: #6c5ce7;\n  color: white;\n  border: none;\n  width: 52px;\n  height: 52px;\n  border-radius: 50%;\n  font-size: 24px;\n  /* Pin to bottom-right of the viewport, 24px from each edge */\n}"
+        "css": ".announcement {\n  background-color: #0984e3;\n  color: white;\n  padding: 10px 16px;\n  text-align: center;\n  /* Pin to top of viewport, full width */\n}\n\n.new-label {\n  background-color: #fab1a0;\n  padding: 8px 12px;\n  margin: 0;\n  /* Stick to the top once scrolled past */\n}\n\n.post {\n  width: 320px;\n  padding: 20px;\n  border: 1px solid #ccc;\n  background-color: #fff;\n  margin: 80px auto;\n  /* Make this post a positioning context without moving it */\n}\n\n.avatar {\n  width: 60px;\n  height: 60px;\n  border-radius: 50%;\n  border: 3px solid #fff;\n  background-color: #ddd;\n  /* Overlay the top-left corner of the post, sticking out by 20px */\n}\n\n.compose {\n  background-color: #6c5ce7;\n  color: white;\n  border: none;\n  width: 52px;\n  height: 52px;\n  border-radius: 50%;\n  font-size: 24px;\n  /* Pin to bottom-right of the viewport, 24px from each edge */\n}",
+        "javascript": ""
       },
       "hints": "- Re-read the first four questions in this category — each of the four required behaviours maps onto one specific `position` value.\n- The announcement banner and the compose button both stay locked to the **browser window**, just anchored to different corners. The same `position` value works for both; use different offset properties (`top`/`left` vs `bottom`/`right`).\n- For the avatar to anchor to the post card (and not to the page), the card itself must first be turned into a positioning context using the `position` value that does **not** actually move it.\n- Negative offsets are allowed. `top: -20px` pushes an element **above** its anchor point, and `left: -20px` pushes it further to the left.\n- The \"What's new\" label needs the hybrid behaviour — in-flow at first, pinned once scrolled past.",
       "solution": "```css\n.announcement {\n  background-color: #0984e3;\n  color: white;\n  padding: 10px 16px;\n  text-align: center;\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n}\n\n.new-label {\n  background-color: #fab1a0;\n  padding: 8px 12px;\n  margin: 0;\n  position: sticky;\n  top: 0;\n}\n\n.post {\n  width: 320px;\n  padding: 20px;\n  border: 1px solid #ccc;\n  background-color: #fff;\n  margin: 80px auto;\n  position: relative;\n}\n\n.avatar {\n  width: 60px;\n  height: 60px;\n  border-radius: 50%;\n  border: 3px solid #fff;\n  background-color: #ddd;\n  position: absolute;\n  top: -20px;\n  left: -20px;\n}\n\n.compose {\n  background-color: #6c5ce7;\n  color: white;\n  border: none;\n  width: 52px;\n  height: 52px;\n  border-radius: 50%;\n  font-size: 24px;\n  position: fixed;\n  bottom: 24px;\n  right: 24px;\n}\n```",
@@ -1568,7 +1647,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Vertical Menu</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <nav class=\"menu\">\n      <a href=\"#\">Home</a>\n      <a href=\"#\">About</a>\n      <a href=\"#\">Blog</a>\n      <a href=\"#\">Contact</a>\n    </nav>\n  </body>\n</html>",
-        "css": ".menu {\n  display: flex;\n  gap: 8px;\n  padding: 12px;\n  background-color: #f1f2f6;\n  /* Stack the links from top to bottom */\n}\n\n.menu a {\n  padding: 8px 12px;\n  background-color: #dff9fb;\n  text-decoration: none;\n  color: #130f40;\n}"
+        "css": ".menu {\n  display: flex;\n  gap: 8px;\n  padding: 12px;\n  background-color: #f1f2f6;\n  /* Stack the links from top to bottom */\n}\n\n.menu a {\n  padding: 8px 12px;\n  background-color: #dff9fb;\n  text-decoration: none;\n  color: #130f40;\n}",
+        "javascript": ""
       },
       "hints": "- A flex container has a **main axis**. By default the main axis runs **horizontally** (left to right), which is why your links are in a row.\n- One Flexbox property flips the main axis so it runs **vertically**. The value you want is the one that literally names a vertical arrangement.",
       "solution": "```css\n.menu {\n  display: flex;\n  gap: 8px;\n  padding: 12px;\n  background-color: #f1f2f6;\n  flex-direction: column;\n}\n\n.menu a {\n  padding: 8px 12px;\n  background-color: #dff9fb;\n  text-decoration: none;\n  color: #130f40;\n}\n```",
@@ -1589,7 +1669,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Toolbar</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"toolbar\">\n      <button>Back</button>\n      <button>Home</button>\n      <button>Next</button>\n    </div>\n  </body>\n</html>",
-        "css": ".toolbar {\n  display: flex;\n  padding: 12px;\n  background-color: #2d3436;\n  /* Spread the three buttons across the toolbar */\n}\n\n.toolbar button {\n  padding: 8px 16px;\n  border: none;\n  border-radius: 4px;\n  background-color: #dfe6e9;\n  color: #2d3436;\n}"
+        "css": ".toolbar {\n  display: flex;\n  padding: 12px;\n  background-color: #2d3436;\n  /* Spread the three buttons across the toolbar */\n}\n\n.toolbar button {\n  padding: 8px 16px;\n  border: none;\n  border-radius: 4px;\n  background-color: #dfe6e9;\n  color: #2d3436;\n}",
+        "javascript": ""
       },
       "hints": "- There is a Flexbox property dedicated to aligning children along the **main axis** (the direction the items flow).\n- Several values are available; the one you want pushes the first item to the start, the last item to the end, and distributes the **remaining space between** the items.",
       "solution": "```css\n.toolbar {\n  display: flex;\n  padding: 12px;\n  background-color: #2d3436;\n  justify-content: space-between;\n}\n\n.toolbar button {\n  padding: 8px 16px;\n  border: none;\n  border-radius: 4px;\n  background-color: #dfe6e9;\n  color: #2d3436;\n}\n```",
@@ -1610,7 +1691,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Header Bar</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <header class=\"bar\">\n      <div class=\"logo\">LOGO</div>\n      <span class=\"tagline\">Built for speed</span>\n    </header>\n  </body>\n</html>",
-        "css": ".bar {\n  display: flex;\n  gap: 16px;\n  padding: 12px;\n  background-color: #192a56;\n  color: white;\n  /* Vertically center the children */\n}\n\n.logo {\n  width: 80px;\n  height: 80px;\n  background-color: #e1b12c;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-weight: bold;\n}\n\n.tagline {\n  font-style: italic;\n}"
+        "css": ".bar {\n  display: flex;\n  gap: 16px;\n  padding: 12px;\n  background-color: #192a56;\n  color: white;\n  /* Vertically center the children */\n}\n\n.logo {\n  width: 80px;\n  height: 80px;\n  background-color: #e1b12c;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-weight: bold;\n}\n\n.tagline {\n  font-style: italic;\n}",
+        "javascript": ""
       },
       "hints": "- `justify-content` handles the **main** axis. You want the **cross** axis — the one perpendicular to the direction items flow.\n- The default main axis is horizontal, so its cross axis is vertical. The property you need aligns **items** along this cross axis.\n- Pick the value that means \"middle\".",
       "solution": "```css\n.bar {\n  display: flex;\n  gap: 16px;\n  padding: 12px;\n  background-color: #192a56;\n  color: white;\n  align-items: center;\n}\n```",
@@ -1631,7 +1713,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Cards</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"cards\">\n      <div class=\"card\">One</div>\n      <div class=\"card\">Two</div>\n      <div class=\"card\">Three</div>\n    </div>\n  </body>\n</html>",
-        "css": ".cards {\n  display: flex;\n  gap: 12px;\n  padding: 12px;\n  background-color: #f5f6fa;\n}\n\n.card {\n  padding: 20px;\n  background-color: #40739e;\n  color: white;\n  /* Give each card a starting main-axis size of 200px (no width!) */\n}"
+        "css": ".cards {\n  display: flex;\n  gap: 12px;\n  padding: 12px;\n  background-color: #f5f6fa;\n}\n\n.card {\n  padding: 20px;\n  background-color: #40739e;\n  color: white;\n  /* Give each card a starting main-axis size of 200px (no width!) */\n}",
+        "javascript": ""
       },
       "hints": "- Setting `width` works in simple cases, but Flexbox has its own dedicated property for an item's **starting size** along the main axis.\n- The name of the property literally describes what it is: the item's \"basis\" from which growing and shrinking is calculated.\n- Use the pixel value requested in the question.",
       "solution": "```css\n.card {\n  padding: 20px;\n  background-color: #40739e;\n  color: white;\n  flex-basis: 200px;\n}\n```",
@@ -1652,7 +1735,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Three-column Layout</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"layout\">\n      <aside class=\"side-left\">L</aside>\n      <section class=\"main\">Main content</section>\n      <aside class=\"side-right\">R</aside>\n    </div>\n  </body>\n</html>",
-        "css": ".layout {\n  display: flex;\n  gap: 12px;\n  padding: 12px;\n  background-color: #dcdde1;\n}\n\n.side-left,\n.side-right {\n  width: 80px;\n  padding: 20px;\n  background-color: #718093;\n  color: white;\n  text-align: center;\n}\n\n.main {\n  padding: 20px;\n  background-color: #44bd32;\n  color: white;\n  /* Let this column take up all remaining space */\n}"
+        "css": ".layout {\n  display: flex;\n  gap: 12px;\n  padding: 12px;\n  background-color: #dcdde1;\n}\n\n.side-left,\n.side-right {\n  width: 80px;\n  padding: 20px;\n  background-color: #718093;\n  color: white;\n  text-align: center;\n}\n\n.main {\n  padding: 20px;\n  background-color: #44bd32;\n  color: white;\n  /* Let this column take up all remaining space */\n}",
+        "javascript": ""
       },
       "hints": "- There is a single Flexbox property on the child that tells it: \"take a share of the **leftover** free space in the container.\"\n- Its value is a **unitless number** describing the growth factor. `0` means \"do not grow\" (the default); `1` means \"take all the remaining space\" if no other sibling also wants to grow.",
       "solution": "```css\n.main {\n  padding: 20px;\n  background-color: #44bd32;\n  color: white;\n  flex-grow: 1;\n}\n```",
@@ -1673,7 +1757,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Logo Row</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"row\">\n      <div class=\"logo\">LOGO</div>\n      <h1 class=\"title\">A very long article title that takes up lots of room</h1>\n    </div>\n  </body>\n</html>",
-        "css": ".row {\n  display: flex;\n  gap: 16px;\n  padding: 12px;\n  background-color: #f5f6fa;\n  align-items: center;\n}\n\n.logo {\n  width: 120px;\n  height: 60px;\n  background-color: #e84118;\n  color: white;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-weight: bold;\n  /* Do not allow this logo to shrink when space is tight */\n}\n\n.title {\n  margin: 0;\n  font-size: 1.2rem;\n}"
+        "css": ".row {\n  display: flex;\n  gap: 16px;\n  padding: 12px;\n  background-color: #f5f6fa;\n  align-items: center;\n}\n\n.logo {\n  width: 120px;\n  height: 60px;\n  background-color: #e84118;\n  color: white;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-weight: bold;\n  /* Do not allow this logo to shrink when space is tight */\n}\n\n.title {\n  margin: 0;\n  font-size: 1.2rem;\n}",
+        "javascript": ""
       },
       "hints": "- Flexbox has a dedicated property that is the **opposite** of `flex-grow`: it controls how eagerly an item gives up space when the container is too small.\n- Its value is a **unitless number**. `1` (the default) means \"shrink normally\"; `0` means \"refuse to shrink\".",
       "solution": "```css\n.logo {\n  width: 120px;\n  height: 60px;\n  background-color: #e84118;\n  color: white;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-weight: bold;\n  flex-shrink: 0;\n}\n```",
@@ -1694,7 +1779,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Equal Pills</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"pills\">\n      <button class=\"pill\">New</button>\n      <button class=\"pill\">Popular</button>\n      <button class=\"pill\">Trending this week</button>\n      <button class=\"pill\">Top</button>\n    </div>\n  </body>\n</html>",
-        "css": ".pills {\n  display: flex;\n  gap: 8px;\n  padding: 12px;\n  background-color: #f1f2f6;\n}\n\n.pill {\n  padding: 8px 12px;\n  border: none;\n  border-radius: 999px;\n  background-color: #5352ed;\n  color: white;\n  /* Make every pill grow and shrink equally, starting from size 0 */\n}"
+        "css": ".pills {\n  display: flex;\n  gap: 8px;\n  padding: 12px;\n  background-color: #f1f2f6;\n}\n\n.pill {\n  padding: 8px 12px;\n  border: none;\n  border-radius: 999px;\n  background-color: #5352ed;\n  color: white;\n  /* Make every pill grow and shrink equally, starting from size 0 */\n}",
+        "javascript": ""
       },
       "hints": "- There is a Flexbox **shorthand** property whose name is simply `flex`. It bundles three longhand properties in this order: `<grow> <shrink> <basis>`.\n- The target value for this question is three tokens separated by spaces.\n- Do not also write the longhand versions — the shorthand must do the whole job.",
       "solution": "```css\n.pill {\n  padding: 8px 12px;\n  border: none;\n  border-radius: 999px;\n  background-color: #5352ed;\n  color: white;\n  flex: 1 1 0;\n}\n```",
@@ -1715,7 +1801,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Gallery</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"gallery\">\n      <div class=\"tile\">1</div>\n      <div class=\"tile\">2</div>\n      <div class=\"tile\">3</div>\n      <div class=\"tile\">4</div>\n      <div class=\"tile\">5</div>\n      <div class=\"tile\">6</div>\n      <div class=\"tile\">7</div>\n      <div class=\"tile\">8</div>\n    </div>\n  </body>\n</html>",
-        "css": ".gallery {\n  display: flex;\n  gap: 8px;\n  padding: 12px;\n  width: 360px;\n  background-color: #2f3640;\n  /* Let the tiles flow onto multiple lines when they do not fit */\n}\n\n.tile {\n  flex: 0 0 100px;\n  height: 80px;\n  background-color: #00a8ff;\n  color: white;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-weight: bold;\n}"
+        "css": ".gallery {\n  display: flex;\n  gap: 8px;\n  padding: 12px;\n  width: 360px;\n  background-color: #2f3640;\n  /* Let the tiles flow onto multiple lines when they do not fit */\n}\n\n.tile {\n  flex: 0 0 100px;\n  height: 80px;\n  background-color: #00a8ff;\n  color: white;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-weight: bold;\n}",
+        "javascript": ""
       },
       "hints": "- By default, a flex container forces all its children onto a **single line**, even if they overflow.\n- One Flexbox property on the **container** toggles this behaviour. Its name literally describes what you want the items to do when they run out of room.\n- The value you want is the one that means \"yes, wrap onto new lines\".",
       "solution": "```css\n.gallery {\n  display: flex;\n  gap: 8px;\n  padding: 12px;\n  width: 360px;\n  background-color: #2f3640;\n  flex-wrap: wrap;\n}\n```",
@@ -1736,7 +1823,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Dialog Footer</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <footer class=\"actions\">\n      <button class=\"primary\">Confirm</button>\n      <button class=\"secondary\">Cancel</button>\n    </footer>\n  </body>\n</html>",
-        "css": ".actions {\n  display: flex;\n  gap: 8px;\n  padding: 12px;\n  background-color: #f1f2f6;\n  /* Flip the horizontal order so Confirm is on the right */\n}\n\n.primary {\n  padding: 8px 16px;\n  border: none;\n  background-color: #0984e3;\n  color: white;\n}\n\n.secondary {\n  padding: 8px 16px;\n  border: none;\n  background-color: #dfe6e9;\n  color: #2d3436;\n}"
+        "css": ".actions {\n  display: flex;\n  gap: 8px;\n  padding: 12px;\n  background-color: #f1f2f6;\n  /* Flip the horizontal order so Confirm is on the right */\n}\n\n.primary {\n  padding: 8px 16px;\n  border: none;\n  background-color: #0984e3;\n  color: white;\n}\n\n.secondary {\n  padding: 8px 16px;\n  border: none;\n  background-color: #dfe6e9;\n  color: #2d3436;\n}",
+        "javascript": ""
       },
       "hints": "- You are **not** supposed to edit the HTML. Flexbox can flip the visual order of items on its own.\n- The property that controls main-axis direction has a value that keeps the axis horizontal but runs it the **other way** (right to left).",
       "solution": "```css\n.actions {\n  display: flex;\n  gap: 8px;\n  padding: 12px;\n  background-color: #f1f2f6;\n  flex-direction: row-reverse;\n}\n```",
@@ -1757,7 +1845,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Hero</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <section class=\"hero\">\n      <button class=\"cta\">Get Started</button>\n    </section>\n  </body>\n</html>",
-        "css": ".hero {\n  display: flex;\n  padding: 40px;\n  background-color: #6c5ce7;\n  /* Horizontally center the CTA button */\n}\n\n.cta {\n  padding: 12px 24px;\n  border: none;\n  border-radius: 6px;\n  background-color: #fdcb6e;\n  color: #2d3436;\n  font-weight: bold;\n}"
+        "css": ".hero {\n  display: flex;\n  padding: 40px;\n  background-color: #6c5ce7;\n  /* Horizontally center the CTA button */\n}\n\n.cta {\n  padding: 12px 24px;\n  border: none;\n  border-radius: 6px;\n  background-color: #fdcb6e;\n  color: #2d3436;\n  font-weight: bold;\n}",
+        "javascript": ""
       },
       "hints": "- There is a property whose job is to position items along the **main axis** — the same axis the items flow along.\n- Pick the value that means \"middle of the line\".",
       "solution": "```css\n.hero {\n  display: flex;\n  padding: 40px;\n  background-color: #6c5ce7;\n  justify-content: center;\n}\n```",
@@ -1778,7 +1867,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Uneven Cards</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"row\">\n      <div class=\"card short\">Short</div>\n      <div class=\"card medium\">Medium height</div>\n      <div class=\"card tall\">Tall card with more text inside</div>\n    </div>\n  </body>\n</html>",
-        "css": ".row {\n  display: flex;\n  gap: 12px;\n  padding: 12px;\n  background-color: #dff9fb;\n  height: 200px;\n  /* Align every card to the bottom of the row */\n}\n\n.card {\n  width: 120px;\n  padding: 12px;\n  background-color: #22a6b3;\n  color: white;\n}\n\n.short { height: 60px; }\n.medium { height: 100px; }\n.tall { height: 150px; }"
+        "css": ".row {\n  display: flex;\n  gap: 12px;\n  padding: 12px;\n  background-color: #dff9fb;\n  height: 200px;\n  /* Align every card to the bottom of the row */\n}\n\n.card {\n  width: 120px;\n  padding: 12px;\n  background-color: #22a6b3;\n  color: white;\n}\n\n.short { height: 60px; }\n.medium { height: 100px; }\n.tall { height: 150px; }",
+        "javascript": ""
       },
       "hints": "- `justify-content` handles the **main** axis. You need the one for the **cross** axis.\n- Cross-axis alignment has a value that sticks items to the **end** of the axis (the opposite of the start).\n- In a default row layout, the cross axis runs top-to-bottom, so the end of that axis is the bottom.",
       "solution": "```css\n.row {\n  display: flex;\n  gap: 12px;\n  padding: 12px;\n  background-color: #dff9fb;\n  height: 200px;\n  align-items: flex-end;\n}\n```",
@@ -1799,7 +1889,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Sidebar Layout</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"layout\">\n      <aside class=\"sidebar\">Sidebar</aside>\n      <main class=\"content\">Content</main>\n    </div>\n  </body>\n</html>",
-        "css": ".layout {\n  display: flex;\n  gap: 12px;\n  padding: 12px;\n  background-color: #f5f6fa;\n}\n\n.sidebar {\n  padding: 20px;\n  background-color: #30336b;\n  color: white;\n  /* Give the sidebar a starting size of 25% (no width!) */\n}\n\n.content {\n  padding: 20px;\n  background-color: #95afc0;\n  flex-grow: 1;\n}"
+        "css": ".layout {\n  display: flex;\n  gap: 12px;\n  padding: 12px;\n  background-color: #f5f6fa;\n}\n\n.sidebar {\n  padding: 20px;\n  background-color: #30336b;\n  color: white;\n  /* Give the sidebar a starting size of 25% (no width!) */\n}\n\n.content {\n  padding: 20px;\n  background-color: #95afc0;\n  flex-grow: 1;\n}",
+        "javascript": ""
       },
       "hints": "- Flexbox has a property for an item's **starting size** along the main axis, named after the word \"basis\".\n- Its value can be any CSS length — including percentages.",
       "solution": "```css\n.sidebar {\n  padding: 20px;\n  background-color: #30336b;\n  color: white;\n  flex-basis: 25%;\n}\n```",
@@ -1820,7 +1911,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Split View</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"split\">\n      <section class=\"notes\">Notes</section>\n      <section class=\"article\">Article</section>\n    </div>\n  </body>\n</html>",
-        "css": ".split {\n  display: flex;\n  gap: 12px;\n  padding: 12px;\n  background-color: #f5f6fa;\n}\n\n.notes {\n  padding: 20px;\n  background-color: #fab1a0;\n  /* Grow, but only half as fast as the article */\n}\n\n.article {\n  padding: 20px;\n  background-color: #74b9ff;\n  /* Grow twice as fast as the notes */\n}"
+        "css": ".split {\n  display: flex;\n  gap: 12px;\n  padding: 12px;\n  background-color: #f5f6fa;\n}\n\n.notes {\n  padding: 20px;\n  background-color: #fab1a0;\n  /* Grow, but only half as fast as the article */\n}\n\n.article {\n  padding: 20px;\n  background-color: #74b9ff;\n  /* Grow twice as fast as the notes */\n}",
+        "javascript": ""
       },
       "hints": "- The property that controls how much **remaining space** a flex item absorbs takes a unitless **growth factor**.\n- The factors are relative: if one item has `1` and another has `2`, the second item takes twice the share of remaining space the first one takes.",
       "solution": "```css\n.notes {\n  padding: 20px;\n  background-color: #fab1a0;\n  flex-grow: 1;\n}\n\n.article {\n  padding: 20px;\n  background-color: #74b9ff;\n  flex-grow: 2;\n}\n```",
@@ -1841,7 +1933,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Chat Row</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"chat-row\">\n      <div class=\"avatar\"></div>\n      <p class=\"message\">Hey! Just wanted to check in about the meeting tomorrow and confirm the agenda items.</p>\n    </div>\n  </body>\n</html>",
-        "css": ".chat-row {\n  display: flex;\n  gap: 12px;\n  padding: 12px;\n  background-color: #f5f6fa;\n  align-items: center;\n}\n\n.avatar {\n  width: 48px;\n  height: 48px;\n  border-radius: 50%;\n  background-color: #e17055;\n  /* Do not allow the avatar to shrink */\n}\n\n.message {\n  margin: 0;\n}"
+        "css": ".chat-row {\n  display: flex;\n  gap: 12px;\n  padding: 12px;\n  background-color: #f5f6fa;\n  align-items: center;\n}\n\n.avatar {\n  width: 48px;\n  height: 48px;\n  border-radius: 50%;\n  background-color: #e17055;\n  /* Do not allow the avatar to shrink */\n}\n\n.message {\n  margin: 0;\n}",
+        "javascript": ""
       },
       "hints": "- The property that governs shrinking is the mirror of `flex-grow`.\n- Its default is `1` (shrink normally); set it to `0` to keep an item at its declared size.",
       "solution": "```css\n.avatar {\n  width: 48px;\n  height: 48px;\n  border-radius: 50%;\n  background-color: #e17055;\n  flex-shrink: 0;\n}\n```",
@@ -1862,7 +1955,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Nav</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <nav class=\"nav\">\n      <a href=\"#\">Home</a>\n      <a href=\"#\">Products</a>\n      <a href=\"#\">About</a>\n      <a href=\"#\">Contact Us</a>\n    </nav>\n  </body>\n</html>",
-        "css": ".nav {\n  display: flex;\n  gap: 8px;\n  padding: 12px;\n  background-color: #2d3436;\n}\n\n.nav a {\n  padding: 8px 12px;\n  background-color: #0984e3;\n  color: white;\n  text-align: center;\n  text-decoration: none;\n  /* Grow & shrink equally, but keep the link's natural size as basis */\n}"
+        "css": ".nav {\n  display: flex;\n  gap: 8px;\n  padding: 12px;\n  background-color: #2d3436;\n}\n\n.nav a {\n  padding: 8px 12px;\n  background-color: #0984e3;\n  color: white;\n  text-align: center;\n  text-decoration: none;\n  /* Grow & shrink equally, but keep the link's natural size as basis */\n}",
+        "javascript": ""
       },
       "hints": "- The shorthand `flex` property takes three tokens in this order: `<grow> <shrink> <basis>`.\n- Writing `flex: 1;` is a shortcut that expands to `1 1 0`. You don't want a zero basis here — you want `auto`.\n- Write all three tokens explicitly.",
       "solution": "```css\n.nav a {\n  padding: 8px 12px;\n  background-color: #0984e3;\n  color: white;\n  text-align: center;\n  text-decoration: none;\n  flex: 1 1 auto;\n}\n```",
@@ -1883,7 +1977,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Tag Cloud</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"tags\">\n      <span class=\"tag\">html</span>\n      <span class=\"tag\">css</span>\n      <span class=\"tag\">flexbox</span>\n      <span class=\"tag\">grid</span>\n      <span class=\"tag\">javascript</span>\n      <span class=\"tag\">typescript</span>\n      <span class=\"tag\">accessibility</span>\n      <span class=\"tag\">animation</span>\n    </div>\n  </body>\n</html>",
-        "css": ".tags {\n  display: flex;\n  gap: 8px;\n  padding: 12px;\n  width: 320px;\n  background-color: #2f3640;\n  /* Let the tags wrap, but stack new rows upward */\n}\n\n.tag {\n  padding: 4px 10px;\n  border-radius: 999px;\n  background-color: #f1c40f;\n  color: #2d3436;\n  white-space: nowrap;\n}"
+        "css": ".tags {\n  display: flex;\n  gap: 8px;\n  padding: 12px;\n  width: 320px;\n  background-color: #2f3640;\n  /* Let the tags wrap, but stack new rows upward */\n}\n\n.tag {\n  padding: 4px 10px;\n  border-radius: 999px;\n  background-color: #f1c40f;\n  color: #2d3436;\n  white-space: nowrap;\n}",
+        "javascript": ""
       },
       "hints": "- The wrap-controlling property has three values: one that disables wrapping, one that wraps downward, and one that wraps **upward**.\n- The value you want literally has the word \"reverse\" in it.",
       "solution": "```css\n.tags {\n  display: flex;\n  gap: 8px;\n  padding: 12px;\n  width: 320px;\n  background-color: #2f3640;\n  flex-wrap: wrap-reverse;\n}\n```",
@@ -1904,7 +1999,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Bootstrap Start</title>\n    <!-- Add the Bootstrap 5 CSS CDN link here -->\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"main\">\n      <h1>Welcome</h1>\n      <p>This is the start of a Bootstrap page.</p>\n    </div>\n  </body>\n</html>",
-        "css": "/* No custom CSS needed for this question. */"
+        "css": "/* No custom CSS needed for this question. */",
+        "javascript": ""
       },
       "hints": "- The Bootstrap 5 CDN link looks like `https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css`.\n- You can keep multiple class names on a single element by separating them with a space, e.g. `class=\"main container\"`.\n- Order matters: put the Bootstrap `<link>` **before** your own `style.css` so your styles can override Bootstrap if needed.",
       "solution": "```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Bootstrap Start</title>\n    <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css\">\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"main container\">\n      <h1>Welcome</h1>\n      <p>This is the start of a Bootstrap page.</p>\n    </div>\n  </body>\n</html>\n```",
@@ -1925,7 +2021,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Two Equal Columns</title>\n    <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css\">\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"container\">\n      <!-- Add a .row with two equal-width columns here -->\n    </div>\n  </body>\n</html>",
-        "css": "/* Optional: add borders so you can see the columns */\n.row > [class*=\"col-\"] {\n  border: 1px solid #ced4da;\n  padding: 12px;\n}"
+        "css": "/* Optional: add borders so you can see the columns */\n.row > [class*=\"col-\"] {\n  border: 1px solid #ced4da;\n  padding: 12px;\n}",
+        "javascript": ""
       },
       "hints": "- A Bootstrap row = `<div class=\"row\">`.\n- The grid has 12 units per row. Two equal columns means each takes **12 / 2 = 6** units → `col-6`.\n- Columns must be **direct children** of the row.",
       "solution": "```html\n<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-6\">Left</div>\n    <div class=\"col-6\">Right</div>\n  </div>\n</div>\n```",
@@ -1946,7 +2043,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Three Equal Columns</title>\n    <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css\">\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"container\">\n      <!-- Add a .row with three equal-width columns here -->\n    </div>\n  </body>\n</html>",
-        "css": ".row > [class*=\"col-\"] {\n  border: 1px solid #ced4da;\n  padding: 12px;\n}"
+        "css": ".row > [class*=\"col-\"] {\n  border: 1px solid #ced4da;\n  padding: 12px;\n}",
+        "javascript": ""
       },
       "hints": "- 12 units divided evenly by 3 columns = **4 units each** → use `col-4` three times.\n- The three `col-4` columns must all be direct children of the same `<div class=\"row\">`.",
       "solution": "```html\n<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-4\">One</div>\n    <div class=\"col-4\">Two</div>\n    <div class=\"col-4\">Three</div>\n  </div>\n</div>\n```",
@@ -1967,7 +2065,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>3 + 7 + ? Columns</title>\n    <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css\">\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"container\">\n      <!-- Add a .row with three columns: 3 units, 7 units, and the remainder -->\n    </div>\n  </body>\n</html>",
-        "css": ".row > [class*=\"col-\"] {\n  border: 1px solid #ced4da;\n  padding: 12px;\n}"
+        "css": ".row > [class*=\"col-\"] {\n  border: 1px solid #ced4da;\n  padding: 12px;\n}",
+        "javascript": ""
       },
       "hints": "- The number in `col-N` is the number of **12ths** the column occupies.\n- A row has 12 units total. If two of the three columns use 3 and 7 units, how many units are left for the third?\n- Sanity check: all three `col-N` numbers should add up to exactly **12**.",
       "solution": "```html\n<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-3\">Left (3)</div>\n    <div class=\"col-7\">Middle (7)</div>\n    <div class=\"col-2\">Right</div>\n  </div>\n</div>\n```",
@@ -1988,7 +2087,8 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>25 / 75 Columns</title>\n    <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css\">\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"container\">\n      <!-- Add a .row with a 25% column and a 75% column here -->\n    </div>\n  </body>\n</html>",
-        "css": ".row > [class*=\"col-\"] {\n  border: 1px solid #ced4da;\n  padding: 12px;\n}"
+        "css": ".row > [class*=\"col-\"] {\n  border: 1px solid #ced4da;\n  padding: 12px;\n}",
+        "javascript": ""
       },
       "hints": "- A Bootstrap row is split into **12 equal units**. Ask yourself: *how many of those 12 units equal 25%? How many equal 75%?*\n- One way to work it out: `percentage / 100 * 12`. For example, 50% would be `50 / 100 * 12 = 6`, so 50% is `col-6`.\n- Sanity check: the two numbers you pick should add up to **12** so the row is completely filled.\n- A common real-world use of this layout is a **sidebar + main content** area.",
       "solution": "```html\n<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-3\">Sidebar (25%)</div>\n    <div class=\"col-9\">Content (75%)</div>\n  </div>\n</div>\n```",
@@ -2009,11 +2109,298 @@
       ],
       "startingFiles": {
         "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Sidebar + Content + Sidebar</title>\n    <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css\">\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div class=\"container\">\n      <!-- Add a .row with three columns (25% / middle / 25%) here -->\n    </div>\n  </body>\n</html>",
-        "css": ".row > [class*=\"col-\"] {\n  border: 1px solid #ced4da;\n  padding: 12px;\n}"
+        "css": ".row > [class*=\"col-\"] {\n  border: 1px solid #ced4da;\n  padding: 12px;\n}",
+        "javascript": ""
       },
       "hints": "- Start by converting each 25% side column into a number of 12-unit pieces. (Hint: `25 / 100 * 12 = ?`)\n- Then subtract the two side columns from 12 to find out how many units are left for the middle.\n- Sanity check: your three `col-N` numbers must add up to exactly **12** for the row to be completely filled with no leftover space.\n- The order of the columns in the HTML matches their left-to-right visual order.",
       "solution": "```html\n<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-3\">Left (25%)</div>\n    <div class=\"col-6\">Middle (50%)</div>\n    <div class=\"col-3\">Right (25%)</div>\n  </div>\n</div>\n```",
       "walkthrough": "1. Inside `.container`, add `<div class=\"row\">`.\n2. Add three child `<div>` elements in this order: left, middle, right.\n3. Work out how many of the 12 units equal 25%, and give both the left and right columns that `col-N` class.\n4. Subtract the two side columns from 12 to get the middle column's unit count, and give the middle column that `col-N` class.\n5. Add identifying text in each column so the layout is easy to see.\n6. Save and run the tests. You should see a narrow-wide-narrow three-column layout filling the container."
+    },
+    {
+      "id": "fc07a7d439d1",
+      "slug": "query-selector-change-text",
+      "title": "Query Selector Change Text",
+      "categoryId": "c248574ad54a",
+      "categorySlug": "dom-selectors",
+      "order": 1,
+      "sourcePath": "questions/012-dom-selectors/001-query-selector-change-text.md",
+      "question": "The page currently shows a heading that says **\"Original Heading\"**. Write JavaScript in `script.js` so that when the page loads, the heading displays **\"Hello, DOM!\"** instead.\n\nDo not modify the HTML — the change must come from your JavaScript code.",
+      "answer": "",
+      "testCases": [
+        "describe('querySelector - change text', () => {\n  it('should change the <h1> text to \"Hello, DOM!\"', () => {\n    const h1 = document.querySelector('h1');\n    expect(h1, 'Expected to find an <h1> element').to.exist;\n    expect(h1.textContent.trim()).to.equal('Hello, DOM!');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>querySelector</title>\n  </head>\n  <body>\n    <h1>Original Heading</h1>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+        "css": "/* No custom CSS needed */",
+        "javascript": "// Write your code here"
+      },
+      "hints": "- The DOM gives you a way to find elements on the page from JavaScript.\n- Once you have a reference to an element, you can read and write its text content.",
+      "solution": "```javascript\nconst heading = document.querySelector('h1');\nheading.textContent = 'Hello, DOM!';\n```",
+      "walkthrough": "1. Open `script.js`.\n2. Use `document.querySelector('h1')` to get a reference to the heading.\n3. Set its `textContent` property to the string `'Hello, DOM!'`.\n4. Run the tests — the heading should now display the new text."
+    },
+    {
+      "id": "444ed93c17cd",
+      "slug": "query-selector-change-color",
+      "title": "Query Selector Change Color",
+      "categoryId": "c248574ad54a",
+      "categorySlug": "dom-selectors",
+      "order": 2,
+      "sourcePath": "questions/012-dom-selectors/002-query-selector-change-color.md",
+      "question": "The page has a paragraph with id `message`. Using JavaScript in `script.js`, make its text appear in **red**.\n\nUse your JavaScript code to apply the color — do not edit the HTML or CSS files.",
+      "answer": "",
+      "testCases": [
+        "describe('querySelector - change color', () => {\n  it('should set #message color to red', () => {\n    const el = document.querySelector('#message');\n    expect(el, 'Expected to find #message').to.exist;\n    const color = el.style.color || getComputedStyle(el).color;\n    expect(/red|rgb\\(\\s*255\\s*,\\s*0\\s*,\\s*0\\s*\\)/i.test(color)).to.equal(true);\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>querySelector color</title>\n  </head>\n  <body>\n    <p id=\"message\">This text should turn red.</p>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+        "css": "/* No custom CSS needed */",
+        "javascript": "// Write your code here"
+      },
+      "hints": "- Elements can be found by their id.\n- Every element has a `style` object that lets you set inline CSS properties from JavaScript.",
+      "solution": "```javascript\nconst msg = document.querySelector('#message');\nmsg.style.color = 'red';\n```",
+      "walkthrough": "1. In `script.js`, call `document.querySelector('#message')` to get the paragraph.\n2. Set `.style.color = 'red'` on the returned element.\n3. Run the tests — the paragraph text should render in red."
+    },
+    {
+      "id": "b3dfa3a42536",
+      "slug": "query-selector-class",
+      "title": "Query Selector Class",
+      "categoryId": "c248574ad54a",
+      "categorySlug": "dom-selectors",
+      "order": 3,
+      "sourcePath": "questions/012-dom-selectors/003-query-selector-class.md",
+      "question": "The page has three paragraphs, all with the class `highlight`. Write JavaScript that gives **only the first one** a yellow background.\n\nThe second and third paragraphs must remain unchanged.",
+      "answer": "",
+      "testCases": [
+        "describe('querySelector - class selector', () => {\n  it('should set background color of the first .highlight to yellow', () => {\n    const el = document.querySelector('.highlight');\n    expect(el, 'Expected to find an element with class \"highlight\"').to.exist;\n    const bg = el.style.backgroundColor || getComputedStyle(el).backgroundColor;\n    expect(/yellow|rgb\\(\\s*255\\s*,\\s*255\\s*,\\s*0\\s*\\)/i.test(bg)).to.equal(true);\n  });\n\n  it('should NOT change the second .highlight element', () => {\n    const all = document.querySelectorAll('.highlight');\n    expect(all.length).to.be.at.least(2);\n    const second = all[1];\n    const bg = second.style.backgroundColor;\n    expect(bg === '' || bg === undefined).to.equal(true);\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>querySelector class</title>\n  </head>\n  <body>\n    <p class=\"highlight\">First highlight</p>\n    <p class=\"highlight\">Second highlight</p>\n    <p class=\"highlight\">Third highlight</p>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+        "css": "/* No custom CSS needed */",
+        "javascript": "// Write your code here"
+      },
+      "hints": "- Some DOM methods return only the first matching element, others return all of them. Pick the right one.\n- CSS properties with dashes become camelCase in JavaScript (e.g. `background-color` → `backgroundColor`).",
+      "solution": "```javascript\nconst first = document.querySelector('.highlight');\nfirst.style.backgroundColor = 'yellow';\n```",
+      "walkthrough": "1. Call `document.querySelector('.highlight')` to get the first matching element.\n2. Set its `style.backgroundColor` to `'yellow'`.\n3. The second and third paragraphs remain unchanged because `querySelector` only returns the first match."
+    },
+    {
+      "id": "f24d8f5189ff",
+      "slug": "query-selector-all-change-text",
+      "title": "Query Selector All Change Text",
+      "categoryId": "c248574ad54a",
+      "categorySlug": "dom-selectors",
+      "order": 4,
+      "sourcePath": "questions/012-dom-selectors/004-query-selector-all-change-text.md",
+      "question": "The page contains a list of fruits. Write JavaScript so that every list item's text is replaced with the word **\"Updated!\"**.\n\nYour solution must work even if more list items are added to the HTML later.",
+      "answer": "",
+      "testCases": [
+        "describe('querySelectorAll - change all list items', () => {\n  it('should change all <li> text to \"Updated!\"', () => {\n    const items = document.querySelectorAll('li');\n    expect(items.length).to.be.at.least(3);\n    items.forEach((li) => {\n      expect(li.textContent.trim()).to.equal('Updated!');\n    });\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>querySelectorAll</title>\n  </head>\n  <body>\n    <ul>\n      <li>Apple</li>\n      <li>Banana</li>\n      <li>Cherry</li>\n    </ul>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+        "css": "/* No custom CSS needed */",
+        "javascript": "// Write your code here"
+      },
+      "hints": "- There is a DOM method that returns *all* matching elements, not just the first one.\n- The returned collection can be iterated like an array.",
+      "solution": "```javascript\nconst items = document.querySelectorAll('li');\nitems.forEach((li) => {\n  li.textContent = 'Updated!';\n});\n```",
+      "walkthrough": "1. `document.querySelectorAll('li')` returns a NodeList of all `<li>` elements.\n2. Iterate over each item using `forEach`.\n3. For each element, set `textContent = 'Updated!'`.\n4. All three list items should now display \"Updated!\"."
+    },
+    {
+      "id": "e135f37eba90",
+      "slug": "query-selector-all-change-color",
+      "title": "Query Selector All Change Color",
+      "categoryId": "c248574ad54a",
+      "categorySlug": "dom-selectors",
+      "order": 5,
+      "sourcePath": "questions/012-dom-selectors/005-query-selector-all-change-color.md",
+      "question": "The page has several paragraphs. Some have the class `item` and one does not. Write JavaScript so that **only the paragraphs with the class `item`** have blue text.\n\nThe paragraph without the `item` class must stay its default color.",
+      "answer": "",
+      "testCases": [
+        "describe('querySelectorAll - change all colors', () => {\n  it('should set all .item elements to blue', () => {\n    const items = document.querySelectorAll('.item');\n    expect(items.length).to.be.at.least(3);\n    items.forEach((el) => {\n      const color = el.style.color || getComputedStyle(el).color;\n      expect(/blue|rgb\\(\\s*0\\s*,\\s*0\\s*,\\s*255\\s*\\)/i.test(color)).to.equal(true);\n    });\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>querySelectorAll color</title>\n  </head>\n  <body>\n    <p class=\"item\">Item one</p>\n    <p class=\"item\">Item two</p>\n    <p class=\"item\">Item three</p>\n    <p>Not an item</p>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+        "css": "/* No custom CSS needed */",
+        "javascript": "// Write your code here"
+      },
+      "hints": "- CSS selectors work inside DOM queries too — classes, ids, tags, attributes.\n- You'll need to iterate through a collection of elements.",
+      "solution": "```javascript\nconst items = document.querySelectorAll('.item');\nitems.forEach((el) => {\n  el.style.color = 'blue';\n});\n```",
+      "walkthrough": "1. Select all elements with class `item` using `document.querySelectorAll('.item')`.\n2. Loop through the NodeList with `forEach`.\n3. Set each element's `style.color = 'blue'`.\n4. The element without the `item` class remains unchanged."
+    },
+    {
+      "id": "a5d1242856fa",
+      "slug": "query-selector-all-add-class",
+      "title": "Query Selector All Add Class",
+      "categoryId": "c248574ad54a",
+      "categorySlug": "dom-selectors",
+      "order": 6,
+      "sourcePath": "questions/012-dom-selectors/006-query-selector-all-add-class.md",
+      "question": "A CSS rule already defines styling for elements with the class `active` (bold, green text). Write JavaScript that applies this class to every paragraph on the page.\n\nWhen you're done, all paragraphs should render as bold green text — driven entirely by your JavaScript.",
+      "answer": "",
+      "testCases": [
+        "describe('querySelectorAll - add class', () => {\n  it('should add \"active\" class to every <p> element', () => {\n    const paragraphs = document.querySelectorAll('p');\n    expect(paragraphs.length).to.be.at.least(3);\n    paragraphs.forEach((p) => {\n      expect(p.classList.contains('active')).to.equal(true);\n    });\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Add class to all</title>\n  </head>\n  <body>\n    <p>First paragraph</p>\n    <p>Second paragraph</p>\n    <p>Third paragraph</p>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+        "css": ".active {\n  font-weight: bold;\n  color: green;\n}",
+        "javascript": "// Write your code here"
+      },
+      "hints": "- Elements have a property that lets you manipulate their list of CSS classes without overwriting existing ones.\n- Remember: `querySelectorAll` returns multiple elements.",
+      "solution": "```javascript\nconst paragraphs = document.querySelectorAll('p');\nparagraphs.forEach((p) => {\n  p.classList.add('active');\n});\n```",
+      "walkthrough": "1. `document.querySelectorAll('p')` returns all paragraph elements.\n2. Loop through with `forEach`.\n3. Call `classList.add('active')` on each element.\n4. All paragraphs should now appear bold and green (from the existing CSS)."
+    },
+    {
+      "id": "3422990f3a8a",
+      "slug": "query-selector-attribute",
+      "title": "Query Selector Attribute",
+      "categoryId": "c248574ad54a",
+      "categorySlug": "dom-selectors",
+      "order": 7,
+      "sourcePath": "questions/012-dom-selectors/007-query-selector-attribute.md",
+      "question": "The form has three inputs: a text field, an email field, and a password field. Write JavaScript that pre-fills **only the email input** with the value `hello@example.com`.\n\nThe other two inputs must remain empty.\n\nNote: none of the inputs have an id or class, so you'll need another way to target the right one.",
+      "answer": "",
+      "testCases": [
+        "describe('querySelector - attribute selector', () => {\n  it('should set the email input value', () => {\n    const input = document.querySelector('input[type=\"email\"]');\n    expect(input, 'Expected to find input[type=\"email\"]').to.exist;\n    expect(input.value).to.equal('hello@example.com');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Attribute selector</title>\n  </head>\n  <body>\n    <form>\n      <input type=\"text\" placeholder=\"Name\">\n      <input type=\"email\" placeholder=\"Email\">\n      <input type=\"password\" placeholder=\"Password\">\n    </form>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+        "css": "/* No custom CSS needed */",
+        "javascript": "// Write your code here"
+      },
+      "hints": "- CSS supports selecting elements based on attribute values, and so does `querySelector`.\n- The displayed contents of a form input is stored in its `value`, not its text.",
+      "solution": "```javascript\nconst emailInput = document.querySelector('input[type=\"email\"]');\nemailInput.value = 'hello@example.com';\n```",
+      "walkthrough": "1. `document.querySelector('input[type=\"email\"]')` finds the input with `type=\"email\"`.\n2. Form input values are accessed via the `.value` property.\n3. Assign `'hello@example.com'` to `.value`."
+    },
+    {
+      "id": "98eff35a82af",
+      "slug": "query-selector-all-alternate-styles",
+      "title": "Query Selector All Alternate Styles",
+      "categoryId": "c248574ad54a",
+      "categorySlug": "dom-selectors",
+      "order": 8,
+      "sourcePath": "questions/012-dom-selectors/008-query-selector-all-alternate-styles.md",
+      "question": "The page contains a table with several rows. Write JavaScript that gives the table a **zebra-stripe** effect using inline styles:\n\n- Rows at positions **0, 2, 4, ...** (even indexes) should have a `lightgray` background.\n- Rows at positions **1, 3, 5, ...** (odd indexes) should have a `white` background.\n\nThe effect should be applied via JavaScript, not CSS.",
+      "answer": "",
+      "testCases": [
+        "describe('querySelectorAll - alternating styles', () => {\n  it('should set even rows to lightgray and odd rows to white', () => {\n    const rows = document.querySelectorAll('tr');\n    expect(rows.length).to.be.at.least(4);\n    rows.forEach((row, i) => {\n      const bg = row.style.backgroundColor;\n      if (i % 2 === 0) {\n        expect(/lightgray|rgb\\(\\s*211\\s*,\\s*211\\s*,\\s*211\\s*\\)/i.test(bg)).to.equal(true);\n      } else {\n        expect(/white|rgb\\(\\s*255\\s*,\\s*255\\s*,\\s*255\\s*\\)/i.test(bg)).to.equal(true);\n      }\n    });\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Alternating rows</title>\n  </head>\n  <body>\n    <table>\n      <tr><td>Row 1</td></tr>\n      <tr><td>Row 2</td></tr>\n      <tr><td>Row 3</td></tr>\n      <tr><td>Row 4</td></tr>\n    </table>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+        "css": "table {\n  border-collapse: collapse;\n  width: 100%;\n}\ntd {\n  padding: 8px;\n}",
+        "javascript": "// Write your code here"
+      },
+      "hints": "- When looping through a collection, you often have access to the index of the current element.\n- The modulo operator (`%`) is useful for distinguishing even from odd numbers.",
+      "solution": "```javascript\nconst rows = document.querySelectorAll('tr');\nrows.forEach((row, i) => {\n  row.style.backgroundColor = i % 2 === 0 ? 'lightgray' : 'white';\n});\n```",
+      "walkthrough": "1. Select all rows with `document.querySelectorAll('tr')`.\n2. Iterate using `forEach` with index: `(row, i) => {...}`.\n3. Use a ternary: set `lightgray` when `i % 2 === 0`, `white` otherwise.\n4. The table now displays striped rows."
+    },
+    {
+      "id": "0f137771c5ad",
+      "slug": "button-alert-hello",
+      "title": "Button Alert Hello",
+      "categoryId": "e63bc40c45d8",
+      "categorySlug": "event-listeners",
+      "order": 1,
+      "sourcePath": "questions/013-event-listeners/001-button-alert-hello.md",
+      "question": "The page has a single button. Write JavaScript so that **every time the button is clicked**, the browser shows an alert with the message `Hello World`.\n\nDo not call `alert` on page load — the alert should only appear in response to a click.",
+      "answer": "",
+      "testCases": [
+        "describe('event listener - alert on click', () => {\n  it('should call alert(\"Hello World\") when the button is clicked', () => {\n    const btn = document.querySelector('button');\n    expect(btn, 'Expected to find a <button>').to.exist;\n\n    const original = window.alert;\n    let called = null;\n    window.alert = (msg) => { called = msg; };\n\n    btn.click();\n\n    window.alert = original;\n    expect(called).to.equal('Hello World');\n  });\n\n  it('should NOT alert on page load', () => {\n    // If alert had fired on load, the test runner would have been interrupted.\n    expect(true).to.equal(true);\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Click me</title>\n  </head>\n  <body>\n    <button id=\"greet\">Click me</button>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+        "css": "/* No custom CSS needed */",
+        "javascript": "// Write your code here"
+      },
+      "hints": "- DOM elements can listen for events such as `click`.\n- The browser provides a built-in `alert()` function.",
+      "solution": "```javascript\nconst btn = document.querySelector('#greet');\nbtn.addEventListener('click', () => {\n  alert('Hello World');\n});\n```",
+      "walkthrough": "1. Find the button on the page.\n2. Attach a `click` event listener to it.\n3. Inside the listener, call `alert('Hello World')`.\n4. Each click triggers a fresh alert."
+    },
+    {
+      "id": "fe980897d2b8",
+      "slug": "button-change-text",
+      "title": "Button Change Text",
+      "categoryId": "e63bc40c45d8",
+      "categorySlug": "event-listeners",
+      "order": 2,
+      "sourcePath": "questions/013-event-listeners/002-button-change-text.md",
+      "question": "The page shows a paragraph with the text `Click the button to change me` and a button labelled `Update`. Write JavaScript so that when the button is clicked, the paragraph's text changes to `Text has been updated!`.\n\nBefore the button is clicked, the paragraph must still show its original text.",
+      "answer": "",
+      "testCases": [
+        "describe('event listener - change text on click', () => {\n  it('should keep the original text before click', () => {\n    const p = document.querySelector('#target');\n    expect(p.textContent.trim()).to.equal('Click the button to change me');\n  });\n\n  it('should change text after button click', () => {\n    const btn = document.querySelector('button');\n    btn.click();\n    const p = document.querySelector('#target');\n    expect(p.textContent.trim()).to.equal('Text has been updated!');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Change text</title>\n  </head>\n  <body>\n    <p id=\"target\">Click the button to change me</p>\n    <button>Update</button>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+        "css": "/* No custom CSS needed */",
+        "javascript": "// Write your code here"
+      },
+      "hints": "- You'll need to find two different elements — one to listen on, and one to update.\n- The update must happen *inside* the event listener so it only runs when the button is clicked.",
+      "solution": "```javascript\nconst btn = document.querySelector('button');\nconst target = document.querySelector('#target');\n\nbtn.addEventListener('click', () => {\n  target.textContent = 'Text has been updated!';\n});\n```",
+      "walkthrough": "1. Get references to both the paragraph and the button.\n2. Attach a `click` listener to the button.\n3. Inside the listener, update the paragraph's `textContent`."
+    },
+    {
+      "id": "6825fad4c7b4",
+      "slug": "three-buttons-change-background",
+      "title": "Three Buttons Change Background",
+      "categoryId": "e63bc40c45d8",
+      "categorySlug": "event-listeners",
+      "order": 3,
+      "sourcePath": "questions/013-event-listeners/003-three-buttons-change-background.md",
+      "question": "The page has a `<div>` (id `box`) and three buttons labelled **Red**, **Green**, and **Blue**. Write JavaScript so that clicking each button changes the background color of the `<div>` to its matching color.\n\n- Clicking **Red** → `<div>` background becomes `red`.\n- Clicking **Green** → `<div>` background becomes `green`.\n- Clicking **Blue** → `<div>` background becomes `blue`.",
+      "answer": "",
+      "testCases": [
+        "describe('event listener - three buttons change background', () => {\n  const box = () => document.querySelector('#box');\n\n  it('clicking Red sets background to red', () => {\n    document.querySelector('#red-btn').click();\n    const bg = box().style.backgroundColor;\n    expect(/red|rgb\\(\\s*255\\s*,\\s*0\\s*,\\s*0\\s*\\)/i.test(bg)).to.equal(true);\n  });\n\n  it('clicking Green sets background to green', () => {\n    document.querySelector('#green-btn').click();\n    const bg = box().style.backgroundColor;\n    expect(/green|rgb\\(\\s*0\\s*,\\s*128\\s*,\\s*0\\s*\\)/i.test(bg)).to.equal(true);\n  });\n\n  it('clicking Blue sets background to blue', () => {\n    document.querySelector('#blue-btn').click();\n    const bg = box().style.backgroundColor;\n    expect(/blue|rgb\\(\\s*0\\s*,\\s*0\\s*,\\s*255\\s*\\)/i.test(bg)).to.equal(true);\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Color picker</title>\n  </head>\n  <body>\n    <div id=\"box\">Watch my background change</div>\n    <button id=\"red-btn\">Red</button>\n    <button id=\"green-btn\">Green</button>\n    <button id=\"blue-btn\">Blue</button>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+        "css": "#box {\n  width: 300px;\n  height: 150px;\n  border: 1px solid #333;\n  margin-bottom: 10px;\n  padding: 10px;\n}",
+        "javascript": "// Write your code here"
+      },
+      "hints": "- You need three separate event listeners — one for each button.\n- Each listener updates the same target element but with a different color value.",
+      "solution": "```javascript\nconst box = document.querySelector('#box');\n\ndocument.querySelector('#red-btn').addEventListener('click', () => {\n  box.style.backgroundColor = 'red';\n});\n\ndocument.querySelector('#green-btn').addEventListener('click', () => {\n  box.style.backgroundColor = 'green';\n});\n\ndocument.querySelector('#blue-btn').addEventListener('click', () => {\n  box.style.backgroundColor = 'blue';\n});\n```",
+      "walkthrough": "1. Get a reference to the `#box` element.\n2. For each button, attach a `click` listener.\n3. In each listener, set `box.style.backgroundColor` to the matching color."
+    },
+    {
+      "id": "a79c0dc077d0",
+      "slug": "counter-increment-decrement",
+      "title": "Counter Increment Decrement",
+      "categoryId": "e63bc40c45d8",
+      "categorySlug": "event-listeners",
+      "order": 4,
+      "sourcePath": "questions/013-event-listeners/004-counter-increment-decrement.md",
+      "question": "Build a simple counter. The page shows a number (starting at `0`) and two buttons: **+** and **−**.\n\n- Clicking **+** should increase the displayed number by 1.\n- Clicking **−** should decrease the displayed number by 1.\n- The number should be able to go negative.\n\nThe starting number shown on the page must be `0` when the page loads.",
+      "answer": "",
+      "testCases": [
+        "describe('event listener - counter', () => {\n  const getValue = () => Number(document.querySelector('#count').textContent);\n\n  it('starts at 0', () => {\n    expect(getValue()).to.equal(0);\n  });\n\n  it('increments when + is clicked', () => {\n    document.querySelector('#inc').click();\n    document.querySelector('#inc').click();\n    document.querySelector('#inc').click();\n    expect(getValue()).to.equal(3);\n  });\n\n  it('decrements when - is clicked', () => {\n    document.querySelector('#dec').click();\n    expect(getValue()).to.equal(2);\n  });\n\n  it('can go below zero', () => {\n    document.querySelector('#dec').click();\n    document.querySelector('#dec').click();\n    document.querySelector('#dec').click();\n    expect(getValue()).to.equal(-1);\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Counter</title>\n  </head>\n  <body>\n    <h1 id=\"count\">0</h1>\n    <button id=\"dec\">-</button>\n    <button id=\"inc\">+</button>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+        "css": "body {\n  font-family: sans-serif;\n  text-align: center;\n}\nbutton {\n  font-size: 24px;\n  padding: 5px 20px;\n  margin: 0 5px;\n}",
+        "javascript": "// Write your code here"
+      },
+      "hints": "- **Important:** `element.textContent` (and `innerText`) is always a **string**, even if it looks like a number. If you do `\"0\" + 1` you get `\"01\"`, not `1`. Convert it first with `Number(...)` or `parseInt(...)`.\n- You could either read the text each click and update it, or keep the count in a separate variable.",
+      "solution": "```javascript\nconst display = document.querySelector('#count');\n\ndocument.querySelector('#inc').addEventListener('click', () => {\n  const current = Number(display.textContent);\n  display.textContent = current + 1;\n});\n\ndocument.querySelector('#dec').addEventListener('click', () => {\n  const current = Number(display.textContent);\n  display.textContent = current - 1;\n});\n```",
+      "walkthrough": "1. Grab the `#count` element — this is where the number lives.\n2. For the **+** button, add a click listener that:\n   - Reads the current text, converts it to a number.\n   - Adds `1` and writes the result back into `textContent`.\n3. Do the same for the **−** button, but subtract instead.\n4. Remember: without `Number()`, the `+` operator would concatenate strings instead of adding numbers."
+    },
+    {
+      "id": "d3ed966d0a3c",
+      "slug": "swap-textbox-values",
+      "title": "Swap Textbox Values",
+      "categoryId": "e63bc40c45d8",
+      "categorySlug": "event-listeners",
+      "order": 5,
+      "sourcePath": "questions/013-event-listeners/005-swap-textbox-values.md",
+      "question": "The page has two text inputs and a **Swap** button. Write JavaScript so that when the button is clicked, the values of the two inputs are **swapped**.\n\nFor example, if the first input contains `apple` and the second contains `banana`, after clicking **Swap** the first should contain `banana` and the second should contain `apple`.",
+      "answer": "",
+      "testCases": [
+        "describe('event listener - swap input values', () => {\n  it('swaps two non-empty values', () => {\n    const a = document.querySelector('#input-a');\n    const b = document.querySelector('#input-b');\n    a.value = 'apple';\n    b.value = 'banana';\n    document.querySelector('#swap').click();\n    expect(a.value).to.equal('banana');\n    expect(b.value).to.equal('apple');\n  });\n\n  it('swaps again back to original', () => {\n    const a = document.querySelector('#input-a');\n    const b = document.querySelector('#input-b');\n    a.value = 'one';\n    b.value = 'two';\n    document.querySelector('#swap').click();\n    document.querySelector('#swap').click();\n    expect(a.value).to.equal('one');\n    expect(b.value).to.equal('two');\n  });\n\n  it('handles empty values', () => {\n    const a = document.querySelector('#input-a');\n    const b = document.querySelector('#input-b');\n    a.value = '';\n    b.value = 'hello';\n    document.querySelector('#swap').click();\n    expect(a.value).to.equal('hello');\n    expect(b.value).to.equal('');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Swap values</title>\n  </head>\n  <body>\n    <input id=\"input-a\" type=\"text\" placeholder=\"First\">\n    <input id=\"input-b\" type=\"text\" placeholder=\"Second\">\n    <button id=\"swap\">Swap</button>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+        "css": "body {\n  font-family: sans-serif;\n  padding: 20px;\n}\ninput, button {\n  font-size: 16px;\n  padding: 5px 10px;\n  margin-right: 5px;\n}",
+        "javascript": "// Write your code here\n//\n// Reminder: the text currently inside an <input> is read via the `.value`\n// property (not textContent). For example:\n//\n//   const inputEl = document.querySelector('#input-a');\n//   const text = inputEl.value;        // read what the user typed\n//   inputEl.value = 'something new';   // change the displayed text"
+      },
+      "hints": "- You'll need to hold one of the values in a temporary variable so it isn't overwritten before you can use it.\n- Destructuring assignment (`[a, b] = [b, a]`) is an elegant one-liner swap, but a temp variable works just as well.",
+      "solution": "```javascript\nconst a = document.querySelector('#input-a');\nconst b = document.querySelector('#input-b');\nconst swapBtn = document.querySelector('#swap');\n\nswapBtn.addEventListener('click', () => {\n  const temp = a.value;\n  a.value = b.value;\n  b.value = temp;\n});\n```",
+      "walkthrough": "1. Get references to both inputs and the swap button.\n2. Attach a `click` listener to the button.\n3. Inside the listener:\n   - Save the first input's `value` into a temporary variable.\n   - Assign the second input's `value` to the first.\n   - Assign the saved value to the second.\n4. Without the temp variable, the first assignment would overwrite the value you're trying to swap."
     }
   ]
 }
