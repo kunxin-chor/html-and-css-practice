@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-05T08:31:49.208Z",
+  "generatedAt": "2026-05-06T07:11:01.626Z",
   "categories": [
     {
       "id": "63ebd4de56f3",
@@ -84,6 +84,12 @@
       "slug": "form-processing",
       "name": "Form Processing",
       "order": 14
+    },
+    {
+      "id": "0c01facad428",
+      "slug": "append-child-and-lists",
+      "name": "Append Child And Lists",
+      "order": 15
     }
   ],
   "questions": [
@@ -2583,6 +2589,204 @@
       "hints": "- Build a new `<option>` element with `document.createElement('option')`. Set its `.value` and `.textContent`, then append it to the City dropdown.\n- Before adding new options, clear the old ones. The simplest way is `citySelect.innerHTML = ''` (and then re-add the placeholder if you want one).\n- Use `Array.prototype.find` on the country's array to look up the city object by id when the **Show** button is clicked.",
       "solution": "```javascript\nconst COUNTRIES = {\n  Japan: [\n    { id: 'tyo', name: 'Tokyo' },\n    { id: 'osa', name: 'Osaka' },\n    { id: 'kyo', name: 'Kyoto' },\n  ],\n  France: [\n    { id: 'par', name: 'Paris' },\n    { id: 'lyo', name: 'Lyon' },\n    { id: 'mar', name: 'Marseille' },\n  ],\n};\n\nconst countrySelect = document.querySelector('#country');\nconst citySelect = document.querySelector('#city');\nconst showBtn = document.querySelector('#show-btn');\nconst resultDiv = document.querySelector('#result');\n\ncountrySelect.addEventListener('change', () => {\n  const country = countrySelect.value;\n  citySelect.innerHTML = '<option value=\"\">-- choose a city --</option>';\n\n  const cities = COUNTRIES[country] || [];\n  cities.forEach((city) => {\n    const option = document.createElement('option');\n    option.value = city.id;\n    option.textContent = city.name;\n    citySelect.appendChild(option);\n  });\n});\n\nshowBtn.addEventListener('click', () => {\n  const country = countrySelect.value;\n  const cityId = citySelect.value;\n  const cities = COUNTRIES[country] || [];\n  const city = cities.find((c) => c.id === cityId);\n  if (city) {\n    resultDiv.textContent = city.id + ': ' + city.name;\n  }\n});\n```",
       "walkthrough": "1. Get references to the country `<select>`, city `<select>`, the **Show** button, and the result `<div>`.\n2. Listen for the `change` event on the Country dropdown:\n   - Read `countrySelect.value` — it will be `'Japan'`, `'France'`, or empty.\n   - Clear the city dropdown by setting its `innerHTML` to an empty string (or a placeholder option).\n   - Look up the matching cities array in `COUNTRIES[country]`.\n   - For each city, create an `<option>` element, set its `value` to `city.id` and its `textContent` to `city.name`, then append it to the City dropdown.\n3. Listen for the `click` event on the **Show** button:\n   - Read the currently selected country and city id.\n   - Use `Array.find` to locate the city object whose `id` matches.\n   - Set the result `<div>`'s `textContent` to `city.id + ': ' + city.name`.\n4. Switching the country re-runs the `change` handler, so old cities are wiped before new ones are added."
+    },
+    {
+      "id": "70d288179b3e",
+      "slug": "append-hello-span",
+      "title": "Append Hello Span",
+      "categoryId": "0c01facad428",
+      "categorySlug": "append-child-and-lists",
+      "order": 1,
+      "sourcePath": "questions/015-append-child-and-lists/001-append-hello-span.md",
+      "question": "The page has a button labelled **Add** and an empty `<div>` with `id=\"output\"`.\n\nEvery time the user clicks **Add**, a new `<span>` containing the text `hello world` should be appended to the end of the `#output` div.\n\nFor example, after clicking **Add** three times, `#output` should contain three `<span>hello world</span>` elements (in the order they were added).",
+      "answer": "",
+      "testCases": [
+        "describe('append child - hello world span', () => {\n  const click = () => document.querySelector('#add-btn').click();\n  const output = () => document.querySelector('#output');\n  const spans = () => output().querySelectorAll('span');\n\n  it('starts with an empty output', () => {\n    expect(spans().length).to.equal(0);\n  });\n\n  it('appends one span per click', () => {\n    click();\n    expect(spans().length).to.equal(1);\n    click();\n    click();\n    expect(spans().length).to.equal(3);\n  });\n\n  it('each span contains \"hello world\"', () => {\n    click();\n    click();\n    spans().forEach((s) => {\n      expect(s.textContent.trim()).to.equal('hello world');\n    });\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Append Hello World</title>\n  </head>\n  <body>\n    <button id=\"add-btn\">Add</button>\n    <div id=\"output\"></div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+        "css": "body {\n  font-family: sans-serif;\n  padding: 20px;\n}\nbutton {\n  font-size: 16px;\n  padding: 5px 10px;\n}\n#output span {\n  margin-right: 8px;\n}",
+        "javascript": "// Write your code here\n//\n// You can create a new DOM element with document.createElement(...),\n// set its text with .textContent, and attach it to another element\n// with parent.appendChild(...)."
+      },
+      "hints": "- Create the span with `document.createElement('span')`.\n- Set its text with `.textContent = 'hello world'`.\n- Append it to the output div with `outputDiv.appendChild(span)`.",
+      "solution": "```javascript\nconst addBtn = document.querySelector('#add-btn');\nconst output = document.querySelector('#output');\n\naddBtn.addEventListener('click', () => {\n  const span = document.createElement('span');\n  span.textContent = 'hello world';\n  output.appendChild(span);\n});\n```",
+      "walkthrough": "1. Get references to the button and the `#output` div.\n2. Attach a `click` listener to the button.\n3. Inside the listener:\n   - Create a brand-new `<span>` with `document.createElement('span')`.\n   - Set its `textContent` to `'hello world'`.\n   - Call `output.appendChild(span)` to attach it to the end of the output div.\n4. Because a new element is created on every click, each click produces one more span."
+    },
+    {
+      "id": "c438d48d81f1",
+      "slug": "append-hello-red",
+      "title": "Append Hello Red",
+      "categoryId": "0c01facad428",
+      "categorySlug": "append-child-and-lists",
+      "order": 2,
+      "sourcePath": "questions/015-append-child-and-lists/002-append-hello-red.md",
+      "question": "As in the previous question, the page has a button labelled **Add** and an empty `<div>` with `id=\"output\"`.\n\nEvery time the user clicks **Add**, a new `<span>` containing the text `hello world` should be appended to the `#output` div. This time, the text inside each appended span should be displayed in **red**.",
+      "answer": "",
+      "testCases": [
+        "describe('append child - red hello world', () => {\n  const click = () => document.querySelector('#add-btn').click();\n  const spans = () => document.querySelector('#output').querySelectorAll('span');\n\n  const isRed = (color) => {\n    const c = color.replace(/\\s+/g, '').toLowerCase();\n    return c === 'red' || c === 'rgb(255,0,0)' || c === '#ff0000';\n  };\n\n  it('appends one span per click', () => {\n    click();\n    click();\n    expect(spans().length).to.equal(2);\n  });\n\n  it('each span contains \"hello world\"', () => {\n    click();\n    spans().forEach((s) => {\n      expect(s.textContent.trim()).to.equal('hello world');\n    });\n  });\n\n  it('each span is coloured red', () => {\n    click();\n    spans().forEach((s) => {\n      expect(isRed(s.style.color) || isRed(getComputedStyle(s).color)).to.equal(true);\n    });\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Append Red Hello</title>\n  </head>\n  <body>\n    <button id=\"add-btn\">Add</button>\n    <div id=\"output\"></div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+        "css": "body {\n  font-family: sans-serif;\n  padding: 20px;\n}\nbutton {\n  font-size: 16px;\n  padding: 5px 10px;\n}\n#output span {\n  margin-right: 8px;\n}",
+        "javascript": "// Write your code here"
+      },
+      "hints": "- Set the text colour directly on the new span's inline style: `span.style.color = 'red'`.\n- Do this before appending, or after — either order works.",
+      "solution": "```javascript\nconst addBtn = document.querySelector('#add-btn');\nconst output = document.querySelector('#output');\n\naddBtn.addEventListener('click', () => {\n  const span = document.createElement('span');\n  span.textContent = 'hello world';\n  span.style.color = 'red';\n  output.appendChild(span);\n});\n```",
+      "walkthrough": "1. Start from the solution of the previous question.\n2. After creating the span and setting its text, add `span.style.color = 'red'`.\n3. Append the span to the output div as before."
+    },
+    {
+      "id": "91aca25008e1",
+      "slug": "append-hello-red-verdana",
+      "title": "Append Hello Red Verdana",
+      "categoryId": "0c01facad428",
+      "categorySlug": "append-child-and-lists",
+      "order": 3,
+      "sourcePath": "questions/015-append-child-and-lists/003-append-hello-red-verdana.md",
+      "question": "As in the previous question, every click of the **Add** button appends a `<span>hello world</span>` to `#output`, with the text coloured **red**. This time the text should also use the **Verdana** font family.",
+      "answer": "",
+      "testCases": [
+        "describe('append child - red verdana hello world', () => {\n  const click = () => document.querySelector('#add-btn').click();\n  const spans = () => document.querySelector('#output').querySelectorAll('span');\n\n  const isRed = (color) => {\n    const c = color.replace(/\\s+/g, '').toLowerCase();\n    return c === 'red' || c === 'rgb(255,0,0)' || c === '#ff0000';\n  };\n\n  it('each span says \"hello world\", in red, in Verdana', () => {\n    click();\n    click();\n    const list = spans();\n    expect(list.length).to.equal(2);\n    list.forEach((s) => {\n      expect(s.textContent.trim()).to.equal('hello world');\n      expect(isRed(s.style.color) || isRed(getComputedStyle(s).color)).to.equal(true);\n      const font = (s.style.fontFamily || getComputedStyle(s).fontFamily || '').toLowerCase();\n      expect(font).to.include('verdana');\n    });\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Red Verdana Hello</title>\n  </head>\n  <body>\n    <button id=\"add-btn\">Add</button>\n    <div id=\"output\"></div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+        "css": "body {\n  font-family: sans-serif;\n  padding: 20px;\n}\nbutton {\n  font-size: 16px;\n  padding: 5px 10px;\n}\n#output span {\n  margin-right: 8px;\n}",
+        "javascript": "// Write your code here"
+      },
+      "hints": "- Font family is set with `span.style.fontFamily = 'Verdana'`.\n- In JavaScript, CSS properties with hyphens become camelCase (`font-family` → `fontFamily`, `background-color` → `backgroundColor`, etc.).",
+      "solution": "```javascript\nconst addBtn = document.querySelector('#add-btn');\nconst output = document.querySelector('#output');\n\naddBtn.addEventListener('click', () => {\n  const span = document.createElement('span');\n  span.textContent = 'hello world';\n  span.style.color = 'red';\n  span.style.fontFamily = 'Verdana';\n  output.appendChild(span);\n});\n```",
+      "walkthrough": "1. Start from the previous solution (red hello world).\n2. Add one more line: `span.style.fontFamily = 'Verdana'`.\n3. Append the span to `#output`."
+    },
+    {
+      "id": "0690887c1b6d",
+      "slug": "two-lists-add-item",
+      "title": "Two Lists Add Item",
+      "categoryId": "0c01facad428",
+      "categorySlug": "append-child-and-lists",
+      "order": 4,
+      "sourcePath": "questions/015-append-child-and-lists/004-two-lists-add-item.md",
+      "question": "The page has **two independent unordered lists** — a Fruits list and a Colours list. Each list has its own **text input** and its own **Add** button.\n\nWhen the user types something into a list's input and clicks **that same list's Add** button, the typed value should be added as a new `<li>` to **only that list** (the other list should not change).\n\n- Adding `apple` via the Fruits Add button appends `<li>apple</li>` to the Fruits list only.\n- Adding `blue` via the Colours Add button appends `<li>blue</li>` to the Colours list only.\n- Clicking a list's Add button multiple times should keep appending items (each click adds one more `<li>`).",
+      "answer": "",
+      "testCases": [
+        "describe('append child - two independent lists', () => {\n  const fruitInput = () => document.querySelector('#fruit-input');\n  const colourInput = () => document.querySelector('#colour-input');\n  const fruitList = () => document.querySelector('#fruit-list');\n  const colourList = () => document.querySelector('#colour-list');\n  const addFruit = () => document.querySelector('#fruit-add').click();\n  const addColour = () => document.querySelector('#colour-add').click();\n\n  it('adds an item only to the fruit list', () => {\n    fruitInput().value = 'apple';\n    addFruit();\n    const fruits = [...fruitList().querySelectorAll('li')].map((li) => li.textContent.trim());\n    const colours = [...colourList().querySelectorAll('li')].map((li) => li.textContent.trim());\n    expect(fruits).to.deep.equal(['apple']);\n    expect(colours).to.deep.equal([]);\n  });\n\n  it('adds an item only to the colour list', () => {\n    colourInput().value = 'blue';\n    addColour();\n    const fruits = [...fruitList().querySelectorAll('li')].map((li) => li.textContent.trim());\n    const colours = [...colourList().querySelectorAll('li')].map((li) => li.textContent.trim());\n    expect(fruits).to.deep.equal(['apple']);\n    expect(colours).to.deep.equal(['blue']);\n  });\n\n  it('appends multiple items in order', () => {\n    fruitInput().value = 'banana';\n    addFruit();\n    fruitInput().value = 'cherry';\n    addFruit();\n    const fruits = [...fruitList().querySelectorAll('li')].map((li) => li.textContent.trim());\n    expect(fruits).to.deep.equal(['apple', 'banana', 'cherry']);\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Two Lists</title>\n  </head>\n  <body>\n    <section>\n      <h3>Fruits</h3>\n      <ul id=\"fruit-list\"></ul>\n      <input id=\"fruit-input\" type=\"text\" placeholder=\"Fruit name\">\n      <button id=\"fruit-add\">Add</button>\n    </section>\n\n    <section>\n      <h3>Colours</h3>\n      <ul id=\"colour-list\"></ul>\n      <input id=\"colour-input\" type=\"text\" placeholder=\"Colour name\">\n      <button id=\"colour-add\">Add</button>\n    </section>\n\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+        "css": "body {\n  font-family: sans-serif;\n  padding: 20px;\n}\nsection {\n  margin-bottom: 20px;\n}\ninput, button {\n  font-size: 16px;\n  padding: 5px 10px;\n}",
+        "javascript": "// Write your code here"
+      },
+      "hints": "- You need one click listener per button. Each listener reads from its own input and appends to its own list.\n- To add a new list item: create an `<li>` with `document.createElement('li')`, set its `textContent`, and `appendChild` it to the correct `<ul>`.",
+      "solution": "```javascript\nconst fruitInput = document.querySelector('#fruit-input');\nconst fruitList = document.querySelector('#fruit-list');\ndocument.querySelector('#fruit-add').addEventListener('click', () => {\n  const li = document.createElement('li');\n  li.textContent = fruitInput.value;\n  fruitList.appendChild(li);\n});\n\nconst colourInput = document.querySelector('#colour-input');\nconst colourList = document.querySelector('#colour-list');\ndocument.querySelector('#colour-add').addEventListener('click', () => {\n  const li = document.createElement('li');\n  li.textContent = colourInput.value;\n  colourList.appendChild(li);\n});\n```",
+      "walkthrough": "1. Grab references to the two inputs, the two `<ul>` elements, and the two buttons.\n2. For each list, attach its own `click` handler to the matching button.\n3. Inside each handler:\n   - Create a fresh `<li>`.\n   - Set its `textContent` to the matching input's `.value`.\n   - Append it to the matching `<ul>`.\n4. Because each handler only touches one list, the other list is untouched."
+    },
+    {
+      "id": "6b46f0979dd8",
+      "slug": "render-number-list",
+      "title": "Render Number List",
+      "categoryId": "0c01facad428",
+      "categorySlug": "append-child-and-lists",
+      "order": 5,
+      "sourcePath": "questions/015-append-child-and-lists/005-render-number-list.md",
+      "question": "You are given the following array of numbers in the starter JavaScript:\n\n```javascript\nconst NUMBERS = [10, 25, 50, 75, 90];\n```\n\nThe page has an empty `<ul>` with `id=\"list\"`. When the page loads, each number in the array should appear as an `<li>` inside that `<ul>`, in the same order as the array.\n\nUse `document.createElement`, `appendChild`, and a `for...of` loop to build the list.",
+      "answer": "",
+      "testCases": [
+        "describe('append child - basic number list', () => {\n  it('renders one <li> per number in the array, in order', () => {\n    const items = [...document.querySelectorAll('#list > li')].map((li) => li.textContent.trim());\n    expect(items).to.deep.equal(['10', '25', '50', '75', '90']);\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Number List</title>\n  </head>\n  <body>\n    <ul id=\"list\"></ul>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+        "css": "body {\n  font-family: sans-serif;\n  padding: 20px;\n}",
+        "javascript": "const NUMBERS = [10, 25, 50, 75, 90];\n\n// Write your code here"
+      },
+      "hints": "- Grab the `#list` element first.\n- Use `for (const n of NUMBERS) { ... }` to iterate.\n- For each number: create an `<li>`, set its `textContent` to the number, and append it to the `<ul>`.",
+      "solution": "```javascript\nconst NUMBERS = [10, 25, 50, 75, 90];\n\nconst list = document.querySelector('#list');\nfor (const n of NUMBERS) {\n  const li = document.createElement('li');\n  li.textContent = n;\n  list.appendChild(li);\n}\n```",
+      "walkthrough": "1. Get a reference to the `<ul id=\"list\">`.\n2. Loop over the `NUMBERS` array with `for...of`.\n3. Each iteration: create a new `<li>`, set its `textContent` to the current number, append it to the list.\n4. When the script finishes running, the list has one `<li>` per array entry in order."
+    },
+    {
+      "id": "bdf589452993",
+      "slug": "render-numbers-green-over-100",
+      "title": "Render Numbers Green Over 100",
+      "categoryId": "0c01facad428",
+      "categorySlug": "append-child-and-lists",
+      "order": 6,
+      "sourcePath": "questions/015-append-child-and-lists/006-render-numbers-green-over-100.md",
+      "question": "You are given the following array of numbers in the starter JavaScript:\n\n```javascript\nconst NUMBERS = [50, 150, 80, 200, 99, 101];\n```\n\nWhen the page loads, render every number as an `<li>` inside `<ul id=\"list\">`, in the same order as the array.\n\n**Numbers greater than 100** should be shown in **green**. All other numbers keep the default text colour.",
+      "answer": "",
+      "testCases": [
+        "describe('append child - green over 100', () => {\n  const isGreen = (color) => {\n    const c = color.replace(/\\s+/g, '').toLowerCase();\n    return c === 'green' || c === 'rgb(0,128,0)' || c === '#008000';\n  };\n\n  it('renders one <li> per number in order', () => {\n    const items = [...document.querySelectorAll('#list > li')].map((li) => li.textContent.trim());\n    expect(items).to.deep.equal(['50', '150', '80', '200', '99', '101']);\n  });\n\n  it('numbers greater than 100 are green', () => {\n    const lis = [...document.querySelectorAll('#list > li')];\n    lis.forEach((li) => {\n      const n = Number(li.textContent.trim());\n      const color = li.style.color || getComputedStyle(li).color;\n      if (n > 100) {\n        expect(isGreen(color), `expected ${n} to be green, got ${color}`).to.equal(true);\n      } else {\n        expect(isGreen(color), `expected ${n} NOT to be green, got ${color}`).to.equal(false);\n      }\n    });\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Green Over 100</title>\n  </head>\n  <body>\n    <ul id=\"list\"></ul>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+        "css": "body {\n  font-family: sans-serif;\n  padding: 20px;\n}",
+        "javascript": "const NUMBERS = [50, 150, 80, 200, 99, 101];\n\n// Write your code here"
+      },
+      "hints": "- Start from the previous question's solution.\n- Inside the loop, after creating the `<li>`, check `if (n > 100)` and set `li.style.color = 'green'`.",
+      "solution": "```javascript\nconst NUMBERS = [50, 150, 80, 200, 99, 101];\n\nconst list = document.querySelector('#list');\nfor (const n of NUMBERS) {\n  const li = document.createElement('li');\n  li.textContent = n;\n  if (n > 100) {\n    li.style.color = 'green';\n  }\n  list.appendChild(li);\n}\n```",
+      "walkthrough": "1. Same as the previous question: loop over `NUMBERS`, create an `<li>` for each, set its text, append it.\n2. Before appending (or right after creating it), check if the number is greater than 100.\n3. If yes, set `li.style.color = 'green'`.\n4. Numbers that don't match keep the default text colour."
+    },
+    {
+      "id": "c0ba40e9b5d9",
+      "slug": "render-numbers-green-red",
+      "title": "Render Numbers Green Red",
+      "categoryId": "0c01facad428",
+      "categorySlug": "append-child-and-lists",
+      "order": 7,
+      "sourcePath": "questions/015-append-child-and-lists/007-render-numbers-green-red.md",
+      "question": "You are given the following array of numbers in the starter JavaScript:\n\n```javascript\nconst NUMBERS = [50, 150, -20, 80, -5, 200, 0];\n```\n\nWhen the page loads, render every number as an `<li>` inside `<ul id=\"list\">`, in the same order as the array.\n\nColour rules:\n\n- Numbers **greater than 100** → **green**\n- Numbers **less than 0** → **red**\n- All other numbers keep the default text colour",
+      "answer": "",
+      "testCases": [
+        "describe('append child - green over 100, red below 0', () => {\n  const isGreen = (c) => {\n    const v = c.replace(/\\s+/g, '').toLowerCase();\n    return v === 'green' || v === 'rgb(0,128,0)' || v === '#008000';\n  };\n  const isRed = (c) => {\n    const v = c.replace(/\\s+/g, '').toLowerCase();\n    return v === 'red' || v === 'rgb(255,0,0)' || v === '#ff0000';\n  };\n\n  it('renders one <li> per number in order', () => {\n    const items = [...document.querySelectorAll('#list > li')].map((li) => li.textContent.trim());\n    expect(items).to.deep.equal(['50', '150', '-20', '80', '-5', '200', '0']);\n  });\n\n  it('applies the correct colour based on value', () => {\n    const lis = [...document.querySelectorAll('#list > li')];\n    lis.forEach((li) => {\n      const n = Number(li.textContent.trim());\n      const color = li.style.color || getComputedStyle(li).color;\n      if (n > 100) {\n        expect(isGreen(color), `expected ${n} to be green, got ${color}`).to.equal(true);\n      } else if (n < 0) {\n        expect(isRed(color), `expected ${n} to be red, got ${color}`).to.equal(true);\n      } else {\n        expect(isGreen(color) || isRed(color), `expected ${n} to be neither green nor red, got ${color}`).to.equal(false);\n      }\n    });\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Green Red Numbers</title>\n  </head>\n  <body>\n    <ul id=\"list\"></ul>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+        "css": "body {\n  font-family: sans-serif;\n  padding: 20px;\n}",
+        "javascript": "const NUMBERS = [50, 150, -20, 80, -5, 200, 0];\n\n// Write your code here"
+      },
+      "hints": "- Start from the previous solution.\n- Use `if (n > 100) { ... } else if (n < 0) { ... }` so each list item gets at most one colour.",
+      "solution": "```javascript\nconst NUMBERS = [50, 150, -20, 80, -5, 200, 0];\n\nconst list = document.querySelector('#list');\nfor (const n of NUMBERS) {\n  const li = document.createElement('li');\n  li.textContent = n;\n  if (n > 100) {\n    li.style.color = 'green';\n  } else if (n < 0) {\n    li.style.color = 'red';\n  }\n  list.appendChild(li);\n}\n```",
+      "walkthrough": "1. Same loop structure as before.\n2. For each number, first check if it's greater than 100 → green.\n3. Otherwise, check if it's less than 0 → red.\n4. Otherwise, leave the colour alone.\n5. Zero falls into neither branch and keeps the default colour."
+    },
+    {
+      "id": "c8aca65a8200",
+      "slug": "draw-list-function",
+      "title": "Draw List Function",
+      "categoryId": "0c01facad428",
+      "categorySlug": "append-child-and-lists",
+      "order": 8,
+      "sourcePath": "questions/015-append-child-and-lists/008-draw-list-function.md",
+      "question": "The page has a **Draw** button and an empty `<ul>` with `id=\"list\"`.\n\nWrite a function named **`drawList`** that:\n\n- Takes an array of numbers as its first parameter.\n- Renders each number as an `<li>` inside `<ul id=\"list\">`, in the same order as the array.\n- Before rendering, clears any existing `<li>` items in the list so that calling `drawList` twice doesn't produce duplicates.\n\nWhen the user clicks **Draw**, call `drawList` with the array `NUMBERS` that is provided in the starter JavaScript.\n\nNothing should be rendered when the page first loads — the list only appears after **Draw** is clicked.",
+      "answer": "",
+      "testCases": [
+        "describe('append child - drawList function', () => {\n  const click = () => document.querySelector('#draw-btn').click();\n  const items = () => [...document.querySelectorAll('#list > li')].map((li) => li.textContent.trim());\n\n  it('list is empty before the button is clicked', () => {\n    expect(items()).to.deep.equal([]);\n  });\n\n  it('drawList is a function', () => {\n    expect(typeof window.drawList).to.equal('function');\n  });\n\n  it('clicking Draw renders NUMBERS as <li> items in order', () => {\n    click();\n    expect(items()).to.deep.equal(['3', '7', '11', '42']);\n  });\n\n  it('drawList renders any array passed to it', () => {\n    window.drawList([1, 2, 3]);\n    expect(items()).to.deep.equal(['1', '2', '3']);\n  });\n\n  it('calling drawList twice does not duplicate items', () => {\n    window.drawList([5, 6]);\n    window.drawList([5, 6]);\n    expect(items()).to.deep.equal(['5', '6']);\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>drawList</title>\n  </head>\n  <body>\n    <button id=\"draw-btn\">Draw</button>\n    <ul id=\"list\"></ul>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+        "css": "body {\n  font-family: sans-serif;\n  padding: 20px;\n}\nbutton {\n  font-size: 16px;\n  padding: 5px 10px;\n}",
+        "javascript": "const NUMBERS = [3, 7, 11, 42];\n\n// Write your drawList function here, then attach a click listener\n// to the Draw button that calls drawList(NUMBERS)."
+      },
+      "hints": "- To clear an element's children, the easiest way is `list.innerHTML = ''`.\n- After clearing, loop over the array and append one `<li>` per item.\n- Declare `drawList` at the top level of the script (not inside the click listener) so it's available globally and the tests can call it.",
+      "solution": "```javascript\nconst NUMBERS = [3, 7, 11, 42];\n\nfunction drawList(arr) {\n  const list = document.querySelector('#list');\n  list.innerHTML = '';\n  for (const n of arr) {\n    const li = document.createElement('li');\n    li.textContent = n;\n    list.appendChild(li);\n  }\n}\n\ndocument.querySelector('#draw-btn').addEventListener('click', () => {\n  drawList(NUMBERS);\n});\n```",
+      "walkthrough": "1. Define `drawList(arr)` as a top-level function.\n2. Inside: grab `#list`, clear it (`innerHTML = ''`), then loop over `arr` creating and appending an `<li>` for each number.\n3. Attach a `click` listener to the Draw button that calls `drawList(NUMBERS)`.\n4. Because `drawList` clears the list before rendering, calling it multiple times always produces exactly the contents of the latest array."
+    },
+    {
+      "id": "254dbe29de0e",
+      "slug": "add-number-and-total",
+      "title": "Add Number And Total",
+      "categoryId": "0c01facad428",
+      "categorySlug": "append-child-and-lists",
+      "order": 9,
+      "sourcePath": "questions/015-append-child-and-lists/009-add-number-and-total.md",
+      "question": "The page has:\n\n- A number input (`#number-input`)\n- An **Add** button (`#add-btn`)\n- An empty `<ul>` (`#list`) that will show all numbers added so far\n- A `<div id=\"total\">` that will show the running total\n\nStart from an empty array `numbers = []` in your script.\n\nWhen the user types a number and clicks **Add**:\n\n1. The typed value (converted to a number) should be **pushed** into the `numbers` array.\n2. A function named **`drawList`** should be called to re-render the `<ul>` so that it shows one `<li>` per entry in the `numbers` array, in order.\n3. The `#total` div should display the **sum** of every number currently in the array, in the format `Total: N` (plain number, no currency symbol).\n\nExamples:\n\n- Type `5`, click Add → list shows `5`; total shows `Total: 5`.\n- Type `3`, click Add → list shows `5`, `3`; total shows `Total: 8`.\n- Type `-2`, click Add → list shows `5`, `3`, `-2`; total shows `Total: 6`.\n\nOn page load (before any clicks) the list should be empty and the total should show `Total: 0`.",
+      "answer": "",
+      "testCases": [
+        "describe('append child - add number and total', () => {\n  const input = () => document.querySelector('#number-input');\n  const add = () => document.querySelector('#add-btn').click();\n  const items = () => [...document.querySelectorAll('#list > li')].map((li) => li.textContent.trim());\n  const total = () => document.querySelector('#total').textContent.trim();\n\n  it('starts empty with a total of 0', () => {\n    expect(items()).to.deep.equal([]);\n    expect(total()).to.equal('Total: 0');\n  });\n\n  it('drawList is a function', () => {\n    expect(typeof window.drawList).to.equal('function');\n  });\n\n  it('adding a number pushes it to the list and updates the total', () => {\n    input().value = '5';\n    add();\n    expect(items()).to.deep.equal(['5']);\n    expect(total()).to.equal('Total: 5');\n  });\n\n  it('adds multiple numbers, keeping order and summing correctly', () => {\n    input().value = '3';\n    add();\n    expect(items()).to.deep.equal(['5', '3']);\n    expect(total()).to.equal('Total: 8');\n\n    input().value = '-2';\n    add();\n    expect(items()).to.deep.equal(['5', '3', '-2']);\n    expect(total()).to.equal('Total: 6');\n  });\n});"
+      ],
+      "startingFiles": {
+        "html": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Add Number and Total</title>\n  </head>\n  <body>\n    <input id=\"number-input\" type=\"number\" placeholder=\"Enter a number\">\n    <button id=\"add-btn\">Add</button>\n    <ul id=\"list\"></ul>\n    <div id=\"total\">Total: 0</div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+        "css": "body {\n  font-family: sans-serif;\n  padding: 20px;\n}\ninput, button {\n  font-size: 16px;\n  padding: 5px 10px;\n}\n#total {\n  margin-top: 15px;\n  font-size: 20px;\n  font-weight: bold;\n}",
+        "javascript": "const numbers = [];\n\n// Write your code here.\n//\n// You need:\n// - a drawList function that renders `numbers` into #list,\n// - a click listener on #add-btn that pushes the input value into\n//   `numbers`, calls drawList, and updates #total."
+      },
+      "hints": "- `numbers.push(Number(input.value))` to add the new number.\n- `drawList` should clear `#list` first (`list.innerHTML = ''`) then append one `<li>` per number in the array.\n- The total is the sum of `numbers`. You can compute it with `numbers.reduce((a, b) => a + b, 0)` or with a `for` loop.\n- Remember to update `#total` every time a new number is added, not just once on load.",
+      "solution": "```javascript\nconst numbers = [];\n\nfunction drawList(arr) {\n  const list = document.querySelector('#list');\n  list.innerHTML = '';\n  for (const n of arr) {\n    const li = document.createElement('li');\n    li.textContent = n;\n    list.appendChild(li);\n  }\n}\n\nconst input = document.querySelector('#number-input');\nconst totalDiv = document.querySelector('#total');\n\ndocument.querySelector('#add-btn').addEventListener('click', () => {\n  numbers.push(Number(input.value));\n  drawList(numbers);\n  const total = numbers.reduce((sum, n) => sum + n, 0);\n  totalDiv.textContent = 'Total: ' + total;\n});\n```",
+      "walkthrough": "1. Define the `numbers` array at the top.\n2. Define `drawList(arr)`: clear `#list`, loop over `arr`, append one `<li>` per entry.\n3. Get references to the input, the Add button, and the total div.\n4. In the button's `click` handler:\n   - Convert `input.value` to a number and `push` it into `numbers`.\n   - Call `drawList(numbers)` to refresh the list.\n   - Compute the sum (e.g. with `reduce`) and set `totalDiv.textContent = 'Total: ' + sum`.\n5. The starting HTML already shows `Total: 0`, which matches an empty array."
     }
   ]
 }
