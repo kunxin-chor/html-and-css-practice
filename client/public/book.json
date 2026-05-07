@@ -1,0 +1,24 @@
+{
+    "title": "The Lord of the Rings",
+    "author": "J.R.R. Tolkien",
+    "year": 1954,
+    "alternateTitles": ["The Fellowship of the Ring", "The Two Towers", "The Return of the King"],
+    "tags": ["fantasy", "epic", "middle-earth"],
+    "characters": [
+        {
+            "name": "Frodo Baggins",
+            "role": "The One Ring Bearer",
+            "race": "Hobbit"
+        },
+        {
+            "name": "Gandalf",
+            "role": "Wizard",
+            "race": "Maia"
+        },
+        {
+            "name": "Aragorn",
+            "role": "Ranger",
+            "race": "Human"
+        }
+    ]
+}

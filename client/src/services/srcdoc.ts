@@ -16,21 +16,33 @@ export function buildPreviewSrcDoc(
 ): string {
   const out = html;
 
+  // Resolve relative URLs (e.g. axios.get('/data.json')) against the parent
+  // window's origin. Without this, the iframe document URL is 'about:srcdoc',
+  // which is not a valid base URL and makes fetch / axios / new URL() throw.
+  const baseHref =
+    typeof window !== 'undefined' && window.location && window.location.origin
+      ? `${window.location.origin}/`
+      : '/';
+  const baseTag = `<base href="${baseHref}">`;
+
   const styleTag = `<style>\n${css}\n</style>`;
   const scriptTag = `<script>\n// Console capture for preview\n(function() {\n  const originalConsole = { ...console };\n  window.parent.postMessage({ type: 'console', method: 'log', args: ['Console ready'] }, '*');\n  ['log', 'warn', 'error', 'info'].forEach(method => {\n    console[method] = function(...args) {\n      originalConsole[method](...args);\n      window.parent.postMessage({ type: 'console', method, args: args.map(a => typeof a === 'object' ? JSON.stringify(a) : String(a)) }, '*');\n    };\n  });\n  window.addEventListener('error', (e) => {\n    window.parent.postMessage({ type: 'console', method: 'error', args: [e.message + ' at ' + e.filename + ':' + e.lineno] }, '*');\n  });\n})();\n\n${javascript}\n<\/script>`;
 
   let result = out;
 
-  // Inject CSS
+  // Inject <base> first (so relative URLs resolve), then CSS
   if (/<head[^>]*>/i.test(result)) {
-    result = result.replace(/<head([^>]*)>/i, `<head$1>\n${styleTag}`);
+    result = result.replace(
+      /<head([^>]*)>/i,
+      `<head$1>\n${baseTag}\n${styleTag}`
+    );
   } else if (/<html[^>]*>/i.test(result)) {
     result = result.replace(
       /<html([^>]*)>/i,
-      `<html$1>\n<head>${styleTag}</head>`
+      `<html$1>\n<head>${baseTag}${styleTag}</head>`
     );
   } else {
-    result = `<!DOCTYPE html><html><head>${styleTag}</head><body>${result}</body></html>`;
+    result = `<!DOCTYPE html><html><head>${baseTag}${styleTag}</head><body>${result}</body></html>`;
   }
 
   // Inject JavaScript at the end of body
