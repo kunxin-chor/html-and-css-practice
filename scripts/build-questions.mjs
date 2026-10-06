@@ -216,6 +216,7 @@ function parseQuestionMarkdown(raw) {
     hints: getSub('starting files', 'hints'),
     solution: getBody('solution'),
     walkthrough: getBody('walkthrough'),
+    dataFileUrls: getBody('data files').split(/\r?\n/).map(line => line.trim()).filter(Boolean),
   };
 }
 
@@ -281,6 +282,7 @@ async function build() {
         );
       }
 
+      const { dataFileUrls, ...questionContent } = parsed;
       questions.push({
         id: questionId,
         slug: questionSlug,
@@ -291,7 +293,20 @@ async function build() {
         sourcePath: path
           .relative(REPO_ROOT, filePath)
           .replaceAll(path.sep, '/'),
-        ...parsed,
+        ...questionContent,
+        dataFiles: await Promise.all(dataFileUrls.map(async (url) => {
+          const publicRoot = path.resolve(REPO_ROOT, 'client', 'public');
+          const filePath = path.resolve(publicRoot, url.replace(/^\//, ''));
+          if (!url.startsWith('/') || !filePath.startsWith(publicRoot + path.sep)) {
+            throw new Error(`Invalid data file URL: ${url}`);
+          }
+          return {
+            url,
+            name: path.basename(filePath),
+            language: filePath.endsWith('.json') ? 'json' : 'plaintext',
+            content: await fs.readFile(filePath, 'utf8'),
+          };
+        })),
       });
     }
   }

@@ -5,7 +5,8 @@ import { useAtom } from 'jotai';
 import { answersAtom } from '../../state/atoms';
 import type { Question } from '../../types';
 
-type Tab = 'html' | 'css' | 'javascript';
+type EditableTab = 'html' | 'css' | 'javascript';
+type Tab = EditableTab | `data:${string}`;
 
 interface Props {
   question: Question;
@@ -33,15 +34,18 @@ export function CodeEditor({ question, onChange, value }: Props) {
     };
   }, [value.html, value.css, value.javascript, question.id, dispatchAnswers]);
 
-  const language = tab === 'html' ? 'html' : tab === 'css' ? 'css' : 'javascript';
-  const current = value[tab];
+  const dataFile = question.dataFiles?.find(file => `data:${file.url}` === tab);
+  const editableTab: EditableTab = tab.startsWith('data:') ? 'html' : tab as EditableTab;
+  const activeTab = dataFile ? tab : editableTab;
+  const language = dataFile?.language ?? editableTab;
+  const current = dataFile?.content ?? value[editableTab];
 
   return (
     <div className="d-flex flex-column h-100 border rounded overflow-hidden">
       <div className="d-flex justify-content-between align-items-center border-bottom bg-body-tertiary">
         <Nav
           variant="tabs"
-          activeKey={tab}
+          activeKey={activeTab}
           onSelect={(k) => k && setTab(k as Tab)}
           className="border-0"
         >
@@ -60,20 +64,31 @@ export function CodeEditor({ question, onChange, value }: Props) {
               script.js
             </Nav.Link>
           </Nav.Item>
+          {question.dataFiles?.map(file => (
+            <Nav.Item key={file.url}>
+              <Nav.Link eventKey={`data:${file.url}`} className="py-1" title={`${file.url} (read-only)`}>
+                {file.name}
+              </Nav.Link>
+            </Nav.Item>
+          ))}
         </Nav>
-        <small className="text-muted pe-3">auto-saved</small>
+        <small className="text-muted pe-3 text-nowrap">{dataFile ? 'read-only' : 'auto-saved'}</small>
       </div>
       <div className="flex-grow-1" style={{ minHeight: 0 }}>
         <Editor
+          key={`${question.id}:${activeTab}`}
           height="100%"
           language={language}
           theme="vs-dark"
           value={current}
           onChange={(next) => {
-            const updated = { ...value, [tab]: next ?? '' };
+            if (dataFile) return;
+            const updated = { ...value, [editableTab]: next ?? '' };
             onChange(updated);
           }}
           options={{
+            readOnly: !!dataFile,
+            domReadOnly: !!dataFile,
             minimap: { enabled: false },
             fontSize: 13,
             wordWrap: 'on',

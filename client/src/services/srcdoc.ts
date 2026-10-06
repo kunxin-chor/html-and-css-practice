@@ -25,8 +25,17 @@ export function buildPreviewSrcDoc(
       : '/';
   const baseTag = `<base href="${baseHref}">`;
 
+  // Axios checks same-origin URLs against window.location.href (about:srcdoc),
+  // ignoring the HTML base tag. Supply an HTTP base before student code runs
+  // so its internal URL check receives an absolute URL. Both frames use this.
+  const axiosSetup = `(function () {
+    if (window.axios && !window.axios.defaults.baseURL) {
+      window.axios.defaults.baseURL = ${JSON.stringify(baseHref)};
+    }
+  })();`;
+
   const styleTag = `<style>\n${css}\n</style>`;
-  const scriptTag = `<script>\n// Console capture for preview\n(function() {\n  const originalConsole = { ...console };\n  window.parent.postMessage({ type: 'console', method: 'log', args: ['Console ready'] }, '*');\n  ['log', 'warn', 'error', 'info'].forEach(method => {\n    console[method] = function(...args) {\n      originalConsole[method](...args);\n      window.parent.postMessage({ type: 'console', method, args: args.map(a => typeof a === 'object' ? JSON.stringify(a) : String(a)) }, '*');\n    };\n  });\n  window.addEventListener('error', (e) => {\n    window.parent.postMessage({ type: 'console', method: 'error', args: [e.message + ' at ' + e.filename + ':' + e.lineno] }, '*');\n  });\n})();\n\n${javascript}\n<\/script>`;
+  const scriptTag = `<script>\n${axiosSetup}\n// Console capture for preview\n(function() {\n  const originalConsole = { ...console };\n  window.parent.postMessage({ type: 'console', method: 'log', args: ['Console ready'] }, '*');\n  ['log', 'warn', 'error', 'info'].forEach(method => {\n    console[method] = function(...args) {\n      originalConsole[method](...args);\n      window.parent.postMessage({ type: 'console', method, args: args.map(a => typeof a === 'object' ? JSON.stringify(a) : String(a)) }, '*');\n    };\n  });\n  window.addEventListener('error', (e) => {\n    window.parent.postMessage({ type: 'console', method: 'error', args: [e.message + ' at ' + e.filename + ':' + e.lineno] }, '*');\n  });\n})();\n\n${javascript}\n<\/script>`;
 
   let result = out;
 

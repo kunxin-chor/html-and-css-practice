@@ -1,0 +1,27 @@
+{
+  "title": "Ocean Discoveries",
+  "curator": "Dr Mei Tan",
+  "year": 2026,
+  "themes": [
+    "marine life",
+    "conservation",
+    "exploration"
+  ],
+  "exhibits": [
+    {
+      "name": "Coral Garden",
+      "zone": "A",
+      "minutes": 12
+    },
+    {
+      "name": "Deep Sea Camera",
+      "zone": "B",
+      "minutes": 8
+    },
+    {
+      "name": "Research Vessel",
+      "zone": "C",
+      "minutes": 15
+    }
+  ]
+}

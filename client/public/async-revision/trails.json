@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Garden Loop",
+    "stops": [
+      {
+        "stopId": 1,
+        "title": "Visitor Centre",
+        "minutes": 0
+      },
+      {
+        "stopId": 2,
+        "title": "Orchid House",
+        "minutes": 10
+      },
+      {
+        "stopId": 3,
+        "title": "Lake View"
+      }
+    ]
+  },
+  {
+    "name": "Heritage Walk",
+    "stops": [
+      {
+        "stopId": 1,
+        "title": "Old Gate",
+        "minutes": 5
+      },
+      {
+        "stopId": 2,
+        "title": "Clock Tower"
+      }
+    ]
+  },
+  {
+    "name": "River Route",
+    "stops": [
+      {
+        "stopId": 1,
+        "title": "Stone Bridge",
+        "minutes": 8
+      },
+      {
+        "stopId": 2,
+        "title": "Boat Landing",
+        "minutes": 12
+      }
+    ]
+  }
+]

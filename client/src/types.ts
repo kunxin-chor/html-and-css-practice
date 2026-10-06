@@ -26,6 +26,7 @@ export interface Question {
   hints: string;
   solution: string;
   walkthrough: string;
+  dataFiles?: { url: string; name: string; language: string; content: string }[];
 }
 
 export interface QuestionBundle {

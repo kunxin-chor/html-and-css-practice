@@ -42,7 +42,13 @@ The interface has a two-column layout:
 7. Display walkthrough (in Question tab)
 
 Question storage:
-Use a JSON file to store all the questions as an array of objects. 
+Questions may include a `# Data Files` section with one root-relative URL per line
+(for example, `/async-revision/parcel.json`). Each URL must refer to a file inside
+`client/public`. The question builder reads these files into the bundle for
+read-only, syntax-highlighted editor tabs. Students can select and copy their
+contents; these files are excluded from editable answers and autosave.
+
+Use a JSON file to store all the questions as an array of objects.
 However, question authoring is done via a md file for each question. 
 - one folder for each cateogry of question
 - one md file for each question

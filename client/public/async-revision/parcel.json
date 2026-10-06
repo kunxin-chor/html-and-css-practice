@@ -1,0 +1,16 @@
+{
+  "trackingCode": "PK-2048",
+  "recipient": {
+    "name": "Nadia Lim",
+    "address": {
+      "unit": "08-12",
+      "street": "25 Orchard Lane",
+      "postalCode": "238800"
+    }
+  },
+  "delivery": {
+    "day": "Friday",
+    "start": "14:00",
+    "end": "16:00"
+  }
+}

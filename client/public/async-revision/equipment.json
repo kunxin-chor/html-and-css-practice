@@ -1,0 +1,34 @@
+{
+  "equipment": [
+    {
+      "name": "Camera",
+      "category": "Media",
+      "available": true,
+      "quantity": 3
+    },
+    {
+      "name": "Tripod",
+      "category": "Media",
+      "available": false,
+      "quantity": 0
+    },
+    {
+      "name": "Microphone",
+      "category": "Audio",
+      "available": true,
+      "quantity": 2
+    },
+    {
+      "name": "Projector",
+      "category": "Display",
+      "available": false,
+      "quantity": 0
+    },
+    {
+      "name": "Speaker",
+      "category": "Audio",
+      "available": true,
+      "quantity": 1
+    }
+  ]
+}
